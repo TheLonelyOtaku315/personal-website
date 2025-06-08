@@ -27,8 +27,7 @@
   font-size: 1.35em;
   font-weight: 500;
   color: var(--primary-text-color);
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
 }
 
 .contact-info p {
@@ -43,7 +42,6 @@
 
 .contact-info .contact-detail {
   display: flex;
-  align-items: center;
   gap: 0.5em;
 }
 
