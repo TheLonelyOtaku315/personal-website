@@ -1,18 +1,20 @@
 <div class="background"></div>
-<div class="container">
-  <app-navigation-bar></app-navigation-bar>
-  <section id="about_me">
-    <app-about-me-section></app-about-me-section>
-  </section>
-  <section id="project">
-    <app-projects-section></app-projects-section>
-  </section>
-  <section id="contact">
-    <app-contact-section></app-contact-section>
-  </section>
-  <footer>
-    <div class="footer">
-      <p>&copy; 2023 Tonny Zhao. All rights reserved.</p>
-    </div>
-  </footer>
+<div [ngClass]="isDarkmode ? 'darkmode' : 'lightmode'">
+  <div class="container">
+    <app-navigation-bar></app-navigation-bar>
+    <section id="about_me">
+      <app-about-me-section></app-about-me-section>
+    </section>
+    <section id="project">
+      <app-projects-section></app-projects-section>
+    </section>
+    <section id="contact">
+      <app-contact-section></app-contact-section>
+    </section>
+    <footer>
+      <div class="footer">
+        <p>&copy; 2023 Tonny Zhao. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
 </div>

@@ -1,39 +1,9 @@
 @import url("../public/theme.css");
 
-:root {
-  --primary: #f5f6fa;
-  --secondary: #e1e3ea;
-  --accent: #0078d7;
-  --text: #222;
-  --text-secondary: #555;
-  --card-bg: #fff;
-  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
 body {
-  background-color: var(--primary);
+  background-color: var(--background-color);
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: var(--text);
-}
-
-.dark-mode {
-  --primary: #181a20;
-  --secondary: #23262f;
-  --accent: #4f8cff;
-  --text: #f5f6fa;
-  --text-secondary: #b0b3b8;
-  --card-bg: #23262f;
-  --card-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
-}
-
-.light-mode {
-  --primary: #f5f6fa;
-  --secondary: #e1e3ea;
-  --accent: #0078d7;
-  --text: #222;
-  --text-secondary: #555;
-  --card-bg: #fff;
-  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  color: var(--primary-text-color);
 }

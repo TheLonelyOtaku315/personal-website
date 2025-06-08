@@ -1,5 +1,6 @@
 import { Component, Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { UserServiceService } from '../../../service/user.service.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -12,8 +13,12 @@ export class NavigationBarComponent {
 
   constructor(
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private userService: UserServiceService
   ) {
+    this.userService.darkMode$.subscribe((isDark) => {
+      this.isDarkMode = isDark;
+    });
     if (typeof window !== 'undefined' && window.localStorage) {
       const theme = localStorage.getItem('theme');
       if (theme === 'dark') {
@@ -27,7 +32,9 @@ export class NavigationBarComponent {
   }
 
   toggleTheme(event: Event) {
-    this.setDarkMode((event.target as HTMLInputElement).checked);
+    const checked = (event.target as HTMLInputElement).checked;
+    this.setDarkMode(checked);
+    this.userService.setDarkMode(checked);
   }
 
   setDarkMode(isDark: boolean) {
