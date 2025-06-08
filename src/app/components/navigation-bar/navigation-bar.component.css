@@ -124,3 +124,17 @@ nav {
 .switch input:checked ~ .slider .cloud {
   opacity: 1;
 }
+
+.theme-toggle-btn {
+  background: var(--secondary-color);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-btn svg {
+  display: block;
+}

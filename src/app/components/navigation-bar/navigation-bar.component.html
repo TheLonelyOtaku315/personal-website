@@ -13,6 +13,7 @@
     <button
       class="theme-toggle-btn"
       (click)="toggleTheme()"
+      [ngClass]="isDarkMode ? 'dark-theme' : 'light-theme'"
       [attr.aria-label]="
         isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'
       "
@@ -26,9 +27,10 @@
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <circle cx="12" cy="12" r="12" fill="var(--secondary-color)" />
           <path
             d="M21 12.79A9 9 0 0 1 12.79 3a7 7 0 1 0 8.21 9.79z"
-            fill="#FFD600"
+            fill="var(--accent-color)"
           />
         </svg>
       </ng-container>
@@ -41,8 +43,8 @@
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="12" cy="12" r="5" fill="#FFA726" />
-          <g stroke="#FFA726" stroke-width="2">
+          <circle cx="12" cy="12" r="5" fill="var(--accent-color)" />
+          <g stroke="var(--accent-color)" stroke-width="2">
             <line x1="12" y1="1" x2="12" y2="3" />
             <line x1="12" y1="21" x2="12" y2="23" />
             <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />

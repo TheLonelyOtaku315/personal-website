@@ -20,6 +20,7 @@ export class NavigationBarComponent {
   ) {
     this.userService.darkMode$.subscribe((isDark) => {
       this.isDarkMode = isDark;
+      this.setDarkMode(isDark); // Ensure theme is applied to the page on toggle
       console.log('Dark mode changed:', isDark);
     });
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -44,12 +45,14 @@ export class NavigationBarComponent {
       this.renderer.removeClass(this.document.body, 'light-theme');
       this.renderer.addClass(this.document.body, 'dark-theme');
       if (typeof window !== 'undefined' && window.localStorage) {
+        console.log('Setting dark mode in localStorage');
         localStorage.setItem('theme', 'dark');
       }
     } else {
       this.renderer.removeClass(this.document.body, 'dark-theme');
       this.renderer.addClass(this.document.body, 'light-theme');
       if (typeof window !== 'undefined' && window.localStorage) {
+        console.log('Setting light mode in localStorage');
         localStorage.setItem('theme', 'light');
       }
     }
