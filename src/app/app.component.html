@@ -1,6 +1,10 @@
-<div class="background"></div>
 <div [ngClass]="isDarkmode ? 'darkmode' : 'lightmode'">
-  <div class="container">
+  <div class="container" [style.display]="!showContent ? 'block' : 'none'">
+    <app-terminal-auto-writing
+      [style.display]="!showContent ? 'block' : 'none'"
+    ></app-terminal-auto-writing>
+  </div>
+  <div class="container" [style.display]="showContent ? 'block' : 'none'">
     <app-navigation-bar></app-navigation-bar>
     <section id="about_me">
       <app-about-me-section></app-about-me-section>

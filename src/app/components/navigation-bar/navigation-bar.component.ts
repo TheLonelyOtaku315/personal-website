@@ -21,7 +21,7 @@ export class NavigationBarComponent {
     this.userService.darkMode$.subscribe((isDark) => {
       this.isDarkMode = isDark;
       this.setDarkMode(isDark); // Ensure theme is applied to the page on toggle
-      console.log('Dark mode changed:', isDark);
+      // console.log('Dark mode changed:', isDark);
     });
     if (typeof window !== 'undefined' && window.localStorage) {
       const theme = localStorage.getItem('theme');

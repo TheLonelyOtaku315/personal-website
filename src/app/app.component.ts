@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AboutMeSectionComponent } from './components/about-me-section/about-me-section.component';
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
 import { UserServiceService } from '../service/user.service.service';
+import { TerminalAutoWritingComponent } from './components/terminal-auto-writing/terminal-auto-writing.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,12 +16,14 @@ import { UserServiceService } from '../service/user.service.service';
     CommonModule,
     ContactSectionComponent,
     ProjectsSectionComponent,
+    TerminalAutoWritingComponent,
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'personal-website';
 
   isDarkmode = false;
+  showContent = false;
 
   constructor(private userService: UserServiceService) {
     this.userService.darkMode$.subscribe((isDark) => {
@@ -40,5 +43,12 @@ export class AppComponent {
 
   toggleDarkMode(value: boolean) {
     this.userService.setDarkMode(value);
+  }
+
+  ngOnInit() {
+    this.userService.animationFinished$.subscribe((finished) => {
+      console.log('Animation finished:', finished);
+      this.showContent = finished;
+    });
   }
 }
