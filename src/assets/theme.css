@@ -1,0 +1,37 @@
+.dark-theme {
+  --primary-color: #8ecae6; /* Soft blue */
+  --secondary-color: #222831;
+  --background-color: #181a1b; /* Deep dark background */
+  --primary-text-color: #e0e1dd; /* Gentle light text */
+  --secondary-text-color: #adb5bd; /* Muted light */
+  --hover-color: #23272e;
+  --border-color: #393e46;
+  --accent-color: #ffb703; /* Warm gold accent */
+  --error-color: #ef476f; /* Muted red */
+  --success-color: #06d6a0; /* Soft green */
+  --muted-color: #6c757d;
+  --dark-muted-color: #23272e;
+  --light-muted-color: #393e46;
+  --dark-background: #181a1b;
+  --light-background: #23272e;
+  --dark-text: #e0e1dd;
+}
+
+.light-theme {
+  --primary-color: #8ecae6; /* Soft blue */
+  --secondary-color: #e9ecef;
+  --background-color: #ffffff; /* Light background */
+  --primary-text-color: #181a1b; /* Dark text */
+  --secondary-text-color: #495057; /* Muted dark */
+  --hover-color: #f1f3f5;
+  --border-color: #d1d6db;
+  --accent-color: #ffb703; /* Warm gold accent */
+  --error-color: #ef476f; /* Muted red */
+  --success-color: #06d6a0; /* Soft green */
+  --muted-color: #6c757d;
+  --dark-muted-color: #e9ecef;
+  --light-muted-color: #f8f9fa;
+  --dark-background: #e9ecef;
+  --light-background: #ffffff;
+  --dark-text: #181a1b;
+}

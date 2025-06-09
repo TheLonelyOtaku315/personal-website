@@ -1,4 +1,4 @@
-@import url("../public/theme.css");
+@import url("../src/assets/theme.css");
 
 body {
   background-color: var(--background-color);
