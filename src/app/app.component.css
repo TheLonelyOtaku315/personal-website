@@ -17,8 +17,8 @@
 }
 
 .dark-theme {
-  --primary-color: #f0483e;
-  --secondary-color: #313338;
+  --primary-color: #00ff75;
+  --secondary-color: #3700ff;
   --background-color: #1e1f22;
   --primary-text-color: #ffffff;
   --secondary-text-color: #949ba4;
@@ -36,8 +36,8 @@
 }
 
 .light-theme {
-  --primary-color: #f0483e;
-  --secondary-color: #f1f3f5;
+  --primary-color: #00ff75;
+  --secondary-color: #3700ff;
   --background-color: #f8f9fa;
   --primary-text-color: #212529;
   --secondary-text-color: #495057;
@@ -53,4 +53,3 @@
   --light-background: #ffffff;
   --dark-text: #343a40;
 }
-
