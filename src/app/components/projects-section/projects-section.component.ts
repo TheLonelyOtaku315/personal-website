@@ -71,5 +71,12 @@ Demonstrated skills in Linux systems, hardware setup, software configuration, an
       new Date('2022-01-01'),
       ['Raspberry Pi', 'RetroPie', 'Linux', 'Emulation']
     ),
+    new Project(
+      'Coming Up',
+      `A new project is coming soon. Stay tuned for updates!`,
+      '',
+      new Date(),
+      ['TBA']
+    ),
   ];
 }
