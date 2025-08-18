@@ -3,51 +3,41 @@
   <div class="contact-flex">
     <div class="contact-info">
       <div class="contact-detail">
+        <span class="contact-icon">👤</span>
         <span class="contact-label">Name:</span>
         <span class="contact-value">Tonny Zhao</span>
       </div>
       <div class="contact-detail">
-        <span class="contact-label">Email:</span>
-        <a class="contact-value" href="mailto:zhaotonny315&#64;gmail.com"
-          >zhaotonny315&#64;gmail.com</a
-        >
+    <span class="contact-icon">✉️</span>
+    <span class="contact-label">Email:</span>
+    <a class="contact-value" href="mailto:zhaotonny315&#64;gmail.com">zhaotonny315&#64;gmail.com</a>
       </div>
       <div class="contact-detail">
+        <span class="contact-icon">📞</span>
         <span class="contact-label">Phone:</span>
         <span class="contact-value">579.421.6532</span>
       </div>
       <div class="contact-detail">
+        <span class="contact-icon">💼</span>
         <span class="contact-label">LinkedIn:</span>
-        <a
-          class="contact-value"
-          href="https://www.linkedin.com/in/tonny-zhao/"
-          target="_blank"
-          >linkedin.com/in/tonny-zhao</a
-        >
+        <a class="contact-value" href="https://www.linkedin.com/in/tonny-zhao/" target="_blank">linkedin.com/in/tonny-zhao</a>
       </div>
       <div class="contact-detail">
+        <span class="contact-icon">🐙</span>
         <span class="contact-label">GitHub:</span>
-        <a
-          class="contact-value"
-          href="https://github.com/TheLonelyOtaku315"
-          target="_blank"
-          >github.com/TheLonelyOtaku315</a
-        >
+        <a class="contact-value" href="https://github.com/TheLonelyOtaku315" target="_blank">github.com/TheLonelyOtaku315</a>
       </div>
     </div>
-    <form
-      class="contact-form"
-      method="POST"
-      action="mailto:zhaotonny315@gmail.com"
-      enctype="text/plain"
-    >
-      <label for="name">Name</label>
-      <input id="name" name="name" type="text" required />
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required />
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-      <button type="submit">Send Email</button>
-    </form>
+    <div class="contact-form-wrapper">
+      <form class="contact-form" method="POST" action="mailto:zhaotonny315@gmail.com" enctype="text/plain">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required />
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit">Send Email</button>
+      </form>
+    </div>
   </div>
 </section>

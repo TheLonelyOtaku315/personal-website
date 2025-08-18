@@ -46,9 +46,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.animationFinished$.subscribe((finished) => {
-      console.log('Animation finished:', finished);
-      this.showContent = finished;
-    });
+    // this.userService.animationFinished$.subscribe((finished) => {
+    //   console.log('Animation finished:', finished);
+    //   this.showContent = finished;
+    // });
+    this.showContent = true; // Set to true to show content immediately
   }
 }
