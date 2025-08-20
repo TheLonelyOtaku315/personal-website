@@ -1,13 +1,41 @@
-<div class="projects-grid">
-  <div class="project-card-background" *ngFor="let project of projects">
-    <div class="project-card">
-      <h3>{{ project.title }}</h3>
-      <!-- <p>{{ project.description }}</p> -->
-      <!-- <a [href]="project.url" target="_blank" rel="noopener">View Project</a> -->
-      <div class="project-meta">
-        <span class="project-date">{{ project.date | date : "MMM yyyy" }}</span>
-        <div class="project-tech">
-          <span *ngFor="let tech of project.technologies" class="tech-badge">{{ tech }}</span>
+<div class="projects-section-container">
+  <!-- <h2 class="section-title">Projects</h2> -->
+  <div class="projects-grid">
+    <div
+      class="project-card-background"
+      *ngFor="let project of projects; let i = index"
+      (mouseenter)="hoveredIndex = i"
+      (mouseleave)="hoveredIndex = null"
+    >
+      <div class="project-card">
+        <div
+          [ngClass]="{
+            'fade-out': hoveredIndex === i,
+            'fade-in': hoveredIndex !== i
+          }"
+          class="project-default"
+        >
+          <h3>{{ project.title }}</h3>
+          <span class="project-date">{{
+            project.date | date : "MMM yyyy"
+          }}</span>
+        </div>
+        <div
+          [ngClass]="{
+            'fade-in': hoveredIndex === i,
+            'fade-out': hoveredIndex !== i
+          }"
+          class="project-hover"
+          *ngIf="hoveredIndex === i"
+        >
+          <p class="project-description">{{ project.description }}</p>
+          <div class="project-tech">
+            <span
+              *ngFor="let tech of project.technologies"
+              class="tech-badge"
+              >{{ tech }}</span
+            >
+          </div>
         </div>
       </div>
     </div>

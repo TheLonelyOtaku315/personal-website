@@ -19,6 +19,7 @@ export class Project {
   styleUrl: './projects-section.component.css',
 })
 export class ProjectsSectionComponent {
+  hoveredIndex: number | null = null;
   projects = [
     new Project(
       'ChatHaven',

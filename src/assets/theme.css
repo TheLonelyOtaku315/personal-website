@@ -1,37 +1,37 @@
+/* Dark Theme */
 .dark-theme {
-  --primary-color: #8ecae6; /* Soft blue */
-  --secondary-color: #222831;
-  --background-color: #181a1b; /* Deep dark background */
-  --primary-text-color: #e0e1dd; /* Gentle light text */
-  --secondary-text-color: #adb5bd; /* Muted light */
-  --hover-color: #23272e;
-  --border-color: #393e46;
-  --accent-color: #ffb703; /* Warm gold accent */
-  --error-color: #ef476f; /* Muted red */
-  --success-color: #06d6a0; /* Soft green */
-  --muted-color: #6c757d;
-  --dark-muted-color: #23272e;
-  --light-muted-color: #393e46;
-  --dark-background: #181a1b;
-  --light-background: #23272e;
-  --dark-text: #e0e1dd;
+  --primary-color: #18181b;
+  --secondary-color: #27272a;
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --primary-text-color: #f3f4f6;
+  --secondary-text-color: #e5e7eb;
+  --muted-text-color: #a1a1aa;
+  --hover-color: #27272a;
+  --border-color: #3f3f46;
+  --accent-color: #7c3aed;
+  --error-color: #f87171;
+  --success-color: #34d399;
+  --warning-color: #fbbf24;
+  --info-color: #38bdf8;
+  --link-color: #60a5fa;
 }
 
+/* Light Theme */
 .light-theme {
-  --primary-color: #8ecae6; /* Soft blue */
-  --secondary-color: #e9ecef;
-  --background-color: #ffffff; /* Light background */
-  --primary-text-color: #181a1b; /* Dark text */
-  --secondary-text-color: #495057; /* Muted dark */
-  --hover-color: #f1f3f5;
-  --border-color: #d1d6db;
-  --accent-color: #ffb703; /* Warm gold accent */
-  --error-color: #ef476f; /* Muted red */
-  --success-color: #06d6a0; /* Soft green */
-  --muted-color: #6c757d;
-  --dark-muted-color: #e9ecef;
-  --light-muted-color: #f8f9fa;
-  --dark-background: #e9ecef;
-  --light-background: #ffffff;
-  --dark-text: #181a1b;
+  --primary-color: #f3f4f6;
+  --secondary-color: #e5e7eb;
+  --background-color: #f9fafb;
+  --surface-color: #ffffff;
+  --primary-text-color: #111827;
+  --secondary-text-color: #374151;
+  --muted-text-color: #6b7280;
+  --hover-color: #e5e7eb;
+  --border-color: #d1d5db;
+  --accent-color: #8b5cf6;
+  --error-color: #ef4444;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --info-color: #06b6d4;
+  --link-color: #2563eb;
 }
