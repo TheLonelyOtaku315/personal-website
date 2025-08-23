@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserServiceService {
-  private darkModeSubject = new BehaviorSubject<boolean>(false);
+  private darkModeSubject = new BehaviorSubject<boolean>(true);
   darkMode$ = this.darkModeSubject.asObservable();
 
   private animationFinishedSubject = new BehaviorSubject<boolean>(false);
