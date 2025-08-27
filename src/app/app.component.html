@@ -5,20 +5,22 @@
     ></app-terminal-auto-writing>
   </div>
   <div class="container" [style.display]="showContent ? 'block' : 'none'">
-    <app-navigation-bar></app-navigation-bar>
-    <section id="about_me">
-      <app-about-me-section></app-about-me-section>
-    </section>
-    <section id="project">
-      <app-projects-section></app-projects-section>
-    </section>
-    <section id="contact">
-      <app-contact-section></app-contact-section>
-    </section>
-    <footer>
-      <div class="footer">
-        <p>&copy; 2023 Tonny Zhao. All rights reserved.</p>
-      </div>
-    </footer>
+    <div class="nav-bar" ><app-navigation-bar></app-navigation-bar></div>
+    <div class="webpage">
+      <section id="about_me">
+        <app-about-me-section></app-about-me-section>
+      </section>
+      <section id="project">
+        <app-projects-section></app-projects-section>
+      </section>
+      <section id="contact">
+        <app-contact-section></app-contact-section>
+      </section>
+      <footer>
+        <div class="footer">
+            <p style="text-align: center;">&copy; 2023 Tonny Zhao. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
   </div>
 </div>
