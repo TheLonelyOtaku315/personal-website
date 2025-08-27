@@ -3,7 +3,7 @@
   <div class="projects-grid">
     <div
       class="project-card-background"
-      *ngFor="let project of projects; let i = index"
+      *ngFor="let project of visibleProjects; let i = index"
       (mouseenter)="hoveredIndex = i"
       (mouseleave)="hoveredIndex = null"
     >

@@ -11,6 +11,8 @@ export class Project {
   ) {}
 }
 
+import { HostListener } from '@angular/core';
+
 @Component({
   selector: 'app-projects-section',
   standalone: true,
@@ -20,6 +22,7 @@ export class Project {
 })
 export class ProjectsSectionComponent {
   hoveredIndex: number | null = null;
+  visibleCount = 100;
   projects = [
     new Project(
       'ChatHaven',
@@ -158,4 +161,21 @@ Demonstrated skills in Linux systems, hardware setup, software configuration, an
       ['TypeScript', 'CSS', 'Game', 'Web']
     ),
   ];
+
+  get visibleProjects() {
+    return this.projects.slice(0, this.visibleCount);
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 10)) {
+      this.loadMore();
+    }
+  }
+
+  loadMore() {
+    if (this.visibleCount < this.projects.length) {
+      this.visibleCount += 6;
+    }
+  }
 }

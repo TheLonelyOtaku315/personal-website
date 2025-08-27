@@ -20,7 +20,7 @@
   padding: 1.5rem;
   width: 100%;
   box-sizing: border-box;
-  background: var(--background-color);
+  /* background: var(--background-color); */
   justify-content: center;
 }
 
@@ -28,7 +28,7 @@
 .project-card-background {
   background-image: linear-gradient(
     163deg,
-    var(--warning-color) 0%,
+    var(--accent-color) 0%,
     var(--error-color) 100%
   );
   border-radius: 12px;
@@ -39,7 +39,7 @@
 }
 
 .project-card-background:hover {
-  box-shadow: 0px 0px 30px 1px var(--warning-color);
+  box-shadow: 0px 0px 30px 1px var(--accent-color);
 }
 
 /* Project Card Content */
@@ -178,8 +178,8 @@
 }
 
 .project-card a:hover {
-  background-color: var(--warning-color);
-  color: var(--warning-color);
+  background-color: var(--accent-color);
+  color: var(--accent-color);
   transform: translateY(-1px);
 }
 
