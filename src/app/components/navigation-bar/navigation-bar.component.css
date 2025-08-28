@@ -12,7 +12,6 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   background-color: transparent;
-  /* background-color: red; */
   color: var(--primary-text-color);
   display: grid;
   grid-template-columns: auto 1fr;
