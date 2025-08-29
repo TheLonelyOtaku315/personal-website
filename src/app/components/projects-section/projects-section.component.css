@@ -214,7 +214,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .projects-grid {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: clamp(0.7rem, 2vw, 1.2rem);
