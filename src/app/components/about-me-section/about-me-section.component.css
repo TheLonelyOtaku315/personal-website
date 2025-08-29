@@ -1,43 +1,39 @@
-/* Removed all custom variables. Use only allowed variables from .dark-theme/.light-theme in your HTML classes. */
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
 
-.about-me {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 32px 24px;
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 32px;
+  height: calc(100vh - 64px);
+  width: calc(100% - 64px);
+  padding: 5px 1em;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  background: var(--background-color);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  color: var(--primary-text-color);
-}
-
-.about-me h2 {
-  font-size: 2.2rem;
-  margin-bottom: 16px;
-  color: var(--primary-color);
-}
-
-.about-me h3 {
-  margin-top: 28px;
-  font-size: 1.3rem;
-  color: var(--accent-color);
-}
-
-.about-me p,
-.about-me li {
-  font-size: 1.08rem;
-  line-height: 1.7;
-  color: var(--primary-text-color);
-}
-
-.about-me ul {
-  padding-left: 20px;
-  margin-bottom: 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  border: 2px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  align-self: start;
+  transition: 300ms ease-in-out;
+  overflow: hidden;
+  text-wrap: nowrap;
 }
 
 .contact-info {
   margin: 18px 0 10px 0;
   padding: 12px 18px;
-  background: var(--secondary-color);
+  background: var(--surface-color);
   border-radius: 8px;
   color: var(--primary-text-color);
 }
@@ -59,28 +55,14 @@
   font-weight: 500;
 }
 
-.about-me li {
-  color: var(--secondary-text-color);
-}
-
-.about-me-flex {
-  display: flex;
-  align-items: flex-start;
-  gap: 32px;
-}
-
 .profile-pic {
-  width: 140px;
-  height: 140px;
+  /* width: 140px;
+  height: 140px; */
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border: 3px solid var(--accent-color);
   flex-shrink: 0;
-}
-
-.about-me-content {
-  flex: 1;
 }
 
 @media (max-width: 700px) {
@@ -95,13 +77,32 @@
 }
 
 @media (max-width: 600px) {
-  .about-me {
+  .card {
     padding: 16px 4px;
   }
-  .about-me h2 {
-    font-size: 1.4rem;
-  }
-  .about-me h3 {
-    font-size: 1.1rem;
-  }
 }
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 32px;
+  height: calc(100vh - 64px);
+  width: calc(100% - 64px);
+  padding: 5px 1em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  border: 2px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  align-self: start;
+  transition: 300ms ease-in-out;
+  overflow: auto;
+  word-break: break-word;
+  white-space: normal;
+}
+/* gap: 18px; */
