@@ -152,7 +152,7 @@ main p {
   }
   #sidebar {
     height: 60px;
-    width: 100%;
+    width: calc(100% - 60px);
     border-right: none;
     border-top: 1px solid var(--border-color);
     padding: 0;
@@ -166,6 +166,7 @@ main p {
     grid-auto-columns: 60px;
     grid-auto-flow: column;
     align-items: center;
+    justify-content: space-around;
     overflow-x: scroll;
   }
   #sidebar ul li {
@@ -190,7 +191,7 @@ main p {
     left: 0;
     box-sizing: border-box;
     height: 60px;
-    width: 100%;
+    width: calc(100% - 60px);
     background-color: var(--hover-color);
     border-top: 1px solid var(--border-color);
     display: flex;
@@ -205,7 +206,7 @@ main p {
   #sidebar ul li .sub-menu.show a {
     box-sizing: border-box;
     padding: 1em;
-    width: auto;
+    width: calc(100% - 60px);
     justify-content: center;
   }
 }
