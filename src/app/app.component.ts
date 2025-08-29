@@ -5,7 +5,6 @@ import { AboutMeSectionComponent } from './components/about-me-section/about-me-
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
 import { UserServiceService } from '../service/user.service.service';
-import { TerminalAutoWritingComponent } from './components/terminal-auto-writing/terminal-auto-writing.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,7 +15,6 @@ import { TerminalAutoWritingComponent } from './components/terminal-auto-writing
     CommonModule,
     ContactSectionComponent,
     ProjectsSectionComponent,
-    TerminalAutoWritingComponent,
   ],
 })
 export class AppComponent implements OnInit {
