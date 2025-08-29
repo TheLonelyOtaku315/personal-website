@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 100vh;
+  height: auto;
   width: 100vw;
   overflow-x: hidden;
   overflow-y: auto;
@@ -45,24 +45,27 @@
 .nav-bar {
   display: flex;
   background-color: transparent;
-  width: fit-content;
-  height: 100vh;
+  width: 250px;
+  height: auto;
   z-index: 1000;
-  position: absolute;
-
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .webpage {
-  width: auto;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  width: calc(100% - 250px);
+  margin-left: 314px;
 }
 
-.webpage {
+/* .webpage {
   width: calc(100% - 250px);
   flex-grow: 1;
   margin-left: 250px;
-}
+} */
 
 .background {
   position: absolute;
@@ -70,4 +73,11 @@
   left: 0;
   z-index: -1;
   height: 100vh;
+}
+
+@media (max-width: 800px) {
+  .webpage {
+    width: 100%;
+    margin-left: 0;
+  }
 }
