@@ -22,6 +22,12 @@ export class AppComponent implements OnInit {
 
   isDarkmode = false;
   showContent = false;
+  private squares: {
+    element: HTMLElement;
+    originalX: number;
+    originalY: number;
+    size: number;
+  }[] = [];
 
   constructor(private userService: UserServiceService) {
     this.userService.darkMode$.subscribe((isDark) => {
@@ -44,10 +50,60 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.userService.animationFinished$.subscribe((finished) => {
-    //   console.log('Animation finished:', finished);
-    //   this.showContent = finished;
-    // });
-    this.showContent = true; // Set to true to show content immediately
+    this.showContent = true;
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      this.generateSquares();
+      this.setupMouseEffect();
+    }
+  }
+
+  private generateSquares() {
+    const numSquares = 20;
+    this.squares = [];
+    for (let i = 0; i < numSquares; i++) {
+      const square = document.createElement('div');
+      square.classList.add('square-glass');
+      const size = Math.random() * 40 + 20;
+      square.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        position: fixed;
+        top: ${Math.random() * (window.innerHeight - size)}px;
+        left: ${Math.random() * (window.innerWidth - size)}px;
+        background: rgba(${Math.floor(Math.random() * 80) + 175}, ${
+        Math.floor(Math.random() * 80) + 175
+      }, ${Math.floor(Math.random() * 80) + 175}, ${
+        Math.random() * 0.2 + 0.15
+      });
+        z-index: 0;
+        border-radius: 20%;
+        pointer-events: none;
+      `;
+      document.body.appendChild(square);
+      const originalX = parseFloat(square.style.left) + size / 2;
+      const originalY = parseFloat(square.style.top) + size / 2;
+      this.squares.push({ element: square, originalX, originalY, size });
+    }
+  }
+
+  private setupMouseEffect() {
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      this.squares.forEach(
+        ({ element: square, originalX, originalY, size }) => {
+          const dx = mouseX - originalX;
+          const dy = mouseY - originalY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance > 0) {
+            const moveDistance = Math.min(40, distance);
+            const moveX = moveDistance * (dx / distance);
+            const moveY = moveDistance * (dy / distance);
+            square.style.left = `${originalX + moveX - size / 2}px`;
+            square.style.top = `${originalY + moveY - size / 2}px`;
+          }
+        }
+      );
+    });
   }
 }

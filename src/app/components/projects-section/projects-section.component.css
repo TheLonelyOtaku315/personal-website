@@ -4,7 +4,8 @@
 }
 /* Project Description Styling */
 .project-description {
-  font-size: 1.05em;
+  font-size: 1.25em;
+  font-weight: bold;
   color: var(--primary-text-color);
   padding: 0.7em 1em;
   border-radius: 6px;
@@ -96,6 +97,7 @@
 
 .project-default .project-date {
   font-size: 0.9em;
+  font-weight: bold;
   color: var(--secondary-text-color);
   margin-top: auto;
 }
