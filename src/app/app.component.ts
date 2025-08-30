@@ -64,12 +64,14 @@ export class AppComponent implements OnInit {
       const square = document.createElement('div');
       square.classList.add('square-glass');
       const size = Math.random() * 40 + 20;
+      const startTop = Math.random() * (window.innerHeight - size);
+      const startLeft = Math.random() * (window.innerWidth - size);
       square.style.cssText = `
         width: ${size}px;
         height: ${size}px;
         position: fixed;
-        top: ${Math.random() * (window.innerHeight - size)}px;
-        left: ${Math.random() * (window.innerWidth - size)}px;
+        top: ${startTop}px;
+        left: ${startLeft}px;
         background: rgba(${Math.floor(Math.random() * 80) + 175}, ${
         Math.floor(Math.random() * 80) + 175
       }, ${Math.floor(Math.random() * 80) + 175}, ${
@@ -78,11 +80,27 @@ export class AppComponent implements OnInit {
         z-index: 0;
         border-radius: 20%;
         pointer-events: none;
+        transition: none;
       `;
       document.body.appendChild(square);
-      const originalX = parseFloat(square.style.left) + size / 2;
-      const originalY = parseFloat(square.style.top) + size / 2;
+      const originalX = startLeft + size / 2;
+      const originalY = startTop + size / 2;
       this.squares.push({ element: square, originalX, originalY, size });
+
+      // Animate square movement smoothly in their own direction
+      let angle = Math.random() * Math.PI * 2;
+      let t = 0;
+      const moveRadius = 10;
+      function animate() {
+        t += 0.01 + Math.random() * 0.01; // Smooth step
+        angle += (Math.random() - 0.5) * 0.005; // Slight random walk
+        const newX = originalX + Math.cos(angle + t) * moveRadius;
+        const newY = originalY + Math.sin(angle + t) * moveRadius;
+        square.style.left = `${newX - size / 2}px`;
+        square.style.top = `${newY - size / 2}px`;
+        requestAnimationFrame(animate);
+      }
+      animate();
     }
   }
 
