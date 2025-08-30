@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WelcomeSectionComponent } from './components/welcome-section/welcome-section.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AboutMeSectionComponent } from './components/about-me-section/about-me-section.component';
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
@@ -15,6 +16,7 @@ import { UserServiceService } from '../service/user.service.service';
     CommonModule,
     ContactSectionComponent,
     ProjectsSectionComponent,
+    WelcomeSectionComponent
   ],
 })
 export class AppComponent implements OnInit {

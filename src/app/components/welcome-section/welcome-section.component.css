@@ -1,0 +1,257 @@
+/* Profile Box */
+.box {
+  align-items: center;
+  aspect-ratio: 1 / 1.5;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  position: relative;
+  transition: 0.5s;
+  width: 100%;
+  z-index: 1;
+}
+
+.box::before {
+  background: #fff;
+  border-radius: 8px;
+  content: "";
+  height: 100%;
+  left: 65px;
+  position: absolute;
+  text-decoration: none;
+  top: 0;
+  transform: skewX(15deg);
+  transition: 0.5s;
+  width: 70%;
+}
+
+.box::after {
+  background: #fff;
+  border-radius: 8px;
+  content: "";
+  filter: blur(30px);
+  height: 100%;
+  left: 50px;
+  position: absolute;
+  top: 0;
+  transform: skewX(15deg);
+  transition: 0.5s;
+  width: 50%;
+}
+
+.box:hover:before,
+.box:hover:after {
+  transform: skewX(0deg) scaleX(1.3);
+}
+
+.box:before,
+.box:after {
+  background: linear-gradient(315deg, var(--accent-color), var(--error-color));
+}
+
+.box span {
+  bottom: 0;
+  display: block;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.box span::before {
+  animation: animate 2s ease-in-out infinite;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  content: "";
+  height: 0;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: 0.1s;
+  width: 0;
+}
+
+.box span::before {
+  height: 50px;
+  left: 40px;
+  opacity: 1;
+  top: -40px;
+  width: 50px;
+}
+
+.box span::after {
+  animation-delay: -1s;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  bottom: 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  content: "";
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  transition: 0.5s;
+  width: 100%;
+}
+
+.box span:after {
+  bottom: -40px;
+  height: 50px;
+  opacity: 1;
+  right: 40px;
+  width: 50px;
+}
+
+.box .content {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  justify-content: space-between;
+  padding: 20px 30px;
+  position: relative;
+  transform: 0.5s;
+  width: 300px;
+  z-index: 1;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container {
+  height: fit-content;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: center;
+}
+
+.glass {
+  -webkit-backdrop-filter: blur(4.9px);
+  align-items: center;
+  align-self: start;
+  backdrop-filter: blur(4.9px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  justify-content: space-around;
+  margin: 32px;
+  overflow: hidden;
+  padding: 5rem;
+  position: sticky;
+  text-wrap: nowrap;
+  top: 0;
+  transition: 300ms ease-in-out;
+  width: calc(100% - 64px);
+}
+
+.profile {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: calc(100% * (1 / 3));
+}
+
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .glass {
+    flex-direction: column;
+    height: auto;
+    margin: 16px 0;
+    padding: 1em;
+    text-wrap: wrap;
+    width: 100%;
+  }
+}
+
+.content .info {
+  font-weight: 700;
+  font-size: 1em;
+  color: white;
+  display: block;
+  text-align: center;
+  margin: 1em;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.content .img {
+  width: 160px;
+  height: 160px;
+  /* background: white; */
+  display: flex;
+  border-radius: 25%;
+  border-color: var(--border-color);
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.content button {
+  padding: 0.8em 1.7em;
+  display: block;
+  margin: auto;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    var(--background-color) 100%
+  );
+  color: var(--text-color);
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content button:hover {
+  background: linear-gradient(
+    315deg,
+    var(--accent-color) 0%,
+    var(--background-color) 100%
+  );
+  cursor: pointer;
+  color: var(--primary-text-color);
+  transform: rotateY(15deg);
+}
+
+.profil-pic {
+  width: 100%;
+  height: auto;
+}
+
+.welcome-text {
+  width: calc(100% / 2);
+  white-space: normal;
+  word-break: break-word;
+  font-size: 5em;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--error-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.2em 0 0.1em 0;
+}
