@@ -9,6 +9,5 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class WelcomeSectionComponent {
-  welcomeMessage = 'Welcome to My Personal Website';
-  subtitle = 'Discover my journey in technology and creativity';
+// download button animation is 4s
 }
