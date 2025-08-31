@@ -283,12 +283,12 @@
 
 .anchor {
   text-decoration: none;
-  color: var(--accent-color);
+  color: var(--text-color);
   display: inline-block;
   font-family: sans-serif;
   font-weight: 600;
   border-radius: 50px;
-  border: 4px solid var(--accent-color);
+  border: 4px solid var(--error-color);
   padding: 14px 40px ;
   overflow: hidden;
   position: relative;
@@ -302,7 +302,7 @@
   position: absolute;
   content: "";
   z-index: 0;
-  background-color: var(--info-color);
+  background-color: rgba(243, 90, 90, 0.5);
   left: -5px;
   right: -5px;
   bottom: -5px;
