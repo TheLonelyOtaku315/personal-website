@@ -75,9 +75,6 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
   private initializeCarousel(): void {
     if (!this.isBrowser || !this.carouselTrack) return;
 
-    console.log('Initializing carousel...');
-    console.log('Current slide index:', this.slideIndex);
-
     // Set initial position to first slide
     this.slideIndex = 0;
     this.updateCarouselPosition();
@@ -87,8 +84,6 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
   currentSlide(slideNumber: number): void {
     if (slideNumber < 1 || slideNumber > this.slideshowContent.length) return;
 
-    console.log('Going to slide:', slideNumber);
-
     this.slideIndex = slideNumber - 1; // Convert to 0-based index
     this.updateCarouselPosition();
     this.restartAutoSlide();
@@ -96,30 +91,20 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
 
   // Next slide
   nextSlide(): void {
-    console.log('Next slide - Current index:', this.slideIndex);
-
     this.slideIndex++;
     if (this.slideIndex >= this.slideshowContent.length) {
       this.slideIndex = 0;
     }
-
-    console.log('Next slide - New index:', this.slideIndex);
-
     this.updateCarouselPosition();
     this.restartAutoSlide();
   }
 
   // Previous slide
   prevSlide(): void {
-    console.log('Previous slide - Current index:', this.slideIndex);
-
     this.slideIndex--;
     if (this.slideIndex < 0) {
       this.slideIndex = this.slideshowContent.length - 1;
     }
-
-    console.log('Previous slide - New index:', this.slideIndex);
-
     this.updateCarouselPosition();
     this.restartAutoSlide();
   }
@@ -130,8 +115,6 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
 
     const track = this.carouselTrack.nativeElement;
     const translateX = -this.slideIndex * 100;
-
-    console.log('Updating position - Slide Index:', this.slideIndex, 'TranslateX:', translateX);
 
     track.style.transform = `translateX(${translateX}%)`;
 

@@ -48,6 +48,7 @@
 .about-me {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: transparent;
@@ -217,6 +218,19 @@
   .project-hover p {
     font-size: 1rem;
   }
+}
+
+#about_me {
+  font-size: 2.5rem;
+  font-weight: 900;
+  /* text-align: center; */
+  margin-bottom: 2rem;
+  color: #333;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--accent-color) 0%, var(--error-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Animation helpers used by the component (kept minimal) */
