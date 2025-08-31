@@ -6,7 +6,7 @@
   align-items: center;
   height: auto;
   width: 100dvwY;
-  overflow-x: hidden;
+  overflow-x: auto;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   --color: rgba(114, 114, 114, 0.3);
@@ -60,6 +60,13 @@
   flex-direction: column;
   width: calc(100% - 250px);
   margin-left: 282px;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.webpage::-webkit-scrollbar {
+  display: none;
 }
 
 .background {

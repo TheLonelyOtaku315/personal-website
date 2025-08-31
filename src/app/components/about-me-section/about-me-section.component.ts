@@ -18,6 +18,8 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
   slideIndex = 0; // Start at 0 for better array indexing
   private autoSlideTimeout: any;
   private isBrowser = false;
+  // When true, auto sliding is paused (e.g. user is hovering or touching the card)
+  private isHovering = false;
 
   @ViewChild('carouselContainer', { static: false })
   carouselContainer!: ElementRef;
@@ -125,6 +127,9 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
   // Auto slide functionality
   private startAutoSlide(): void {
     this.stopAutoSlide(); // Clear any existing timeout
+    // Do not start auto sliding while user is interacting with the card
+    if (this.isHovering) return;
+
     this.autoSlideTimeout = setTimeout(() => {
       this.nextSlide();
     }, 6000); // Change slide every 6 seconds
@@ -140,6 +145,19 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
   private restartAutoSlide(): void {
     this.stopAutoSlide();
     this.startAutoSlide();
+  }
+
+  // Pause auto sliding when user is "on" the card (hover / touch)
+  pauseAutoSlide(): void {
+    this.isHovering = true;
+    this.stopAutoSlide();
+  }
+
+  // Resume auto sliding when user leaves the card
+  resumeAutoSlide(): void {
+    this.isHovering = false;
+    // Small delay before resuming to avoid immediate jump on quick pointer leaves
+    setTimeout(() => this.startAutoSlide(), 300);
   }
 
   // Utility method to check if slide is active (for template)
