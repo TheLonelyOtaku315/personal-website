@@ -133,6 +133,7 @@
   align-items: center;
   display: flex;
   flex-direction: row;
+  margin-top: 12px;
   gap: 32px;
   justify-content: center;
 }
@@ -198,16 +199,13 @@
 }
 
 .content .img {
-  width: 160px;
-  height: 160px;
-  /* background: white; */
   display: flex;
   border-radius: 25%;
   border-color: var(--border-color);
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  margin: auto;
+  aspect-ratio: 1/1;
 }
 
 .content button {
@@ -240,8 +238,14 @@
 }
 
 .profil-pic {
-  width: 100%;
-  height: auto;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: block;
+  background: #fff;
 }
 
 .text {
@@ -289,7 +293,7 @@
   font-weight: 600;
   border-radius: 50px;
   border: 4px solid var(--error-color);
-  padding: 14px 40px ;
+  padding: 14px 40px;
   overflow: hidden;
   position: relative;
 }
@@ -307,7 +311,7 @@
   right: -5px;
   bottom: -5px;
   height: 111%;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .button a:hover::before {
@@ -318,7 +322,7 @@
   all: unset;
   position: relative;
   z-index: 2;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 @media (max-width: 800px) {
@@ -333,4 +337,16 @@
   .text {
     width: 100%;
   }
+}
+
+.profil-pic {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  display: block;
+  background: #fff;
+  aspect-ratio: 1/1;
 }
