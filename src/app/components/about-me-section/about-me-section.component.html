@@ -2,39 +2,30 @@
   <div class="glass">
     <section class="about-me">
       <h2 id="about_me">About Me</h2>
-      <div class="carousel" #carouselContainer>
-        <!-- Carousel Track -->
-        <div class="carousel-track" #carouselTrack>
-          <div
-            class="carousel-slide"
-            *ngFor="let slide of slideshowContent; let i = index"
-          >
-            <div class="project-card-background">
-              <div class="project-card">
-                <div class="project-default">
-                  <h3>{{ slide.title }}</h3>
-                  <div class="project-date" *ngIf="slide.date">
-                    {{ slide.date }}
-                  </div>
+      <!-- Flickity carousel -->
+      <div
+        class="gallery js-flickity"
+        #flickityGallery
+        data-flickity-options='{ "wrapAround": true, "autoPlay": 6000, "pauseAutoPlayOnHover": true }'
+      >
+        <div
+          class="gallery-cell"
+          *ngFor="let slide of slideshowContent; let i = index"
+        >
+          <div class="project-card-background">
+            <div class="project-card">
+              <div class="project-default">
+                <h3>{{ slide.title }}</h3>
+                <div class="project-date" *ngIf="slide.date">
+                  {{ slide.date }}
                 </div>
-                <div class="project-hover">
-                  <p>{{ slide.description }}</p>
-                  <div class="project-tech">{{ slide.tech }}</div>
-                </div>
+              </div>
+              <div class="project-hover">
+                <p>{{ slide.description }}</p>
+                <div class="project-tech">{{ slide.tech }}</div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Carousel Indicators -->
-        <div class="carousel-indicators">
-          <button
-            class="carousel-indicator"
-            *ngFor="let slide of slideshowContent; let i = index"
-            (click)="currentSlide(i + 1)"
-            [class.active]="isSlideActive(i)"
-            [attr.aria-label]="'Go to slide ' + (i + 1)"
-          ></button>
         </div>
       </div>
     </section>

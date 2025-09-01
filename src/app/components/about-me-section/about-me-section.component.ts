@@ -7,6 +7,9 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// Import Flickity
+declare var Flickity: any;
+
 @Component({
   selector: 'app-about-me-section',
   templateUrl: './about-me-section.component.html',
@@ -15,17 +18,11 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
-  slideIndex = 0; // Start at 0 for better array indexing
-  private autoSlideTimeout: any;
+  private flickity: any;
   private isBrowser = false;
-  // When true, auto sliding is paused (e.g. user is hovering or touching the card)
-  private isHovering = false;
 
-  @ViewChild('carouselContainer', { static: false })
-  carouselContainer!: ElementRef;
-
-  @ViewChild('carouselTrack', { static: false })
-  carouselTrack!: ElementRef;
+  @ViewChild('flickityGallery', { static: false })
+  flickityGallery!: ElementRef;
 
   slideshowContent = [
     {
@@ -61,107 +58,55 @@ export class AboutMeSectionComponent implements AfterViewInit, OnDestroy {
     // Check if we're in browser environment
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       this.isBrowser = true;
-      // Wait for DOM to be fully rendered
+      // Wait for DOM to be fully rendered and scripts to load
       setTimeout(() => {
-        this.initializeCarousel();
-        this.startAutoSlide();
-      }, 200);
+        this.initializeFlickity();
+      }, 500); // Increased timeout to ensure Flickity is loaded
     }
   }
 
   ngOnDestroy() {
-    this.stopAutoSlide();
-  }
-
-  // Initialize carousel
-  private initializeCarousel(): void {
-    if (!this.isBrowser || !this.carouselTrack) return;
-
-    // Set initial position to first slide
-    this.slideIndex = 0;
-    this.updateCarouselPosition();
-  }
-
-  // Go to specific slide (called from template)
-  currentSlide(slideNumber: number): void {
-    if (slideNumber < 1 || slideNumber > this.slideshowContent.length) return;
-
-    this.slideIndex = slideNumber - 1; // Convert to 0-based index
-    this.updateCarouselPosition();
-    this.restartAutoSlide();
-  }
-
-  // Next slide
-  nextSlide(): void {
-    this.slideIndex++;
-    if (this.slideIndex >= this.slideshowContent.length) {
-      this.slideIndex = 0;
-    }
-    this.updateCarouselPosition();
-    this.restartAutoSlide();
-  }
-
-  // Previous slide
-  prevSlide(): void {
-    this.slideIndex--;
-    if (this.slideIndex < 0) {
-      this.slideIndex = this.slideshowContent.length - 1;
-    }
-    this.updateCarouselPosition();
-    this.restartAutoSlide();
-  }
-
-  // Update carousel position based on current slide index
-  private updateCarouselPosition(): void {
-    if (!this.isBrowser || !this.carouselTrack) return;
-
-    const track = this.carouselTrack.nativeElement;
-    const translateX = -this.slideIndex * 100;
-
-    track.style.transform = `translateX(${translateX}%)`;
-
-    // Force a repaint to ensure the transform is applied
-    track.offsetHeight;
-  }
-
-  // Auto slide functionality
-  private startAutoSlide(): void {
-    this.stopAutoSlide(); // Clear any existing timeout
-    // Do not start auto sliding while user is interacting with the card
-    if (this.isHovering) return;
-
-    this.autoSlideTimeout = setTimeout(() => {
-      this.nextSlide();
-    }, 6000); // Change slide every 6 seconds
-  }
-
-  private stopAutoSlide(): void {
-    if (this.autoSlideTimeout) {
-      clearTimeout(this.autoSlideTimeout);
-      this.autoSlideTimeout = null;
+    // Destroy Flickity instance
+    if (this.flickity) {
+      this.flickity.destroy();
     }
   }
 
-  private restartAutoSlide(): void {
-    this.stopAutoSlide();
-    this.startAutoSlide();
-  }
+  private initializeFlickity(): void {
+    if (!this.isBrowser || !this.flickityGallery) return;
 
-  // Pause auto sliding when user is "on" the card (hover / touch)
-  pauseAutoSlide(): void {
-    this.isHovering = true;
-    this.stopAutoSlide();
-  }
+    // Check if Flickity is available globally
+    const Flickity = (window as any).Flickity;
+    console.log('Attempting to initialize Flickity', {
+      Flickity,
+      element: this.flickityGallery.nativeElement,
+      hasClass:
+        this.flickityGallery.nativeElement.classList.contains('js-flickity'),
+    });
 
-  // Resume auto sliding when user leaves the card
-  resumeAutoSlide(): void {
-    this.isHovering = false;
-    // Small delay before resuming to avoid immediate jump on quick pointer leaves
-    setTimeout(() => this.startAutoSlide(), 300);
-  }
-
-  // Utility method to check if slide is active (for template)
-  isSlideActive(index: number): boolean {
-    return index === this.slideIndex;
+    if (Flickity) {
+      try {
+        // Initialize Flickity with wrapAround option and peek effect
+        this.flickity = new Flickity(this.flickityGallery.nativeElement, {
+          wrapAround: true,
+          autoPlay: 6000,
+          pauseAutoPlayOnHover: true,
+          pageDots: true,
+          prevNextButtons: true,
+          cellAlign: 'center',
+          contain: false, // Allow cells to extend outside
+          groupCells: false, // Don't group cells
+          percentPosition: false, // Use pixel positioning for better control
+        });
+        console.log('Flickity initialized successfully', this.flickity);
+      } catch (error) {
+        console.error('Failed to initialize Flickity:', error);
+      }
+    } else {
+      console.error(
+        'Flickity not available. Available on window:',
+        Object.keys(window).filter((k) => k.toLowerCase().includes('flick'))
+      );
+    }
   }
 }
