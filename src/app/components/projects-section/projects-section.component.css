@@ -1,6 +1,6 @@
 /* Main container for the section */
 .projects-section-container {
-  padding: 2rem;
+  /* padding: 2rem; */
   -webkit-backdrop-filter: blur(4.9px);
   align-items: center;
   align-self: start;
@@ -11,18 +11,57 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
-  height: fit fit-content;
+  flex-direction: column;
+  height: fit-content;
   justify-content: space-around;
   margin: 32px;
-  /* overflow: visible; */
-  padding: 5rem;
   position: sticky;
   text-wrap: nowrap;
   top: 0;
   transition: 300ms ease-in-out;
   max-width: calc(100% - 64px);
 }
+
+/* Text styling for header and description */
+.text {
+  padding: 2rem;
+  width: calc(100% - 4rem);
+  margin: 2rem;
+}
+
+.section-title {
+  white-space: normal;
+  word-break: break-word;
+  font-size: 4em;
+  font-weight: 800;
+  background: linear-gradient(
+    135deg,
+    var(--accent-color) 0%,
+    var(--error-color) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0.2em 0 0.1em 0;
+}
+
+.section-description {
+  font-size: 1.5em;
+  font-weight: 500;
+  color: var(--accent-color);
+  margin: 1em 0;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, var(--accent-color), var(--error-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* text-shadow: 0 0 8px var(--accent-color), 0 0 16px var(--accent-color),
+    0 0 24px var(--error-color), 0 0 32px var(--error-color); */
+}
+
 /* Project Description Styling */
 .project-description {
   font-size: 1.25em;
@@ -114,6 +153,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.5em;
+  word-break: break-word;
+  white-space: normal;
 }
 
 .project-default .project-date {
@@ -140,6 +181,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   flex-grow: 1;
+  white-space: normal; /* Allow wrapping to next line if too long */
 }
 
 .project-tech {
