@@ -1,6 +1,27 @@
 /* Main container for the section */
 .projects-section-container {
   padding: 2rem;
+  -webkit-backdrop-filter: blur(4.9px);
+  align-items: center;
+  align-self: start;
+  backdrop-filter: blur(4.9px);
+  background: rgba(var(--surface-color-rgb), 0.6);
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: fit fit-content;
+  justify-content: space-around;
+  margin: 32px;
+  /* overflow: visible; */
+  padding: 5rem;
+  position: sticky;
+  text-wrap: nowrap;
+  top: 0;
+  transition: 300ms ease-in-out;
+  max-width: calc(100% - 64px);
 }
 /* Project Description Styling */
 .project-description {
