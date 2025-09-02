@@ -16,7 +16,7 @@ import { UserServiceService } from '../service/user.service.service';
     CommonModule,
     ContactSectionComponent,
     ProjectsSectionComponent,
-    WelcomeSectionComponent
+    WelcomeSectionComponent,
   ],
 })
 export class AppComponent implements OnInit {
@@ -37,11 +37,11 @@ export class AppComponent implements OnInit {
       // Only access document if running in the browser
       if (typeof window !== 'undefined' && window.document) {
         if (this.isDarkmode) {
-          window.document.body.classList.add('dark-mode');
-          window.document.body.classList.remove('light-mode');
+          window.document.body.classList.add('dark-theme');
+          window.document.body.classList.remove('light-theme');
         } else {
-          window.document.body.classList.remove('dark-mode');
-          window.document.body.classList.add('light-mode');
+          window.document.body.classList.remove('dark-theme');
+          window.document.body.classList.add('light-theme');
         }
       }
     });
