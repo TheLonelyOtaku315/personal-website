@@ -10,7 +10,7 @@
   align-items: center;
   align-self: start;
   backdrop-filter: blur(4.9px);
-  background: rgba(var(--surface-color-rgb), 0.6);
+  background: rgba(var(--surface-color-rgb), 0.1);
   border: 2px solid var(--border-color);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -421,3 +421,4 @@
     transform: translateY(24px) scale(0.98);
   }
 }
+
