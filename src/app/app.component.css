@@ -8,33 +8,8 @@
   overflow: hidden;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  --color: var(--border-color);
   background-color: var(--background-color);
-  background-image: linear-gradient(
-      0deg,
-      transparent 24%,
-      var(--color) 25%,
-      var(--color) 26%,
-      transparent 27%,
-      transparent 74%,
-      var(--color) 75%,
-      var(--color) 76%,
-      transparent 77%,
-      transparent
-    ),
-    linear-gradient(
-      90deg,
-      transparent 24%,
-      var(--color) 25%,
-      var(--color) 26%,
-      transparent 27%,
-      transparent 74%,
-      var(--color) 75%,
-      var(--color) 76%,
-      transparent 77%,
-      transparent
-    );
-  background-size: 55px 55px;
+  position: relative;
 }
 
 .container::-webkit-scrollbar {
@@ -92,4 +67,101 @@
   -webkit-backdrop-filter: blur(7.9px);
   border: 1px solid var(--border-color);
   border-radius: 25%;
+}
+
+/* Matrix Background Styles */
+.matrix-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  perspective: 1500px;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.matrix-grid {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--border-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-color) 1px, transparent 1px),
+    repeating-linear-gradient(
+      45deg,
+      rgba(var(--accent-color-rgb), 0.05) 0px 1px,
+      transparent 1px 12px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(var(--accent-color-rgb), 0.05) 0px 1px,
+      transparent 1px 12px
+    ),
+    radial-gradient(
+      circle at center,
+      var(--background-color) 0%,
+      var(--primary-color) 100%
+    );
+  background-size: 28px 28px, 28px 28px, 50px 50px, 50px 50px, cover;
+  border: 1px solid rgba(var(--accent-color-rgb), 0.1);
+  box-shadow: inset 0 0 40px rgba(var(--accent-color-rgb), 0.1),
+    0 0 60px rgba(var(--accent-color-rgb), 0.15);
+  transform-style: preserve-3d;
+  transition: all 0.6s ease-in-out;
+  position: relative;
+}
+
+.matrix-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--accent-color-rgb), 0.4),
+    transparent
+  );
+  animation: borderFlow 6s linear infinite;
+  pointer-events: none;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.matrix-grid::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--accent-color-rgb), 0.15) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  animation: pulse 3.5s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.5;
+  }
 }
