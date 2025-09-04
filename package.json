@@ -5,7 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:gh-pages": "ng build --base-href \"/personal-website/\" && copy \"dist\\personal-website\\browser\\index.html\" \"dist\\personal-website\\browser\\404.html\" && echo. > \"dist\\personal-website\\browser\\.nojekyll\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:personal-website": "node dist/personal-website/server/server.mjs"
