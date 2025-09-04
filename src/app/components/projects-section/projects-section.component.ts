@@ -24,141 +24,111 @@ export class ProjectsSectionComponent {
   hoveredIndex: number | null = null;
   visibleCount = 100;
   projects = [
+    // Upcoming project
+    new Project(
+      'Upcoming: Personal Portfolio Redesign',
+      `A new version of my personal website is in development, featuring a modern UI, improved accessibility, and enhanced performance. Stay tuned for updates!`,
+      '',
+      new Date('2025-12-01'),
+      ['Angular', 'TypeScript', 'Accessibility', 'Performance Optimization']
+    ),
+    new Project(
+      'COMP353 - Database Systems Project',
+      `Collaborative database design and implementation project for COMP353/COMP5531 Database Systems course. Developed normalized database schemas, implemented efficient SQL queries with joins and subqueries, and managed data integrity using MySQL. Worked in a team of 4 members to create comprehensive DDL/DML scripts and demonstrate database design principles.`,
+      '',
+      new Date('2025-07-18'),
+      [
+        'MySQL',
+        'SQL',
+        'Database Design',
+        'DDL',
+        'DML',
+        'Normalization',
+        'Team Collaboration',
+        'Git',
+      ]
+    ),
     new Project(
       'ChatHaven',
-      `Developed ChatHaven, a full-stack group messaging platform with role-based permissions and real-time communication features, using Angular, Node.js, and MongoDB as part of a team project.
-Worked in a team.`,
-      'https://github.com/yourusername/chathaven',
+      `Built a full-stack group messaging platform with role-based permissions and real-time communication. Developed modular UI components (chat log, channel sidebar, etc.) and integrated the Giphy API, LinkPreview API, Gemini API. Used Git and GitHub for version control and collaboration in an Agile team environment.`,
+      'https://github.com/Error-404-Project-W25/Error-404-SOEN341_Project_W25',
+      new Date('2025-04-01'),
+      [
+        'Angular',
+        'Node.js',
+        'MongoDB',
+        'Git',
+        'GitHub',
+        'Giphy API',
+        'LinkPreview API',
+        'Gemini API',
+      ]
+    ),
+    new Project(
+      'COMP 371 - 3D Graphics Programming Project',
+      `Real-time 3D interactive application built in C++ using OpenGL. Features interactive camera controls, dynamic lighting with multiple moving light sources, textured 3D models, shadow mapping, particle effects, and post-processing effects including bloom and normal mapping. Developed in a team of 3 members using advanced graphics programming techniques and custom shader implementations.`,
+      '',
+      new Date('2025-04-01'),
+      [
+        'C++',
+        'OpenGL',
+        'GLFW',
+        'GLEW',
+        'GLM',
+        'Shaders',
+        '3D Graphics',
+        'Shadow Mapping',
+        'CMake',
+      ]
+    ),
+    new Project(
+      'ESP32 LED Controller',
+      `The ESP32-LED-Controller project lets you wirelessly control LEDs via Bluetooth with features like button inputs, custom commands, and a timer functionality for automation. Programmed using C++ with ESP32-Arduino framework.`,
+      'https://github.com/TheLonelyOtaku315/ESP32-LED-Controller',
+      new Date('2025-01-05'),
+      ['ESP32', 'C++', 'Bluetooth', 'Serial Communication', 'Arduino']
+    ),
+    new Project(
+      'Temperature Converter',
+      `Temperature Converter built in Visual Studio, allowing seamless conversion between Celsius, Fahrenheit, and Kelvin with a clean and intuitive GUI! Built using JavaFX with CSS styling for an enhanced user experience.`,
+      'https://github.com/TheLonelyOtaku315/TemperatureConverterVS',
+      new Date('2025-01-05'),
+      ['Java', 'JavaFX', 'CSS', 'Temperature Conversion']
+    ),
+    new Project(
+      'Personal Portfolio Website',
+      `Personal portfolio website built with Angular to showcase my projects, skills, and experience. Features responsive design, component-based architecture, and modern web development practices.`,
+      'https://github.com/TheLonelyOtaku315/personal-website',
       new Date('2025-01-01'),
-      ['Angular', 'Node.js', 'MongoDB', 'Team Project']
+      ['Angular', 'TypeScript', 'CSS', 'HTML']
     ),
     new Project(
-      'Bluetooth Light Controller',
-      `Developed an ESP32-based Bluetooth LED controller that processes user commands to manage LED states and modes via USB serial communication, Bluetooth serial communication and button communication.`,
-      'https://github.com/yourusername/bluetooth-light-controller',
-      new Date('2024-01-01'),
-      ['ESP32', 'Bluetooth', 'C++', 'Embedded']
+      'LeetCode Solutions',
+      `Collection of LeetCode challenge solutions demonstrating algorithmic problem-solving skills and data structure implementations. Regular practice to improve coding efficiency and algorithm optimization.`,
+      'https://github.com/TheLonelyOtaku315/LeetCode',
+      new Date('2024-07-16'),
+      ['Java', 'Algorithms', 'Data Structures', 'Problem Solving']
     ),
     new Project(
-      'Data Structures & Algorithms Final Project',
-      `Developed a k-nearest neighbor (k-NN) machine learning model to diagnose a dataset of 569 instances. Written in Java.
-Worked in a team.`,
-      'https://github.com/yourusername/knn-final-project',
-      new Date('2024-01-01'),
-      ['Java', 'Machine Learning', 'k-NN', 'Team Project']
+      'k-NN Classifier – Final Project',
+      `Developed a k-nearest neighbor machine learning model for medical data classification (569 instances). Collaborated with a team and applied algorithmic optimization strategies.`,
+      '',
+      new Date('2024-05-01'),
+      ['Java', 'Machine Learning', 'Algorithm Optimization']
     ),
     new Project(
-      'Electricity and Magnetism Simulation',
-      `Built two simulators demonstrating electromagnetism and logic circuit concepts. Written in Java, JavaFX, CSS.
-Developed a program to calculate the electric field and electric force at a point within a point charge system.
-Created an interactive simulation program for gate circuit outputs, allowing users to drag and drop logic gates and wires to visualize real-time circuit behavior.
-Worked in a team.`,
-      'https://github.com/yourusername/electricity-magnetism-sim',
+      'Electricity & Magnetism Simulation',
+      `Simulated electric fields from point charges and interactive logic gate circuits with a drag-and-drop interface and real-time output. Developed the application using Java, JavaFX for UI, and CSS for styling. Used Git and GitHub for version control and collaboration in an Agile team environment.`,
+      '',
       new Date('2023-01-01'),
-      ['Java', 'JavaFX', 'CSS', 'Simulation', 'Team Project']
-    ),
-    new Project(
-      'Temperature Interactive Converter',
-      `Built interactive temperature converter. Written in Java, JavaFX, CSS.
-Final project for course “Program Development in a Graphical Environment”
-Worked in a team.`,
-      'https://github.com/yourusername/temperature-converter',
-      new Date('2022-01-01'),
-      ['Java', 'JavaFX', 'CSS', 'Team Project']
+      ['Java', 'JavaFX', 'CSS', 'Git', 'GitHub']
     ),
     new Project(
       'RetroPie Gaming Console on Raspberry Pi',
-      `Configured a Raspberry Pi with RetroPie to create a retro gaming console, integrating multiple emulators and optimizing performance.
-Customized system settings, managed game libraries, and implemented storage solutions for seamless gameplay.
-Demonstrated skills in Linux systems, hardware setup, software configuration, and troubleshooting.`,
-      'https://github.com/yourusername/retropie-console',
-      new Date('2022-01-01'),
-      ['Raspberry Pi', 'RetroPie', 'Linux', 'Emulation']
-    ),
-    new Project(
-      'Coming Up',
-      `A new project is coming soon. Stay tuned for updates!`,
+      `Configured emulators, managed ROM libraries, and optimized system for retro gaming. Gained experience in Linux system setup, troubleshooting, and configuration.`,
       '',
-      new Date(),
-      ['TBA']
-    ),
-    // --- 10 more random projects ---
-    new Project(
-      'Weather Dashboard',
-      `Created a responsive weather dashboard using Angular and OpenWeatherMap API. Displays current weather, forecasts, and interactive charts.`,
-      'https://github.com/yourusername/weather-dashboard',
-      new Date('2023-06-15'),
-      ['Angular', 'TypeScript', 'API', 'Charts']
-    ),
-    new Project(
-      'Personal Portfolio',
-      `Designed and developed a personal portfolio website to showcase projects and skills. Built with React, TypeScript, and Tailwind CSS.`,
-      'https://github.com/yourusername/personal-portfolio',
-      new Date('2023-03-10'),
-      ['React', 'TypeScript', 'Tailwind CSS', 'Portfolio']
-    ),
-    new Project(
-      'Expense Tracker',
-      `Built a cross-platform expense tracker app using Flutter and Firebase. Supports authentication, real-time updates, and data visualization.`,
-      'https://github.com/yourusername/expense-tracker',
       new Date('2022-11-01'),
-      ['Flutter', 'Firebase', 'Mobile', 'Finance']
-    ),
-    new Project(
-      'Markdown Blog Engine',
-      `Developed a static blog engine that converts Markdown files to a styled website. Includes search and tagging features.`,
-      'https://github.com/yourusername/markdown-blog-engine',
-      new Date('2022-08-20'),
-      ['Node.js', 'Markdown', 'Static Site', 'Blog']
-    ),
-    new Project(
-      'Image Gallery',
-      `Created a dynamic image gallery with lazy loading and infinite scroll. Built with Vue.js and Cloudinary integration.`,
-      'https://github.com/yourusername/image-gallery',
-      new Date('2023-02-14'),
-      ['Vue.js', 'Cloudinary', 'JavaScript', 'Gallery']
-    ),
-    new Project(
-      'Quiz App',
-      `Developed a web-based quiz application with timer, scoring, and leaderboard features. Uses Angular and RxJS.`,
-      'https://github.com/yourusername/quiz-app',
-      new Date('2023-05-01'),
-      ['Angular', 'RxJS', 'Web', 'Quiz']
-    ),
-    new Project(
-      'Task Manager',
-      `Built a task management tool with drag-and-drop functionality and calendar integration. Written in React and Redux.`,
-      'https://github.com/yourusername/task-manager',
-      new Date('2022-09-10'),
-      ['React', 'Redux', 'Calendar', 'Productivity']
-    ),
-    new Project(
-      'Stock Price Visualizer',
-      `Implemented a stock price visualizer using D3.js and Yahoo Finance API. Features interactive charts and historical data analysis.`,
-      'https://github.com/yourusername/stock-visualizer',
-      new Date('2023-04-05'),
-      ['D3.js', 'API', 'Finance', 'Visualization']
-    ),
-    new Project(
-      'Recipe Finder',
-      `Created a recipe finder app that fetches recipes from an external API and allows filtering by ingredients and dietary preferences.`,
-      'https://github.com/yourusername/recipe-finder',
-      new Date('2022-07-22'),
-      ['JavaScript', 'API', 'Food', 'Search']
-    ),
-    new Project(
-      'Simple REST API',
-      `Developed a simple RESTful API for managing users and posts. Built with Express.js and MongoDB.`,
-      'https://github.com/yourusername/simple-rest-api',
-      new Date('2022-05-30'),
-      ['Express.js', 'MongoDB', 'REST', 'Backend']
-    ),
-    new Project(
-      'Memory Game',
-      `Built a browser-based memory card game with animations and score tracking. Written in TypeScript and CSS.`,
-      'https://github.com/yourusername/memory-game',
-      new Date('2023-01-18'),
-      ['TypeScript', 'CSS', 'Game', 'Web']
+      ['Raspberry Pi', 'Linux', 'RetroPie']
     ),
   ];
 
@@ -168,7 +138,10 @@ Demonstrated skills in Linux systems, hardware setup, software configuration, an
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 10)) {
+    if (
+      window.innerHeight + window.scrollY >=
+      document.body.offsetHeight - 10
+    ) {
       this.loadMore();
     }
   }
