@@ -43,4 +43,4 @@ Thumbs.db
 
 # Assets directory (images and other static files)
 src/assets/img
-src/assets/doc
+# src/assets/doc
