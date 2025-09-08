@@ -24,8 +24,14 @@ export class ContactSectionComponent {
   constructor(private http: HttpClient) {}
 
   downloadResume() {
-    // Open PDF in new tab first
-    window.open('/assets/doc/Tonny-Zhao-CV-Resume.pdf', '_blank');
+    // Create a download link with proper path
+    const link = document.createElement('a');
+    link.href = 'assets/doc/Tonny-Zhao-CV-Resume.pdf';
+    link.download = 'Tonny-Zhao-CV-Resume.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
   validateForm(): boolean {

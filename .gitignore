@@ -41,6 +41,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Assets directory (images and other static files)
-# src/assets/img
-# src/assets/doc
+# Note: Assets directory should be included in the repository
+# Uncomment the lines below only if you want to exclude specific asset files
+# src/assets/img/
+# src/assets/doc/
