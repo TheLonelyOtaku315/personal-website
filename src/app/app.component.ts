@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   title = 'personal-website';
 
   isDarkmode = false;
-  showContent = false;
+  showContent = true;
   private squares: {
     element: HTMLElement;
     originalX: number;
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showContent = true;
+    // showContent is already true, no need to change it here
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       // this.generateSquares();
       // this.setupMouseEffect();
