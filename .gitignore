@@ -42,5 +42,5 @@ testem.log
 Thumbs.db
 
 # Assets directory (images and other static files)
-src/assets/img
+# src/assets/img
 # src/assets/doc
