@@ -26,7 +26,9 @@ export class ContactSectionComponent {
   downloadResume() {
     // Create a download link with proper path
     const link = document.createElement('a');
-    link.href = 'assets/doc/Tonny-Zhao-CV-Resume.pdf';
+    // Use window.location to construct the full path relative to base href
+    const baseUrl = document.querySelector('base')?.getAttribute('href') || '/';
+    link.href = `${baseUrl}assets/doc/Tonny-Zhao-CV-Resume.pdf`;
     link.download = 'Tonny-Zhao-CV-Resume.pdf';
     link.target = '_blank';
     document.body.appendChild(link);
