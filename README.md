@@ -1,6 +1,7 @@
 # Tonny Zhao's Personal Portfolio Website
 
 A modern, responsive personal portfolio website built with Angular 19, featuring a sleek design with dark/light theme toggle and smooth animations.
+https://thelonelyotaku315.github.io/personal-website/
 
 ## 🌟 Features
 
