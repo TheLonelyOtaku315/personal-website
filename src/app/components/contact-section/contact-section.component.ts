@@ -26,8 +26,9 @@ export class ContactSectionComponent {
   downloadResume() {
     // Use the full GitHub Pages URL for reliable download
     const link = document.createElement('a');
-    link.href = 'https://thelonelyotaku315.github.io/personal-website/assets/doc/Tonny-Zhao-CV-Resume.pdf';
-    link.download = 'Tonny-Zhao-CV-Resume.pdf';
+    link.href =
+      'https://thelonelyotaku315.github.io/personal-website/assets/doc/Tonny-Zhao-Resume-CV.pdf';
+    link.download = 'Tonny-Zhao-Resume-CV.pdf';
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
