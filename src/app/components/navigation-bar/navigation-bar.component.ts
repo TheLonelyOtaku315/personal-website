@@ -4,6 +4,8 @@ import {
   Inject,
   OnDestroy,
   HostListener,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { UserServiceService } from '../../../service/user.service.service';
@@ -22,10 +24,13 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   isDarkMode = false;
   currentSection = 'welcome'; // Track current active section
 
+  @ViewChild('sidebar', { static: false }) sidebarRef?: ElementRef<HTMLElement>;
+  
   private sidebar: HTMLElement | null = null;
   private toggleButton: HTMLElement | null = null;
   private sections: string[] = ['welcome', 'about_me', 'project', 'contact'];
   private scrollContainer: HTMLElement | null = null;
+  private scrollListener?: () => void;
 
   constructor(
     private renderer: Renderer2,
@@ -49,51 +54,45 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.sidebar = this.document.getElementById('sidebar');
-    this.toggleButton = this.document.getElementById('toggle-btn');
-    this.scrollContainer = this.document.querySelector('.webpage');
-
-    // Add scroll listener to the scrollable container
-    if (this.scrollContainer) {
-      this.scrollContainer.addEventListener('scroll', () => {
-        this.checkActiveSection();
-      });
-    }
-
-    // Initial check for active section
+    // Use setTimeout to ensure DOM is fully rendered
     setTimeout(() => {
+      this.sidebar = this.document.getElementById('sidebar');
+      this.toggleButton = this.document.getElementById('toggle-btn');
+      this.scrollContainer = this.document.querySelector('.webpage');
+
+      // Add scroll listener to the scrollable container
+      if (this.scrollContainer) {
+        this.scrollListener = () => this.checkActiveSection();
+        this.scrollContainer.addEventListener('scroll', this.scrollListener);
+      }
+
+      // Initial check for active section
       this.checkActiveSection();
-    }, 100);
+    }, 0);
   }
 
   ngOnDestroy(): void {
     // Remove scroll listener
-    if (this.scrollContainer) {
-      this.scrollContainer.removeEventListener('scroll', () => {
-        this.checkActiveSection();
-      });
+    if (this.scrollContainer && this.scrollListener) {
+      this.scrollContainer.removeEventListener('scroll', this.scrollListener);
     }
   }
 
   // Remove the window scroll listener since we're using the container scroll
   private checkActiveSection(): void {
-    if (!this.scrollContainer) {
-      console.log('Scroll container not found');
+    // Ensure we're in browser environment
+    if (typeof window === 'undefined' || !this.scrollContainer) {
       return;
     }
 
     const scrollTop = this.scrollContainer.scrollTop;
     const offset = 100; // Offset to trigger section change
 
-    console.log('Scroll top:', scrollTop);
-
     for (let i = this.sections.length - 1; i >= 0; i--) {
       const section = this.document.getElementById(this.sections[i]);
       if (section) {
         const sectionTop = section.offsetTop - offset;
-        console.log(`Section ${this.sections[i]} top:`, sectionTop);
         if (scrollTop >= sectionTop) {
-          console.log('Setting active section:', this.sections[i]);
           this.setActiveSection(this.sections[i]);
           break;
         }
@@ -178,14 +177,21 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   }
 
   scrollToSection(sectionId: string): void {
+    // Ensure we're in browser environment
+    if (typeof window === 'undefined') return;
+    
     const section = this.document.getElementById(sectionId);
     const container = this.document.querySelector('.webpage') as HTMLElement;
 
     if (section && container) {
+      const targetPosition = section.offsetTop - 50;
       container.scrollTo({
-        top: section.offsetTop - 50, // Small offset from top
+        top: targetPosition,
         behavior: 'smooth',
       });
+      
+      // Manually update active section after scroll
+      this.setActiveSection(sectionId);
     }
   }
 
