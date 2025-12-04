@@ -10,7 +10,7 @@
   <hr class="sidebar-separator" />
   <ul>
     <li data-section="welcome">
-      <a (click)="scrollToSection('welcome')" style="cursor: pointer">
+      <a (click)="scrollToSection('welcome', $event)" style="cursor: pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -26,7 +26,7 @@
       </a>
     </li>
     <li data-section="about_me">
-      <a (click)="scrollToSection('about_me')" style="cursor: pointer">
+      <a (click)="scrollToSection('about_me', $event)" style="cursor: pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -42,7 +42,7 @@
       </a>
     </li>
     <li data-section="project">
-      <a (click)="scrollToSection('project')" style="cursor: pointer">
+      <a (click)="scrollToSection('project', $event)" style="cursor: pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -58,7 +58,7 @@
       </a>
     </li>
     <li data-section="contact">
-      <a (click)="scrollToSection('contact')" style="cursor: pointer">
+      <a (click)="scrollToSection('contact', $event)" style="cursor: pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"

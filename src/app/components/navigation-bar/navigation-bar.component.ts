@@ -25,7 +25,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   currentSection = 'welcome'; // Track current active section
 
   @ViewChild('sidebar', { static: false }) sidebarRef?: ElementRef<HTMLElement>;
-  
+
   private sidebar: HTMLElement | null = null;
   private toggleButton: HTMLElement | null = null;
   private sections: string[] = ['welcome', 'about_me', 'project', 'contact'];
@@ -150,9 +150,14 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     this.closeAllSubMenus();
   }
 
-  toggleSubMenu(button: HTMLElement) {
+  toggleSubMenu(event: Event) {
     if (!this.sidebar) return;
+    const button = event.currentTarget as HTMLElement;
+    if (!button) return;
+
     const submenu = button.nextElementSibling as HTMLElement;
+    if (!submenu) return;
+
     if (!submenu.classList.contains('show')) {
       this.closeAllSubMenus();
     }
@@ -176,10 +181,15 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  scrollToSection(sectionId: string): void {
+  scrollToSection(sectionId: string, event?: Event): void {
+    // Prevent default anchor behavior if event exists
+    if (event) {
+      event.preventDefault();
+    }
+
     // Ensure we're in browser environment
     if (typeof window === 'undefined') return;
-    
+
     const section = this.document.getElementById(sectionId);
     const container = this.document.querySelector('.webpage') as HTMLElement;
 
@@ -189,7 +199,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
         top: targetPosition,
         behavior: 'smooth',
       });
-      
+
       // Manually update active section after scroll
       this.setActiveSection(sectionId);
     }
