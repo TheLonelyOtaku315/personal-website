@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+export default `<!DOCTYPE html>
 <html lang="en" data-beasties-container="">
   <head>
     <meta charset="utf-8">
@@ -12,3 +12,4 @@
     <app-root></app-root>
   <script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-63BK3SCZ.js" type="module"></script></body>
 </html>
+`;
