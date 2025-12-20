@@ -11,6 +11,10 @@
   z-index: 1;
 }
 
+title {
+  margin: 0.1rem;
+}
+
 .box::before {
   background: transparent;
   border-radius: 8px;
@@ -154,12 +158,12 @@
   justify-content: space-around;
   margin: 32px;
   overflow: hidden;
-  padding: 5rem;
+  /* padding: 5rem; */
   position: sticky;
   text-wrap: nowrap;
   top: 0;
   transition: 300ms ease-in-out;
-  width: calc(100% - 64px);
+  width: 100%;
 }
 
 .profile {
@@ -238,13 +242,14 @@
 }
 
 .text {
-  width: calc(100% / 2);
+  margin: 32px;
+  width: calc(100%);
 }
 
 .welcome-text {
   white-space: normal;
   word-break: break-word;
-  font-size: 4em;
+  font-size: clamp(2em, 8vw, 4em);
   font-weight: 800;
   background: linear-gradient(
     135deg,
@@ -254,7 +259,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 0.2em 0 0.1em 0;
+  /* margin: 0.2em 0 0.1em 0; */
+  margin: 0;
 }
 
 .intro {

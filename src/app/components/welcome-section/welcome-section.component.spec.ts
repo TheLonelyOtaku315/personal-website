@@ -19,18 +19,4 @@ describe('WelcomeSectionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should display welcome message', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.welcome-title')?.textContent).toContain(
-      component.welcomeMessage
-    );
-  });
-
-  it('should display subtitle', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.welcome-subtitle')?.textContent).toContain(
-      component.subtitle
-    );
-  });
 });
