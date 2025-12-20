@@ -146,16 +146,18 @@ export class ContactSectionComponent {
 
   updateVisibleNotifications() {
     const visibleCount = this.notifications.filter((n) => n.visible).length;
-    
+
     // If we have room for more visible notifications, show them
     if (visibleCount < this.MAX_VISIBLE_NOTIFICATIONS) {
-      const hiddenNotifications = this.notifications.filter((n) => !n.visible && !n.fading);
+      const hiddenNotifications = this.notifications.filter(
+        (n) => !n.visible && !n.fading
+      );
       const slotsAvailable = this.MAX_VISIBLE_NOTIFICATIONS - visibleCount;
-      
+
       // Make the next notifications visible
       hiddenNotifications.slice(0, slotsAvailable).forEach((notification) => {
         notification.visible = true;
-        
+
         // Start the auto-remove timer only when notification becomes visible
         setTimeout(() => {
           this.removeNotification(notification.id);
@@ -173,7 +175,7 @@ export class ContactSectionComponent {
       // Wait for fade animation to complete before removing
       setTimeout(() => {
         this.notifications = this.notifications.filter((n) => n.id !== id);
-        
+
         // After removing, check if we can show more notifications
         this.updateVisibleNotifications();
       }, 300); // Match animation duration

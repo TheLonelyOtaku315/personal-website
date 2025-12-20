@@ -175,18 +175,8 @@ title {
 }
 
 @media (max-width: 1150px) {
-  .container {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .glass {
-    flex-direction: column;
-    height: auto;
-    /* margin: 16px 0; */
-    /* padding: 1em; */
-    text-wrap: wrap;
-    /* width: 100%; */
+  .intro {
+    display: none;
   }
 }
 
@@ -280,59 +270,34 @@ title {
     0 0 24px var(--error-color), 0 0 32px var(--error-color); */
 }
 
-.anchor {
-  text-decoration: none;
+/* From Uiverse.io by KSAplay */
+.btn {
+  padding: 0.8em 2em 0.8em 2.5em;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 15px;
   color: var(--text-color);
-  display: inline-block;
-  font-family: sans-serif;
-  font-weight: 600;
-  border-radius: 50px;
-  border: 4px solid var(--error-color);
-  padding: 14px 40px;
-  overflow: hidden;
-  position: relative;
+  letter-spacing: 0.3em;
+  text-shadow: -2px 2px 5px var(--accent-color);
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 0px 1px var(--error-color), 0 0 10px 2px var(--accent-color),
+    inset 0 0 0px 1px var(--error-color), inset 0 0 10px 2px var(--accent-color);
+  transition: 100ms;
+  cursor: pointer;
 }
 
-.anchor:hover {
-  color: var(--text-color);
+.btn:hover {
+  box-shadow: 0 0 0px 1px var(--error-color), 0 0 10px 2px var(--accent-color),
+    inset 0 0 0px 1px var(--error-color), inset 0 0 30px 2px var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-color);
+  transform: translateY(-5px);
 }
 
-.button a::before {
-  position: absolute;
-  content: "";
-  z-index: 0;
-  background-color: rgba(243, 90, 90, 0.5);
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  height: 111%;
-  transition: all 0.3s ease;
-}
-
-.button a:hover::before {
-  height: 11%;
-}
-
-.button p {
-  all: unset;
-  position: relative;
-  z-index: 2;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 1150px) {
-  .welcome-text {
-    width: 100%;
-  }
-
-  .intro {
-    width: 100%;
-  }
-
-  .text {
-    flex-direction: column;
-    width: 100%;
-  }
+.btn:active {
+  box-shadow: 0 0 0px 1px var(--error-color), 0 0 25px 2px var(--accent-color),
+    inset 0 0 0px 1px var(--error-color), inset 0 0 30px 2px var(--accent-color);
+  transform: translateY(1px);
 }
 
 .profil-pic {
