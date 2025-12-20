@@ -33,6 +33,13 @@ export class ProjectsSectionComponent {
       ['Angular', 'TypeScript', 'Accessibility', 'Performance Optimization']
     ),
     new Project(
+      'Autonomous Hovercraft',
+      `Developed an autonomous hovercraft capable of navigating and solving mazes using sensor fusion. Implemented navigation algorithms using data from IMU (Inertial Measurement Unit), ultrasonic, and infrared sensors. Programmed in C for Arduino microcontroller with real-time obstacle detection and path planning.`,
+      '',
+      new Date('2025-11-01'),
+      ['C', 'Arduino', 'Autonomous Navigation', 'Embedded Systems']
+    ),
+    new Project(
       'COMP353 - Database Systems Project',
       `Collaborative database design and implementation project for COMP353/COMP5531 Database Systems course. Developed normalized database schemas, implemented efficient SQL queries with joins and subqueries, and managed data integrity using MySQL. Worked in a team of 4 members to create comprehensive DDL/DML scripts and demonstrate database design principles.`,
       '',
