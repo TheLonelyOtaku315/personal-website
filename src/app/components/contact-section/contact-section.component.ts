@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import emailjs from '@emailjs/browser';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact-section',
-  imports: [FormsModule, CommonModule, HttpClientModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css',
 })
@@ -21,7 +22,10 @@ export class ContactSectionComponent {
   submitMessage = '';
   submitSuccess = false;
 
-  constructor(private http: HttpClient) {}
+  constructor() {
+    // Initialize EmailJS with your public key
+    emailjs.init(environment.emailjs.publicKey);
+  }
 
   downloadResume() {
     // Use the full GitHub Pages URL for reliable download
@@ -67,19 +71,21 @@ export class ContactSectionComponent {
     this.submitMessage = '';
 
     try {
-      // Using Formspree - a free form backend service
-      // You can sign up at https://formspree.io and get a form endpoint
-      // Replace 'YOUR_FORM_ID' with your actual Formspree form ID
-      const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORM_ID';
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: this.formData.name,
+        message: this.formData.message,
+        to_name: 'Tonny',
+      };
 
-      const formData = new FormData();
-      formData.append('name', this.formData.name);
-      formData.append('message', this.formData.message);
-      formData.append('_subject', `Contact from ${this.formData.name}`);
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        environment.emailjs.serviceId,
+        environment.emailjs.templateId,
+        templateParams
+      );
 
-      const response = await this.http
-        .post(formspreeEndpoint, formData)
-        .toPromise();
+      console.log('Email sent successfully:', response);
 
       this.submitSuccess = true;
       this.submitMessage =
