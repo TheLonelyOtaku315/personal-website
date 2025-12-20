@@ -19,8 +19,18 @@ export class ContactSectionComponent {
   validationErrors: string[] = [];
   showValidationErrors = false;
   isSubmitting = false;
-  submitMessage = '';
-  submitSuccess = false;
+
+  // Notification array system
+  public notifications: Array<{
+    id: number;
+    message: string;
+    type: 'success' | 'error' | 'validation';
+    validationErrors?: string[];
+    fading?: boolean;
+    visible?: boolean; // Track if notification is currently visible
+  }> = [];
+  private notificationIdCounter = 0;
+  private readonly MAX_VISIBLE_NOTIFICATIONS = 5;
 
   constructor() {
     // Initialize EmailJS with your public key
@@ -61,14 +71,17 @@ export class ContactSectionComponent {
       this.showValidationErrors = false;
       this.sendNotification();
     } else {
-      // Show validation errors
-      this.showValidationErrors = true;
+      // Show validation errors as notification
+      this.addNotification(
+        'Please fix the following errors',
+        'validation',
+        this.validationErrors
+      );
     }
   }
 
   async sendNotification() {
     this.isSubmitting = true;
-    this.submitMessage = '';
 
     try {
       // Prepare template parameters for EmailJS
@@ -87,22 +100,19 @@ export class ContactSectionComponent {
 
       console.log('Email sent successfully:', response);
 
-      this.submitSuccess = true;
-      this.submitMessage =
-        "Thank you! Your message has been sent successfully. I'll get back to you soon.";
+      this.addNotification(
+        "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+        'success'
+      );
       this.resetForm();
     } catch (error) {
       console.error('Error sending notification:', error);
-      this.submitSuccess = false;
-      this.submitMessage =
-        'Sorry, there was an error sending your message. Please try again or contact me directly via email at zhaotonny315@gmail.com.';
+      this.addNotification(
+        'Sorry, there was an error sending your message. Please try again or contact me directly via email at zhaotonny315@gmail.com.',
+        'error'
+      );
     } finally {
       this.isSubmitting = false;
-
-      // Clear the message after 5 seconds
-      setTimeout(() => {
-        this.submitMessage = '';
-      }, 5000);
     }
   }
 
@@ -112,5 +122,65 @@ export class ContactSectionComponent {
       message: '',
     };
     this.showValidationErrors = false;
+  }
+
+  addNotification(
+    message: string,
+    type: 'success' | 'error' | 'validation',
+    validationErrors?: string[]
+  ) {
+    const id = this.notificationIdCounter++;
+    const notification = {
+      id,
+      message,
+      type,
+      validationErrors,
+      visible: false, // Start as not visible
+    };
+
+    this.notifications.push(notification);
+
+    // Show notifications up to the max visible limit
+    this.updateVisibleNotifications();
+  }
+
+  updateVisibleNotifications() {
+    const visibleCount = this.notifications.filter((n) => n.visible).length;
+    
+    // If we have room for more visible notifications, show them
+    if (visibleCount < this.MAX_VISIBLE_NOTIFICATIONS) {
+      const hiddenNotifications = this.notifications.filter((n) => !n.visible && !n.fading);
+      const slotsAvailable = this.MAX_VISIBLE_NOTIFICATIONS - visibleCount;
+      
+      // Make the next notifications visible
+      hiddenNotifications.slice(0, slotsAvailable).forEach((notification) => {
+        notification.visible = true;
+        
+        // Start the auto-remove timer only when notification becomes visible
+        setTimeout(() => {
+          this.removeNotification(notification.id);
+        }, 5000);
+      });
+    }
+  }
+
+  removeNotification(id: number) {
+    // Find the notification and mark it as fading
+    const notification = this.notifications.find((n) => n.id === id);
+    if (notification) {
+      notification.fading = true;
+
+      // Wait for fade animation to complete before removing
+      setTimeout(() => {
+        this.notifications = this.notifications.filter((n) => n.id !== id);
+        
+        // After removing, check if we can show more notifications
+        this.updateVisibleNotifications();
+      }, 300); // Match animation duration
+    }
+  }
+
+  get visibleNotifications() {
+    return this.notifications.filter((n) => n.visible);
   }
 }

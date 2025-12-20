@@ -131,33 +131,13 @@
         </button>
       </div> -->
     </div>
+
     <div class="contact-form-wrapper">
       <form
         class="contact-form"
         (ngSubmit)="onSubmit($event)"
         #contactForm="ngForm"
       >
-        <!-- Success/Error message display -->
-        <div
-          *ngIf="submitMessage"
-          class="submit-message"
-          [class.success]="submitSuccess"
-          [class.error]="!submitSuccess"
-        >
-          <p>{{ submitMessage }}</p>
-        </div>
-
-        <!-- Validation errors display -->
-        <div
-          *ngIf="showValidationErrors && validationErrors.length > 0"
-          class="validation-errors"
-        >
-          <h4>Please fix the following errors:</h4>
-          <ul>
-            <li *ngFor="let error of validationErrors">{{ error }}</li>
-          </ul>
-        </div>
-
         <label for="name">Name</label>
         <input
           id="name"
@@ -181,13 +161,45 @@
         ></textarea>
 
         <button type="submit" [disabled]="isSubmitting" class="submit-button">
-          <span *ngIf="!isSubmitting">Send Notification</span>
+          <span *ngIf="!isSubmitting">Send Message</span>
           <span *ngIf="isSubmitting" class="loading">
             <span class="spinner"></span>
             Sending...
           </span>
         </button>
       </form>
+    </div>
+  </div>
+  <!-- Toast notifications -->
+  <div class="toast-container">
+    <div
+      *ngFor="let notification of visibleNotifications"
+      class="toast-notification"
+      [class.success]="notification.type === 'success'"
+      [class.error]="notification.type === 'error'"
+      [class.validation-toast]="notification.type === 'validation'"
+      [class.fading]="notification.fading"
+    >
+      <div class="notification-content">
+        <p *ngIf="notification.type !== 'validation'">
+          {{ notification.message }}
+        </p>
+        <div *ngIf="notification.type === 'validation'">
+          <h4>{{ notification.message }}</h4>
+          <ul>
+            <li *ngFor="let error of notification.validationErrors">
+              {{ error }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button
+        class="close-btn"
+        (click)="removeNotification(notification.id)"
+        aria-label="Close"
+      >
+        ×
+      </button>
     </div>
   </div>
 </section>

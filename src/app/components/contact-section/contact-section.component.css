@@ -22,9 +22,9 @@
 
 /* Text styling matching other sections */
 .text {
-  padding: 2rem;
+  padding: 2rem 0 0 0 1rem;
   width: calc(100% - 4rem);
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
 }
 
 .contact-section h2 {
@@ -190,56 +190,136 @@ a.contact-value:hover {
   box-shadow: 0 0 0 3px rgba(var(--error-color), 0.1);
 }
 
-/* Validation errors styling */
-.validation-errors {
-  background: rgba(var(--error-color), 0.1);
-  border: 1px solid var(--error-color);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+/* Toast notification container */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
 }
 
-.validation-errors h4 {
-  color: var(--error-color);
+/* Toast notification styling */
+.toast-notification {
+  min-width: 300px;
+  max-width: 400px;
+  padding: 1rem 3rem 1rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+  pointer-events: auto;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+.toast-notification.fading {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+.toast-notification.success {
+  background: rgba(34, 197, 94, 0.62);
+  border: 4px solid rgba(34, 197, 94, 1);
+  color: white;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.8px);
+  -webkit-backdrop-filter: blur(9.8px);
+}
+
+.toast-notification.error {
+  background: rgba(239, 68, 68, 0.62);
+  border: 4px solid rgba(239, 68, 68, 1);
+  color: white;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.8px);
+  -webkit-backdrop-filter: blur(9.8px);
+}
+
+.toast-notification.validation-toast {
+  background: rgba(239, 68, 68, 0.62);
+  border: 4px solid rgba(239, 68, 68, 1);
+  color: white;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.8px);
+  -webkit-backdrop-filter: blur(9.8px);
+}
+
+.notification-content {
+  width: 100%;
+}
+
+.toast-notification p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.toast-notification h4 {
   margin: 0 0 0.5rem 0;
   font-size: 1rem;
   font-weight: 600;
+  color: white;
 }
 
-.validation-errors ul {
+.toast-notification ul {
   margin: 0;
   padding-left: 1.2rem;
-  color: var(--error-color);
+  color: white;
 }
 
-.validation-errors li {
+.toast-notification li {
   margin-bottom: 0.3rem;
   font-size: 0.9rem;
 }
 
-/* Submit message styling */
-.submit-message {
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
+.toast-notification .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  line-height: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s ease;
 }
 
-.submit-message.success {
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid #22c55e;
-  color: #16a34a;
+.toast-notification .close-btn:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.submit-message.error {
-  background: rgba(var(--error-color), 0.1);
-  border: 1px solid var(--error-color);
-  color: var(--error-color);
-}
-
-.submit-message p {
-  margin: 0;
-  font-weight: 500;
+.toast-notification .close-btn:active {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 /* Submit button styling */
