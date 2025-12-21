@@ -13,6 +13,7 @@ import { environment } from '../../../environments/environment';
 export class ContactSectionComponent {
   formData = {
     name: '',
+    email: '',
     message: '',
   };
 
@@ -56,11 +57,22 @@ export class ContactSectionComponent {
       this.validationErrors.push('Name is required');
     }
 
+    if (!this.formData.email.trim()) {
+      this.validationErrors.push('Email is required');
+    } else if (!this.isValidEmail(this.formData.email)) {
+      this.validationErrors.push('Please enter a valid email address');
+    }
+
     if (!this.formData.message.trim()) {
       this.validationErrors.push('Message is required');
     }
 
     return this.validationErrors.length === 0;
+  }
+
+  private isValidEmail(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
   }
 
   onSubmit(event: Event) {
@@ -87,6 +99,7 @@ export class ContactSectionComponent {
       // Prepare template parameters for EmailJS
       const templateParams = {
         from_name: this.formData.name,
+        from_email: this.formData.email,
         message: this.formData.message,
         to_name: 'Tonny',
       };
@@ -119,6 +132,7 @@ export class ContactSectionComponent {
   resetForm() {
     this.formData = {
       name: '',
+      email: '',
       message: '',
     };
     this.showValidationErrors = false;
