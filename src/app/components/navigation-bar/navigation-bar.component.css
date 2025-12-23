@@ -1,27 +1,18 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"); */
+/* Navigation Bar Component Styles */
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-html {
-  font-family: Poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5rem;
-}
-body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  background-color: transparent;
-  color: var(--primary-text-color);
-  display: grid;
-  grid-template-columns: auto 1fr;
-}
+
+/* Sidebar Container */
 #sidebar {
   box-sizing: border-box;
   margin: 32px 0 32px 32px;
   height: calc(100vh - 64px);
   width: 250px;
-  padding: 5px 1em;
+  padding: 1em;
   background: rgba(var(--surface-color-rgb), 0.1);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -81,27 +72,11 @@ body {
 }
 
 .sidebar-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
   padding: 0.5em;
-  border-radius: 0.5em;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
   min-width: 40px;
   height: 40px;
-  width: auto; /* Override the 100% width from general selector */
-}
-
-.sidebar-toggle:hover {
-  background-color: var(--hover-color);
-}
-
-.sidebar-toggle svg {
-  fill: var(--primary-text-color);
-  transition: fill 0.3s ease;
+  width: auto !important;
 }
 
 .logo {
@@ -114,7 +89,7 @@ body {
   object-fit: contain;
 }
 
-/* Text logo styling (for when span is used instead of img) */
+/* Text logo styling */
 .logo.text-logo {
   font-size: 1.25rem;
   font-weight: bold;
@@ -142,6 +117,7 @@ body {
   overflow: hidden;
   width: 100%;
 }
+
 .logo.text-logo::before {
   content: "";
   position: absolute;
@@ -158,9 +134,11 @@ body {
   transition: left 0.5s ease;
   z-index: 1;
 }
+
 .logo.text-logo:hover::before {
   left: 100%;
 }
+
 .logo.text-logo:hover {
   background-color: var(--hover-color);
   transform: translateY(-1px);
@@ -172,10 +150,12 @@ body {
 #sidebar ul li.active a svg {
   fill: var(--accent-color);
 }
+/* Interactive Elements */
 #sidebar a,
 #sidebar .dropdown-btn,
 #sidebar .sidebar-toggle,
-#sidebar .theme-toggle {
+#sidebar .theme-toggle,
+#sidebar .language-toggle {
   border-radius: 0.5em;
   padding: 0.85em;
   text-decoration: none;
@@ -183,52 +163,84 @@ body {
   display: flex;
   align-items: center;
   gap: 1em;
-}
-.dropdown-btn,
-.sidebar-toggle,
-.theme-toggle {
   width: 100%;
   text-align: left;
   background: none;
   border: none;
   font: inherit;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-#sidebar svg {
-  flex-shrink: 0;
-  fill: var(--primary-text-color);
-}
-#sidebar a span,
-#sidebar .dropdown-btn span,
-#sidebar .theme-toggle span {
-  flex-grow: 1;
-}
+
 #sidebar a:hover,
 #sidebar .dropdown-btn:hover,
 #sidebar .sidebar-toggle:hover,
-#sidebar .theme-toggle:hover {
+#sidebar .theme-toggle:hover,
+#sidebar .language-toggle:hover {
   background-color: var(--hover-color);
 }
+
+#sidebar svg {
+  flex-shrink: 0;
+  fill: var(--primary-text-color);
+  transition: fill 0.3s ease;
+}
+
+#sidebar a span,
+#sidebar .dropdown-btn span,
+#sidebar .theme-toggle span,
+#sidebar .language-toggle .language-info {
+  flex-grow: 1;
+}
+
+/* Language Toggle Specific Styles */
+.language-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1em;
+}
+
+.language-code {
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1;
+}
+
+.language-name {
+  font-size: 0.75em;
+  opacity: 0.7;
+  font-weight: 400;
+  line-height: 1;
+}
+/* Dropdown and Submenu */
 #sidebar .sub-menu {
   display: grid;
   grid-template-rows: 0fr;
-  transition: 300ms ease-in-out;
+  transition: grid-template-rows 300ms ease-in-out;
 }
+
 #sidebar .sub-menu > div {
   overflow: hidden;
 }
+
 #sidebar .sub-menu.show {
   grid-template-rows: 1fr;
 }
-.dropdown-btn svg {
-  transition: 200ms ease;
-}
-.rotate svg:last-child {
-  rotate: 180deg;
-}
+
 #sidebar .sub-menu a {
   padding-left: 2em;
 }
+
+.dropdown-btn svg {
+  transition: transform 200ms ease;
+}
+
+.rotate svg:last-child {
+  transform: rotate(180deg);
+}
+
+/* Toggle Button */
 #toggle-btn {
   margin-left: auto;
   padding: 1em;
@@ -236,33 +248,23 @@ body {
   border-radius: 0.5em;
   background: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
 #toggle-btn svg {
-  transition: rotate 150ms ease;
+  transition: transform 150ms ease;
 }
+
 #toggle-btn:hover {
   background-color: var(--hover-color);
 }
-main {
-  padding: min(30px, 7%);
-}
-main p {
-  color: var(--secondary-text-color);
-  margin-top: 5px;
-  margin-bottom: 15px;
-}
-.container {
-  border: 1px solid var(--border-color);
-  border-radius: 1em;
-  margin-bottom: 20px;
-  padding: min(3em, 15%);
-}
-.container h2,
-.container p {
-  margin-top: 1em;
-}
+/* Responsive Design */
 @media (max-width: 800px) {
   #sidebar {
+    display: none;
+  }
+
+  .language-name {
     display: none;
   }
 }

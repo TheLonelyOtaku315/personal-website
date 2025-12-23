@@ -5,7 +5,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { AboutMeSectionComponent } from './components/about-me-section/about-me-section.component';
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
-import { UserServiceService } from '../service/user.service.service';
+import { ThemeService } from '../service/theme.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -31,24 +31,16 @@ export class AppComponent implements OnInit {
     size: number;
   }[] = [];
 
-  constructor(private userService: UserServiceService) {
-    this.userService.darkMode$.subscribe((isDark) => {
+  constructor(private themeService: ThemeService) {
+    this.themeService.isDarkMode$.subscribe((isDark) => {
       this.isDarkmode = isDark;
-      // Only access document if running in the browser
-      if (typeof window !== 'undefined' && window.document) {
-        if (this.isDarkmode) {
-          window.document.body.classList.add('dark-theme');
-          window.document.body.classList.remove('light-theme');
-        } else {
-          window.document.body.classList.remove('dark-theme');
-          window.document.body.classList.add('light-theme');
-        }
-      }
+      // The ThemeService already handles DOM manipulation, so we don't need to do it here
+      // But we'll keep this for consistency with the component's isDarkmode property
     });
   }
 
   toggleDarkMode(value: boolean) {
-    this.userService.setDarkMode(value);
+    this.themeService.setTheme(value);
   }
 
   ngOnInit() {
