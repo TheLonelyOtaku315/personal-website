@@ -1,74 +1,45 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+/>
 <div class="container">
   <div class="glass">
-    <section class="about-me">
-      <!-- Marquee About Me Section -->
-      <div class="marquee">
-        <div class="marquee_header">About Me</div>
-        <div id="timeline" class="marquee__inner">
-          <div class="marquee__group">
-            <ng-container *ngFor="let slide of timeLineContent">
-              <div class="card">
-                <div class="card2">
-                  <div class="card-content">
-                    <h3>{{ slide.title }}</h3>
-                    <div class="card-date" *ngIf="slide.date">
-                      {{ slide.date }}
-                    </div>
-                    <p>{{ slide.description }}</p>
-                    <div class="card-tech">{{ slide.tech }}</div>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-
-          <div class="marquee__group">
-            <ng-container *ngFor="let slide of timeLineContent">
-              <div class="card">
-                <div class="card2">
-                  <div class="card-content">
-                    <h3>{{ slide.title }}</h3>
-                    <div class="card-date" *ngIf="slide.date">
-                      {{ slide.date }}
-                    </div>
-                    <p>{{ slide.description }}</p>
-                    <div class="card-tech">{{ slide.tech }}</div>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-        </div>
-
-        <div class="marquee_header">Skills</div>
-        <div id="skill" class="marquee__inner">
-          <div class="marquee__group">
-            <ng-container *ngFor="let slide of skillsContent">
-              <div class="card">
-                <div class="card2">
-                  <div class="card-content">
-                    <h3>{{ slide.title }}</h3>
-                    <p>{{ slide.description }}</p>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-
-          <div class="marquee__group">
-            <ng-container *ngFor="let slide of skillsContent">
-              <div class="card">
-                <div class="card2">
-                  <div class="card-content">
-                    <h3>{{ slide.title }}</h3>
-                    <p>{{ slide.description }}</p>
-                  </div>
-                </div>
-              </div>
-            </ng-container>
+    <div class="title">
+      <h1 class="welcome-text">About Me</h1>
+    </div>
+    <p class="intro">
+      I am Tonny Zhao, a dedicated student with a passion for software
+      development, particularly in front-end technologies like Angular. I enjoy
+      crafting responsive and user-friendly web applications that provide
+      seamless user experiences.
+    </p>
+    <div class="skills-section">
+      <h3 class="skills-title">My Skills</h3>
+      <div class="skill-categories">
+        <div class="skill-category" *ngFor="let section of skillSections">
+          <h4 class="category-title">{{ section.title }}</h4>
+          <div class="skills-grid">
+            <div
+              class="skill-card"
+              *ngFor="let skill of section.skills"
+              (mouseenter)="onSkillHover(skill, true)"
+              (mouseleave)="onSkillHover(skill, false)"
+            >
+              <img
+                *ngIf="skill.showSvg && skill.hoverSvgUrl"
+                [src]="skill.hoverSvgUrl"
+                [alt]="skill.name + ' icon'"
+                class="skill-icon skill-svg-icon"
+              />
+              <i
+                *ngIf="!skill.showSvg || !skill.hoverSvgUrl"
+                [class]="skill.currentIcon + ' skill-icon'"
+              ></i>
+              <span class="skill-name">{{ skill.name }}</span>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </div>
