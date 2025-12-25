@@ -52,8 +52,8 @@
 .light-theme {
   --background-color: #ffffff;
   --primary-color: #f8fafc;
-  --accent-color: #6366f1;
-  --error-color: #ef4444;
+  --accent-color: #7779fd;
+  --error-color: #fd6666;
   --surface-color: #f1f5f9;
 
   /* Text Colors */
