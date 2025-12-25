@@ -80,6 +80,7 @@
     inset 0 0 0px 1px var(--accent-color), inset 0 0 10px 2px var(--accent-color);
   transition: 100ms;
   cursor: pointer;
+  margin: 1rem 0;
 }
 
 .btn:hover {
