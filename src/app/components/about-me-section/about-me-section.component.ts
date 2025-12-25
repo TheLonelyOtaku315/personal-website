@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { ThemeService } from '../../../service/theme.service';
 
 @Component({
   selector: 'app-about-me-section',
@@ -8,42 +10,54 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
 })
-export class AboutMeSectionComponent {
-  timeLineContent = [
+export class AboutMeSectionComponent implements OnInit, OnDestroy {
+  isDarkMode: boolean = false;
+  private themeSubscription: Subscription = new Subscription();
+
+  constructor(private themeService: ThemeService) {}
+
+  timeline = [
     {
-      title: 'High School Education',
-      date: '2015 - 2020',
+      status: 'Started High School Education',
+      date: 'Sep 2015',
+      description:
+        'Began my secondary education journey at Calixa-Lavallee High School in Montreal, Canada.',
+    },
+    {
+      status: 'Completed High School Education',
+      date: 'Jun 2020',
       description:
         'Graduated with High School Diploma from Calixa-Lavallee High School in Montreal, Canada.',
-      tech: 'Foundation Studies',
     },
     {
-      title: 'College Education - DEC',
-      date: '2020 - 2023',
+      status: 'Started College Education - DEC',
+      date: 'Aug 2020',
       description:
-        'Completed DEC in Computer Science and Mathematics at Vanier College, focusing on programming fundamentals and data structures.',
-      tech: 'Java, Data Structures, Object-Oriented Programming',
+        'Enrolled in DEC Computer Science and Mathematics program at Vanier College.',
     },
     {
-      title: 'University Education - Bachelor',
-      date: '2023 - 2027',
+      status: 'Completed College Education - DEC',
+      date: 'May 2023',
       description:
-        'Currently pursuing Bachelor of Engineering in Computer Engineering at Concordia University. Member of the Co-operative Education Program (C.Edge).',
-      tech: 'C++, Algorithms, Software Engineering, Computer Graphics',
+        'Successfully completed DEC in Computer Science and Mathematics at Vanier College, focusing on programming fundamentals and data structures.',
     },
     {
-      title: 'Professional Experience',
-      date: '2017 - 2022',
+      status: 'Started Job at Best Buy',
+      date: 'May 2023',
       description:
-        'Gained professional experience through private tutoring (2017-2019) and customer service at Best Buy (2022), developing communication and problem-solving skills.',
-      tech: 'Customer Service, Team Leadership, Problem Solving',
+        'Began working at Best Buy in customer service, developing communication skills and technical product knowledge.',
     },
     {
-      title: 'Recent Projects',
-      date: '2022 - Present',
+      status: 'Started University Education - Bachelor',
+      date: 'Aug 2023',
       description:
-        'Developed multiple full-stack applications including ChatHaven (Angular/Node.js), Bluetooth LED Controller (ESP32/C++), and various simulation projects.',
-      tech: 'Angular, Node.js, MongoDB, ESP32, C++, JavaFX',
+        'Enrolled in Bachelor of Engineering in Computer Engineering at Concordia University. Joined the Co-operative Education Program (C.Edge).',
+    },
+    {
+      status: 'Completed Job at Best Buy',
+      date: 'Aug 2023',
+      description:
+        'Finished summer position at Best Buy, gaining valuable customer service experience and problem-solving skills.',
     },
   ];
 
@@ -253,31 +267,26 @@ export class AboutMeSectionComponent {
     }
   }
 
-  skillsContent = [
-    {
-      title: 'Programming Languages',
-      description:
-        'Proficient in Java, C++, JavaScript, TypeScript, Python, and CSS/HTML for web development.',
-    },
-    {
-      title: 'Full-Stack Development',
-      description:
-        'Experienced in building complete web applications using Angular, Node.js, MongoDB, and integrating various APIs (Gemini, Giphy, LinkPreview).',
-    },
-    {
-      title: 'Database & Systems',
-      description:
-        'Skilled in MongoDB database management, Linux system setup, and working with embedded systems like ESP32 and Raspberry Pi.',
-    },
-    {
-      title: 'Development Tools & Methodologies',
-      description:
-        'Proficient with Git/GitHub, Visual Studio Code, Agile methodology, and experienced in collaborative team environments.',
-    },
-    {
-      title: 'Specialized Skills',
-      description:
-        'Experience with JavaFX development, machine learning (k-NN classifier), hardware programming, serial communication, and Microsoft Office Suite.',
-    },
-  ];
+  ngOnInit(): void {
+    // Subscribe to theme changes
+    this.themeSubscription = this.themeService.isDarkMode$.subscribe(
+      (isDark) => {
+        this.isDarkMode = isDark;
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.themeSubscription.unsubscribe();
+  }
+
+  // Method to toggle theme manually
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  // Method to get current theme
+  getCurrentTheme(): string {
+    return this.themeService.getCurrentTheme();
+  }
 }
