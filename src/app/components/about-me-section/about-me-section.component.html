@@ -8,13 +8,13 @@
       <h1 class="welcome-text">About Me</h1>
     </div>
     <p class="intro">
-      I am Tonny Zhao, a dedicated student with a passion for software
-      development, particularly in front-end technologies like Angular. I enjoy
-      crafting responsive and user-friendly web applications that provide
-      seamless user experiences.
+      I am Tonny Zhao, a third-year student passionate about software
+      development, with a strong interest in front-end technologies like
+      Angular. I enjoy building responsive and user-friendly web applications
+      that create smooth user experiences.
     </p>
-    <div class="skills-section">
-      <h3 class="skills-title">My Skills</h3>
+    <section class="skills-section">
+      <h3 class="skills-title title">My Skills</h3>
       <div class="skill-categories">
         <div class="skill-category" *ngFor="let section of skillSections">
           <h4 class="category-title">{{ section.title }}</h4>
@@ -40,6 +40,42 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <section class="timeline-section">
+      <h3 class="timeline-title title">My Journey</h3>
+      <div class="timeline">
+        <ng-container *ngFor="let item of timeline; let i = index">
+          <!-- For even indexes: content on left, empty on right -->
+          <ng-container *ngIf="i % 2 === 0">
+            <div class="timeline-component">
+              <div class="timeline-content">
+                <h3>{{ item.status }}</h3>
+                <span class="timeline-date">{{ item.date }}</span>
+                <p class="timeline-description">{{ item.description }}</p>
+              </div>
+            </div>
+            <div class="timeline-middle">
+              <div class="timeline-circle"></div>
+            </div>
+            <div class="timeline-empty"></div>
+          </ng-container>
+
+          <!-- For odd indexes: empty on left, content on right -->
+          <ng-container *ngIf="i % 2 === 1">
+            <div class="timeline-empty"></div>
+            <div class="timeline-middle">
+              <div class="timeline-circle"></div>
+            </div>
+            <div class="timeline-component">
+              <div class="timeline-content">
+                <h3>{{ item.status }}</h3>
+                <span class="timeline-date">{{ item.date }}</span>
+                <p class="timeline-description">{{ item.description }}</p>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </section>
   </div>
 </div>
