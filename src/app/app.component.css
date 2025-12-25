@@ -165,3 +165,8 @@
     opacity: 0.5;
   }
 }
+.footer {
+  margin: 0 ;
+  text-align: center;
+  color: var(--secondary-text-color);
+}
