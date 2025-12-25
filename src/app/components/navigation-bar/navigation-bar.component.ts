@@ -45,6 +45,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   isDarkMode = false;
   currentSection = 'welcome';
   currentThemeMode: ThemeMode = 'auto';
+  isMobileMenuOpen = false; // Add this property
 
   @ViewChild('sidebar', { static: false }) sidebarRef?: ElementRef<HTMLElement>;
 
@@ -280,6 +281,11 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
       // Manually update active section after scroll
       this.setActiveSection(sectionId);
     }
+
+    // Close mobile menu after navigation on mobile devices
+    if (typeof window !== 'undefined' && window.innerWidth <= 800) {
+      this.isMobileMenuOpen = false;
+    }
   }
 
   closeSidebar() {
@@ -292,6 +298,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     }
     this.closeAllSubMenus();
   }
+
   toggleLanguage() {
     const currentIndex = this.availableLanguages.indexOf(this.currentLanguage);
     const nextIndex = (currentIndex + 1) % this.availableLanguages.length;
@@ -331,5 +338,32 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     const nextIndex = (currentIndex + 1) % this.availableLanguages.length;
     const nextLanguageCode = this.availableLanguages[nextIndex];
     return this.languageNames[nextLanguageCode] || nextLanguageCode;
+  }
+
+  // New method: Toggle mobile menu
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  // Optional: Close menu when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (typeof window === 'undefined' || window.innerWidth > 800) {
+      return; // Only apply on mobile
+    }
+
+    const target = event.target as HTMLElement;
+    const sidebar = this.document.querySelector('.sidebar');
+    const toggleButton = this.document.querySelector('.mobile-menu-toggle');
+
+    if (
+      this.isMobileMenuOpen &&
+      sidebar &&
+      toggleButton &&
+      !sidebar.contains(target) &&
+      !toggleButton.contains(target)
+    ) {
+      this.isMobileMenuOpen = false;
+    }
   }
 }
