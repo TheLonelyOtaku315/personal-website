@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../service/theme.service';
+// static JSON timeline
+import eventsData from '../../../assets/JSON/event.json';
 
 @Component({
   selector: 'app-about-me-section',
@@ -16,50 +18,7 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
 
   constructor(private themeService: ThemeService) {}
 
-  timeline = [
-    {
-      status: 'Started High School Education',
-      date: 'Sep 2015',
-      description:
-        'Began my secondary education journey at Calixa-Lavallee High School in Montreal, Canada.',
-    },
-    {
-      status: 'Completed High School Education',
-      date: 'Jun 2020',
-      description:
-        'Graduated with High School Diploma from Calixa-Lavallee High School in Montreal, Canada.',
-    },
-    {
-      status: 'Started College Education - DEC',
-      date: 'Aug 2020',
-      description:
-        'Enrolled in DEC Computer Science and Mathematics program at Vanier College.',
-    },
-    {
-      status: 'Completed College Education - DEC',
-      date: 'May 2023',
-      description:
-        'Successfully completed DEC in Computer Science and Mathematics at Vanier College, focusing on programming fundamentals and data structures.',
-    },
-    {
-      status: 'Started Job at Best Buy',
-      date: 'May 2023',
-      description:
-        'Began working at Best Buy in customer service, developing communication skills and technical product knowledge.',
-    },
-    {
-      status: 'Started University Education - Bachelor',
-      date: 'Aug 2023',
-      description:
-        'Enrolled in Bachelor of Engineering in Computer Engineering at Concordia University. Joined the Co-operative Education Program (C.Edge).',
-    },
-    {
-      status: 'Completed Job at Best Buy',
-      date: 'Aug 2023',
-      description:
-        'Finished summer position at Best Buy, gaining valuable customer service experience and problem-solving skills.',
-    },
-  ];
+  timeline: any[] = eventsData as any[];
 
   skillSections = [
     {

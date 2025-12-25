@@ -47,7 +47,7 @@
         <ng-container *ngFor="let item of timeline; let i = index">
           <!-- For even indexes: content on left, empty on right -->
           <ng-container *ngIf="i % 2 === 0">
-            <div class="timeline-component">
+            <div class="timeline-component" style="justify-content: flex-end">
               <div class="timeline-content">
                 <h3>{{ item.status }}</h3>
                 <span class="timeline-date">{{ item.date }}</span>
@@ -66,7 +66,7 @@
             <div class="timeline-middle">
               <div class="timeline-circle"></div>
             </div>
-            <div class="timeline-component">
+            <div class="timeline-component" style="justify-content: flex-start">
               <div class="timeline-content">
                 <h3>{{ item.status }}</h3>
                 <span class="timeline-date">{{ item.date }}</span>

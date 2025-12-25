@@ -1,0 +1,27 @@
+[
+  {
+    "status": "Started College Education - DEC",
+    "date": "Aug 2020",
+    "description": "Enrolled in DEC Computer Science and Mathematics program at Vanier College."
+  },
+  {
+    "status": "Completed College Education - DEC",
+    "date": "May 2023",
+    "description": "Successfully completed DEC in Computer Science and Mathematics at Vanier College, focusing on programming fundamentals and data structures."
+  },
+  {
+    "status": "Started Job at Best Buy",
+    "date": "May 2023",
+    "description": "Began working at Best Buy in customer service, developing communication skills and technical product knowledge."
+  },
+  {
+    "status": "Started University Education - Bachelor",
+    "date": "Aug 2023",
+    "description": "Enrolled in Bachelor of Engineering in Computer Engineering at Concordia University. Joined the Co-operative Education Program (C.Edge)."
+  },
+  {
+    "status": "Completed Job at Best Buy",
+    "date": "Aug 2023",
+    "description": "Finished summer position at Best Buy, gaining valuable customer service experience and problem-solving skills."
+  }
+]
