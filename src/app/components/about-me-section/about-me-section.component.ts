@@ -2,8 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../service/theme.service';
-// static JSON timeline
-import eventsData from '../../../assets/JSON/event.json';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-about-me-section',
@@ -13,12 +12,11 @@ import eventsData from '../../../assets/JSON/event.json';
   imports: [CommonModule],
 })
 export class AboutMeSectionComponent implements OnInit, OnDestroy {
+  @Input() timeline: any[] = [];
   isDarkMode: boolean = false;
   private themeSubscription: Subscription = new Subscription();
 
   constructor(private themeService: ThemeService) {}
-
-  timeline: any[] = eventsData as any[];
 
   skillSections = [
     {

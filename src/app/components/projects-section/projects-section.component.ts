@@ -1,21 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// Import static JSON data
-import projectsData from '../../../assets/JSON/projects.json';
-
-export class Project {
-  constructor(
-    public title: string,
-    public description: string,
-    public demoUrl: string,
-    public sourceUrl: string,
-    public date: Date,
-    public technologies: string[],
-    public image: string = ''
-  ) {}
-}
-
 import { HostListener } from '@angular/core';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-projects-section',
@@ -25,20 +11,9 @@ import { HostListener } from '@angular/core';
   styleUrl: './projects-section.component.css',
 })
 export class ProjectsSectionComponent {
+  @Input() projects: any[] = [];
   hoveredIndex: number | null = null;
   visibleCount = 100;
-  projects: Project[] = (projectsData as any[]).map(
-    (p) =>
-      new Project(
-        p.title,
-        p.description,
-        p.demoUrl || '',
-        p.sourceUrl || '',
-        new Date(p.date),
-        p.technologies || [],
-        p.image || ''
-      )
-  );
 
   get visibleProjects() {
     return this.projects.slice(0, this.visibleCount);
@@ -60,7 +35,15 @@ export class ProjectsSectionComponent {
     }
   }
 
-  getProjectImage(project: Project): string {
+  getProjectImage(project: {
+    title: string;
+    description: string;
+    demoUrl: string;
+    sourceUrl: string;
+    date: Date;
+    technologies: string[];
+    image: string;
+  }): string {
     // 1) Explicit image set on the project
     if (project.image && project.image.trim()) return project.image;
 

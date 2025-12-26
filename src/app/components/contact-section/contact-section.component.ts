@@ -38,6 +38,10 @@ export class ContactSectionComponent {
     emailjs.init(environment.emailjs.publicKey);
   }
 
+  // EmailJS service and template IDs (not sensitive, can be hardcoded)
+  private readonly EMAILJS_SERVICE_ID = 'service_95ocjv8';
+  private readonly EMAILJS_TEMPLATE_ID = 'template_um9kxih';
+
   downloadResume() {
     // Use the full GitHub Pages URL for reliable download
     const link = document.createElement('a');
@@ -106,8 +110,8 @@ export class ContactSectionComponent {
 
       // Send email using EmailJS
       const response = await emailjs.send(
-        environment.emailjs.serviceId,
-        environment.emailjs.templateId,
+        this.EMAILJS_SERVICE_ID,
+        this.EMAILJS_TEMPLATE_ID,
         templateParams
       );
 

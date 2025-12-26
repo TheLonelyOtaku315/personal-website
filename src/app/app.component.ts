@@ -6,10 +6,30 @@ import { AboutMeSectionComponent } from './components/about-me-section/about-me-
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
 import { ThemeService } from '../service/theme.service';
+import eventsData from '../assets/JSON/event.json';
+import projectsData from '../assets/JSON/projects.json';
+
+interface TimelineEvent {
+  status: string;
+  date: string;
+  description: string;
+}
+
+interface Project {
+  title: string;
+  description: string;
+  demoUrl: string;
+  sourceUrl: string;
+  date: Date;
+  technologies: string[];
+  image: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  standalone: true,
   imports: [
     AboutMeSectionComponent,
     NavigationBarComponent,
@@ -20,7 +40,17 @@ import { ThemeService } from '../service/theme.service';
   ],
 })
 export class AppComponent implements OnInit {
-  title = 'personal-website';
+  timeline: TimelineEvent[] = eventsData as TimelineEvent[];
+
+  projects: Project[] = (projectsData as any[]).map((p) => ({
+    title: p.title,
+    description: p.description,
+    demoUrl: p.demoUrl || '',
+    sourceUrl: p.sourceUrl || '',
+    date: new Date(p.date),
+    technologies: p.technologies || [],
+    image: p.image || '',
+  }));
 
   isDarkmode = false;
   showContent = true;
