@@ -1,0 +1,175 @@
+[
+  {
+    "title": "À venir : Refonte du portfolio personnel",
+    "description": "Une nouvelle version de mon site personnel est en développement, avec une interface moderne, une meilleure accessibilité et des performances accrues. Restez à l'écoute pour les mises à jour !",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/personal-website",
+    "startDate": "2025-10",
+    "endDate": "",
+    "technologies": [
+      "Angular",
+      "TypeScript",
+      "Accessibilité",
+      "Optimisation des performances"
+    ],
+    "image": ""
+  },
+  {
+    "title": "Aéroglisseur autonome",
+    "description": "Développement d'un aéroglisseur autonome capable de naviguer et de résoudre des labyrinthes grâce à la fusion de capteurs. Implémentation d'algorithmes de navigation utilisant des données d'IMU, de capteurs ultrasoniques et infrarouges. Programmation en C pour microcontrôleur Arduino avec détection d'obstacles en temps réel et planification de trajectoire.",
+    "demoUrl": "https://youtube.com/shorts/oI3XUQ6Xa5w",
+    "sourceUrl": "",
+    "startDate": "2025-09",
+    "endDate": "2025-11",
+    "technologies": [
+      "C",
+      "Arduino",
+      "Navigation autonome",
+      "Systèmes embarqués"
+    ],
+    "image": ""
+  },
+  {
+    "title": "COMP353 - Projet de systèmes de bases de données",
+    "description": "Projet collaboratif de conception et d'implémentation de base de données pour le cours COMP353/COMP5531. Développement de schémas normalisés, requêtes SQL efficaces avec jointures et sous-requêtes, gestion de l'intégrité des données avec MySQL. Travail en équipe de 4 pour créer des scripts DDL/DML et démontrer les principes de conception de bases de données.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/COMP353-Summer-2025/COMP353_project",
+    "startDate": "2025-06",
+    "endDate": "2025-07",
+    "technologies": [
+      "MySQL",
+      "SQL",
+      "Conception de base de données",
+      "DDL",
+      "DML",
+      "Normalisation",
+      "Travail d'équipe",
+      "Git"
+    ],
+    "image": ""
+  },
+  {
+    "title": "ChatHaven",
+    "description": "Plateforme de messagerie de groupe full-stack avec permissions par rôle et communication en temps réel. Développement de composants UI modulaires (journal de chat, barre latérale de canaux, etc.) et intégration des API Giphy, LinkPreview, Gemini. Utilisation de Git et GitHub pour le contrôle de version et la collaboration en équipe Agile.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/Error-404-Project-W25/Error-404-SOEN341_Project_W25",
+    "startDate": "2025-01",
+    "endDate": "2025-04",
+    "technologies": [
+      "Angular",
+      "Node.js",
+      "MongoDB",
+      "Git",
+      "GitHub",
+      "API Giphy",
+      "API LinkPreview",
+      "API Gemini"
+    ],
+    "image": ""
+  },
+  {
+    "title": "COMP 371 - Projet de programmation graphique 3D",
+    "description": "Application interactive 3D en temps réel développée en C++ avec OpenGL. Contrôles de caméra interactifs, éclairage dynamique avec sources multiples, modèles 3D texturés, ombrage, effets de particules et post-traitement (bloom, normal mapping). Développement en équipe de 3 avec techniques avancées et shaders personnalisés.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/COMP-371-Project/COMP-371-Assignment",
+    "startDate": "2025-04",
+    "endDate": "2025-05",
+    "technologies": [
+      "C++",
+      "OpenGL",
+      "GLFW",
+      "GLEW",
+      "GLM",
+      "Shaders",
+      "Graphiques 3D",
+      "Shadow Mapping",
+      "CMake"
+    ],
+    "image": ""
+  },
+  {
+    "title": "Contrôleur LED ESP32",
+    "description": "Projet ESP32-LED-Controller permettant de contrôler des LED sans fil via Bluetooth, avec boutons, commandes personnalisées et minuterie pour l'automatisation. Programmation en C++ avec le framework ESP32-Arduino.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/ESP32-LED-Controller",
+    "startDate": "2024-01",
+    "endDate": "2024-01",
+    "technologies": [
+      "ESP32",
+      "C++",
+      "Bluetooth",
+      "Communication série",
+      "Arduino"
+    ],
+    "image": ""
+  },
+  {
+    "title": "Convertisseur de température",
+    "description": "Convertisseur de température développé sous Visual Studio, permettant la conversion entre Celsius, Fahrenheit et Kelvin avec une interface intuitive. Réalisé avec JavaFX et stylisé en CSS pour une meilleure expérience utilisateur.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/TemperatureConverterVS",
+    "startDate": "2025-01",
+    "endDate": "2025-01",
+    "technologies": ["Java", "JavaFX", "CSS", "Conversion de température"],
+    "image": ""
+  },
+  {
+    "title": "Site web portfolio personnel",
+    "description": "Site portfolio personnel développé avec Angular pour présenter mes projets, compétences et expériences. Design réactif, architecture basée sur les composants et pratiques modernes du web.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/personal-website",
+    "startDate": "2024-12",
+    "endDate": "2025-01",
+    "technologies": ["Angular", "TypeScript", "CSS", "HTML"],
+    "image": ""
+  },
+  {
+    "title": "Solutions LeetCode",
+    "description": "Collection de solutions aux défis LeetCode démontrant des compétences en algorithmique et en structures de données. Pratique régulière pour améliorer l'efficacité du code et l'optimisation des algorithmes.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/LeetCode",
+    "startDate": "2024-07",
+    "endDate": "",
+    "technologies": [
+      "Java",
+      "Algorithmes",
+      "Structures de données",
+      "Résolution de problèmes"
+    ],
+    "image": ""
+  },
+  {
+    "title": "Classificateur k-NN – Projet final",
+    "description": "Développement d'un modèle d'apprentissage automatique k-plus proches voisins pour la classification de données médicales (569 instances). Collaboration en équipe et application de stratégies d'optimisation algorithmique.",
+    "demoUrl": "",
+    "sourceUrl": "",
+    "startDate": "2024-04",
+    "endDate": "2024-05",
+    "technologies": [
+      "Java",
+      "Apprentissage automatique",
+      "Optimisation d'algorithme"
+    ],
+    "image": ""
+  },
+  {
+    "title": "Simulation d'électricité et de magnétisme",
+    "description": "Simulation de champs électriques de charges ponctuelles et de circuits logiques interactifs avec interface glisser-déposer et sortie en temps réel. Application développée en Java, JavaFX pour l'UI, et CSS pour le style. Utilisation de Git et GitHub pour le contrôle de version et la collaboration Agile.",
+    "demoUrl": "",
+    "sourceUrl": "",
+    "startDate": "2023-01",
+    "endDate": "2023-04",
+    "technologies": ["Java", "JavaFX", "CSS", "Git", "GitHub"],
+    "image": ""
+  },
+  {
+    "title": "Console de jeux RetroPie sur Raspberry Pi",
+    "description": "Configuration d'émulateurs, gestion de bibliothèques de ROM et optimisation du système pour le rétro-gaming. Expérience en installation Linux, dépannage et configuration système.",
+    "demoUrl": "",
+    "sourceUrl": "",
+    "startDate": "2022-11",
+    "endDate": "2022-11",
+    "technologies": ["Raspberry Pi", "Linux", "RetroPie"],
+    "image": ""
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "status": "Début des études collégiales - DEC",
+    "date": "2020-08",
+    "description": "Inscription au programme DEC en informatique et mathématiques au Collège Vanier."
+  },
+  {
+    "status": "Fin des études collégiales - DEC",
+    "date": "2023-05",
+    "description": "Obtention du DEC en informatique et mathématiques au Collège Vanier, axé sur les bases de la programmation et les structures de données."
+  },
+  {
+    "status": "Début d'emploi chez Best Buy",
+    "date": "2023-05",
+    "description": "Début de travail chez Best Buy au service à la clientèle, développement des compétences en communication et connaissances techniques des produits."
+  },
+  {
+    "status": "Début des études universitaires - Baccalauréat",
+    "date": "2023-08",
+    "description": "Inscription au baccalauréat en génie informatique à l'Université Concordia. Participation au programme coopératif (C.Edge)."
+  },
+  {
+    "status": "Fin d'emploi chez Best Buy",
+    "date": "2023-08",
+    "description": "Fin du poste d'été chez Best Buy, acquisition d'une précieuse expérience en service à la clientèle et en résolution de problèmes."
+  }
+]
