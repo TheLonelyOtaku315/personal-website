@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HostListener } from '@angular/core';
-import { Input } from '@angular/core';
 import { Project } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
 

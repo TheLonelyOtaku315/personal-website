@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
 
 import { WelcomeSectionComponent } from './components/welcome-section/welcome-section.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
@@ -12,8 +13,7 @@ import { ThemeService } from '@services/theme.service';
 import { MetaService } from '@services/meta.service';
 import { TimelineEvent, Project } from '@models/shared-interfaces';
 
-import eventsData from '@assets/JSON/event.json';
-import projectsData from '@assets/JSON/projects.json';
+import eventsData from '@assets/i18n/event.en.json';
 
 @Component({
   selector: 'app-root',
@@ -32,81 +32,82 @@ import projectsData from '@assets/JSON/projects.json';
 })
 export class AppComponent implements OnInit {
   timeline: TimelineEvent[] = eventsData as TimelineEvent[];
-
-  projects: Project[] = (projectsData as any[]).map((p) => ({
-    title: p.title,
-    description: p.description,
-    demoUrl: p.demoUrl || '',
-    sourceUrl: p.sourceUrl || '',
-    date: new Date(p.date),
-    technologies: p.technologies || [],
-    image: p.image || '',
-  }));
+  projects: Project[] = [];
 
   isDarkmode = false;
   showContent = true;
-  private squares: {
-    element: HTMLElement;
-    originalX: number;
-    originalY: number;
-    size: number;
-  }[] = [];
 
   constructor(
     private themeService: ThemeService,
     private metaService: MetaService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private http: HttpClient
   ) {
     this.themeService.isDarkMode$.subscribe((isDark) => {
       this.isDarkmode = isDark;
     });
 
-    // Initialize translation
     this.initializeTranslation();
   }
 
   private initializeTranslation() {
-    // Set default language
-    this.translate.setDefaultLang('en'); // Changed from 'EN' to 'en'
+    this.translate.setDefaultLang('en');
 
-    // Get saved language from localStorage or use browser language
     const savedLang = localStorage.getItem('selectedLanguage');
     const browserLang = this.translate.getBrowserLang();
 
-    // Convert saved language to lowercase if it exists
     const savedLangLower = savedLang ? savedLang.toLowerCase() : null;
 
-    // Use saved language, or browser language, or default to 'en'
     const langToUse =
       savedLangLower ||
       (browserLang && ['en', 'fr'].includes(browserLang) ? browserLang : 'en');
 
     this.translate.use(langToUse);
+
+    // Load projects for the selected language
+    this.loadProjects(langToUse);
+
+    // Subscribe to language changes to reload projects
+    this.translate.onLangChange.subscribe((event) => {
+      this.loadProjects(event.lang);
+    });
+  }
+
+  private loadProjects(lang: string) {
+    this.http.get<any[]>(`assets/JSON/projects.${lang}.json`).subscribe({
+      next: (data) => {
+        this.projects = data.map((p) => ({
+          id: p.id,
+          title: p.title,
+          description: p.description,
+          demoUrl: p.demoUrl || '',
+          sourceUrl: p.sourceUrl || '',
+          date: new Date(p.date),
+          technologies: p.technologies || [],
+          image: p.image || '',
+        }));
+      },
+      error: (error) => {
+        console.error(`Error loading projects for language ${lang}:`, error);
+        // Fallback to English if the language file doesn't exist
+        if (lang !== 'en') {
+          this.loadProjects('en');
+        }
+      },
+    });
   }
 
   toggleDarkMode(value: boolean) {
     this.themeService.setTheme(value);
   }
 
-  // Method to switch language (can be called from navigation or settings)
-  // Button handler to toggle language between 'en' and 'fr'
-  // Method to switch language (can be called from navigation or settings)
   switchLanguage(lang: string) {
-    // Convert to lowercase before using
     const langLower = lang.toLowerCase();
     this.translate.use(langLower);
-    // Save uppercase to localStorage for display purposes
     localStorage.setItem('selectedLanguage', lang.toUpperCase());
+    // Projects will reload automatically via onLangChange subscription
   }
 
-  // Original method, renamed for internal use
-  private switchLanguageByParam(lang: string) {
-    this.translate.use(lang);
-    localStorage.setItem('selectedLanguage', lang);
-    console.log(`Language switched to: ${lang}`);
-  }
-
-  // Get current language
   getCurrentLanguage(): string {
     return this.translate.currentLang || 'en';
   }
