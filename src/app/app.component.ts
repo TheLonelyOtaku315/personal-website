@@ -64,14 +64,19 @@ export class AppComponent implements OnInit {
 
   private initializeTranslation() {
     // Set default language
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('en'); // Changed from 'EN' to 'en'
 
     // Get saved language from localStorage or use browser language
     const savedLang = localStorage.getItem('selectedLanguage');
     const browserLang = this.translate.getBrowserLang();
 
+    // Convert saved language to lowercase if it exists
+    const savedLangLower = savedLang ? savedLang.toLowerCase() : null;
+
     // Use saved language, or browser language, or default to 'en'
-    const langToUse = savedLang || (browserLang && ['en', 'fr'].includes(browserLang) ? browserLang : 'en');
+    const langToUse =
+      savedLangLower ||
+      (browserLang && ['en', 'fr'].includes(browserLang) ? browserLang : 'en');
 
     this.translate.use(langToUse);
   }
@@ -82,10 +87,13 @@ export class AppComponent implements OnInit {
 
   // Method to switch language (can be called from navigation or settings)
   // Button handler to toggle language between 'en' and 'fr'
-  switchLanguage() {
-    const current = this.getCurrentLanguage();
-    const next = current === 'en' ? 'fr' : 'en';
-    this.switchLanguageByParam(next);
+  // Method to switch language (can be called from navigation or settings)
+  switchLanguage(lang: string) {
+    // Convert to lowercase before using
+    const langLower = lang.toLowerCase();
+    this.translate.use(langLower);
+    // Save uppercase to localStorage for display purposes
+    localStorage.setItem('selectedLanguage', lang.toUpperCase());
   }
 
   // Original method, renamed for internal use
@@ -94,7 +102,7 @@ export class AppComponent implements OnInit {
     localStorage.setItem('selectedLanguage', lang);
     console.log(`Language switched to: ${lang}`);
   }
-  
+
   // Get current language
   getCurrentLanguage(): string {
     return this.translate.currentLang || 'en';

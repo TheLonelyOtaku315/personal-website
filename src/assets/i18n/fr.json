@@ -2,7 +2,16 @@
   "META": {
     "TITLE": "Tonny Zhao - Mon portfolio"
   },
-    "FOOTER": {
+  "FOOTER": {
     "COPYRIGHT": "© 2023 Tonny Zhao. Tous droits réservés."
+  },
+  "NAV": {
+    "HOME": "Accueil",
+    "ABOUT": "À propos",
+    "PROJECTS": "Projets",
+    "CONTACT": "Contact",
+    "DARK": "Sombre",
+    "LIGHT": "Clair",
+    "AUTO": "Navigateur"
   }
 }
