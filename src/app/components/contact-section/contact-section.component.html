@@ -1,9 +1,8 @@
 <section class="contact-section">
   <div class="text">
-    <h2>Contact</h2>
+    <h2>{{ "CONTACT.TITLE" | translate }}</h2>
     <p class="section-description">
-      Get in touch with me through any of the channels below or send me a
-      message directly. Just provide your name and message!
+      {{ "CONTACT.DESCRIPTION" | translate }}
     </p>
   </div>
   <div class="contact-flex">
@@ -20,7 +19,9 @@
             d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
           />
         </svg>
-        <span class="contact-label">Name:</span>
+        <span class="contact-label">{{
+          "CONTACT.NAME_LABEL" | translate
+        }}</span>
         <span class="contact-value">Tonny Zhao</span>
       </div>
       <a class="contact-detail" href="mailto:zhaotonny315&#64;gmail.com">
@@ -35,7 +36,9 @@
             d="M120-160q-33 0-56.5-23.5T40-240v-480q0-33 23.5-56.5T120-800h720q33 0 56.5 23.5T920-720v480q0 33-23.5 56.5T840-160H120Zm360-320L120-720v480h720v-480L480-480Zm0 80 360-240H120l360 240Z"
           />
         </svg>
-        <span class="contact-label">Email:</span>
+        <span class="contact-label">{{
+          "CONTACT.EMAIL_LABEL" | translate
+        }}</span>
         <span class="contact-value">zhaotonny315&#64;gmail.com</span>
       </a>
       <a class="contact-detail" href="tel:5794216532">
@@ -50,8 +53,10 @@
             d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"
           />
         </svg>
-        <span class="contact-label">Phone:</span>
-        <span class="contact-value">579.421.6532</span>
+        <span class="contact-label">{{
+          "CONTACT.PHONE_LABEL" | translate
+        }}</span>
+        <span class="contact-value">(579) 421-6532</span>
       </a>
       <a
         class="contact-detail"
@@ -72,7 +77,9 @@
             </g>
           </g>
         </svg>
-        <span class="contact-label">LinkedIn:</span>
+        <span class="contact-label">{{
+          "CONTACT.LINKEDIN_LABEL" | translate
+        }}</span>
         <span class="contact-value">linkedin.com/in/tonny-zhao</span>
       </a>
       <a
@@ -90,7 +97,9 @@
             d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
           ></path>
         </svg>
-        <span class="contact-label">GitHub:</span>
+        <span class="contact-label">{{
+          "CONTACT.GITHUB_LABEL" | translate
+        }}</span>
         <span class="contact-value">github.com/TheLonelyOtaku315</span>
       </a>
     </div>
@@ -101,7 +110,7 @@
         (ngSubmit)="onSubmit($event)"
         #contactForm="ngForm"
       >
-        <label for="name">Name</label>
+        <label for="name">{{ "CONTACT.FORM.NAME" | translate }}</label>
         <input
           id="name"
           name="name"
@@ -112,7 +121,7 @@
           required
         />
 
-        <label for="email">Email</label>
+        <label for="email">{{ "CONTACT.FORM.EMAIL" | translate }}</label>
         <input
           id="email"
           name="email"
@@ -123,7 +132,7 @@
           required
         />
 
-        <label for="message">Message</label>
+        <label for="message">{{ "CONTACT.FORM.MESSAGE" | translate }}</label>
         <textarea
           id="message"
           name="message"
@@ -135,16 +144,17 @@
         ></textarea>
 
         <button type="submit" [disabled]="isSubmitting" class="submit-button">
-          <span *ngIf="!isSubmitting">Send Message</span>
+          <span *ngIf="!isSubmitting">{{
+            "CONTACT.FORM.SEND_BUTTON" | translate
+          }}</span>
           <span *ngIf="isSubmitting" class="loading">
             <span class="spinner"></span>
-            Sending...
+            {{ "CONTACT.FORM.SENDING" | translate }}
           </span>
         </button>
       </form>
     </div>
   </div>
-  <!-- Toast notifications -->
 </section>
 <div class="toast-container">
   <div

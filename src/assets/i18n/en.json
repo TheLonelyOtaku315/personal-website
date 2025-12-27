@@ -18,5 +18,21 @@
     "GREETING": "Hi, welcome to Tonny's portfolio.",
     "INTRO": "I'm a third-year computer engineering student with a strong interest in software development. I enjoy building responsive, user-friendly applications and continuously improving my skills by working on real projects and exploring new technologies.",
     "RESUME_BUTTON": "CV/Resume"
+  },
+  "CONTACT": {
+    "TITLE": "Contact",
+    "DESCRIPTION": "Get in touch with me through any of the channels below or send me a message directly. Just provide your name and message!",
+    "NAME_LABEL": "Name:",
+    "EMAIL_LABEL": "Email:",
+    "PHONE_LABEL": "Phone:",
+    "LINKEDIN_LABEL": "LinkedIn:",
+    "GITHUB_LABEL": "GitHub:",
+    "FORM": {
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "MESSAGE": "Message",
+      "SEND_BUTTON": "Send Message",
+      "SENDING": "Sending..."
+    }
   }
 }

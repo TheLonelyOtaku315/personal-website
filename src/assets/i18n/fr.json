@@ -18,5 +18,21 @@
     "GREETING": "Bonjour, bienvenue sur le portfolio de Tonny.",
     "INTRO": "Je suis étudiant en troisième année de génie informatique avec un grand intérêt pour le développement logiciel. J'aime créer des applications réactives et conviviales et améliorer continuellement mes compétences en travaillant sur de vrais projets et en explorant de nouvelles technologies.",
     "RESUME_BUTTON": "Resume/CV"
+  },
+  "CONTACT": {
+    "TITLE": "Contact",
+    "DESCRIPTION": "Contactez-moi par l'un des canaux ci-dessous ou envoyez-moi un message directement. Il suffit de fournir votre nom et votre message!",
+    "NAME_LABEL": "Nom:",
+    "EMAIL_LABEL": "Courriel:",
+    "PHONE_LABEL": "Téléphone:",
+    "LINKEDIN_LABEL": "LinkedIn:",
+    "GITHUB_LABEL": "GitHub:",
+    "FORM": {
+      "NAME": "Nom",
+      "EMAIL": "Courriel",
+      "MESSAGE": "Message",
+      "SEND_BUTTON": "Envoyer le message",
+      "SENDING": "Envoi en cours..."
+    }
   }
 }
