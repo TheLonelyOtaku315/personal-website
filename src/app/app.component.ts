@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
 import { WelcomeSectionComponent } from './components/welcome-section/welcome-section.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { AboutMeSectionComponent } from './components/about-me-section/about-me-section.component';
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
-import { ThemeService } from '../service/theme.service';
-import { MetaService } from '../service/meta.service';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import eventsData from '../assets/JSON/event.json';
-import projectsData from '../assets/JSON/projects.json';
-import { TimelineEvent, Project } from './models/shared-interfaces';
+
+import { ThemeService } from '@services/theme.service';
+import { MetaService } from '@services/meta.service';
+import { TimelineEvent, Project } from '@models/shared-interfaces';
+
+import eventsData from '@assets/JSON/event.json';
+import projectsData from '@assets/JSON/projects.json';
 
 @Component({
   selector: 'app-root',

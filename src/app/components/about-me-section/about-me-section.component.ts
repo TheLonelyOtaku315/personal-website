@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { ThemeService } from '../../../service/theme.service';
+import { ThemeService } from '@services/theme.service';
 import { Input } from '@angular/core';
-import { TimelineEvent, Project } from '../../models/shared-interfaces';
+import { TimelineEvent, Project } from '@models/shared-interfaces';
 
 @Component({
   selector: 'app-about-me-section',

@@ -8,7 +8,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ThemeService, type ThemeMode } from '../../../service/theme.service';
+import { ThemeService, type ThemeMode } from '@services/theme.service';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AfterViewInit } from '@angular/core';
@@ -62,36 +62,36 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     FR: 'Français',
   };
 
-constructor(
-  private renderer: Renderer2,
-  @Inject(DOCUMENT) private document: Document,
-  private themeService: ThemeService,
-  private translate: TranslateService
-) {
-  // Subscribe to theme changes
-  this.themeService.isDarkMode$.subscribe((isDark) => {
-    this.isDarkMode = isDark;
-  });
+  constructor(
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document,
+    private themeService: ThemeService,
+    private translate: TranslateService
+  ) {
+    // Subscribe to theme changes
+    this.themeService.isDarkMode$.subscribe((isDark) => {
+      this.isDarkMode = isDark;
+    });
 
-  this.themeService.currentThemeMode$.subscribe((mode) => {
-    this.currentThemeMode = mode;
-  });
+    this.themeService.currentThemeMode$.subscribe((mode) => {
+      this.currentThemeMode = mode;
+    });
 
-  // Get current language from TranslateService and convert to uppercase for display
-  const currentLang = this.translate.currentLang || 'en';
-  this.currentLanguage = currentLang.toUpperCase();
+    // Get current language from TranslateService and convert to uppercase for display
+    const currentLang = this.translate.currentLang || 'en';
+    this.currentLanguage = currentLang.toUpperCase();
 
-  // Subscribe to language changes
-  this.translate.onLangChange.subscribe((event) => {
-    this.currentLanguage = event.lang.toUpperCase();
-  });
+    // Subscribe to language changes
+    this.translate.onLangChange.subscribe((event) => {
+      this.currentLanguage = event.lang.toUpperCase();
+    });
 
-  // Initialize current values from service
-  setTimeout(() => {
-    this.currentThemeMode = this.themeService.getCurrentThemeMode();
-    this.isDarkMode = this.themeService.getCurrentTheme() === 'dark';
-  }, 0);
-}
+    // Initialize current values from service
+    setTimeout(() => {
+      this.currentThemeMode = this.themeService.getCurrentThemeMode();
+      this.isDarkMode = this.themeService.getCurrentTheme() === 'dark';
+    }, 0);
+  }
 
   ngAfterViewInit(): void {
     // Use setTimeout to ensure DOM is fully rendered
@@ -247,22 +247,22 @@ constructor(
     this.closeAllSubMenus();
   }
 
-toggleLanguage() {
-  const currentIndex = this.availableLanguages.indexOf(this.currentLanguage);
-  const nextIndex = (currentIndex + 1) % this.availableLanguages.length;
-  const nextLanguage = this.availableLanguages[nextIndex];
+  toggleLanguage() {
+    const currentIndex = this.availableLanguages.indexOf(this.currentLanguage);
+    const nextIndex = (currentIndex + 1) % this.availableLanguages.length;
+    const nextLanguage = this.availableLanguages[nextIndex];
 
-  // Use TranslateService with lowercase language code
-  this.translate.use(nextLanguage.toLowerCase());
+    // Use TranslateService with lowercase language code
+    this.translate.use(nextLanguage.toLowerCase());
 
-  // Save uppercase version to localStorage for display
-  if (typeof window !== 'undefined' && window.localStorage) {
-    localStorage.setItem('selectedLanguage', nextLanguage);
+    // Save uppercase version to localStorage for display
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('selectedLanguage', nextLanguage);
+    }
+
+    // Update current language for display
+    this.currentLanguage = nextLanguage;
   }
-
-  // Update current language for display
-  this.currentLanguage = nextLanguage;
-}
 
   getThemeDisplayText(): string {
     switch (this.currentThemeMode) {
