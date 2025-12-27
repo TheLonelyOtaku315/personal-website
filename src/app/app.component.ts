@@ -13,8 +13,6 @@ import { ThemeService } from '@services/theme.service';
 import { MetaService } from '@services/meta.service';
 import { TimelineEvent, Project } from '@models/shared-interfaces';
 
-import eventsData from '@assets/i18n/event.en.json';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -31,7 +29,7 @@ import eventsData from '@assets/i18n/event.en.json';
   ],
 })
 export class AppComponent implements OnInit {
-  timeline: TimelineEvent[] = eventsData as TimelineEvent[];
+  timeline: TimelineEvent[] = [];
   projects: Project[] = [];
 
   isDarkmode = false;
@@ -74,7 +72,7 @@ export class AppComponent implements OnInit {
   }
 
   private loadProjects(lang: string) {
-    this.http.get<any[]>(`assets/JSON/projects.${lang}.json`).subscribe({
+    this.http.get<any[]>(`assets/i18n/projects.${lang}.json`).subscribe({
       next: (data) => {
         this.projects = data.map((p) => ({
           id: p.id,
@@ -96,6 +94,27 @@ export class AppComponent implements OnInit {
       },
     });
   }
+  private loadEvents(lang: string) {
+    this.http.get<any[]>(`assets/i18n/events.${lang}.json`).subscribe({
+      next: (data) => {
+        this.timeline = data.map((e) => ({
+          status: e.status || '',
+          date: e.date,
+          description: e.description,
+        }));
+      },
+      error: (error) => {
+        console.error(
+          `Error loading timeline events for language ${lang}:`,
+          error
+        );
+        // Fallback to English if the language file doesn't exist
+        if (lang !== 'en') {
+          this.loadEvents('en');
+        }
+      },
+    });
+  }
 
   toggleDarkMode(value: boolean) {
     this.themeService.setTheme(value);
@@ -113,6 +132,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadProjects(this.getCurrentLanguage());
+    this.loadEvents(this.getCurrentLanguage());
+    console.log("projects:", this.projects);
+    console.log("timeline:", this.timeline);
     this.metaService.init();
   }
 }
