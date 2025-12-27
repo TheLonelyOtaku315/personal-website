@@ -13,5 +13,10 @@
     "DARK": "Sombre",
     "LIGHT": "Clair",
     "AUTO": "Navigateur"
+  },
+  "WELCOME": {
+    "GREETING": "Bonjour, bienvenue sur le portfolio de Tonny.",
+    "INTRO": "Je suis étudiant en troisième année de génie informatique avec un grand intérêt pour le développement logiciel. J'aime créer des applications réactives et conviviales et améliorer continuellement mes compétences en travaillant sur de vrais projets et en explorant de nouvelles technologies.",
+    "RESUME_BUTTON": "Resume/CV"
   }
 }
