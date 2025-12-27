@@ -6,33 +6,13 @@ import {
   HostListener,
   ViewChild,
   ElementRef,
+  Host,
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ThemeService, type ThemeMode } from '@services/theme.service';
 import { CommonModule } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AfterViewInit } from '@angular/core';
-
-interface SidebarButton {
-  id: string;
-  clickHandler: string;
-  cssClass: string;
-  title?: string;
-  icon: {
-    viewBox: string;
-    path: string;
-    conditionalDisplay?: {
-      condition: string;
-      trueIcon?: { viewBox: string; path: string };
-      falseIcon?: { viewBox: string; path: string };
-      autoIcon?: { viewBox: string; path: string };
-    };
-  };
-  content?: {
-    type: 'text' | 'language-info';
-    text?: string;
-  };
-}
 
 @Component({
   selector: 'app-navigation-bar',
@@ -45,9 +25,15 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   isDarkMode = false;
   currentSection = 'welcome';
   currentThemeMode: ThemeMode = 'auto';
+  isThemeMenuOpen = false;
+  isLanguageMenuOpen = false;
   isMobileMenuOpen = false;
 
   @ViewChild('sidebar', { static: false }) sidebarRef?: ElementRef<HTMLElement>;
+  @ViewChild('themeButton') themeButtonRef?: ElementRef;
+  @ViewChild('themeMenu') themeMenuRef?: ElementRef;
+  @ViewChild('languageButton') languageButtonRef?: ElementRef;
+  @ViewChild('languageMenu') languageMenuRef?: ElementRef;
 
   private sidebar: HTMLElement | null = null;
   private toggleButton: HTMLElement | null = null;
@@ -158,17 +144,6 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  executeButtonAction(button: SidebarButton): void {
-    switch (button.id) {
-      case 'language-toggle':
-        this.toggleLanguage();
-        break;
-      case 'theme-toggle':
-        this.toggleTheme();
-        break;
-    }
-  }
-
   toggleTheme() {
     this.themeService.toggleTheme();
   }
@@ -247,21 +222,18 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     this.closeAllSubMenus();
   }
 
-  toggleLanguage() {
-    const currentIndex = this.availableLanguages.indexOf(this.currentLanguage);
-    const nextIndex = (currentIndex + 1) % this.availableLanguages.length;
-    const nextLanguage = this.availableLanguages[nextIndex];
-
+  toggleLanguage(lang: string) {
     // Use TranslateService with lowercase language code
-    this.translate.use(nextLanguage.toLowerCase());
+    this.translate.use(lang.toLowerCase());
 
     // Save uppercase version to localStorage for display
     if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('selectedLanguage', nextLanguage);
+      localStorage.setItem('selectedLanguage', lang);
     }
 
     // Update current language for display
-    this.currentLanguage = nextLanguage;
+    this.currentLanguage = lang;
+    this.isLanguageMenuOpen = false;
   }
 
   getThemeDisplayText(): string {
@@ -286,24 +258,69 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 
+  toggleThemeMenu() {
+    this.isThemeMenuOpen = !this.isThemeMenuOpen;
+  }
+
+  setTheme(mode: ThemeMode) {
+    this.themeService.setThemeMode(mode);
+    this.isThemeMenuOpen = false;
+  }
+
+  toggleLanguageMenu() {
+    this.isLanguageMenuOpen = !this.isLanguageMenuOpen;
+  }
+
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-    if (typeof window === 'undefined' || window.innerWidth > 800) {
-      return;
+    const target = event.target as HTMLElement;
+
+    // Handle mobile menu (only on mobile)
+    if (typeof window !== 'undefined' && window.innerWidth <= 800) {
+      const sidebar = this.document.querySelector('.sidebar');
+      const toggleButton = this.document.querySelector('.mobile-menu-toggle');
+
+      if (
+        this.isMobileMenuOpen &&
+        sidebar &&
+        toggleButton &&
+        !sidebar.contains(target) &&
+        !toggleButton.contains(target)
+      ) {
+        this.isMobileMenuOpen = false;
+      }
     }
 
-    const target = event.target as HTMLElement;
-    const sidebar = this.document.querySelector('.sidebar');
-    const toggleButton = this.document.querySelector('.mobile-menu-toggle');
+    // Handle theme menu (all screen sizes)
+    const themeCard = this.document.getElementById('theme-card');
+
+    if (this.isThemeMenuOpen && themeCard && !themeCard.contains(target)) {
+      // Check if click was on the theme toggle button itself
+      // You'll need to add an ID or class to your theme button in HTML
+      const themeButton =
+        target.closest('.theme-button') ||
+        target.closest('[data-theme-toggle]');
+      if (!themeButton) {
+        this.isThemeMenuOpen = false;
+      }
+    }
+
+    // Handle language menu (all screen sizes)
+    const languageCard = this.document.getElementById('language-card');
 
     if (
-      this.isMobileMenuOpen &&
-      sidebar &&
-      toggleButton &&
-      !sidebar.contains(target) &&
-      !toggleButton.contains(target)
+      this.isLanguageMenuOpen &&
+      languageCard &&
+      !languageCard.contains(target)
     ) {
-      this.isMobileMenuOpen = false;
+      // Check if click was on the language toggle button itself
+      // You'll need to add an ID or class to your language button in HTML
+      const languageButton =
+        target.closest('.language-button') ||
+        target.closest('[data-language-toggle]');
+      if (!languageButton) {
+        this.isLanguageMenuOpen = false;
+      }
     }
   }
 }
