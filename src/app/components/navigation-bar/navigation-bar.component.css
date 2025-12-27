@@ -118,7 +118,7 @@
 .sidebar {
   box-sizing: border-box;
   margin: 32px 0 32px 32px;
-  height: calc(100vh - 64px);
+  height: calc(100dvh - 64px);
   width: 250px;
   padding: 1em;
   background: rgba(var(--surface-color-rgb), 0.1);
