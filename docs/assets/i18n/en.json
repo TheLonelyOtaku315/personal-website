@@ -19,6 +19,18 @@
     "INTRO": "I'm a third-year computer engineering student with a strong interest in software development. I enjoy building responsive, user-friendly applications and continuously improving my skills by working on real projects and exploring new technologies.",
     "RESUME_BUTTON": "CV/Resume"
   },
+  "ABOUT": {
+    "TITLE": "About Me",
+    "INTRO": "I am Tonny Zhao, a third-year student passionate about software development, with a strong interest in front-end technologies like Angular. I enjoy building responsive and user-friendly web applications that create smooth user experiences.",
+    "SKILLS_TITLE": "My Skills",
+    "JOURNEY_TITLE": "My Journey"
+  },
+  "PROJECTS": {
+    "TITLE": "Projects",
+    "INTRO": "This section highlights some of the projects I have worked on, showcasing my skills and experience in web development. Explore the projects below to learn more about my work and the technologies I use.",
+    "DEMO_LINK": "Demo",
+    "SOURCE_LINK": "Source Code"
+  },
   "CONTACT": {
     "TITLE": "Contact",
     "DESCRIPTION": "Get in touch with me through any of the channels below or send me a message directly. Just provide your name and message!",

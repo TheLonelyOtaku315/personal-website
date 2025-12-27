@@ -19,6 +19,18 @@
     "INTRO": "Je suis étudiant en troisième année de génie informatique avec un grand intérêt pour le développement logiciel. J'aime créer des applications réactives et conviviales et améliorer continuellement mes compétences en travaillant sur de vrais projets et en explorant de nouvelles technologies.",
     "RESUME_BUTTON": "Resume/CV"
   },
+  "ABOUT": {
+    "TITLE": "À propos de moi",
+    "INTRO": "Je suis Tonny Zhao, un étudiant de troisième année passionné par le développement logiciel, avec un fort intérêt pour les technologies front-end comme Angular. J'aime créer des applications web réactives et conviviales qui offrent des expériences utilisateur fluides.",
+    "SKILLS_TITLE": "Mes compétences",
+    "JOURNEY_TITLE": "Mon parcours"
+  },
+  "PROJECTS": {
+    "TITLE": "Projets",
+    "INTRO": "Cette section présente certains des projets sur lesquels j'ai travaillé, mettant en valeur mes compétences et mon expérience en développement web. Explorez les projets ci-dessous pour en savoir plus sur mon travail et les technologies que j'utilise.",
+    "DEMO_LINK": "Démo",
+    "SOURCE_LINK": "Code source"
+  },
   "CONTACT": {
     "TITLE": "Contact",
     "DESCRIPTION": "Contactez-moi par l'un des canaux ci-dessous ou envoyez-moi un message directement. Il suffit de fournir votre nom et votre message!",
