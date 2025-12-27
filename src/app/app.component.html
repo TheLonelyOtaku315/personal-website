@@ -14,7 +14,10 @@
       <app-welcome-section></app-welcome-section>
     </section>
     <section id="about_me">
-      <app-about-me-section [timeline]="timeline"></app-about-me-section>
+      <app-about-me-section
+        [timeline]="timeline"
+        [projects]="projects"
+      ></app-about-me-section>
     </section>
     <section id="project">
       <app-projects-section [projects]="projects"></app-projects-section>
@@ -23,7 +26,7 @@
       <app-contact-section></app-contact-section>
     </section>
     <footer>
-      <p class="footer">&copy; 2023 Tonny Zhao. All rights reserved.</p>
+      <p class="footer">{{ "FOOTER.COPYRIGHT" | translate }}</p>
     </footer>
   </div>
 </div>
