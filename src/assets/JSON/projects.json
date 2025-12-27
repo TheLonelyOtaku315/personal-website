@@ -4,7 +4,8 @@
     "description": "A new version of my personal website is in development, featuring a modern UI, improved accessibility, and enhanced performance. Stay tuned for updates!",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/personal-website",
-    "date": "2025-12-01T00:00:00.000Z",
+    "startDate": "2025-10",
+    "endDate": "",
     "technologies": ["Angular", "TypeScript", "Accessibility", "Performance Optimization"],
     "image": ""
   },
@@ -13,7 +14,8 @@
     "description": "Developed an autonomous hovercraft capable of navigating and solving mazes using sensor fusion. Implemented navigation algorithms using data from IMU (Inertial Measurement Unit), ultrasonic, and infrared sensors. Programmed in C for Arduino microcontroller with real-time obstacle detection and path planning.",
     "demoUrl": "https://youtube.com/shorts/oI3XUQ6Xa5w",
     "sourceUrl": "",
-    "date": "2025-11-01T00:00:00.000Z",
+    "startDate": "2025-09",
+    "endDate": "2025-11",
     "technologies": ["C", "Arduino", "Autonomous Navigation", "Embedded Systems"],
     "image": ""
   },
@@ -22,7 +24,8 @@
     "description": "Collaborative database design and implementation project for COMP353/COMP5531 Database Systems course. Developed normalized database schemas, implemented efficient SQL queries with joins and subqueries, and managed data integrity using MySQL. Worked in a team of 4 members to create comprehensive DDL/DML scripts and demonstrate database design principles.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/COMP353-Summer-2025/COMP353_project",
-    "date": "2025-07-18T00:00:00.000Z",
+    "startDate": "2025-06",
+    "endDate": "2025-07",
     "technologies": ["MySQL", "SQL", "Database Design", "DDL", "DML", "Normalization", "Team Collaboration", "Git"],
     "image": ""
   },
@@ -31,7 +34,8 @@
     "description": "Built a full-stack group messaging platform with role-based permissions and real-time communication. Developed modular UI components (chat log, channel sidebar, etc.) and integrated the Giphy API, LinkPreview API, Gemini API. Used Git and GitHub for version control and collaboration in an Agile team environment.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/Error-404-Project-W25/Error-404-SOEN341_Project_W25",
-    "date": "2025-04-01T00:00:00.000Z",
+    "startDate": "2025-01",
+    "endDate": "2025-04",
     "technologies": ["Angular", "Node.js", "MongoDB", "Git", "GitHub", "Giphy API", "LinkPreview API", "Gemini API"],
     "image": ""
   },
@@ -40,7 +44,8 @@
     "description": "Real-time 3D interactive application built in C++ using OpenGL. Features interactive camera controls, dynamic lighting with multiple moving light sources, textured 3D models, shadow mapping, particle effects, and post-processing effects including bloom and normal mapping. Developed in a team of 3 members using advanced graphics programming techniques and custom shader implementations.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/COMP-371-Project/COMP-371-Assignment",
-    "date": "2025-04-01T00:00:00.000Z",
+    "startDate": "2025-04",
+    "endDate": "2025-05",
     "technologies": ["C++", "OpenGL", "GLFW", "GLEW", "GLM", "Shaders", "3D Graphics", "Shadow Mapping", "CMake"],
     "image": ""
   },
@@ -49,7 +54,8 @@
     "description": "The ESP32-LED-Controller project lets you wirelessly control LEDs via Bluetooth with features like button inputs, custom commands, and a timer functionality for automation. Programmed using C++ with ESP32-Arduino framework.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/ESP32-LED-Controller",
-    "date": "2025-01-05T00:00:00.000Z",
+    "startDate": "2024-01",
+    "endDate": "2024-01",
     "technologies": ["ESP32", "C++", "Bluetooth", "Serial Communication", "Arduino"],
     "image": ""
   },
@@ -58,7 +64,8 @@
     "description": "Temperature Converter built in Visual Studio, allowing seamless conversion between Celsius, Fahrenheit, and Kelvin with a clean and intuitive GUI! Built using JavaFX with CSS styling for an enhanced user experience.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/TemperatureConverterVS",
-    "date": "2025-01-05T00:00:00.000Z",
+    "startDate": "2025-01",
+    "endDate": "2025-01",
     "technologies": ["Java", "JavaFX", "CSS", "Temperature Conversion"],
     "image": ""
   },
@@ -67,7 +74,8 @@
     "description": "Personal portfolio website built with Angular to showcase my projects, skills, and experience. Features responsive design, component-based architecture, and modern web development practices.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/personal-website",
-    "date": "2025-01-01T00:00:00.000Z",
+    "startDate": "2024-12",
+    "endDate": "2025-01",
     "technologies": ["Angular", "TypeScript", "CSS", "HTML"],
     "image": ""
   },
@@ -76,7 +84,8 @@
     "description": "Collection of LeetCode challenge solutions demonstrating algorithmic problem-solving skills and data structure implementations. Regular practice to improve coding efficiency and algorithm optimization.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/LeetCode",
-    "date": "2024-07-16T00:00:00.000Z",
+    "startDate": "2024-07",
+    "endDate": "",
     "technologies": ["Java", "Algorithms", "Data Structures", "Problem Solving"],
     "image": ""
   },
@@ -85,7 +94,8 @@
     "description": "Developed a k-nearest neighbor machine learning model for medical data classification (569 instances). Collaborated with a team and applied algorithmic optimization strategies.",
     "demoUrl": "",
     "sourceUrl": "",
-    "date": "2024-05-01T00:00:00.000Z",
+    "startDate": "2024-04",
+    "endDate": "2024-05",
     "technologies": ["Java", "Machine Learning", "Algorithm Optimization"],
     "image": ""
   },
@@ -94,7 +104,8 @@
     "description": "Simulated electric fields from point charges and interactive logic gate circuits with a drag-and-drop interface and real-time output. Developed the application using Java, JavaFX for UI, and CSS for styling. Used Git and GitHub for version control and collaboration in an Agile team environment.",
     "demoUrl": "",
     "sourceUrl": "",
-    "date": "2023-01-01T00:00:00.000Z",
+    "startDate": "2023-01",
+    "endDate": "2023-04",
     "technologies": ["Java", "JavaFX", "CSS", "Git", "GitHub"],
     "image": ""
   },
@@ -103,7 +114,8 @@
     "description": "Configured emulators, managed ROM libraries, and optimized system for retro gaming. Gained experience in Linux system setup, troubleshooting, and configuration.",
     "demoUrl": "",
     "sourceUrl": "",
-    "date": "2022-11-01T00:00:00.000Z",
+    "startDate": "2022-11",
+    "endDate": "2022-11",
     "technologies": ["Raspberry Pi", "Linux", "RetroPie"],
     "image": ""
   }

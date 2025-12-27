@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
+import { Project } from '../../models/shared-interfaces';
 
 @Component({
   selector: 'app-projects-section',
@@ -11,7 +12,7 @@ import { Input } from '@angular/core';
   styleUrl: './projects-section.component.css',
 })
 export class ProjectsSectionComponent {
-  @Input() projects: any[] = [];
+  @Input() projects: Project[] = [];
   hoveredIndex: number | null = null;
   visibleCount = 100;
 
@@ -35,15 +36,7 @@ export class ProjectsSectionComponent {
     }
   }
 
-  getProjectImage(project: {
-    title: string;
-    description: string;
-    demoUrl: string;
-    sourceUrl: string;
-    date: Date;
-    technologies: string[];
-    image: string;
-  }): string {
+  getProjectImage(project: Project): string {
     // 1) Explicit image set on the project
     if (project.image && project.image.trim()) return project.image;
 

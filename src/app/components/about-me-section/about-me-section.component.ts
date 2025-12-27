@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../service/theme.service';
 import { Input } from '@angular/core';
+import { TimelineEvent, Project } from '../../models/shared-interfaces';
 
 @Component({
   selector: 'app-about-me-section',
@@ -12,7 +13,8 @@ import { Input } from '@angular/core';
   imports: [CommonModule],
 })
 export class AboutMeSectionComponent implements OnInit, OnDestroy {
-  @Input() timeline: any[] = [];
+  @Input() timeline: TimelineEvent[] = [];
+  @Input() projects: Project[] = [];
   isDarkMode: boolean = false;
   private themeSubscription: Subscription = new Subscription();
 
