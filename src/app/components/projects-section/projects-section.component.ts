@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 import { Project } from '@models/shared-interfaces';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-projects-section',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './projects-section.component.html',
   styleUrl: './projects-section.component.css',
 })

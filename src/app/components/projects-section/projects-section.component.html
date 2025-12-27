@@ -1,12 +1,10 @@
 <div class="container">
   <div class="glass">
     <div class="title">
-      <h1 class="welcome-text">Projects</h1>
+      <h1 class="welcome-text">{{ "PROJECTS.TITLE" | translate }}</h1>
     </div>
     <p class="intro">
-      This section highlights some of the projects I have worked on, showcasing
-      my skills and experience in web development. Explore the projects below to
-      learn more about my work and the technologies I use.
+      {{ "PROJECTS.INTRO" | translate }}
     </p>
     <section class="projects-section">
       <div class="projects-grid">
@@ -29,7 +27,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="project-link"
-                >Live Demo</a
+                >{{ "PROJECTS.DEMO_LINK" | translate }}</a
               >
               <a
                 *ngIf="project.sourceUrl"
@@ -37,7 +35,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="project-link"
-                >Source Code</a
+                >{{ "PROJECTS.SOURCE_LINK" | translate }}</a
               >
             </div>
           </div>
