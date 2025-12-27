@@ -12,7 +12,9 @@
     "CONTACT": "Contact",
     "DARK": "Dark",
     "LIGHT": "Light",
-    "AUTO": "Browser"
+    "AUTO": "Browser",
+    "THEME": "Theme",
+    "LANGUAGE": "Language"
   },
   "WELCOME": {
     "GREETING": "Hi, welcome to Tonny's portfolio.",

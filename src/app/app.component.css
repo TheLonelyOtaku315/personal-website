@@ -25,10 +25,11 @@
   position: sticky;
   top: 0;
   align-self: flex-start;
+  z-index: 1000;
 }
 
 .webpage {
-  z-index: 1000;
+  z-index: 500;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
