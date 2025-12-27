@@ -4,13 +4,14 @@ import { Subscription } from 'rxjs';
 import { ThemeService } from '@services/theme.service';
 import { Input } from '@angular/core';
 import { TimelineEvent, Project } from '@models/shared-interfaces';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about-me-section',
   templateUrl: './about-me-section.component.html',
   styleUrls: ['./about-me-section.component.css'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
 })
 export class AboutMeSectionComponent implements OnInit, OnDestroy {
   @Input() timeline: TimelineEvent[] = [];

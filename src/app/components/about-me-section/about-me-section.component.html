@@ -5,16 +5,13 @@
 <div class="container">
   <div class="glass">
     <div class="title">
-      <h1 class="welcome-text">About Me</h1>
+      <h1 class="welcome-text">{{ 'ABOUT.TITLE' | translate }}</h1>
     </div>
     <p class="intro">
-      I am Tonny Zhao, a third-year student passionate about software
-      development, with a strong interest in front-end technologies like
-      Angular. I enjoy building responsive and user-friendly web applications
-      that create smooth user experiences.
+      {{ 'ABOUT.INTRO' | translate }}
     </p>
     <section class="skills-section">
-      <h3 class="skills-title title">My Skills</h3>
+      <h3 class="skills-title title">{{ 'ABOUT.SKILLS_TITLE' | translate }}</h3>
       <div class="skill-categories">
         <div class="skill-category" *ngFor="let section of skillSections">
           <h4 class="category-title">{{ section.title }}</h4>
@@ -42,7 +39,7 @@
       </div>
     </section>
     <section class="timeline-section">
-      <h3 class="timeline-title title">My Journey</h3>
+      <h3 class="timeline-title title">{{ 'ABOUT.JOURNEY_TITLE' | translate }}</h3>
       <div class="timeline">
         <ng-container *ngFor="let item of timeline; let i = index">
           <!-- For even indexes: content on left, empty on right -->
