@@ -12,9 +12,4 @@ module.exports = function (config) {
     },
   };
   config.singleRun = true;
-  config.set({
-    browsers: ["ChromeHeadless"],
-    customLaunchers: config.customLaunchers,
-    singleRun: true,
-  });
 };
