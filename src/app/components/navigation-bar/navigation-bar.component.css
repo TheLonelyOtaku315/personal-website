@@ -289,6 +289,7 @@
   }
 
   .sidebar {
+    display: none;
     margin: 16px 0 16px 16px;
     height: calc(100% - 32px);
     position: fixed;
@@ -300,6 +301,7 @@
   }
 
   .sidebar.mobile-open {
+    display: flex !important;
     transform: translateX(0) !important;
     opacity: 1 !important;
     pointer-events: all !important;
