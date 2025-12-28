@@ -350,3 +350,15 @@
     transform: translateX(-50%);
   }
 }
+@media screen and (max-width: 800px) {
+  .glass {
+    margin: 16px;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+  }
+  .timeline-middle {
+    display: none;
+  }
+}

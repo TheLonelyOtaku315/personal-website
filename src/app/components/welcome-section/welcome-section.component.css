@@ -95,3 +95,8 @@
     inset 0 0 0px 1px var(--error-color), inset 0 0 30px 2px var(--accent-color);
   transform: translateY(1px);
 }
+@media (max-width: 800px) {
+  .glass {
+    margin: 16px;
+  }
+}

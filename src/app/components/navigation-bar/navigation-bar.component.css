@@ -289,6 +289,8 @@
   }
 
   .sidebar {
+    margin: 16px 0 16px 16px;
+    height: calc(100% - 32px);
     position: fixed;
     opacity: 0;
     border-radius: 16px;
@@ -317,7 +319,7 @@
   }
 
   .card {
-    left: 290px !important;
+    left: 274px !important;
   }
   @keyframes fadeIn {
     from {

@@ -502,16 +502,9 @@ a.contact-value:hover {
   transform: translateY(0);
 }
 
-/* @media (max-width: 1000px) {
-  .contact-flex {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 700px) {
+  .contact-section {
+    max-width: calc(100% - 32px);
+    margin: 16px;
   }
-
-  .contact-info,
-  .contact-form-wrapper {
-    width: calc(100% - 32px);
-    padding: 16px;
-  }
-} */
+}
