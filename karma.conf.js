@@ -4,19 +4,17 @@ module.exports = function (config) {
     process.env.CI === "true" || process.env.GITHUB_ACTIONS === "true";
   const baseConfig = require("./node_modules/@angular-devkit/build-angular/plugins/karma");
   baseConfig(config);
-  if (isCI) {
-    config.browsers = ["ChromeHeadless"];
-    config.customLaunchers = {
-      ChromeHeadless: {
-        base: "ChromeHeadless",
-        flags: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
-      },
-    };
-    config.singleRun = true;
-    config.set({
-      browsers: ["ChromeHeadless"],
-      customLaunchers: config.customLaunchers,
-      singleRun: true,
-    });
-  }
+  config.browsers = ["ChromeHeadless"];
+  config.customLaunchers = {
+    ChromeHeadless: {
+      base: "ChromeHeadless",
+      flags: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
+    },
+  };
+  config.singleRun = true;
+  config.set({
+    browsers: ["ChromeHeadless"],
+    customLaunchers: config.customLaunchers,
+    singleRun: true,
+  });
 };
