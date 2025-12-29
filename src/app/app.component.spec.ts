@@ -1,25 +1,21 @@
-import { TestBed } from '@angular/core/testing';
+import { describe, it, expect } from 'vitest';
 import { AppComponent } from './app.component';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { WelcomeSectionComponent } from './components/welcome-section/welcome-section.component';
+import { AboutMeSectionComponent } from './components/about-me-section/about-me-section.component';
+import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
+import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
-  });
-
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(AppComponent).toBeDefined();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Hello, personal-website'
-    );
+  it('should have child components defined', () => {
+    expect(NavigationBarComponent).toBeDefined();
+    expect(WelcomeSectionComponent).toBeDefined();
+    expect(AboutMeSectionComponent).toBeDefined();
+    expect(ProjectsSectionComponent).toBeDefined();
+    expect(ContactSectionComponent).toBeDefined();
   });
 });

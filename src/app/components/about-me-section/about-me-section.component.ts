@@ -79,6 +79,7 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
           ['Jest', 'jest'],
           ['VS Code', 'vscode'],
           ['Node.js', 'nodejs'],
+          ['CI/CD', 'githubactions'],
         ],
       },
       {

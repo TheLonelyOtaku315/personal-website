@@ -134,8 +134,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.loadProjects(this.getCurrentLanguage());
     this.loadEvents(this.getCurrentLanguage());
-    console.log("projects:", this.projects);
-    console.log("timeline:", this.timeline);
     this.metaService.init();
   }
 }
