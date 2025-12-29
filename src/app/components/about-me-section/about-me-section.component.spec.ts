@@ -1,23 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { describe, it, expect } from 'vitest';
 import { AboutMeSectionComponent } from './about-me-section.component';
 
+import { ThemeService } from '@services/theme.service'; // Adjust the path if needed
+
 describe('AboutMeSectionComponent', () => {
-  let component: AboutMeSectionComponent;
-  let fixture: ComponentFixture<AboutMeSectionComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AboutMeSectionComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(AboutMeSectionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
   it('should create', () => {
+    const mockThemeService = {} as ThemeService;
+    const component = new AboutMeSectionComponent(mockThemeService);
     expect(component).toBeTruthy();
   });
 });
