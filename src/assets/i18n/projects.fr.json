@@ -1,5 +1,24 @@
 [
   {
+    "title": "Adaptateur clavier Bluetooth T4-S3",
+    "description": "Projet ESP32-S3 qui transforme la carte LilyGO T4-S3 AMOLED en adaptateur clavier USB vers Bluetooth. Achemine les entrées clavier USB vers la sortie Bluetooth HID, permettant aux claviers filaires de se connecter sans fil aux appareils. Doté d'un écran tactile AMOLED de 2,41\" avec interface LVGL et interface multi-onglets pour le contrôle des périphériques, le contrôle multimédia et les raccourcis d'applications.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/T4S3-BT-Keyboard",
+    "startDate": "2025-12",
+    "endDate": "",
+    "technologies": [
+      "ESP32-S3",
+      "C++",
+      "Bluetooth HID",
+      "Hôte USB",
+      "LVGL",
+      "Écran AMOLED",
+      "PlatformIO",
+      "Arduino"
+    ],
+    "image": ""
+  },
+  {
     "title": "À venir : Refonte du portfolio personnel",
     "description": "Une nouvelle version de mon site personnel est en développement, avec une interface moderne, une meilleure accessibilité et des performances accrues. Restez à l'écoute pour les mises à jour !",
     "demoUrl": "",
@@ -49,25 +68,6 @@
     "image": ""
   },
   {
-    "title": "ChatHaven",
-    "description": "Plateforme de messagerie de groupe full-stack avec permissions par rôle et communication en temps réel. Développement de composants UI modulaires (journal de chat, barre latérale de canaux, etc.) et intégration des API Giphy, LinkPreview, Gemini. Utilisation de Git et GitHub pour le contrôle de version et la collaboration en équipe Agile.",
-    "demoUrl": "",
-    "sourceUrl": "https://github.com/Error-404-Project-W25/Error-404-SOEN341_Project_W25",
-    "startDate": "2025-01",
-    "endDate": "2025-04",
-    "technologies": [
-      "Angular",
-      "Node.js",
-      "MongoDB",
-      "Git",
-      "GitHub",
-      "API Giphy",
-      "API LinkPreview",
-      "API Gemini"
-    ],
-    "image": ""
-  },
-  {
     "title": "COMP 371 - Projet de programmation graphique 3D",
     "description": "Application interactive 3D en temps réel développée en C++ avec OpenGL. Contrôles de caméra interactifs, éclairage dynamique avec sources multiples, modèles 3D texturés, ombrage, effets de particules et post-traitement (bloom, normal mapping). Développement en équipe de 3 avec techniques avancées et shaders personnalisés.",
     "demoUrl": "",
@@ -88,18 +88,21 @@
     "image": ""
   },
   {
-    "title": "Contrôleur LED ESP32",
-    "description": "Projet ESP32-LED-Controller permettant de contrôler des LED sans fil via Bluetooth, avec boutons, commandes personnalisées et minuterie pour l'automatisation. Programmation en C++ avec le framework ESP32-Arduino.",
+    "title": "ChatHaven",
+    "description": "Plateforme de messagerie de groupe full-stack avec permissions par rôle et communication en temps réel. Développement de composants UI modulaires (journal de chat, barre latérale de canaux, etc.) et intégration des API Giphy, LinkPreview, Gemini. Utilisation de Git et GitHub pour le contrôle de version et la collaboration en équipe Agile.",
     "demoUrl": "",
-    "sourceUrl": "https://github.com/TheLonelyOtaku315/ESP32-LED-Controller",
-    "startDate": "2024-01",
-    "endDate": "2024-01",
+    "sourceUrl": "https://github.com/Error-404-Project-W25/Error-404-SOEN341_Project_W25",
+    "startDate": "2025-01",
+    "endDate": "2025-04",
     "technologies": [
-      "ESP32",
-      "C++",
-      "Bluetooth",
-      "Communication série",
-      "Arduino"
+      "Angular",
+      "Node.js",
+      "MongoDB",
+      "Git",
+      "GitHub",
+      "API Giphy",
+      "API LinkPreview",
+      "API Gemini"
     ],
     "image": ""
   },
@@ -149,6 +152,22 @@
       "Java",
       "Apprentissage automatique",
       "Optimisation d'algorithme"
+    ],
+    "image": ""
+  },
+  {
+    "title": "Contrôleur LED ESP32",
+    "description": "Projet ESP32-LED-Controller permettant de contrôler des LED sans fil via Bluetooth, avec boutons, commandes personnalisées et minuterie pour l'automatisation. Programmation en C++ avec le framework ESP32-Arduino.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/ESP32-LED-Controller",
+    "startDate": "2024-01",
+    "endDate": "2024-01",
+    "technologies": [
+      "ESP32",
+      "C++",
+      "Bluetooth",
+      "Communication série",
+      "Arduino"
     ],
     "image": ""
   },
