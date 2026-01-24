@@ -31,7 +31,11 @@
     "TITLE": "Projets",
     "INTRO": "Cette section présente certains des projets sur lesquels j'ai travaillé, mettant en valeur mes compétences et mon expérience en développement web. Explorez les projets ci-dessous pour en savoir plus sur mon travail et les technologies que j'utilise.",
     "DEMO_LINK": "Démo",
-    "SOURCE_LINK": "Code source"
+    "SOURCE_LINK": "Code source",
+    "DESCRIPTION": "Description",
+    "TECHNOLOGIES": "Technologies",
+    "DATE": "Date",
+    "CLOSE": "Fermer"
   },
   "CONTACT": {
     "TITLE": "Contact",
