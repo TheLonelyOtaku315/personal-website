@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="dialog-content">
+    <img
+      *ngIf="data.image"
+      [src]="data.image"
+      [alt]="data.title"
+      class="dialog-image"
+    />
+
+    <div class="project-info">
+      <h3>{{ "PROJECTS.DESCRIPTION" | translate }}</h3>
+      <p>{{ data.description }}</p>
+
+      <h3 *ngIf="data.technologies && data.technologies.length > 0">
+        {{ "PROJECTS.TECHNOLOGIES" | translate }}
+      </h3>
+      <div class="technologies" *ngIf="data.technologies && data.technologies.length > 0">
+        <span class="tech-tag" *ngFor="let tech of data.technologies">{{
+          tech
+        }}</span>
+      </div>
+
+      <h3 *ngIf="data.date">{{ "PROJECTS.DATE" | translate }}</h3>
+      <p *ngIf="data.date">{{ data.date | date : "MMMM yyyy" }}</p>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    {{ "PROJECTS.CLOSE" | translate }}
+  </button>
+  <a
+    *ngIf="data.demoUrl"
+    mat-raised-button
+    [href]="data.demoUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    color="primary"
+  >
+    {{ "PROJECTS.DEMO_LINK" | translate }}
+  </a>
+  <a
+    *ngIf="data.sourceUrl"
+    mat-raised-button
+    [href]="data.sourceUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {{ "PROJECTS.SOURCE_LINK" | translate }}
+  </a>
+</mat-dialog-actions>
