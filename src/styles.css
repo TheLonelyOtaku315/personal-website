@@ -1,4 +1,5 @@
 @import url("../src/assets/theme.css");
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 html {
   scroll-behavior: smooth;
@@ -92,4 +93,37 @@ body::-webkit-scrollbar {
   --surface-color-rgb: 241, 245, 249;
   --accent-color-rgb: 99, 102, 241;
   --error-color-rgb: 239, 68, 68;
+}
+
+/* Angular Material Dialog Custom Styling */
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: var(--surface-color);
+  --mdc-dialog-supporting-text-color: var(--text-color);
+  backdrop-filter: blur(10px);
+  background: rgba(var(--surface-color-rgb), 0.95) !important;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+}
+
+.mat-mdc-dialog-title {
+  color: var(--accent-color) !important;
+  font-weight: 700;
+}
+
+.mat-mdc-dialog-content {
+  color: var(--text-color);
+}
+
+.mat-mdc-dialog-actions button {
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.mat-mdc-dialog-actions .mat-mdc-raised-button {
+  background-color: rgba(var(--accent-color-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
+}
+
+.mat-mdc-dialog-actions .mat-mdc-raised-button:hover {
+  background-color: rgba(var(--accent-color-rgb), 0.2);
 }
