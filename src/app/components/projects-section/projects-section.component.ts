@@ -2,15 +2,18 @@ import { Component, HostListener, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ProjectDialogComponent } from './project-dialog/project-dialog.component';
 
 @Component({
   selector: 'app-projects-section',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, MatDialogModule],
   templateUrl: './projects-section.component.html',
   styleUrl: './projects-section.component.css',
 })
 export class ProjectsSectionComponent {
+  constructor(public dialog: MatDialog) {}
   @Input() projects: Project[] = [];
   hoveredIndex: number | null = null;
   visibleCount = 100;
@@ -35,6 +38,15 @@ export class ProjectsSectionComponent {
     }
   }
 
+  openProjectDialog(project: Project): void {
+    this.dialog.open(ProjectDialogComponent, {
+      data: project,
+      width: '700px',
+      maxWidth: '95vw',
+      maxHeight: '90vh',
+    });
+  }
+
   getProjectImage(project: Project): string {
     // 1) Explicit image set on the project
     if (project.image && project.image.trim()) return project.image;
@@ -45,7 +57,7 @@ export class ProjectsSectionComponent {
 
       // detect YouTube video id (handles youtube.com/watch?v=, youtu.be/, embed/)
       const ytMatch = demo.match(
-        /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/i
+        /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/i,
       );
       if (ytMatch && ytMatch[1]) {
         // use maxresdefault (may 404 for some videos) — falls back in-browser
@@ -64,7 +76,7 @@ export class ProjectsSectionComponent {
     // 3) If project has a GitHub repo URL, prefer the repository Open Graph image
     if (project.sourceUrl && project.sourceUrl.includes('github.com')) {
       const m = project.sourceUrl.match(
-        /github\.com\/([^\/]+)\/([^\/]+)(?:\/|$)/i
+        /github\.com\/([^\/]+)\/([^\/]+)(?:\/|$)/i,
       );
       if (m && m[1] && m[2]) {
         const owner = m[1];

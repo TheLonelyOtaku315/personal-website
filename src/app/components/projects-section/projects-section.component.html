@@ -8,7 +8,11 @@
     </p>
     <section class="projects-section">
       <div class="projects-grid">
-        <div class="project-card" *ngFor="let project of projects">
+        <div
+          class="project-card"
+          *ngFor="let project of projects"
+          (click)="openProjectDialog(project)"
+        >
           <img
             [src]="getProjectImage(project)"
             [alt]="project.title + ' screenshot'"
@@ -16,7 +20,6 @@
           />
           <div class="project-content">
             <h3 class="project-title">{{ project.title }}</h3>
-            <!-- <p class="project-description">{{ project.description }}</p> -->
             <div
               class="project-links"
               *ngIf="project.demoUrl || project.sourceUrl"
@@ -27,6 +30,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="project-link"
+                (click)="$event.stopPropagation()"
                 >{{ "PROJECTS.DEMO_LINK" | translate }}</a
               >
               <a
@@ -35,6 +39,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="project-link"
+                (click)="$event.stopPropagation()"
                 >{{ "PROJECTS.SOURCE_LINK" | translate }}</a
               >
             </div>
