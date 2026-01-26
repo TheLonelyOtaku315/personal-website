@@ -1,12 +1,36 @@
 [
   {
+    "title": "T4-S3 Bluetooth Keyboard Bridge",
+    "description": "ESP32-S3 project that transforms the LilyGO T4-S3 AMOLED board into a USB to Bluetooth keyboard adapter. Bridges USB keyboard input to Bluetooth HID output, allowing wired keyboards to connect wirelessly to devices. Features a 2.41\" AMOLED touchscreen with LVGL UI framework and multi-tab interface for device control, media control, and app shortcuts.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/T4S3-BT-Keyboard",
+    "startDate": "2025-12",
+    "endDate": "",
+    "technologies": [
+      "ESP32-S3",
+      "C++",
+      "Bluetooth HID",
+      "USB Host",
+      "LVGL",
+      "AMOLED Display",
+      "PlatformIO",
+      "Arduino"
+    ],
+    "image": ""
+  },
+  {
     "title": "Upcoming: Personal Portfolio Redesign",
     "description": "A new version of my personal website is in development, featuring a modern UI, improved accessibility, and enhanced performance. Stay tuned for updates!",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/personal-website",
     "startDate": "2025-10",
     "endDate": "",
-    "technologies": ["Angular", "TypeScript", "Accessibility", "Performance Optimization"],
+    "technologies": [
+      "Angular",
+      "TypeScript",
+      "Accessibility",
+      "Performance Optimization"
+    ],
     "image": ""
   },
   {
@@ -16,7 +40,12 @@
     "sourceUrl": "",
     "startDate": "2025-09",
     "endDate": "2025-11",
-    "technologies": ["C", "Arduino", "Autonomous Navigation", "Embedded Systems"],
+    "technologies": [
+      "C",
+      "Arduino",
+      "Autonomous Navigation",
+      "Embedded Systems"
+    ],
     "image": ""
   },
   {
@@ -26,17 +55,16 @@
     "sourceUrl": "https://github.com/COMP353-Summer-2025/COMP353_project",
     "startDate": "2025-06",
     "endDate": "2025-07",
-    "technologies": ["MySQL", "SQL", "Database Design", "DDL", "DML", "Normalization", "Team Collaboration", "Git"],
-    "image": ""
-  },
-  {
-    "title": "ChatHaven",
-    "description": "Built a full-stack group messaging platform with role-based permissions and real-time communication. Developed modular UI components (chat log, channel sidebar, etc.) and integrated the Giphy API, LinkPreview API, Gemini API. Used Git and GitHub for version control and collaboration in an Agile team environment.",
-    "demoUrl": "",
-    "sourceUrl": "https://github.com/Error-404-Project-W25/Error-404-SOEN341_Project_W25",
-    "startDate": "2025-01",
-    "endDate": "2025-04",
-    "technologies": ["Angular", "Node.js", "MongoDB", "Git", "GitHub", "Giphy API", "LinkPreview API", "Gemini API"],
+    "technologies": [
+      "MySQL",
+      "SQL",
+      "Database Design",
+      "DDL",
+      "DML",
+      "Normalization",
+      "Team Collaboration",
+      "Git"
+    ],
     "image": ""
   },
   {
@@ -46,17 +74,36 @@
     "sourceUrl": "https://github.com/COMP-371-Project/COMP-371-Assignment",
     "startDate": "2025-04",
     "endDate": "2025-05",
-    "technologies": ["C++", "OpenGL", "GLFW", "GLEW", "GLM", "Shaders", "3D Graphics", "Shadow Mapping", "CMake"],
+    "technologies": [
+      "C++",
+      "OpenGL",
+      "GLFW",
+      "GLEW",
+      "GLM",
+      "Shaders",
+      "3D Graphics",
+      "Shadow Mapping",
+      "CMake"
+    ],
     "image": ""
   },
   {
-    "title": "ESP32 LED Controller",
-    "description": "The ESP32-LED-Controller project lets you wirelessly control LEDs via Bluetooth with features like button inputs, custom commands, and a timer functionality for automation. Programmed using C++ with ESP32-Arduino framework.",
+    "title": "ChatHaven",
+    "description": "Built a full-stack group messaging platform with role-based permissions and real-time communication. Developed modular UI components (chat log, channel sidebar, etc.) and integrated the Giphy API, LinkPreview API, Gemini API. Used Git and GitHub for version control and collaboration in an Agile team environment.",
     "demoUrl": "",
-    "sourceUrl": "https://github.com/TheLonelyOtaku315/ESP32-LED-Controller",
-    "startDate": "2024-01",
-    "endDate": "2024-01",
-    "technologies": ["ESP32", "C++", "Bluetooth", "Serial Communication", "Arduino"],
+    "sourceUrl": "https://github.com/Error-404-Project-W25/Error-404-SOEN341_Project_W25",
+    "startDate": "2025-01",
+    "endDate": "2025-04",
+    "technologies": [
+      "Angular",
+      "Node.js",
+      "MongoDB",
+      "Git",
+      "GitHub",
+      "Giphy API",
+      "LinkPreview API",
+      "Gemini API"
+    ],
     "image": ""
   },
   {
@@ -86,7 +133,12 @@
     "sourceUrl": "https://github.com/TheLonelyOtaku315/LeetCode",
     "startDate": "2024-07",
     "endDate": "",
-    "technologies": ["Java", "Algorithms", "Data Structures", "Problem Solving"],
+    "technologies": [
+      "Java",
+      "Algorithms",
+      "Data Structures",
+      "Problem Solving"
+    ],
     "image": ""
   },
   {
@@ -97,6 +149,22 @@
     "startDate": "2024-04",
     "endDate": "2024-05",
     "technologies": ["Java", "Machine Learning", "Algorithm Optimization"],
+    "image": ""
+  },
+  {
+    "title": "ESP32 LED Controller",
+    "description": "The ESP32-LED-Controller project lets you wirelessly control LEDs via Bluetooth with features like button inputs, custom commands, and a timer functionality for automation. Programmed using C++ with ESP32-Arduino framework.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/ESP32-LED-Controller",
+    "startDate": "2024-01",
+    "endDate": "2024-01",
+    "technologies": [
+      "ESP32",
+      "C++",
+      "Bluetooth",
+      "Serial Communication",
+      "Arduino"
+    ],
     "image": ""
   },
   {
