@@ -8,9 +8,10 @@ export interface TimelineEvent {
 export interface Project {
   title: string;
   description: string;
-  demoUrl: string;
-  sourceUrl: string;
-  date: Date;
   technologies: string[];
-  image: string;
+  startDate: Date | string;
+  endDate?: Date | string | null;
+  image?: string;
+  demoUrl?: string;
+  sourceUrl?: string;
 }

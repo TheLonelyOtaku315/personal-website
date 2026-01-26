@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
     private themeService: ThemeService,
     private metaService: MetaService,
     private translate: TranslateService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     this.themeService.isDarkMode$.subscribe((isDark) => {
       this.isDarkmode = isDark;
@@ -80,7 +80,9 @@ export class AppComponent implements OnInit {
           description: p.description,
           demoUrl: p.demoUrl || '',
           sourceUrl: p.sourceUrl || '',
-          date: new Date(p.date),
+          startDate: p.startDate ? new Date(p.startDate) : new Date(0),
+          endDate: p.endDate ? new Date(p.endDate) : new Date(0),
+          date: p.date ? new Date(p.date) : new Date(0),
           technologies: p.technologies || [],
           image: p.image || '',
         }));
@@ -106,7 +108,7 @@ export class AppComponent implements OnInit {
       error: (error) => {
         console.error(
           `Error loading timeline events for language ${lang}:`,
-          error
+          error,
         );
         // Fallback to English if the language file doesn't exist
         if (lang !== 'en') {

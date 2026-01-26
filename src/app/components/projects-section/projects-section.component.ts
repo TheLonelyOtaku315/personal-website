@@ -41,8 +41,10 @@ export class ProjectsSectionComponent {
   openProjectDialog(project: Project): void {
     this.dialog.open(ProjectDialogComponent, {
       data: project,
-      width: '700px',
-      maxWidth: '95vw',
+      minWidth: '300px',
+      width: '75%',
+      height: 'fit-content',
+      maxWidth: '800px',
       maxHeight: '90vh',
     });
   }
@@ -88,7 +90,10 @@ export class ProjectsSectionComponent {
 
     // 4) Fallback placeholder
     // Return a "404 no image" with glitchy animation (animated SVG)
-    const svg = `<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg"><style><![CDATA[@keyframes glitch{0%{transform:translate(0,0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0,0)}}.glitch{font-family:monospace;font-size:48px;fill:#fff;stroke:#f00;stroke-width:2;animation:glitch 0.7s infinite alternate;}]]></style><rect width="800" height="450" fill="#222"/><text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="glitch">404 NO IMAGE</text></svg>`;
+    const svg = `<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg"><style><![CDATA[
+      @keyframes glitch{0%{transform:translate(0,0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0,0)}}
+      .glitch{font-family:monospace;font-size:48px;fill:#fff;stroke:#f00;stroke-width:2;animation:glitch 0.7s infinite alternate;}
+    ]]></style><text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="glitch">404 NO IMAGE</text></svg>`;
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
   }
 }
