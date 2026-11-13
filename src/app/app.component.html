@@ -26,7 +26,13 @@
       <app-contact-section></app-contact-section>
     </section>
     <footer>
-      <p class="footer">{{ "FOOTER.COPYRIGHT" | translate }}</p>
+      <p class="footer">
+        {{ "FOOTER.COPYRIGHT" | translate: { year: currentYear } }}
+        <span aria-hidden="true">·</span>
+        <app-privacy-policy-link
+          [label]="'FOOTER.PRIVACY' | translate"
+        ></app-privacy-policy-link>
+      </p>
     </footer>
   </div>
 </div>

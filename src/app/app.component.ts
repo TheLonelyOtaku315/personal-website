@@ -8,6 +8,7 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { AboutMeSectionComponent } from './components/about-me-section/about-me-section.component';
 import { ContactSectionComponent } from './components/contact-section/contact-section.component';
 import { ProjectsSectionComponent } from './components/projects-section/projects-section.component';
+import { PrivacyPolicyLinkComponent } from './components/privacy-policy/privacy-policy-link.component';
 
 import { ThemeService } from '@services/theme.service';
 import { MetaService } from '@services/meta.service';
@@ -25,6 +26,7 @@ import { TimelineEvent, Project } from '@models/shared-interfaces';
     ContactSectionComponent,
     ProjectsSectionComponent,
     WelcomeSectionComponent,
+    PrivacyPolicyLinkComponent,
     TranslateModule,
   ],
 })
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit {
 
   isDarkmode = false;
   showContent = true;
+  currentYear = new Date().getFullYear();
 
   constructor(
     private themeService: ThemeService,

@@ -4,10 +4,16 @@ import { CommonModule } from '@angular/common';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
 import { TranslateModule } from '@ngx-translate/core';
+import { PrivacyPolicyLinkComponent } from '../privacy-policy/privacy-policy-link.component';
 
 @Component({
   selector: 'app-contact-section',
-  imports: [FormsModule, CommonModule, TranslateModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    TranslateModule,
+    PrivacyPolicyLinkComponent,
+  ],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css',
 })
@@ -16,8 +22,11 @@ export class ContactSectionComponent {
     name: '',
     email: '',
     message: '',
+    // Québec Law 25: explicit consent before collecting personal information
+    consent: false,
   };
 
+  // Messages and errors are translation keys, translated in the template
   validationErrors: string[] = [];
   showValidationErrors = false;
   isSubmitting = false;
@@ -43,33 +52,25 @@ export class ContactSectionComponent {
   private readonly EMAILJS_SERVICE_ID = 'service_95ocjv8';
   private readonly EMAILJS_TEMPLATE_ID = 'template_um9kxih';
 
-  downloadResume() {
-    // Use the full GitHub Pages URL for reliable download
-    const link = document.createElement('a');
-    link.href =
-      'https://thelonelyotaku315.github.io/personal-website/assets/doc/Tonny-Zhao-Resume-CV.pdf';
-    link.download = 'Tonny-Zhao-Resume-CV.pdf';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
   validateForm(): boolean {
     this.validationErrors = [];
 
     if (!this.formData.name.trim()) {
-      this.validationErrors.push('Name is required');
+      this.validationErrors.push('CONTACT.VALIDATION.NAME_REQUIRED');
     }
 
     if (!this.formData.email.trim()) {
-      this.validationErrors.push('Email is required');
+      this.validationErrors.push('CONTACT.VALIDATION.EMAIL_REQUIRED');
     } else if (!this.isValidEmail(this.formData.email)) {
-      this.validationErrors.push('Please enter a valid email address');
+      this.validationErrors.push('CONTACT.VALIDATION.EMAIL_INVALID');
     }
 
     if (!this.formData.message.trim()) {
-      this.validationErrors.push('Message is required');
+      this.validationErrors.push('CONTACT.VALIDATION.MESSAGE_REQUIRED');
+    }
+
+    if (!this.formData.consent) {
+      this.validationErrors.push('CONTACT.VALIDATION.CONSENT_REQUIRED');
     }
 
     return this.validationErrors.length === 0;
@@ -89,8 +90,9 @@ export class ContactSectionComponent {
       this.sendNotification();
     } else {
       // Show validation errors as notification
+      this.showValidationErrors = true;
       this.addNotification(
-        'Please fix the following errors',
+        'CONTACT.VALIDATION.TITLE',
         'validation',
         this.validationErrors
       );
@@ -110,25 +112,17 @@ export class ContactSectionComponent {
       };
 
       // Send email using EmailJS
-      const response = await emailjs.send(
+      await emailjs.send(
         this.EMAILJS_SERVICE_ID,
         this.EMAILJS_TEMPLATE_ID,
         templateParams
       );
 
-      console.log('Email sent successfully:', response);
-
-      this.addNotification(
-        "Thank you! Your message has been sent successfully. I'll get back to you soon.",
-        'success'
-      );
+      this.addNotification('CONTACT.NOTIFY.SUCCESS', 'success');
       this.resetForm();
     } catch (error) {
       console.error('Error sending notification:', error);
-      this.addNotification(
-        'Sorry, there was an error sending your message. Please try again or contact me directly via email at zhaotonny315@gmail.com.',
-        'error'
-      );
+      this.addNotification('CONTACT.NOTIFY.ERROR', 'error');
     } finally {
       this.isSubmitting = false;
     }
@@ -139,6 +133,7 @@ export class ContactSectionComponent {
       name: '',
       email: '',
       message: '',
+      consent: false,
     };
     this.showValidationErrors = false;
   }

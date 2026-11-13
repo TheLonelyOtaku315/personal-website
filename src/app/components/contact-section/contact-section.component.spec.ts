@@ -37,6 +37,7 @@ describe('ContactSectionComponent', () => {
         name: 'John Doe',
         email: 'john@example.com',
         message: 'Hello!',
+        consent: true,
       };
       expect(component.validateForm()).toBe(true);
       expect(component.validationErrors).toEqual([]);
@@ -47,9 +48,10 @@ describe('ContactSectionComponent', () => {
         name: '',
         email: 'john@example.com',
         message: 'Hello!',
+        consent: true,
       };
       expect(component.validateForm()).toBe(false);
-      expect(component.validationErrors).toContain('Name is required');
+      expect(component.validationErrors).toContain('CONTACT.VALIDATION.NAME_REQUIRED');
     });
 
     it('should return false and set errors for invalid email', () => {
@@ -57,10 +59,11 @@ describe('ContactSectionComponent', () => {
         name: 'John Doe',
         email: 'invalid-email',
         message: 'Hello!',
+        consent: true,
       };
       expect(component.validateForm()).toBe(false);
       expect(component.validationErrors).toContain(
-        'Please enter a valid email address'
+        'CONTACT.VALIDATION.EMAIL_INVALID'
       );
     });
 
@@ -69,10 +72,24 @@ describe('ContactSectionComponent', () => {
         name: 'John Doe',
         email: 'john@example.com',
         message: '',
+        consent: true,
       };
       expect(component.validateForm()).toBe(false);
-      expect(component.validationErrors).toContain('Message is required');
+      expect(component.validationErrors).toContain('CONTACT.VALIDATION.MESSAGE_REQUIRED');
     });
+  });
+
+  it('should require consent to the privacy policy', () => {
+    component.formData = {
+      name: 'John Doe',
+      email: 'john@example.com',
+      message: 'Hello!',
+      consent: false,
+    };
+    expect(component.validateForm()).toBe(false);
+    expect(component.validationErrors).toEqual([
+      'CONTACT.VALIDATION.CONSENT_REQUIRED',
+    ]);
   });
 
   describe('isValidEmail', () => {
@@ -93,6 +110,7 @@ describe('ContactSectionComponent', () => {
         name: 'John Doe',
         email: 'john@example.com',
         message: 'Hello!',
+        consent: true,
       };
       const sendNotificationSpy = vi.spyOn(component, 'sendNotification');
       component.onSubmit(event);
@@ -102,12 +120,12 @@ describe('ContactSectionComponent', () => {
 
     it('should add validation notification if form is invalid', () => {
       const event = { preventDefault: vi.fn() } as any;
-      component.formData = { name: '', email: '', message: '' };
+      component.formData = { name: '', email: '', message: '', consent: false };
       const addNotificationSpy = vi.spyOn(component, 'addNotification');
       component.onSubmit(event);
       expect(event.preventDefault).toHaveBeenCalled();
       expect(addNotificationSpy).toHaveBeenCalledWith(
-        'Please fix the following errors',
+        'CONTACT.VALIDATION.TITLE',
         'validation',
         expect.any(Array)
       );
@@ -125,6 +143,7 @@ describe('ContactSectionComponent', () => {
         name: 'John Doe',
         email: 'john@example.com',
         message: 'Hello!',
+        consent: true,
       };
 
       await component.sendNotification();
@@ -140,7 +159,7 @@ describe('ContactSectionComponent', () => {
         }
       );
       expect(addNotificationSpy).toHaveBeenCalledWith(
-        "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+        'CONTACT.NOTIFY.SUCCESS',
         'success'
       );
       expect(resetFormSpy).toHaveBeenCalled();
@@ -154,7 +173,7 @@ describe('ContactSectionComponent', () => {
       await component.sendNotification();
 
       expect(addNotificationSpy).toHaveBeenCalledWith(
-        'Sorry, there was an error sending your message. Please try again or contact me directly via email at zhaotonny315@gmail.com.',
+        'CONTACT.NOTIFY.ERROR',
         'error'
       );
       expect(component.isSubmitting).toBe(false);
@@ -167,6 +186,7 @@ describe('ContactSectionComponent', () => {
         name: 'John',
         email: 'john@example.com',
         message: 'Test',
+        consent: true,
       };
       component.showValidationErrors = true;
       component.resetForm();
@@ -174,6 +194,7 @@ describe('ContactSectionComponent', () => {
         name: '',
         email: '',
         message: '',
+        consent: false,
       });
       expect(component.showValidationErrors).toBe(false);
     });
@@ -200,30 +221,6 @@ describe('ContactSectionComponent', () => {
       vi.advanceTimersByTime(300);
       expect(component.notifications.length).toBe(0);
       vi.useRealTimers();
-    });
-  });
-
-  describe('downloadResume', () => {
-    it('should create and click a download link', () => {
-      const createElementSpy = vi.spyOn(document, 'createElement');
-      const appendChildSpy = vi.spyOn(document.body, 'appendChild');
-      const removeChildSpy = vi.spyOn(document.body, 'removeChild');
-
-      const mockLink = document.createElement('a');
-      const clickSpy = vi.spyOn(mockLink, 'click');
-      createElementSpy.mockReturnValue(mockLink);
-
-      component.downloadResume();
-
-      expect(createElementSpy).toHaveBeenCalledWith('a');
-      expect(mockLink.href).toBe(
-        'https://thelonelyotaku315.github.io/personal-website/assets/doc/Tonny-Zhao-Resume-CV.pdf'
-      );
-      expect(mockLink.download).toBe('Tonny-Zhao-Resume-CV.pdf');
-      expect(mockLink.target).toBe('_blank');
-      expect(appendChildSpy).toHaveBeenCalledWith(mockLink);
-      expect(clickSpy).toHaveBeenCalled();
-      expect(removeChildSpy).toHaveBeenCalledWith(mockLink);
     });
   });
 

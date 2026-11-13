@@ -4,7 +4,11 @@
     "DESCRIPTION": "Portfolio of Tonny Zhao, computer engineering student at Concordia University: projects, skills and contact information."
   },
   "FOOTER": {
-    "COPYRIGHT": "© 2023 Tonny Zhao. All rights reserved."
+    "COPYRIGHT": "© 2023–{{year}} Tonny Zhao. All rights reserved.",
+    "PRIVACY": "Privacy policy"
+  },
+  "COMMON": {
+    "CLOSE": "Close"
   },
   "NAV": {
     "HOME": "Home",
@@ -41,7 +45,7 @@
   },
   "CONTACT": {
     "TITLE": "Contact",
-    "DESCRIPTION": "Get in touch with me through any of the channels below or send me a message directly. Just provide your name and message!",
+    "DESCRIPTION": "Get in touch with me through any of the channels below or send me a message directly. Just provide your name, email and message!",
     "NAME_LABEL": "Name:",
     "EMAIL_LABEL": "Email:",
     "PHONE_LABEL": "Phone:",
@@ -51,8 +55,55 @@
       "NAME": "Name",
       "EMAIL": "Email",
       "MESSAGE": "Message",
+      "CONSENT": "I agree that my name, email and message will be used only to reply to me, as described in the",
       "SEND_BUTTON": "Send Message",
       "SENDING": "Sending..."
+    },
+    "VALIDATION": {
+      "TITLE": "Please fix the following errors",
+      "NAME_REQUIRED": "Name is required",
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Please enter a valid email address",
+      "MESSAGE_REQUIRED": "Message is required",
+      "CONSENT_REQUIRED": "Please accept the privacy policy to send your message"
+    },
+    "NOTIFY": {
+      "SUCCESS": "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+      "ERROR": "Sorry, there was an error sending your message. Please try again or contact me directly via email at zhaotonny315@gmail.com."
     }
+  },
+  "PRIVACY": {
+    "TITLE": "Privacy policy",
+    "UPDATED": "Last updated: October 20, 2026",
+    "SECTIONS": [
+      {
+        "HEADING": "Who is responsible",
+        "BODY": "This website is run by Tonny Zhao, who is also the person in charge of protecting personal information. For any question or request, write to zhaotonny315@gmail.com."
+      },
+      {
+        "HEADING": "What is collected and why",
+        "BODY": "The only personal information collected is what you enter in the contact form: your name, email address and message. It is used only to read and answer your message. It is not sold, shared for marketing, or used to build a profile about you."
+      },
+      {
+        "HEADING": "How your message is sent",
+        "BODY": "The contact form uses EmailJS, an email delivery service, to forward your message to my inbox. Your information may therefore be processed outside Québec, including in the United States, under that provider's security measures."
+      },
+      {
+        "HEADING": "How long it is kept",
+        "BODY": "Your message is kept in my email only for as long as needed to answer you and follow up, and is deleted afterwards or sooner if you ask."
+      },
+      {
+        "HEADING": "Cookies and preferences",
+        "BODY": "This website uses no cookies, analytics or advertising trackers. Your theme and language choices are saved only in your own browser (local storage) so they are remembered on your next visit. You can clear them at any time in your browser settings."
+      },
+      {
+        "HEADING": "Third-party content",
+        "BODY": "To display fonts, icons and project previews, your browser loads files from Google Fonts, jsDelivr, YouTube, WordPress.com and GitHub. These providers may receive technical data such as your IP address, under their own privacy policies."
+      },
+      {
+        "HEADING": "Your rights",
+        "BODY": "You can ask to access, correct or delete your personal information, or withdraw your consent, at any time by writing to zhaotonny315@gmail.com. You may also file a complaint with the Commission d'accès à l'information du Québec."
+      }
+    ]
   }
 }

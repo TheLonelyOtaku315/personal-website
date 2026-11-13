@@ -4,7 +4,11 @@
     "DESCRIPTION": "Portfolio de Tonny Zhao, étudiant en génie informatique à l'Université Concordia : projets, compétences et coordonnées."
   },
   "FOOTER": {
-    "COPYRIGHT": "© 2023 Tonny Zhao. Tous droits réservés."
+    "COPYRIGHT": "© 2023–{{year}} Tonny Zhao. Tous droits réservés.",
+    "PRIVACY": "Politique de confidentialité"
+  },
+  "COMMON": {
+    "CLOSE": "Fermer"
   },
   "NAV": {
     "HOME": "Accueil",
@@ -41,18 +45,65 @@
   },
   "CONTACT": {
     "TITLE": "Contact",
-    "DESCRIPTION": "Contactez-moi par l'un des canaux ci-dessous ou envoyez-moi un message directement. Il suffit de fournir votre nom et votre message!",
-    "NAME_LABEL": "Nom:",
-    "EMAIL_LABEL": "Courriel:",
-    "PHONE_LABEL": "Téléphone:",
-    "LINKEDIN_LABEL": "LinkedIn:",
-    "GITHUB_LABEL": "GitHub:",
+    "DESCRIPTION": "Contactez-moi par l'un des canaux ci-dessous ou envoyez-moi un message directement. Il suffit d'indiquer votre nom, votre courriel et votre message!",
+    "NAME_LABEL": "Nom :",
+    "EMAIL_LABEL": "Courriel :",
+    "PHONE_LABEL": "Téléphone :",
+    "LINKEDIN_LABEL": "LinkedIn :",
+    "GITHUB_LABEL": "GitHub :",
     "FORM": {
       "NAME": "Nom",
       "EMAIL": "Courriel",
       "MESSAGE": "Message",
+      "CONSENT": "J'accepte que mon nom, mon courriel et mon message servent uniquement à me répondre, comme le décrit la",
       "SEND_BUTTON": "Envoyer le message",
       "SENDING": "Envoi en cours..."
+    },
+    "VALIDATION": {
+      "TITLE": "Veuillez corriger les erreurs suivantes",
+      "NAME_REQUIRED": "Le nom est obligatoire",
+      "EMAIL_REQUIRED": "Le courriel est obligatoire",
+      "EMAIL_INVALID": "Veuillez entrer une adresse courriel valide",
+      "MESSAGE_REQUIRED": "Le message est obligatoire",
+      "CONSENT_REQUIRED": "Veuillez accepter la politique de confidentialité pour envoyer votre message"
+    },
+    "NOTIFY": {
+      "SUCCESS": "Merci! Votre message a bien été envoyé. Je vous répondrai bientôt.",
+      "ERROR": "Désolé, une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer ou m'écrire directement à zhaotonny315@gmail.com."
     }
+  },
+  "PRIVACY": {
+    "TITLE": "Politique de confidentialité",
+    "UPDATED": "Dernière mise à jour : 20 octobre 2026",
+    "SECTIONS": [
+      {
+        "HEADING": "Responsable",
+        "BODY": "Ce site est exploité par Tonny Zhao, qui est aussi la personne responsable de la protection des renseignements personnels. Pour toute question ou demande, écrivez à zhaotonny315@gmail.com."
+      },
+      {
+        "HEADING": "Renseignements recueillis et fins",
+        "BODY": "Les seuls renseignements personnels recueillis sont ceux que vous entrez dans le formulaire de contact : votre nom, votre adresse courriel et votre message. Ils servent uniquement à lire votre message et à y répondre. Ils ne sont ni vendus, ni communiqués à des fins de marketing, ni utilisés pour établir un profil à votre sujet."
+      },
+      {
+        "HEADING": "Transmission de votre message",
+        "BODY": "Le formulaire de contact utilise EmailJS, un service d'envoi de courriels, pour transmettre votre message à ma boîte de réception. Vos renseignements peuvent donc être traités à l'extérieur du Québec, notamment aux États-Unis, selon les mesures de sécurité de ce fournisseur."
+      },
+      {
+        "HEADING": "Durée de conservation",
+        "BODY": "Votre message est conservé dans ma boîte courriel seulement le temps nécessaire pour vous répondre et assurer le suivi, puis il est supprimé, ou plus tôt si vous le demandez."
+      },
+      {
+        "HEADING": "Témoins et préférences",
+        "BODY": "Ce site n'utilise aucun témoin (cookie), outil d'analyse ou traceur publicitaire. Vos choix de thème et de langue sont enregistrés uniquement dans votre propre navigateur (stockage local) pour être conservés lors de votre prochaine visite. Vous pouvez les effacer en tout temps dans les paramètres de votre navigateur."
+      },
+      {
+        "HEADING": "Contenu de tiers",
+        "BODY": "Pour afficher les polices, les icônes et les aperçus de projets, votre navigateur charge des fichiers provenant de Google Fonts, jsDelivr, YouTube, WordPress.com et GitHub. Ces fournisseurs peuvent recevoir des données techniques, comme votre adresse IP, selon leurs propres politiques de confidentialité."
+      },
+      {
+        "HEADING": "Vos droits",
+        "BODY": "Vous pouvez demander en tout temps l'accès à vos renseignements personnels, leur rectification ou leur suppression, ou retirer votre consentement, en écrivant à zhaotonny315@gmail.com. Vous pouvez aussi déposer une plainte auprès de la Commission d'accès à l'information du Québec."
+      }
+    ]
   }
 }

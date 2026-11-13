@@ -127,6 +127,27 @@
           required
         ></textarea>
 
+        <div
+          class="consent"
+          [class.error]="showValidationErrors && !formData.consent"
+        >
+          <input
+            id="consent"
+            name="consent"
+            type="checkbox"
+            [(ngModel)]="formData.consent"
+            [disabled]="isSubmitting"
+            required
+          />
+          <label for="consent">
+            {{ "CONTACT.FORM.CONSENT" | translate }}
+            <app-privacy-policy-link
+              [label]="'FOOTER.PRIVACY' | translate | lowercase"
+            ></app-privacy-policy-link
+            >.
+          </label>
+        </div>
+
         <button type="submit" [disabled]="isSubmitting" class="submit-button">
           <span *ngIf="!isSubmitting">{{
             "CONTACT.FORM.SEND_BUTTON" | translate
@@ -151,13 +172,13 @@
   >
     <div class="notification-content">
       <p *ngIf="notification.type !== 'validation'">
-        {{ notification.message }}
+        {{ notification.message | translate }}
       </p>
       <div *ngIf="notification.type === 'validation'">
-        <h4>{{ notification.message }}</h4>
+        <h4>{{ notification.message | translate }}</h4>
         <ul>
           <li *ngFor="let error of notification.validationErrors">
-            {{ error }}
+            {{ error | translate }}
           </li>
         </ul>
       </div>
@@ -165,7 +186,7 @@
     <button
       class="close-btn"
       (click)="removeNotification(notification.id)"
-      aria-label="Close"
+      [attr.aria-label]="'COMMON.CLOSE' | translate"
     >
       ×
     </button>
