@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "vitest --ui",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
     "serve:ssr:personal-website": "node dist/personal-website/server/server.mjs"
   },
   "private": true,
