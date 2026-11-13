@@ -2,11 +2,13 @@
 <div
   class="mobile-menu-toggle"
   [class.active]="isMobileMenuOpen"
-  aria-label="Toggle mobile menu"
 >
   <label class="container">
     <input
       type="checkbox"
+      [attr.aria-label]="'NAV.MENU' | translate"
+      [attr.aria-expanded]="isMobileMenuOpen"
+      aria-controls="sidebar"
       [checked]="isMobileMenuOpen"
       (change)="toggleMobileMenu()"
     />
@@ -24,8 +26,8 @@
       <li class="logo-item">
         <div class="logo-container">
           <img
-            src="https://thelonelyotaku315.github.io/personal-website/assets/img/logo.png"
-            alt="logo"
+            src="assets/img/logo.png"
+            alt="Tonny Zhao"
             class="logo"
           />
           <div class="brand-text">Portfolio</div>
@@ -37,7 +39,7 @@
     <hr class="sidebar-separator" />
     <ul>
       <li data-section="welcome">
-        <a (click)="scrollToSection('welcome', $event)" style="cursor: pointer">
+        <a href="#welcome" (click)="scrollToSection('welcome', $event)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -54,8 +56,8 @@
       </li>
       <li data-section="about_me">
         <a
+          href="#about_me"
           (click)="scrollToSection('about_me', $event)"
-          style="cursor: pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +74,7 @@
         </a>
       </li>
       <li data-section="project">
-        <a (click)="scrollToSection('project', $event)" style="cursor: pointer">
+        <a href="#project" (click)="scrollToSection('project', $event)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -88,7 +90,7 @@
         </a>
       </li>
       <li data-section="contact">
-        <a (click)="scrollToSection('contact', $event)" style="cursor: pointer">
+        <a href="#contact" (click)="scrollToSection('contact', $event)">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -110,9 +112,12 @@
     <ul>
       <li>
         <button
+          type="button"
           class="theme-toggle"
+          data-theme-toggle
           (click)="toggleThemeMenu()"
-          [title]="'Current theme: ' + currentThemeMode"
+          [title]="('NAV.THEME' | translate) + ': ' + (themeLabelKey | translate)"
+          [attr.aria-expanded]="isThemeMenuOpen"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -132,9 +137,12 @@
 
       <li>
         <button
+          type="button"
           class="language-toggle"
+          data-language-toggle
           (click)="toggleLanguageMenu()"
-          [title]="'Switch to next language (' + getNextLanguageName() + ')'"
+          [title]="('NAV.LANGUAGE' | translate) + ': ' + languageNames[currentLanguage]"
+          [attr.aria-expanded]="isLanguageMenuOpen"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +172,11 @@
   "
 >
   <ul class="list">
-    <li class="element" (click)="setTheme('dark')">
+    <li
+      class="element"
+      [class.selected]="currentThemeMode === 'dark'"
+      (click)="setTheme('dark')"
+    >
       <svg
         stroke-linejoin="round"
         stroke-linecap="round"
@@ -180,7 +192,11 @@
       </svg>
       <p class="label">{{ "NAV.DARK" | translate }}</p>
     </li>
-    <li class="element" (click)="setTheme('light')">
+    <li
+      class="element"
+      [class.selected]="currentThemeMode === 'light'"
+      (click)="setTheme('light')"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="25"
@@ -205,7 +221,11 @@
       </svg>
       <p class="label">{{ "NAV.LIGHT" | translate }}</p>
     </li>
-    <li class="element" (click)="setTheme('auto')">
+    <li
+      class="element"
+      [class.selected]="currentThemeMode === 'auto'"
+      (click)="setTheme('auto')"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="25"
@@ -233,16 +253,26 @@
   style="left: calc(100% + 10px); bottom: calc(48px)"
 >
   <ul class="list">
-    <li class="element" (click)="toggleLanguage('FR')">
+    <li
+      class="element"
+      lang="fr"
+      [class.selected]="currentLanguage === 'FR'"
+      (click)="toggleLanguage('FR')"
+    >
       <!-- French icon (flag) -->
       <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
         <rect x="2" y="5" width="6" height="14" fill="#0055A4" />
         <rect x="8" y="5" width="8" height="14" fill="#fff" />
         <rect x="16" y="5" width="6" height="14" fill="#EF4135" />
       </svg>
-      <p class="label">French</p>
+      <p class="label">Français</p>
     </li>
-    <li class="element" (click)="toggleLanguage('EN')">
+    <li
+      class="element"
+      lang="en"
+      [class.selected]="currentLanguage === 'EN'"
+      (click)="toggleLanguage('EN')"
+    >
       <!-- English icon (flag) -->
       <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
         <!-- Stripes -->

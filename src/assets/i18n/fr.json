@@ -15,7 +15,8 @@
     "LIGHT": "Clair",
     "AUTO": "Navigateur",
     "THEME": "Thème",
-    "Language": "Langue"
+    "LANGUAGE": "Langue",
+    "MENU": "Ouvrir ou fermer le menu"
   },
   "WELCOME": {
     "GREETING": "Bonjour, bienvenue sur le portfolio de Tonny.",

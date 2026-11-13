@@ -226,14 +226,24 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     // Use TranslateService with lowercase language code
     this.translate.use(lang.toLowerCase());
 
-    // Save uppercase version to localStorage for display
     if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('selectedLanguage', lang);
+      localStorage.setItem('selectedLanguage', lang.toLowerCase());
     }
 
     // Update current language for display
     this.currentLanguage = lang;
     this.isLanguageMenuOpen = false;
+  }
+
+  get themeLabelKey(): string {
+    switch (this.currentThemeMode) {
+      case 'light':
+        return 'NAV.LIGHT';
+      case 'dark':
+        return 'NAV.DARK';
+      default:
+        return 'NAV.AUTO';
+    }
   }
 
   getThemeDisplayText(): string {
@@ -260,6 +270,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
 
   toggleThemeMenu() {
     this.isThemeMenuOpen = !this.isThemeMenuOpen;
+    if (this.isThemeMenuOpen) this.isLanguageMenuOpen = false;
   }
 
   setTheme(mode: ThemeMode) {
@@ -269,6 +280,13 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
 
   toggleLanguageMenu() {
     this.isLanguageMenuOpen = !this.isLanguageMenuOpen;
+    if (this.isLanguageMenuOpen) this.isThemeMenuOpen = false;
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape() {
+    this.isThemeMenuOpen = false;
+    this.isLanguageMenuOpen = false;
   }
 
   @HostListener('document:click', ['$event'])
@@ -295,11 +313,8 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     const themeCard = this.document.getElementById('theme-card');
 
     if (this.isThemeMenuOpen && themeCard && !themeCard.contains(target)) {
-      // Check if click was on the theme toggle button itself
-      // You'll need to add an ID or class to your theme button in HTML
-      const themeButton =
-        target.closest('.theme-button') ||
-        target.closest('[data-theme-toggle]');
+      // Clicks on the toggle button are handled by toggleThemeMenu()
+      const themeButton = target.closest('[data-theme-toggle]');
       if (!themeButton) {
         this.isThemeMenuOpen = false;
       }
@@ -313,11 +328,8 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
       languageCard &&
       !languageCard.contains(target)
     ) {
-      // Check if click was on the language toggle button itself
-      // You'll need to add an ID or class to your language button in HTML
-      const languageButton =
-        target.closest('.language-button') ||
-        target.closest('[data-language-toggle]');
+      // Clicks on the toggle button are handled by toggleLanguageMenu()
+      const languageButton = target.closest('[data-language-toggle]');
       if (!languageButton) {
         this.isLanguageMenuOpen = false;
       }

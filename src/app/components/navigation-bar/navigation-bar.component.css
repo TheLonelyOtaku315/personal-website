@@ -274,6 +274,10 @@
   transform: translate(1px, -1px);
 }
 
+.card .list .element.selected {
+  outline: 1px solid var(--accent-color);
+}
+
 .card .list .element:active {
   transform: scale(0.99);
 }
@@ -315,13 +319,18 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(var(--backdrop-color-rgb), 0.85);
+    background: rgba(var(--backdrop-color-rgb, 0, 0, 0), 0.6);
     z-index: -1;
     animation: fadeIn 0.3s ease;
   }
 
+  /* Keep the theme/language pop-up inside narrow screens */
   .card {
-    left: 274px !important;
+    position: fixed;
+    left: auto !important;
+    right: 16px;
+    background: rgba(var(--surface-color-rgb), 0.95);
+    z-index: 1100;
   }
   @keyframes fadeIn {
     from {
