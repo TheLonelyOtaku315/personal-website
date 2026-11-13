@@ -50,3 +50,6 @@ Thumbs.db
 # Uncomment the lines below only if you want to exclude specific asset files
 # src/assets/img/
 # src/assets/doc/
+
+# CV build output (PDFs are copied to src/assets/doc)
+/cv/out
