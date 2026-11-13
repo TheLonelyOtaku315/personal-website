@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LocalizedDatePipe } from '../../pipes/localized-date.pipe';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TimelineDialogComponent } from './timeline-dialog/timeline-dialog.component';
+import { hasDay, isSingleDate } from '@utils/date';
 
 @Component({
   selector: 'app-about-me-section',
@@ -25,7 +26,7 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
   @Input() projects: Project[] = [];
   isDarkMode: boolean = false;
   timelineFilter: 'all' | TimelineEventType = 'all';
-  readonly timelineFilters = ['all', 'education', 'work'] as const;
+  readonly timelineFilters = ['all', 'education', 'work', 'award'] as const;
   private themeSubscription: Subscription = new Subscription();
 
   constructor(
@@ -36,6 +37,15 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
   get filteredTimeline(): TimelineEvent[] {
     if (this.timelineFilter === 'all') return this.timeline;
     return this.timeline.filter((item) => item.type === this.timelineFilter);
+  }
+
+  isSingleDate(item: TimelineEvent): boolean {
+    return isSingleDate(item.startDate, item.endDate);
+  }
+
+  // "Nov 11, 2026" for a specific day, "Nov 2026" for a month
+  singleDateFormat(item: TimelineEvent): string {
+    return hasDay(item.startDate) ? 'mediumDate' : 'MMM yyyy';
   }
 
   openTimelineItem(item: TimelineEvent): void {

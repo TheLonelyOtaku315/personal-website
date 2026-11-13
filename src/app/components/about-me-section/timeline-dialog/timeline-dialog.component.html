@@ -1,6 +1,7 @@
 <article
   class="project-dialog"
   [class.education]="data.type === 'education'"
+  [class.award]="data.type === 'award'"
 >
   <button
     type="button"
@@ -17,14 +18,19 @@
         {{
           (data.type === "education"
             ? "ABOUT.TIMELINE.FILTER_EDUCATION"
-            : "ABOUT.TIMELINE.FILTER_WORK"
+            : data.type === "award"
+              ? "ABOUT.TIMELINE.TYPE_AWARD"
+              : "ABOUT.TIMELINE.FILTER_WORK"
           ) | translate
         }}
       </span>
       <h2 class="title">{{ data.title }}</h2>
       <p class="organization">{{ data.organization }}</p>
       <div class="meta">
-        <span class="date-pill">
+        <span class="date-pill" *ngIf="singleDate">
+          {{ data.startDate | localizedDate: singleDateFormat }}
+        </span>
+        <span class="date-pill" *ngIf="!singleDate">
           {{ data.startDate | localizedDate }}
           –
           {{
@@ -45,6 +51,15 @@
     </section>
 
     <footer class="actions">
+      <a
+        *ngIf="data.certificate"
+        class="action primary"
+        [href]="data.certificate"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ "ABOUT.TIMELINE.CERTIFICATE" | translate }}
+      </a>
       <a
         *ngIf="data.link"
         class="action primary"

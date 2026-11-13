@@ -59,6 +59,7 @@
           *ngFor="let item of filteredTimeline"
           class="timeline-item"
           [class.education]="item.type === 'education'"
+          [class.award]="item.type === 'award'"
           [class.ongoing]="!item.endDate"
         >
           <span class="timeline-dot" aria-hidden="true"></span>
@@ -68,7 +69,10 @@
             (click)="openTimelineItem(item)"
           >
             <span class="timeline-meta">
-              <span class="timeline-date">
+              <span class="timeline-date" *ngIf="isSingleDate(item)">
+                {{ item.startDate | localizedDate: singleDateFormat(item) }}
+              </span>
+              <span class="timeline-date" *ngIf="!isSingleDate(item)">
                 {{ item.startDate | localizedDate: "MMM yyyy" }} –
                 {{
                   item.endDate
@@ -80,7 +84,9 @@
                 {{
                   (item.type === "education"
                     ? "ABOUT.TIMELINE.FILTER_EDUCATION"
-                    : "ABOUT.TIMELINE.FILTER_WORK"
+                    : item.type === "award"
+                      ? "ABOUT.TIMELINE.TYPE_AWARD"
+                      : "ABOUT.TIMELINE.FILTER_WORK"
                   ) | translate
                 }}
               </span>

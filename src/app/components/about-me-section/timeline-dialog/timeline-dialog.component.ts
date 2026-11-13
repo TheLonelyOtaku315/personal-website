@@ -8,6 +8,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { TimelineEvent } from '@models/shared-interfaces';
 import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
+import { hasDay, isSingleDate } from '@utils/date';
 
 @Component({
   selector: 'app-timeline-dialog',
@@ -21,10 +22,17 @@ import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
   ],
 })
 export class TimelineDialogComponent {
+  readonly singleDate: boolean;
+  // "November 11, 2026" / "11 novembre 2026" for a specific day
+  readonly singleDateFormat: string;
+
   constructor(
     public dialogRef: MatDialogRef<TimelineDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TimelineEvent,
-  ) {}
+  ) {
+    this.singleDate = isSingleDate(data.startDate, data.endDate);
+    this.singleDateFormat = hasDay(data.startDate) ? 'longDate' : 'MMMM yyyy';
+  }
 
   close(): void {
     this.dialogRef.close();

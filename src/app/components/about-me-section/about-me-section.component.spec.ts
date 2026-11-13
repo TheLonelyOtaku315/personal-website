@@ -144,12 +144,39 @@ describe('AboutMeSectionComponent', () => {
     component.timeline = [
       { ...base, type: 'education', title: 'School' },
       { ...base, type: 'work', title: 'Job' },
+      { ...base, type: 'award', title: 'Hackathon' },
     ];
-    expect(component.filteredTimeline.length).toBe(2);
+    expect(component.filteredTimeline.length).toBe(3);
     component.timelineFilter = 'work';
     expect(component.filteredTimeline.map((t) => t.title)).toEqual(['Job']);
     component.timelineFilter = 'education';
     expect(component.filteredTimeline.map((t) => t.title)).toEqual(['School']);
+    component.timelineFilter = 'award';
+    expect(component.filteredTimeline.map((t) => t.title)).toEqual([
+      'Hackathon',
+    ]);
+  });
+
+  it('should show one-day events as a single date', () => {
+    const base = { organization: 'Org', summary: '', details: [] };
+    const hackathon: TimelineEvent = {
+      ...base,
+      type: 'award',
+      title: 'Hackathon',
+      startDate: '2026-11-11',
+      endDate: '2026-11-11',
+    };
+    const job: TimelineEvent = {
+      ...base,
+      type: 'work',
+      title: 'Job',
+      startDate: '2026-07',
+      endDate: '2026-08',
+    };
+    expect(component.isSingleDate(hackathon)).toBe(true);
+    expect(component.singleDateFormat(hackathon)).toBe('mediumDate');
+    expect(component.isSingleDate(job)).toBe(false);
+    expect(component.isSingleDate({ ...job, endDate: null })).toBe(false);
   });
 
   it('should open a dialog with the timeline item', () => {

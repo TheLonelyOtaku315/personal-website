@@ -22,6 +22,15 @@
   border-color: rgba(var(--error-color-rgb), 0.5);
 }
 
+.award .type-badge {
+  color: var(--award-color);
+  border-color: rgba(var(--award-color-rgb), 0.5);
+}
+
+.award .details li::marker {
+  color: var(--award-color);
+}
+
 .organization {
   margin: 0;
   font-size: 1.05rem;

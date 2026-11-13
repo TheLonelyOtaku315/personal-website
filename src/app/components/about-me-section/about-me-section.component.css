@@ -334,6 +334,12 @@
   border-color: var(--error-color);
 }
 
+.timeline-item.award .timeline-dot {
+  border-color: var(--award-color);
+  background: var(--award-color);
+  box-shadow: 0 0 0 4px rgba(var(--award-color-rgb), 0.25);
+}
+
 .timeline-item.ongoing .timeline-dot {
   background: var(--accent-color);
   box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.25);
@@ -397,6 +403,21 @@
 .timeline-item.education .timeline-type {
   color: var(--error-color);
   border-color: rgba(var(--error-color-rgb), 0.5);
+}
+
+.timeline-item.award .timeline-type {
+  color: var(--award-color);
+  border-color: rgba(var(--award-color-rgb), 0.5);
+}
+
+.timeline-item.award .timeline-card {
+  border-color: rgba(var(--award-color-rgb), 0.45);
+}
+
+.timeline-item.award .timeline-card:hover,
+.timeline-item.award .timeline-card:focus-visible {
+  border-color: var(--award-color);
+  box-shadow: 0 8px 24px rgba(var(--award-color-rgb), 0.15);
 }
 
 .timeline-heading {

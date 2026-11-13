@@ -43,6 +43,10 @@ body::-webkit-scrollbar {
   --surface-color-rgb: 31, 31, 31;
   --accent-color-rgb: 99, 102, 241;
   --error-color-rgb: 239, 68, 68;
+
+  /* Awards (hackathon wins, etc.) */
+  --award-color: #f59e0b;
+  --award-color-rgb: 245, 158, 11;
 }
 
 /* Dark theme class (same as default) */
@@ -68,6 +72,9 @@ body::-webkit-scrollbar {
   --surface-color-rgb: 31, 31, 31;
   --accent-color-rgb: 99, 102, 241;
   --error-color-rgb: 239, 68, 68;
+
+  --award-color: #f59e0b;
+  --award-color-rgb: 245, 158, 11;
 }
 
 /* Light theme class */
@@ -93,6 +100,10 @@ body::-webkit-scrollbar {
   --surface-color-rgb: 241, 245, 249;
   --accent-color-rgb: 99, 102, 241;
   --error-color-rgb: 239, 68, 68;
+
+  /* Darker amber so award labels stay readable on white */
+  --award-color: #b45309;
+  --award-color-rgb: 180, 83, 9;
 }
 
 /* Angular Material Dialog Custom Styling */

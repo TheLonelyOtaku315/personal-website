@@ -1,5 +1,18 @@
 [
   {
+    "type": "award",
+    "title": "1st Place – GDG Polytechnique Hackathon",
+    "organization": "Google Developer Group Polytechnique Montréal",
+    "startDate": "2026-11-11",
+    "endDate": "2026-11-11",
+    "summary": "Won first place with my team at the “Browser in the Age of AI” hackathon.",
+    "details": [
+      "Won first place with my team at the hackathon “Le navigateur à l'ère de l'intelligence artificielle” (The Browser in the Age of Artificial Intelligence), hosted by Google Developer Group Polytechnique Montréal on November 11, 2026.",
+      "Recognized for the excellence, innovation and creativity of our project."
+    ],
+    "certificate": "assets/doc/Tonny-Zhao-Certificat-GDG-Polytechnique.pdf"
+  },
+  {
     "type": "work",
     "title": "Web Developer",
     "organization": "CREII – Centre de référence des élèves issus de l'immigration",

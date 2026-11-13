@@ -125,7 +125,9 @@ export class AppComponent implements OnInit {
       next: (data) => {
         if (lang !== this.dataLang) return;
         this.timeline = data.map((e) => ({
-          type: e.type === 'education' ? 'education' : 'work',
+          type: ['education', 'work', 'award'].includes(e.type)
+            ? e.type
+            : 'work',
           title: e.title || '',
           organization: e.organization || '',
           location: e.location || '',
@@ -134,6 +136,7 @@ export class AppComponent implements OnInit {
           summary: e.summary || '',
           details: e.details || [],
           link: e.link || '',
+          certificate: e.certificate || '',
         }));
       },
       error: (error) => {

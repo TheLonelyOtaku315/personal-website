@@ -1,17 +1,20 @@
 // Shared interfaces for use across components
-export type TimelineEventType = 'education' | 'work';
+export type TimelineEventType = 'education' | 'work' | 'award';
 
 export interface TimelineEvent {
   type: TimelineEventType;
   title: string;
   organization: string;
   location?: string;
-  // "YYYY-MM" or "YYYY"; a missing endDate means ongoing
+  // "YYYY-MM-DD", "YYYY-MM" or "YYYY"; a missing endDate means ongoing,
+  // and an endDate equal to startDate is shown as a single date
   startDate: string;
   endDate?: string | null;
   summary: string;
   details: string[];
   link?: string;
+  // Path to a certificate PDF in assets/doc (e.g. for an award)
+  certificate?: string;
 }
 
 export interface Project {
