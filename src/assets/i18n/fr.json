@@ -29,9 +29,25 @@
   },
   "ABOUT": {
     "TITLE": "À propos de moi",
-    "INTRO": "Je suis Tonny Zhao, un étudiant de troisième année passionné par le développement logiciel, avec un fort intérêt pour les technologies front-end comme Angular. J'aime créer des applications web réactives et conviviales qui offrent des expériences utilisateur fluides.",
+    "INTRO": "Je suis Tonny Zhao, étudiant en génie informatique passionné par le développement logiciel, avec un fort intérêt pour les technologies front-end comme Angular. J'ai récemment conçu et développé un site Web multilingue pour le CREII, et j'anime actuellement des ateliers de technologie et de création de jeux vidéo avec Fusion Jeunesse.",
     "SKILLS_TITLE": "Mes compétences",
-    "JOURNEY_TITLE": "Mon parcours"
+    "JOURNEY_TITLE": "Mon parcours",
+    "SKILL_CATEGORIES": {
+      "LANGUAGES": "Langages de programmation",
+      "FRONTEND": "Technologies front-end",
+      "DATABASES": "Bases de données",
+      "TOOLS": "Outils et DevOps",
+      "HARDWARE": "Matériel et systèmes embarqués"
+    },
+    "TIMELINE": {
+      "FILTER_LABEL": "Filtrer le parcours",
+      "FILTER_ALL": "Tout",
+      "FILTER_EDUCATION": "Formation",
+      "FILTER_WORK": "Expérience",
+      "DETAILS": "Voir les détails",
+      "HIGHLIGHTS": "Faits saillants",
+      "VISIT": "Visiter le site"
+    }
   },
   "PROJECTS": {
     "TITLE": "Projets",

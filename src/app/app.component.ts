@@ -13,6 +13,9 @@ import { PrivacyPolicyLinkComponent } from './components/privacy-policy/privacy-
 import { ThemeService } from '@services/theme.service';
 import { MetaService } from '@services/meta.service';
 import { TimelineEvent, Project } from '@models/shared-interfaces';
+import { parseLocalDate } from '@utils/date';
+
+const SUPPORTED_LANGUAGES = ['en', 'fr'];
 
 @Component({
   selector: 'app-root',
@@ -38,6 +41,10 @@ export class AppComponent implements OnInit {
   showContent = true;
   currentYear = new Date().getFullYear();
 
+  private initialLang = 'en';
+  // Language of the data currently requested, used to drop stale responses
+  private dataLang = '';
+
   constructor(
     private themeService: ThemeService,
     private metaService: MetaService,
@@ -54,68 +61,89 @@ export class AppComponent implements OnInit {
   private initializeTranslation() {
     this.translate.setDefaultLang('en');
 
-    const savedLang = localStorage.getItem('selectedLanguage');
+    let savedLang: string | null = null;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      savedLang = localStorage.getItem('selectedLanguage');
+    }
     const browserLang = this.translate.getBrowserLang();
 
-    const savedLangLower = savedLang ? savedLang.toLowerCase() : null;
+    const candidate = (savedLang || browserLang || 'en').toLowerCase();
+    this.initialLang = SUPPORTED_LANGUAGES.includes(candidate)
+      ? candidate
+      : 'en';
 
-    const langToUse =
-      savedLangLower ||
-      (browserLang && ['en', 'fr'].includes(browserLang) ? browserLang : 'en');
+    this.translate.use(this.initialLang);
 
-    this.translate.use(langToUse);
-
-    // Load projects for the selected language
-    this.loadProjects(langToUse);
-
-    // Subscribe to language changes to reload projects
+    // Reload projects and timeline when the language changes
     this.translate.onLangChange.subscribe((event) => {
-      this.loadProjects(event.lang);
+      if (event.lang !== this.dataLang) {
+        this.loadData(event.lang);
+      }
     });
   }
 
-  private loadProjects(lang: string) {
-    this.http.get<any[]>(`assets/i18n/projects.${lang}.json`).subscribe({
+  private loadData(lang: string) {
+    this.dataLang = lang;
+    this.loadProjects(lang);
+    this.loadEvents(lang);
+  }
+
+  private loadProjects(lang: string, fileLang: string = lang) {
+    this.http.get<any[]>(`assets/i18n/projects.${fileLang}.json`).subscribe({
       next: (data) => {
+        if (lang !== this.dataLang) return;
         this.projects = data.map((p) => ({
           id: p.id,
           title: p.title,
           description: p.description,
           demoUrl: p.demoUrl || '',
           sourceUrl: p.sourceUrl || '',
-          startDate: p.startDate ? new Date(p.startDate) : new Date(0),
-          endDate: p.endDate ? new Date(p.endDate) : new Date(0),
-          date: p.date ? new Date(p.date) : new Date(0),
+          startDate: parseLocalDate(p.startDate),
+          endDate: parseLocalDate(p.endDate),
           technologies: p.technologies || [],
           image: p.image || '',
         }));
+        // Most recent first
+        this.projects.sort(
+          (a, b) =>
+            ((b.startDate as Date | null)?.getTime() ?? 0) -
+            ((a.startDate as Date | null)?.getTime() ?? 0),
+        );
       },
       error: (error) => {
-        console.error(`Error loading projects for language ${lang}:`, error);
+        console.error(`Error loading projects for language ${fileLang}:`, error);
         // Fallback to English if the language file doesn't exist
-        if (lang !== 'en') {
-          this.loadProjects('en');
+        if (fileLang !== 'en') {
+          this.loadProjects(lang, 'en');
         }
       },
     });
   }
-  private loadEvents(lang: string) {
-    this.http.get<any[]>(`assets/i18n/events.${lang}.json`).subscribe({
+
+  private loadEvents(lang: string, fileLang: string = lang) {
+    this.http.get<any[]>(`assets/i18n/events.${fileLang}.json`).subscribe({
       next: (data) => {
+        if (lang !== this.dataLang) return;
         this.timeline = data.map((e) => ({
-          status: e.status || '',
-          date: e.date,
-          description: e.description,
+          type: e.type === 'education' ? 'education' : 'work',
+          title: e.title || '',
+          organization: e.organization || '',
+          location: e.location || '',
+          startDate: e.startDate || '',
+          endDate: e.endDate || null,
+          summary: e.summary || '',
+          details: e.details || [],
+          link: e.link || '',
         }));
       },
       error: (error) => {
         console.error(
-          `Error loading timeline events for language ${lang}:`,
+          `Error loading timeline events for language ${fileLang}:`,
           error,
         );
         // Fallback to English if the language file doesn't exist
-        if (lang !== 'en') {
-          this.loadEvents('en');
+        if (fileLang !== 'en') {
+          this.loadEvents(lang, 'en');
         }
       },
     });
@@ -128,17 +156,18 @@ export class AppComponent implements OnInit {
   switchLanguage(lang: string) {
     const langLower = lang.toLowerCase();
     this.translate.use(langLower);
-    localStorage.setItem('selectedLanguage', lang.toUpperCase());
-    // Projects will reload automatically via onLangChange subscription
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('selectedLanguage', langLower);
+    }
+    // Projects and timeline reload automatically via onLangChange subscription
   }
 
   getCurrentLanguage(): string {
-    return this.translate.currentLang || 'en';
+    return this.translate.currentLang || this.initialLang || 'en';
   }
 
   ngOnInit() {
-    this.loadProjects(this.getCurrentLanguage());
-    this.loadEvents(this.getCurrentLanguage());
+    this.loadData(this.getCurrentLanguage());
     this.metaService.init();
   }
 }

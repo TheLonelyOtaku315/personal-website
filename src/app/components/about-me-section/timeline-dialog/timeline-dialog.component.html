@@ -1,0 +1,62 @@
+<article
+  class="project-dialog"
+  [class.education]="data.type === 'education'"
+>
+  <button
+    type="button"
+    class="icon-close"
+    (click)="close()"
+    [attr.aria-label]="'PROJECTS.CLOSE' | translate"
+  >
+    ×
+  </button>
+
+  <div class="body">
+    <header class="header">
+      <span class="type-badge">
+        {{
+          (data.type === "education"
+            ? "ABOUT.TIMELINE.FILTER_EDUCATION"
+            : "ABOUT.TIMELINE.FILTER_WORK"
+          ) | translate
+        }}
+      </span>
+      <h2 class="title">{{ data.title }}</h2>
+      <p class="organization">{{ data.organization }}</p>
+      <div class="meta">
+        <span class="date-pill">
+          {{ data.startDate | localizedDate }}
+          –
+          {{
+            data.endDate
+              ? (data.endDate | localizedDate)
+              : ("PROJECTS.PRESENT" | translate)
+          }}
+        </span>
+        <span *ngIf="data.location" class="location">{{ data.location }}</span>
+      </div>
+    </header>
+
+    <section>
+      <h3 class="section-title">{{ "ABOUT.TIMELINE.HIGHLIGHTS" | translate }}</h3>
+      <ul class="details">
+        <li *ngFor="let detail of data.details">{{ detail }}</li>
+      </ul>
+    </section>
+
+    <footer class="actions">
+      <a
+        *ngIf="data.link"
+        class="action primary"
+        [href]="data.link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ "ABOUT.TIMELINE.VISIT" | translate }}
+      </a>
+      <button type="button" class="action ghost close-btn" (click)="close()">
+        {{ "PROJECTS.CLOSE" | translate }}
+      </button>
+    </footer>
+  </div>
+</article>

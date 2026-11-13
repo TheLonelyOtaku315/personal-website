@@ -1,13 +1,3 @@
-<!-- <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-/> -->
-<!-- In your HTML head -->
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-  crossorigin="anonymous"
-/>
 <div class="container">
   <div class="glass">
     <div class="title">
@@ -20,7 +10,7 @@
       <h3 class="skills-title title">{{ "ABOUT.SKILLS_TITLE" | translate }}</h3>
       <div class="skill-categories">
         <div class="skill-category" *ngFor="let section of skillSections">
-          <h4 class="category-title">{{ section.title }}</h4>
+          <h4 class="category-title">{{ section.title | translate }}</h4>
           <div class="skills-grid">
             <div
               class="skill-card"
@@ -48,39 +38,61 @@
       <h3 class="timeline-title title">
         {{ "ABOUT.JOURNEY_TITLE" | translate }}
       </h3>
-      <div class="timeline">
-        <ng-container *ngFor="let item of timeline; let i = index">
-          <!-- For even indexes: content on left, empty on right -->
-          <ng-container *ngIf="i % 2 === 0">
-            <div class="timeline-component" style="justify-content: flex-end">
-              <div class="timeline-content">
-                <h3>{{ item.status }}</h3>
-                <span class="timeline-date">{{ item.date }}</span>
-                <p class="timeline-description">{{ item.description }}</p>
-              </div>
-            </div>
-            <div class="timeline-middle">
-              <div class="timeline-circle"></div>
-            </div>
-            <div class="timeline-empty"></div>
-          </ng-container>
-
-          <!-- For odd indexes: empty on left, content on right -->
-          <ng-container *ngIf="i % 2 === 1">
-            <div class="timeline-empty"></div>
-            <div class="timeline-middle">
-              <div class="timeline-circle"></div>
-            </div>
-            <div class="timeline-component" style="justify-content: flex-start">
-              <div class="timeline-content">
-                <h3>{{ item.status }}</h3>
-                <span class="timeline-date">{{ item.date }}</span>
-                <p class="timeline-description">{{ item.description }}</p>
-              </div>
-            </div>
-          </ng-container>
-        </ng-container>
+      <div
+        class="timeline-filters"
+        role="group"
+        [attr.aria-label]="'ABOUT.TIMELINE.FILTER_LABEL' | translate"
+      >
+        <button
+          *ngFor="let f of timelineFilters"
+          type="button"
+          class="filter-chip"
+          [class.active]="timelineFilter === f"
+          [attr.aria-pressed]="timelineFilter === f"
+          (click)="timelineFilter = f"
+        >
+          {{ "ABOUT.TIMELINE.FILTER_" + f.toUpperCase() | translate }}
+        </button>
       </div>
+      <ol class="timeline">
+        <li
+          *ngFor="let item of filteredTimeline"
+          class="timeline-item"
+          [class.education]="item.type === 'education'"
+          [class.ongoing]="!item.endDate"
+        >
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <button
+            type="button"
+            class="timeline-card"
+            (click)="openTimelineItem(item)"
+          >
+            <span class="timeline-meta">
+              <span class="timeline-date">
+                {{ item.startDate | localizedDate: "MMM yyyy" }} –
+                {{
+                  item.endDate
+                    ? (item.endDate | localizedDate: "MMM yyyy")
+                    : ("PROJECTS.PRESENT" | translate)
+                }}
+              </span>
+              <span class="timeline-type">
+                {{
+                  (item.type === "education"
+                    ? "ABOUT.TIMELINE.FILTER_EDUCATION"
+                    : "ABOUT.TIMELINE.FILTER_WORK"
+                  ) | translate
+                }}
+              </span>
+            </span>
+            <span class="timeline-heading">{{ item.title }}</span>
+            <span class="timeline-org">{{ item.organization }}</span>
+            <span class="timeline-summary">{{ item.summary }}</span>
+            <span class="sr-only">{{ "ABOUT.TIMELINE.DETAILS" | translate }}</span>
+            <span class="timeline-chevron" aria-hidden="true">›</span>
+          </button>
+        </li>
+      </ol>
     </section>
   </div>
 </div>

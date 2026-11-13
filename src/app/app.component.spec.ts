@@ -81,4 +81,32 @@ describe('AppComponent', () => {
     loadProjectsSpy.mockRestore();
     loadEventsSpy.mockRestore();
   });
+
+  it('should parse project dates as local months and keep ongoing projects open-ended', () => {
+    let next: (data: any[]) => void = () => {};
+    mockHttp.get.mockReturnValueOnce({
+      subscribe: (handlers: any) => (next = handlers.next),
+    } as any);
+    (component as any).loadData('en');
+    next([{ title: 'P', startDate: '2025-12', endDate: '' }]);
+    const project = component.projects[0];
+    expect((project.startDate as Date).getMonth()).toBe(11);
+    expect((project.startDate as Date).getFullYear()).toBe(2025);
+    expect(project.endDate).toBeNull();
+  });
+
+  it('should ignore responses for a language that is no longer selected', () => {
+    const handlers: any[] = [];
+    mockHttp.get.mockImplementation(
+      () => ({ subscribe: (h: any) => handlers.push(h) }) as any
+    );
+    (component as any).loadData('en');
+    (component as any).loadData('fr');
+    // Late English response arrives after French was requested
+    handlers[0].next([{ title: 'English' }]);
+    expect(component.projects).toEqual([]);
+    handlers[2].next([{ title: 'Français' }]);
+    expect(component.projects[0].title).toBe('Français');
+    mockHttp.get.mockImplementation(() => ({ subscribe: vi.fn() }) as any);
+  });
 });

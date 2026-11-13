@@ -126,10 +126,51 @@ describe('AboutMeSectionComponent', () => {
 
   it('should accept timeline input', () => {
     const mockTimeline: TimelineEvent[] = [
-      { status: 'Started', date: '2020', description: 'Began journey' },
+      {
+        type: 'education',
+        title: 'Started',
+        organization: 'School',
+        startDate: '2020',
+        summary: 'Began journey',
+        details: [],
+      },
     ];
     component.timeline = mockTimeline;
     expect(component.timeline).toEqual(mockTimeline);
+  });
+
+  it('should filter the timeline by type', () => {
+    const base = { organization: 'Org', startDate: '2020', summary: '', details: [] };
+    component.timeline = [
+      { ...base, type: 'education', title: 'School' },
+      { ...base, type: 'work', title: 'Job' },
+    ];
+    expect(component.filteredTimeline.length).toBe(2);
+    component.timelineFilter = 'work';
+    expect(component.filteredTimeline.map((t) => t.title)).toEqual(['Job']);
+    component.timelineFilter = 'education';
+    expect(component.filteredTimeline.map((t) => t.title)).toEqual(['School']);
+  });
+
+  it('should open a dialog with the timeline item', () => {
+    const dialog = { open: vi.fn() };
+    const withDialog = new AboutMeSectionComponent(
+      mockThemeService,
+      dialog as any
+    );
+    const item: TimelineEvent = {
+      type: 'work',
+      title: 'Job',
+      organization: 'Org',
+      startDate: '2022-05',
+      summary: '',
+      details: ['Did things'],
+    };
+    withDialog.openTimelineItem(item);
+    expect(dialog.open).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ data: item })
+    );
   });
 
   it('should accept projects input', () => {
