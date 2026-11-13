@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,36 +16,41 @@ export class ProjectsSectionComponent {
   constructor(public dialog: MatDialog) {}
   @Input() projects: Project[] = [];
   hoveredIndex: number | null = null;
-  visibleCount = 100;
+
+  readonly pageSize = 6;
+  visibleCount = this.pageSize;
 
   get visibleProjects() {
     return this.projects.slice(0, this.visibleCount);
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    if (
-      window.innerHeight + window.scrollY >=
-      document.body.offsetHeight - 10
-    ) {
-      this.loadMore();
-    }
+  get hasMore(): boolean {
+    return this.visibleCount < this.projects.length;
+  }
+
+  get canShowLess(): boolean {
+    return !this.hasMore && this.projects.length > this.pageSize;
   }
 
   loadMore() {
-    if (this.visibleCount < this.projects.length) {
-      this.visibleCount += 6;
+    if (this.hasMore) {
+      this.visibleCount += this.pageSize;
     }
+  }
+
+  showLess() {
+    this.visibleCount = this.pageSize;
   }
 
   openProjectDialog(project: Project): void {
     this.dialog.open(ProjectDialogComponent, {
-      data: project,
-      minWidth: '300px',
-      width: '75%',
-      height: 'fit-content',
-      maxWidth: '800px',
+      // Pass the same preview image the card shows
+      data: { ...project, image: this.getProjectImage(project) },
+      panelClass: 'project-dialog-panel',
+      width: '90%',
+      maxWidth: '760px',
       maxHeight: '90vh',
+      autoFocus: false,
     });
   }
 

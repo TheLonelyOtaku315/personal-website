@@ -10,13 +10,17 @@
       <div class="projects-grid">
         <div
           class="project-card"
-          *ngFor="let project of projects"
+          *ngFor="let project of visibleProjects"
           (click)="openProjectDialog(project)"
+          (keydown.enter)="openProjectDialog(project)"
+          tabindex="0"
+          role="button"
         >
           <img
             [src]="getProjectImage(project)"
-            [alt]="project.title + ' screenshot'"
+            [alt]="'PROJECTS.IMAGE_ALT' | translate: { title: project.title }"
             class="project-image"
+            loading="lazy"
           />
           <div class="project-content">
             <h3 class="project-title">{{ project.title }}</h3>
@@ -31,6 +35,7 @@
                 rel="noopener noreferrer"
                 class="project-link"
                 (click)="$event.stopPropagation()"
+                (keydown.enter)="$event.stopPropagation()"
                 >{{ "PROJECTS.DEMO_LINK" | translate }}</a
               >
               <a
@@ -40,11 +45,30 @@
                 rel="noopener noreferrer"
                 class="project-link"
                 (click)="$event.stopPropagation()"
+                (keydown.enter)="$event.stopPropagation()"
                 >{{ "PROJECTS.SOURCE_LINK" | translate }}</a
               >
             </div>
           </div>
         </div>
+      </div>
+      <div class="projects-more" *ngIf="hasMore || canShowLess">
+        <button
+          *ngIf="hasMore"
+          type="button"
+          class="project-link more-button"
+          (click)="loadMore()"
+        >
+          {{ "PROJECTS.SHOW_MORE" | translate }}
+        </button>
+        <button
+          *ngIf="canShowLess"
+          type="button"
+          class="project-link more-button"
+          (click)="showLess()"
+        >
+          {{ "PROJECTS.SHOW_LESS" | translate }}
+        </button>
       </div>
     </section>
   </div>

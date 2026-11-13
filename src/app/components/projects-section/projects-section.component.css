@@ -73,8 +73,8 @@
 .projects-section {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: stretch;
   background: transparent;
   box-sizing: border-box;
 }
@@ -172,6 +172,25 @@
   box-shadow: 0 6px 18px rgba(var(--accent-color-rgb), 0.08);
 }
 
+
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.more-button {
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.7rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 12px;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
 @media (max-width: 800px) {
   .glass {
     margin: 16px;

@@ -7,14 +7,14 @@ describe('ProjectsSectionComponent', () => {
   let mockProjects: Project[];
 
   beforeEach(() => {
-    component = new ProjectsSectionComponent();
+    component = new ProjectsSectionComponent({ open: vi.fn() } as any);
     mockProjects = [
       {
         title: 'Project 1',
         description: 'Description 1',
         demoUrl: 'https://example.com/demo1',
         sourceUrl: 'https://github.com/user/repo1',
-        date: new Date(),
+        startDate: new Date(),
         technologies: ['Angular'],
         image: '',
       },
@@ -23,7 +23,7 @@ describe('ProjectsSectionComponent', () => {
         description: 'Description 2',
         demoUrl: '',
         sourceUrl: 'https://github.com/user/repo2',
-        date: new Date(),
+        startDate: new Date(),
         technologies: ['React'],
         image: 'custom-image.jpg',
       },
@@ -32,7 +32,7 @@ describe('ProjectsSectionComponent', () => {
         description: 'Description 3',
         demoUrl: 'https://youtu.be/dQw4w9WgXcQ',
         sourceUrl: '',
-        date: new Date(),
+        startDate: new Date(),
         technologies: ['Vue'],
         image: '',
       },
@@ -46,12 +46,34 @@ describe('ProjectsSectionComponent', () => {
   it('should initialize with default values', () => {
     expect(component.projects).toEqual([]);
     expect(component.hoveredIndex).toBeNull();
-    expect(component.visibleCount).toBe(100);
+    expect(component.visibleCount).toBe(6);
   });
 
   it('should return visible projects correctly', () => {
     component.projects = mockProjects;
-    expect(component.visibleProjects).toEqual(mockProjects.slice(0, 100));
+    expect(component.visibleProjects).toEqual(mockProjects);
+    expect(component.hasMore).toBe(false);
+    expect(component.canShowLess).toBe(false);
+  });
+
+  it('should show less after showing all projects', () => {
+    component.projects = Array.from({ length: 8 }, () => ({ ...mockProjects[0] }));
+    expect(component.hasMore).toBe(true);
+    component.loadMore();
+    expect(component.visibleProjects.length).toBe(8);
+    expect(component.canShowLess).toBe(true);
+    component.showLess();
+    expect(component.visibleCount).toBe(6);
+  });
+
+  it('should open the project dialog with the project data', () => {
+    component.openProjectDialog(mockProjects[0]);
+    expect(component.dialog.open).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        data: expect.objectContaining({ title: mockProjects[0].title }),
+      })
+    );
   });
 
   it('should load more projects when loadMore is called', () => {
@@ -60,7 +82,7 @@ describe('ProjectsSectionComponent', () => {
       description: `Description ${i + 1}`,
       demoUrl: '',
       sourceUrl: '',
-      date: new Date(),
+      startDate: new Date(),
       technologies: [],
       image: '',
     }));
@@ -112,7 +134,7 @@ describe('ProjectsSectionComponent', () => {
         description: 'No sources',
         demoUrl: '',
         sourceUrl: '',
-        date: new Date(),
+        startDate: new Date(),
         technologies: [],
         image: '',
       };
@@ -122,50 +144,4 @@ describe('ProjectsSectionComponent', () => {
     });
   });
 
-  describe('onWindowScroll', () => {
-    beforeEach(() => {
-      // Mock window and document
-      Object.defineProperty(window, 'innerHeight', {
-        value: 800,
-        writable: true,
-      });
-      Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
-      Object.defineProperty(document.body, 'offsetHeight', {
-        value: 1000,
-        writable: true,
-      });
-    });
-
-    it('should call loadMore when scrolled to bottom', () => {
-      component.projects = Array.from({ length: 10 }, (_, i) => ({
-        title: `Project ${i + 1}`,
-        description: `Description ${i + 1}`,
-        demoUrl: '',
-        sourceUrl: '',
-        date: new Date(),
-        technologies: [],
-        image: '',
-      }));
-      component.visibleCount = 6;
-
-      // Simulate scroll to bottom
-      window.scrollY = 200; // innerHeight + scrollY = 800 + 200 = 1000, offsetHeight = 1000
-
-      const loadMoreSpy = vi.spyOn(component, 'loadMore');
-      component.onWindowScroll();
-      expect(loadMoreSpy).toHaveBeenCalled();
-    });
-
-    it('should not call loadMore when not at bottom', () => {
-      component.projects = mockProjects;
-      component.visibleCount = 3;
-
-      // Not at bottom
-      window.scrollY = 100;
-
-      const loadMoreSpy = vi.spyOn(component, 'loadMore');
-      component.onWindowScroll();
-      expect(loadMoreSpy).not.toHaveBeenCalled();
-    });
-  });
 });

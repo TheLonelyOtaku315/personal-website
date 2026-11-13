@@ -29,7 +29,7 @@
   },
   "ABOUT": {
     "TITLE": "About Me",
-    "INTRO": "I am Tonny Zhao, a computer engineering student passionate about software development, with a strong interest in front-end technologies like Angular. I recently designed and built a multilingual website for CREII, and I currently lead technology and video game creation workshops with Fusion Jeunesse.",
+    "INTRO": "I am Tonny Zhao, a computer engineering student passionate about software development, with a strong interest in front-end technologies like Angular. I recently designed and built a multilingual website for CREII, won first place at the GDG Polytechnique hackathon, and I currently lead technology and video game creation workshops with Fusion Jeunesse.",
     "SKILLS_TITLE": "My Skills",
     "JOURNEY_TITLE": "My Journey",
     "SKILL_CATEGORIES": {
@@ -57,7 +57,11 @@
     "DESCRIPTION": "Description",
     "TECHNOLOGIES": "Technologies",
     "DATE": "Date",
-    "CLOSE": "Close"
+    "PRESENT": "Present",
+    "CLOSE": "Close",
+    "SHOW_MORE": "Show more projects",
+    "SHOW_LESS": "Show fewer projects",
+    "IMAGE_ALT": "Preview of {{title}}"
   },
   "CONTACT": {
     "TITLE": "Contact",
