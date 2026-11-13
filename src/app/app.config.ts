@@ -3,8 +3,13 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient, withFetch, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 import { routes } from './app.routes';
+
+// French month names for date formatting
+registerLocaleData(localeFr, 'fr');
 
 // Custom translation loader
 export class CustomTranslateLoader implements TranslateLoader {
