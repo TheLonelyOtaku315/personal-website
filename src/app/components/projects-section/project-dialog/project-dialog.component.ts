@@ -8,11 +8,18 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { Project } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
+import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
 
 @Component({
   selector: 'app-project-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule, TranslateModule],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    TranslateModule,
+    LocalizedDatePipe,
+  ],
   templateUrl: './project-dialog.component.html',
   styleUrl: './project-dialog.component.css',
 })
@@ -38,6 +45,10 @@ export class ProjectDialogComponent implements OnInit {
     ESP32: { iconBase: 'arduino' },
     Arduino: { iconBase: 'arduino' },
     'Raspberry Pi': { iconBase: 'raspberrypi', variant: 'line' },
+    Firebase: { iconBase: 'firebase' },
+    Linux: { iconBase: 'linux' },
+    Android: { iconBase: 'android' },
+    WordPress: { iconBase: 'wordpress' },
   };
 
   constructor(
@@ -49,13 +60,18 @@ export class ProjectDialogComponent implements OnInit {
   ngOnInit() {
     if (this.data && Array.isArray(this.data.technologies)) {
       this.techSkills = this.data.technologies.map((tech: string) => {
-        const config = this.skillsConfig[tech] || {
-          iconBase: 'question',
-          variant: 'plain',
-        };
+        const config = this.skillsConfig[tech];
+        // Technologies without a devicon are shown as a text-only chip
+        if (!config) {
+          return { name: tech, currentIcon: '', showSvg: false };
+        }
         return this.createSkill(tech, config.iconBase, config.variant);
       });
     }
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 
   onSkillHover(skill: any, isHovered: boolean) {
@@ -81,7 +97,7 @@ export class ProjectDialogComponent implements OnInit {
     icon: `devicon-${iconBase}-${variant}`,
     hoverIcon: `devicon-${iconBase}-${variant} colored`,
     currentIcon: `devicon-${iconBase}-${variant}`,
-    hoverSvgUrl: `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${iconBase}/${iconBase}-original.svg`,
+    hoverSvgUrl: `https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/${iconBase}/${iconBase}-original.svg`,
     showSvg: false,
   });
 }

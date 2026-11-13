@@ -1,65 +1,86 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-<body class="box">
-  <section class="title-section">
-    <h2 class="title">{{ data.title }}</h2>
-  </section>
-  <section class="description">
-    <h3 class="section-title">{{ "PROJECTS.DESCRIPTION" | translate }}</h3>
-    <p class="content">{{ data.description }}</p>
-  </section>
-  <section class="technologies">
-    <h3 class="section-title">{{ "PROJECTS.TECHNOLOGIES" | translate }}</h3>
-    <div class="tech-stack-list">
-      <div
-        class="tech-stack"
-        *ngFor="let tech of techSkills"
-        (mouseenter)="onSkillHover(tech, true)"
-        (mouseleave)="onSkillHover(tech, false)"
-      >
-        <img
-          *ngIf="tech.showSvg && tech.hoverSvgUrl"
-          [src]="tech.hoverSvgUrl"
-          [alt]="tech.name + ' icon'"
-          class="tech-icon tech-svg-icon"
-        />
-        <i
-          *ngIf="!tech.showSvg || !tech.hoverSvgUrl"
-          [class]="tech.currentIcon + ' tech-icon'"
-        ></i>
-        <span>{{ tech.name }}</span>
+<article class="project-dialog">
+  <button
+    type="button"
+    class="icon-close"
+    (click)="close()"
+    [attr.aria-label]="'PROJECTS.CLOSE' | translate"
+  >
+    ×
+  </button>
+
+  <img
+    *ngIf="data.image"
+    class="banner"
+    [src]="data.image"
+    [alt]="'PROJECTS.IMAGE_ALT' | translate: { title: data.title }"
+  />
+
+  <div class="body">
+    <header class="header">
+      <h2 class="title">{{ data.title }}</h2>
+      <span class="date-pill">
+        {{ data.startDate | localizedDate }}
+        –
+        {{
+          data.endDate
+            ? (data.endDate | localizedDate)
+            : ("PROJECTS.PRESENT" | translate)
+        }}
+      </span>
+    </header>
+
+    <section>
+      <h3 class="section-title">{{ "PROJECTS.DESCRIPTION" | translate }}</h3>
+      <p class="content">{{ data.description }}</p>
+    </section>
+
+    <section>
+      <h3 class="section-title">{{ "PROJECTS.TECHNOLOGIES" | translate }}</h3>
+      <div class="tech-stack-list">
+        <div
+          class="tech-stack"
+          *ngFor="let tech of techSkills"
+          (mouseenter)="onSkillHover(tech, true)"
+          (mouseleave)="onSkillHover(tech, false)"
+        >
+          <img
+            *ngIf="tech.showSvg && tech.hoverSvgUrl"
+            [src]="tech.hoverSvgUrl"
+            alt=""
+            class="tech-icon"
+          />
+          <i
+            *ngIf="(!tech.showSvg || !tech.hoverSvgUrl) && tech.currentIcon"
+            [class]="tech.currentIcon + ' tech-icon'"
+          ></i>
+          <span>{{ tech.name }}</span>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="date">
-    <h3 class="section-title">{{ "PROJECTS.DATE" | translate }}</h3>
-    <p class="content">
-      {{ data.startDate | date: "MMMM yyyy" }}
-      -
-      {{ data.endDate ? (data.endDate | date: "MMMM yyyy") : ("PROJECTS.PRESENT" | translate) }}
-    </p>
-  </section>
-  <section class="source">
-    <button class="close-btn">
-      {{ "PROJECTS.CLOSE" | translate }}
-    </button>
-    <a
-      *ngIf="data.demoUrl"
-      class="demo-link"
-      [href]="data.demoUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-      color="primary"
-    >
-      {{ "PROJECTS.DEMO_LINK" | translate }}
-    </a>
-    <a
-      *ngIf="data.sourceUrl"
-      class="source-link"
-      [href]="data.sourceUrl"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {{ "PROJECTS.SOURCE_LINK" | translate }}
-    </a>
-  </section>
-</body>
+    </section>
+
+    <footer class="actions">
+      <a
+        *ngIf="data.demoUrl"
+        class="action primary"
+        [href]="data.demoUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ "PROJECTS.DEMO_LINK" | translate }}
+      </a>
+      <a
+        *ngIf="data.sourceUrl"
+        class="action"
+        [class.primary]="!data.demoUrl"
+        [href]="data.sourceUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ "PROJECTS.SOURCE_LINK" | translate }}
+      </a>
+      <button type="button" class="action ghost close-btn" (click)="close()">
+        {{ "PROJECTS.CLOSE" | translate }}
+      </button>
+    </footer>
+  </div>
+</article>

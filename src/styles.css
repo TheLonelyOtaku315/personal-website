@@ -99,10 +99,31 @@ body::-webkit-scrollbar {
 .mat-mdc-dialog-container {
   --mdc-dialog-container-color: var(--surface-color);
   --mdc-dialog-supporting-text-color: var(--text-color);
-  backdrop-filter: blur(10px);
-  background: rgba(var(--surface-color-rgb), 0.95) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(var(--surface-color-rgb), 0.92) !important;
   border: 2px solid var(--border-color);
   border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25),
+    0 0 40px rgba(var(--accent-color-rgb), 0.12);
+  overflow: hidden;
+}
+
+/* Let the glass container show through Material's inner surface */
+.mat-mdc-dialog-container .mat-mdc-dialog-surface {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: inherit;
+}
+
+.project-dialog-panel .mat-mdc-dialog-container {
+  border-color: rgba(var(--accent-color-rgb), 0.35);
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 .mat-mdc-dialog-title {
