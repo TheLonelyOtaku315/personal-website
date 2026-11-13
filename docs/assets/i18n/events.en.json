@@ -1,27 +1,100 @@
 [
   {
-    "status": "Started College Education - DEC",
-    "date": "2020-08",
-    "description": "Enrolled in DEC Computer Science and Mathematics program at Vanier College."
+    "type": "award",
+    "title": "1st Place – GDG Polytechnique Hackathon",
+    "organization": "Google Developer Group Polytechnique Montréal",
+    "startDate": "2026-11-11",
+    "endDate": "2026-11-11",
+    "summary": "Won first place with my team at the “Browser in the Age of AI” hackathon.",
+    "details": [
+      "Won first place with my team at the hackathon “Le navigateur à l'ère de l'intelligence artificielle” (The Browser in the Age of Artificial Intelligence), hosted by Google Developer Group Polytechnique Montréal on November 11, 2026.",
+      "Recognized for the excellence, innovation and creativity of our project."
+    ],
+    "certificate": "assets/doc/Tonny-Zhao-Certificat-GDG-Polytechnique.pdf"
   },
   {
-    "status": "Completed College Education - DEC",
-    "date": "2023-05",
-    "description": "Successfully completed DEC in Computer Science and Mathematics at Vanier College, focusing on programming fundamentals and data structures."
+    "type": "work",
+    "title": "Web Developer",
+    "organization": "CREII – Centre de référence des élèves issus de l'immigration",
+    "location": "Laval, Montréal",
+    "startDate": "2026-07",
+    "endDate": "2026-08",
+    "summary": "Designed and built the CREII website from the ground up with Angular and WordPress.",
+    "details": [
+      "Independently designed and developed the organization's website using Angular, TypeScript, HTML, CSS and WordPress.",
+      "Built the website from the ground up, implementing responsive, multilingual interfaces and reusable components.",
+      "Integrated Angular with WordPress through custom REST APIs to connect the frontend with website content and services.",
+      "Developed a Google Drive-based photo gallery and integrated it into the website.",
+      "Integrated and configured services including WooCommerce, Stripe, Brevo and IONOS.",
+      "Troubleshot and resolved hosting, DNS, SSL, domain, API and WordPress configuration issues."
+    ],
+    "link": "https://creii.net"
   },
   {
-    "status": "Started Job at Best Buy",
-    "date": "2023-05",
-    "description": "Began working at Best Buy in customer service, developing communication skills and technical product knowledge."
+    "type": "work",
+    "title": "Animator",
+    "organization": "Fusion Jeunesse",
+    "location": "Montréal",
+    "startDate": "2026-02",
+    "endDate": "",
+    "summary": "Leading Techno Exploration and Video Game Creation workshops for students.",
+    "details": [
+      "Led and facilitated workshops in Techno Exploration and Video Game Creation, introducing students to basic concepts in technology and game design.",
+      "Guided students through hands-on projects such as designing simple games, fostering creativity, logic and problem-solving skills.",
+      "Created an engaging and supportive environment while delivering Fusion Jeunesse programs, encouraging teamwork and innovation."
+    ]
   },
   {
-    "status": "Started University Education - Bachelor",
-    "date": "2023-08",
-    "description": "Enrolled in Bachelor of Engineering in Computer Engineering at Concordia University. Joined the Co-operative Education Program (C.Edge)."
+    "type": "education",
+    "title": "Bachelor of Engineering – Computer Engineering (C.Edge)",
+    "organization": "Concordia University",
+    "location": "Montréal",
+    "startDate": "2023-08",
+    "endDate": "2027",
+    "summary": "Computer engineering degree in the Co-operative Education Program (C.Edge).",
+    "details": [
+      "Member of the Co-operative Education Program (C.Edge).",
+      "Relevant courses: Programming Methodology, Data Structures and Algorithms, Software Process and Practices, Databases, Introduction to Theoretical Computer Science, Computer Graphics."
+    ]
   },
   {
-    "status": "Completed Job at Best Buy",
-    "date": "2023-08",
-    "description": "Finished summer position at Best Buy, gaining valuable customer service experience and problem-solving skills."
+    "type": "education",
+    "title": "DEC – Computer Science and Mathematics",
+    "organization": "Vanier College",
+    "location": "Montréal",
+    "startDate": "2020-08",
+    "endDate": "2023-05",
+    "summary": "College diploma focused on programming fundamentals, data structures and mathematics.",
+    "details": [
+      "Relevant courses: Introduction to Programming, Data Structure and Object-Oriented Programming, Program Development in a Graphical Environment, Integrative Project in Computer Science and Mathematics."
+    ]
+  },
+  {
+    "type": "work",
+    "title": "Customer Service Employee",
+    "organization": "Best Buy",
+    "location": "Montréal",
+    "startDate": "2022-05",
+    "endDate": "2022-08",
+    "summary": "Summer customer service position handling returns and online orders.",
+    "details": [
+      "Handled customer returns and online orders, ensuring customer satisfaction.",
+      "Managed high-stress situations and resolved customer complaints while maintaining the quality of service.",
+      "Addressed clients' concerns."
+    ]
+  },
+  {
+    "type": "work",
+    "title": "Private Tutor",
+    "organization": "Self-employed",
+    "location": "Montréal",
+    "startDate": "2017",
+    "endDate": "2019",
+    "summary": "Tutoring in mathematics and French for elementary and high school students.",
+    "details": [
+      "Provided personalized tutoring in mathematics and French for elementary and high school students.",
+      "Organized educational activities and exercises to enhance student learning.",
+      "Improved students' academic performance, with average grade increases of 15%."
+    ]
   }
 ]

@@ -1,27 +1,100 @@
 [
   {
-    "status": "Début des études collégiales - DEC",
-    "date": "2020-08",
-    "description": "Inscription au programme DEC en informatique et mathématiques au Collège Vanier."
+    "type": "award",
+    "title": "1re place – Hackathon GDG Polytechnique",
+    "organization": "Google Developer Group Polytechnique Montréal",
+    "startDate": "2026-11-11",
+    "endDate": "2026-11-11",
+    "summary": "Première place en équipe au hackathon « Le navigateur à l'ère de l'intelligence artificielle ».",
+    "details": [
+      "Première place remportée en équipe au hackathon « Le navigateur à l'ère de l'intelligence artificielle », organisé par le Google Developer Group Polytechnique Montréal le 11 novembre 2026.",
+      "Prix décerné en reconnaissance de l'excellence, de l'innovation et de la créativité du projet."
+    ],
+    "certificate": "assets/doc/Tonny-Zhao-Certificat-GDG-Polytechnique.pdf"
   },
   {
-    "status": "Fin des études collégiales - DEC",
-    "date": "2023-05",
-    "description": "Obtention du DEC en informatique et mathématiques au Collège Vanier, axé sur les bases de la programmation et les structures de données."
+    "type": "work",
+    "title": "Développeur Web",
+    "organization": "CREII – Centre de référence des élèves issus de l'immigration",
+    "location": "Laval, Montréal",
+    "startDate": "2026-07",
+    "endDate": "2026-08",
+    "summary": "Conception et développement du site Web du CREII de A à Z avec Angular et WordPress.",
+    "details": [
+      "Conception et développement, de façon autonome, du site Web de l'organisme avec Angular, TypeScript, HTML, CSS et WordPress.",
+      "Création du site de A à Z, avec des interfaces adaptatives et multilingues ainsi que des composants réutilisables.",
+      "Intégration d'Angular à WordPress au moyen d'API REST personnalisées pour relier le frontend au contenu et aux services du site.",
+      "Développement d'une galerie photo basée sur Google Drive et intégration de celle-ci au site Web.",
+      "Intégration et configuration de services comme WooCommerce, Stripe, Brevo et IONOS.",
+      "Diagnostic et résolution de problèmes d'hébergement, de DNS, de SSL, de nom de domaine, d'API et de configuration WordPress."
+    ],
+    "link": "https://creii.net"
   },
   {
-    "status": "Début d'emploi chez Best Buy",
-    "date": "2023-05",
-    "description": "Début de travail chez Best Buy au service à la clientèle, développement des compétences en communication et connaissances techniques des produits."
+    "type": "work",
+    "title": "Animateur",
+    "organization": "Fusion Jeunesse",
+    "location": "Montréal",
+    "startDate": "2026-02",
+    "endDate": "",
+    "summary": "Animation d'ateliers d'exploration technologique et de création de jeux vidéo.",
+    "details": [
+      "Animation d'ateliers d'exploration technologique et de création de jeux vidéo, afin d'initier les élèves aux notions de base de la technologie et de la conception de jeux.",
+      "Accompagnement des élèves dans des projets pratiques, comme la conception de jeux simples, pour développer leur créativité, leur logique et leur capacité à résoudre des problèmes.",
+      "Création d'un environnement stimulant et bienveillant lors de la prestation des programmes de Fusion Jeunesse, favorisant le travail d'équipe et l'innovation."
+    ]
   },
   {
-    "status": "Début des études universitaires - Baccalauréat",
-    "date": "2023-08",
-    "description": "Inscription au baccalauréat en génie informatique à l'Université Concordia. Participation au programme coopératif (C.Edge)."
+    "type": "education",
+    "title": "Baccalauréat en génie informatique (C.Edge)",
+    "organization": "Université Concordia",
+    "location": "Montréal",
+    "startDate": "2023-08",
+    "endDate": "2027",
+    "summary": "Baccalauréat en génie informatique au programme d'enseignement coopératif (C.Edge).",
+    "details": [
+      "Membre du programme d'enseignement coopératif (C.Edge).",
+      "Cours pertinents : Méthodologie de programmation, Structures de données et algorithmes, Processus et pratiques du logiciel, Bases de données, Introduction à l'informatique théorique, Infographie."
+    ]
   },
   {
-    "status": "Fin d'emploi chez Best Buy",
-    "date": "2023-08",
-    "description": "Fin du poste d'été chez Best Buy, acquisition d'une précieuse expérience en service à la clientèle et en résolution de problèmes."
+    "type": "education",
+    "title": "DEC – Sciences informatiques et mathématiques",
+    "organization": "Collège Vanier",
+    "location": "Montréal",
+    "startDate": "2020-08",
+    "endDate": "2023-05",
+    "summary": "Diplôme collégial axé sur les bases de la programmation, les structures de données et les mathématiques.",
+    "details": [
+      "Cours pertinents : Introduction à la programmation, Structures de données et programmation orientée objet, Développement de programmes en environnement graphique, Projet d'intégration en sciences informatiques et mathématiques."
+    ]
+  },
+  {
+    "type": "work",
+    "title": "Préposé au service à la clientèle",
+    "organization": "Best Buy",
+    "location": "Montréal",
+    "startDate": "2022-05",
+    "endDate": "2022-08",
+    "summary": "Poste d'été au service à la clientèle : retours et commandes en ligne.",
+    "details": [
+      "Traitement des retours et des commandes en ligne, en veillant à la satisfaction de la clientèle.",
+      "Gestion de situations à haut niveau de stress et résolution des plaintes, tout en maintenant la qualité du service.",
+      "Prise en charge des préoccupations des clients."
+    ]
+  },
+  {
+    "type": "work",
+    "title": "Tuteur privé",
+    "organization": "Travailleur autonome",
+    "location": "Montréal",
+    "startDate": "2017",
+    "endDate": "2019",
+    "summary": "Tutorat en mathématiques et en français pour des élèves du primaire et du secondaire.",
+    "details": [
+      "Tutorat personnalisé en mathématiques et en français pour des élèves du primaire et du secondaire.",
+      "Organisation d'activités et d'exercices éducatifs pour favoriser l'apprentissage des élèves.",
+      "Amélioration du rendement scolaire des élèves, avec une hausse moyenne des notes de 15 %."
+    ]
   }
 ]

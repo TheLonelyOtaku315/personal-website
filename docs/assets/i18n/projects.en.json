@@ -1,20 +1,54 @@
 [
   {
-    "title": "T4-S3 Bluetooth Keyboard Bridge",
-    "description": "ESP32-S3 project that transforms the LilyGO T4-S3 AMOLED board into a USB to Bluetooth keyboard adapter. Bridges USB keyboard input to Bluetooth HID output, allowing wired keyboards to connect wirelessly to devices. Features a 2.41\" AMOLED touchscreen with LVGL UI framework and multi-tab interface for device control, media control, and app shortcuts.",
+    "title": "CREII Website",
+    "description": "Independently designed and developed the website of CREII (Centre de référence des élèves issus de l'immigration) using Angular, TypeScript, HTML, CSS and WordPress. Built it from the ground up with responsive, multilingual interfaces and reusable components, connected Angular to WordPress through custom REST APIs, developed a Google Drive-based photo gallery, and integrated WooCommerce, Stripe, Brevo and IONOS.",
+    "demoUrl": "https://creii.net",
+    "sourceUrl": "",
+    "startDate": "2026-07",
+    "endDate": "2026-08",
+    "technologies": [
+      "Angular",
+      "TypeScript",
+      "HTML5",
+      "CSS3",
+      "WordPress",
+      "REST API",
+      "WooCommerce",
+      "Stripe"
+    ],
+    "image": "assets/img/projects/creii.jpg"
+  },
+  {
+    "title": "QuietZone",
+    "description": "IoT-based noise monitoring system using ESP32 sound sensors and a Raspberry Pi hub to collect and transmit real-time decibel data. Includes an Android application that displays live noise levels across multiple areas with automatic updates and simple noise categorization (low, medium, high), with Firebase for real-time data storage and admin features for sensor management, including registration and inactivity detection.",
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/COEN-ELEC290-QuietZone/QuietZone",
+    "startDate": "2026-01",
+    "endDate": "2026-04",
+    "technologies": [
+      "Raspberry Pi",
+      "ESP32",
+      "Android",
+      "C++",
+      "Java",
+      "Firebase"
+    ],
+    "image": ""
+  },
+  {
+    "title": "Bluetooth Touch Screen Macropad",
+    "description": "Bluetooth-enabled application on an ESP32-S3 that sends predefined shortcut commands (e.g., opening apps like VS Code, GitHub, or Facebook). Features a touchscreen user interface built with LVGL on the AMOLED display of the LilyGO T4-S3 board to trigger actions through interactive controls, with hardware and software configured using PlatformIO.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/T4S3-BT-Keyboard",
     "startDate": "2025-12",
-    "endDate": "",
+    "endDate": "2026-02",
     "technologies": [
-      "ESP32-S3",
+      "ESP32",
       "C++",
-      "Bluetooth HID",
-      "USB Host",
+      "Bluetooth",
       "LVGL",
       "AMOLED Display",
-      "PlatformIO",
-      "Arduino"
+      "PlatformIO"
     ],
     "image": ""
   },
@@ -108,12 +142,17 @@
   },
   {
     "title": "Temperature Converter",
-    "description": "Temperature Converter built in Visual Studio, allowing seamless conversion between Celsius, Fahrenheit, and Kelvin with a clean and intuitive GUI! Built using JavaFX with CSS styling for an enhanced user experience.",
+    "description": "Interactive temperature converter built with JavaFX as a final course project. Designed the user interface with CSS and implemented the logic for Celsius, Fahrenheit and Kelvin conversions. Led a small team, coordinated development tasks, and ensured on-time project completion.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/TemperatureConverterVS",
-    "startDate": "2025-01",
-    "endDate": "2025-01",
-    "technologies": ["Java", "JavaFX", "CSS", "Temperature Conversion"],
+    "startDate": "2022-08",
+    "endDate": "2022-12",
+    "technologies": [
+      "Java",
+      "JavaFX",
+      "CSS",
+      "Temperature Conversion"
+    ],
     "image": ""
   },
   {
@@ -123,7 +162,12 @@
     "sourceUrl": "https://github.com/TheLonelyOtaku315/personal-website",
     "startDate": "2024-12",
     "endDate": "2025-01",
-    "technologies": ["Angular", "TypeScript", "CSS", "HTML"],
+    "technologies": [
+      "Angular",
+      "TypeScript",
+      "CSS",
+      "HTML"
+    ],
     "image": ""
   },
   {
@@ -148,7 +192,11 @@
     "sourceUrl": "",
     "startDate": "2024-04",
     "endDate": "2024-05",
-    "technologies": ["Java", "Machine Learning", "Algorithm Optimization"],
+    "technologies": [
+      "Java",
+      "Machine Learning",
+      "Algorithm Optimization"
+    ],
     "image": ""
   },
   {
@@ -173,8 +221,14 @@
     "demoUrl": "",
     "sourceUrl": "",
     "startDate": "2023-01",
-    "endDate": "2023-04",
-    "technologies": ["Java", "JavaFX", "CSS", "Git", "GitHub"],
+    "endDate": "2023-05",
+    "technologies": [
+      "Java",
+      "JavaFX",
+      "CSS",
+      "Git",
+      "GitHub"
+    ],
     "image": ""
   },
   {
@@ -184,7 +238,11 @@
     "sourceUrl": "",
     "startDate": "2022-11",
     "endDate": "2022-11",
-    "technologies": ["Raspberry Pi", "Linux", "RetroPie"],
+    "technologies": [
+      "Raspberry Pi",
+      "Linux",
+      "RetroPie"
+    ],
     "image": ""
   }
 ]
