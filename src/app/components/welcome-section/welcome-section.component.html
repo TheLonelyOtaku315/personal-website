@@ -7,11 +7,12 @@
       {{ "WELCOME.INTRO" | translate }}
     </p>
     <a
-      href="https://thelonelyotaku315.github.io/personal-website/assets/doc/Tonny-Zhao-Resume-CV.pdf"
-      download="Tonny-Zhao-Resume-CV.pdf"
+      class="btn"
+      [href]="'assets/doc/' + ('WELCOME.RESUME_FILE' | translate)"
+      [attr.download]="'WELCOME.RESUME_FILE' | translate"
       target="_blank"
+      rel="noopener"
+      >{{ "WELCOME.RESUME_BUTTON" | translate }}</a
     >
-      <button class="btn">{{ "WELCOME.RESUME_BUTTON" | translate }}</button>
-    </a>
   </div>
 </div>

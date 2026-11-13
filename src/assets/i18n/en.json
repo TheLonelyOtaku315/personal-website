@@ -24,12 +24,13 @@
   },
   "WELCOME": {
     "GREETING": "Hi, welcome to Tonny's portfolio.",
-    "INTRO": "I'm a third-year computer engineering student with a strong interest in software development. I enjoy building responsive, user-friendly applications and continuously improving my skills by working on real projects and exploring new technologies.",
+    "INTRO": "I'm a fourth-year computer engineering student at Concordia University, in the co-op program (C.Edge). I enjoy building responsive, user-friendly applications, from full-stack web apps to embedded and IoT projects, and I keep improving my skills through real projects and new technologies.",
+    "RESUME_FILE": "Tonny-Zhao-CV-EN.pdf",
     "RESUME_BUTTON": "CV/Resume"
   },
   "ABOUT": {
     "TITLE": "About Me",
-    "INTRO": "I am Tonny Zhao, a computer engineering student passionate about software development, with a strong interest in front-end technologies like Angular. I recently designed and built a multilingual website for CREII, won first place at the GDG Polytechnique hackathon, and I currently lead technology and video game creation workshops with Fusion Jeunesse.",
+    "INTRO": "I am Tonny Zhao, a computer engineering student passionate about software development, with a strong interest in front-end technologies like Angular. I recently designed and built a multilingual website for CREII, and I currently lead technology and video game creation workshops with Fusion Jeunesse.",
     "SKILLS_TITLE": "My Skills",
     "JOURNEY_TITLE": "My Journey",
     "SKILL_CATEGORIES": {

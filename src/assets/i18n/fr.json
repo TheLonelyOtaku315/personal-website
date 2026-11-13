@@ -24,12 +24,13 @@
   },
   "WELCOME": {
     "GREETING": "Bonjour, bienvenue sur le portfolio de Tonny.",
-    "INTRO": "Je suis étudiant en troisième année de génie informatique avec un grand intérêt pour le développement logiciel. J'aime créer des applications réactives et conviviales et améliorer continuellement mes compétences en travaillant sur de vrais projets et en explorant de nouvelles technologies.",
-    "RESUME_BUTTON": "Resume/CV"
+    "INTRO": "Je suis étudiant en quatrième année de génie informatique à l'Université Concordia, au programme coopératif (C.Edge). J'aime créer des applications réactives et conviviales, des applications web full-stack aux projets embarqués et IoT, et je continue d'améliorer mes compétences grâce à de vrais projets et à de nouvelles technologies.",
+    "RESUME_FILE": "Tonny-Zhao-CV-FR.pdf",
+    "RESUME_BUTTON": "CV"
   },
   "ABOUT": {
     "TITLE": "À propos de moi",
-    "INTRO": "Je suis Tonny Zhao, étudiant en génie informatique passionné par le développement logiciel, avec un fort intérêt pour les technologies front-end comme Angular. J'ai récemment conçu et développé un site Web multilingue pour le CREII, j'ai remporté la première place au hackathon GDG Polytechnique, et j'anime actuellement des ateliers de technologie et de création de jeux vidéo avec Fusion Jeunesse.",
+    "INTRO": "Je suis Tonny Zhao, étudiant en génie informatique passionné par le développement logiciel, avec un fort intérêt pour les technologies front-end comme Angular. J'ai récemment conçu et développé un site Web multilingue pour le CREII, et j'anime actuellement des ateliers de technologie et de création de jeux vidéo avec Fusion Jeunesse.",
     "SKILLS_TITLE": "Mes compétences",
     "JOURNEY_TITLE": "Mon parcours",
     "SKILL_CATEGORIES": {
