@@ -81,12 +81,10 @@ export class ThemeService {
 
     // Update DOM only in browser environment
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      if (isDark) {
-        document.body.classList.add('dark-theme');
-        document.body.classList.remove('light-theme');
-      } else {
-        document.body.classList.add('light-theme');
-        document.body.classList.remove('dark-theme');
+      // Set on <html> too so the page scrollbar follows the theme
+      for (const el of [document.documentElement, document.body]) {
+        el.classList.toggle('dark-theme', isDark);
+        el.classList.toggle('light-theme', !isDark);
       }
     }
   }

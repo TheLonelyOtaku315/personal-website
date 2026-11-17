@@ -1,104 +1,106 @@
-<div class="container">
-  <div class="glass">
-    <div class="title">
-      <h1 class="welcome-text">{{ "ABOUT.TITLE" | translate }}</h1>
-    </div>
-    <p class="intro">
-      {{ "ABOUT.INTRO" | translate }}
-    </p>
-    <section class="skills-section">
-      <h3 class="skills-title title">{{ "ABOUT.SKILLS_TITLE" | translate }}</h3>
-      <div class="skill-categories">
-        <div class="skill-category" *ngFor="let section of skillSections">
-          <h4 class="category-title">{{ section.title | translate }}</h4>
-          <div class="skills-grid">
-            <div
-              class="skill-card"
-              *ngFor="let skill of section.skills"
-              (mouseenter)="onSkillHover(skill, true)"
-              (mouseleave)="onSkillHover(skill, false)"
-            >
-              <img
-                *ngIf="skill.showSvg && skill.hoverSvgUrl"
-                [src]="skill.hoverSvgUrl"
-                [alt]="skill.name + ' icon'"
-                class="skill-icon skill-svg-icon"
-              />
-              <i
-                *ngIf="!skill.showSvg || !skill.hoverSvgUrl"
-                [class]="skill.currentIcon + ' skill-icon'"
-              ></i>
-              <span class="skill-name">{{ skill.name }}</span>
-            </div>
-          </div>
+<div class="wrap section-grid">
+  <header class="section-head">
+    <span class="section-index">01</span>
+    <h2 class="section-title">{{ "ABOUT.TITLE" | translate }}</h2>
+  </header>
+
+  <div class="about">
+    <p class="section-lede">{{ "ABOUT.INTRO" | translate }}</p>
+
+    <!-- Experience / education timeline -->
+    <section class="block" aria-labelledby="journey-title">
+      <div class="block-head">
+        <h3 class="label" id="journey-title">
+          {{ "ABOUT.JOURNEY_TITLE" | translate }}
+        </h3>
+        <div
+          class="filters"
+          role="group"
+          [attr.aria-label]="'ABOUT.TIMELINE.FILTER_LABEL' | translate"
+        >
+          <button
+            *ngFor="let f of timelineFilters"
+            type="button"
+            class="filter"
+            [class.active]="timelineFilter === f"
+            [attr.aria-pressed]="timelineFilter === f"
+            (click)="timelineFilter = f"
+          >
+            {{ "ABOUT.TIMELINE.FILTER_" + f.toUpperCase() | translate }}
+          </button>
         </div>
       </div>
-    </section>
-    <section class="timeline-section">
-      <h3 class="timeline-title title">
-        {{ "ABOUT.JOURNEY_TITLE" | translate }}
-      </h3>
-      <div
-        class="timeline-filters"
-        role="group"
-        [attr.aria-label]="'ABOUT.TIMELINE.FILTER_LABEL' | translate"
-      >
-        <button
-          *ngFor="let f of timelineFilters"
-          type="button"
-          class="filter-chip"
-          [class.active]="timelineFilter === f"
-          [attr.aria-pressed]="timelineFilter === f"
-          (click)="timelineFilter = f"
-        >
-          {{ "ABOUT.TIMELINE.FILTER_" + f.toUpperCase() | translate }}
-        </button>
-      </div>
-      <ol class="timeline">
+
+      <ol class="entries">
         <li
           *ngFor="let item of filteredTimeline"
-          class="timeline-item"
-          [class.education]="item.type === 'education'"
+          class="entry"
           [class.award]="item.type === 'award'"
-          [class.ongoing]="!item.endDate"
         >
-          <span class="timeline-dot" aria-hidden="true"></span>
-          <button
-            type="button"
-            class="timeline-card"
-            (click)="openTimelineItem(item)"
-          >
-            <span class="timeline-meta">
-              <span class="timeline-date" *ngIf="isSingleDate(item)">
-                {{ item.startDate | localizedDate: singleDateFormat(item) }}
-              </span>
-              <span class="timeline-date" *ngIf="!isSingleDate(item)">
-                {{ item.startDate | localizedDate: "MMM yyyy" }} –
-                {{
-                  item.endDate
-                    ? (item.endDate | localizedDate: "MMM yyyy")
-                    : ("PROJECTS.PRESENT" | translate)
-                }}
-              </span>
-              <span class="timeline-type">
-                {{
-                  (item.type === "education"
-                    ? "ABOUT.TIMELINE.FILTER_EDUCATION"
-                    : item.type === "award"
-                      ? "ABOUT.TIMELINE.TYPE_AWARD"
-                      : "ABOUT.TIMELINE.FILTER_WORK"
-                  ) | translate
-                }}
-              </span>
-            </span>
-            <span class="timeline-heading">{{ item.title }}</span>
-            <span class="timeline-org">{{ item.organization }}</span>
-            <span class="timeline-summary">{{ item.summary }}</span>
-            <span class="sr-only">{{ "ABOUT.TIMELINE.DETAILS" | translate }}</span>
-            <span class="timeline-chevron" aria-hidden="true">›</span>
-          </button>
+          <span class="entry-date">
+            <ng-container *ngIf="isSingleDate(item)">
+              {{ item.startDate | localizedDate: singleDateFormat(item) }}
+            </ng-container>
+            <ng-container *ngIf="!isSingleDate(item)">
+              {{ item.startDate | localizedDate: "MMM yyyy" }} –
+              <span class="entry-end">{{
+                item.endDate
+                  ? (item.endDate | localizedDate: "MMM yyyy")
+                  : ("PROJECTS.PRESENT" | translate)
+              }}</span>
+            </ng-container>
+          </span>
+
+          <div class="entry-main">
+            <h4 class="entry-title">
+              <button
+                type="button"
+                class="entry-open"
+                (click)="openTimelineItem(item)"
+              >
+                {{ item.title }}
+                <span class="sr-only">
+                  — {{ "ABOUT.TIMELINE.DETAILS" | translate }}</span
+                >
+              </button>
+            </h4>
+            <p class="entry-org">{{ item.organization }}</p>
+            <p class="entry-summary">{{ item.summary }}</p>
+          </div>
+
+          <span class="entry-type">
+            <span *ngIf="item.type === 'award'" aria-hidden="true">★ </span>
+            {{
+              (item.type === "education"
+                ? "ABOUT.TIMELINE.FILTER_EDUCATION"
+                : item.type === "award"
+                  ? "ABOUT.TIMELINE.TYPE_AWARD"
+                  : "ABOUT.TIMELINE.FILTER_WORK"
+              ) | translate
+            }}
+          </span>
         </li>
       </ol>
+    </section>
+
+    <!-- Skills -->
+    <section class="block" aria-labelledby="skills-title">
+      <div class="block-head">
+        <h3 class="label" id="skills-title">
+          {{ "ABOUT.SKILLS_TITLE" | translate }}
+        </h3>
+      </div>
+
+      <dl class="skills">
+        <div class="skill-row" *ngFor="let section of skillSections">
+          <dt>{{ section.title | translate }}</dt>
+          <dd>
+            <ul class="skill-list">
+              <li *ngFor="let skill of section.skills">{{ skill.name }}</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
     </section>
   </div>
 </div>

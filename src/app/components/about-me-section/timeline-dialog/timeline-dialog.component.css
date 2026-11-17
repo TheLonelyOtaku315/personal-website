@@ -1,66 +1,48 @@
 .body {
-  padding-top: 2rem;
-}
-
-.header {
-  gap: 0.5rem;
+  padding-top: 36px;
 }
 
 .type-badge {
-  padding: 0.15rem 0.65rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent-color);
-  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-}
-
-.education .type-badge {
-  color: var(--error-color);
-  border-color: rgba(var(--error-color-rgb), 0.5);
+  color: var(--muted);
 }
 
 .award .type-badge {
-  color: var(--award-color);
-  border-color: rgba(var(--award-color-rgb), 0.5);
-}
-
-.award .details li::marker {
-  color: var(--award-color);
+  color: var(--accent);
 }
 
 .organization {
   margin: 0;
   font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--primary-text-color);
+  font-weight: 500;
+  color: var(--ink);
 }
 
 .meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.25rem;
+  gap: 4px 16px;
 }
 
 .location {
-  font-size: 0.9rem;
-  color: var(--secondary-text-color);
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 
 .details {
-  margin: 0;
-  padding-left: 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  color: var(--text-color);
-  line-height: 1.55;
+  gap: 10px;
+  margin: 0;
+  padding-left: 1.1rem;
+  line-height: 1.65;
 }
 
 .details li::marker {
-  color: var(--accent-color);
+  color: var(--accent);
 }

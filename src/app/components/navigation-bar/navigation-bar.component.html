@@ -1,300 +1,106 @@
-<!-- Mobile Menu Toggle Button -->
-<div
-  class="mobile-menu-toggle"
-  [class.active]="isMobileMenuOpen"
->
-  <label class="container">
-    <input
-      type="checkbox"
+<header class="topbar" [class.scrolled]="isScrolled" [class.menu-open]="isMobileMenuOpen">
+  <div class="wrap topbar-inner">
+    <a
+      class="brand"
+      href="#welcome"
+      (click)="scrollToSection('welcome', $event)"
+    >
+      <span class="brand-mark" aria-hidden="true">TZ</span>
+      <span class="brand-name">Tonny Zhao</span>
+    </a>
+
+    <button
+      type="button"
+      class="menu-btn"
       [attr.aria-label]="'NAV.MENU' | translate"
       [attr.aria-expanded]="isMobileMenuOpen"
       aria-controls="sidebar"
-      [checked]="isMobileMenuOpen"
-      (change)="toggleMobileMenu()"
-    />
-    <div class="checkmark">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </label>
-</div>
+      (click)="toggleMobileMenu()"
+    >
+      <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
+    </button>
 
-<nav class="sidebar" [class.mobile-open]="isMobileMenuOpen" id="sidebar">
-  <section class="top">
-    <ul>
-      <li class="logo-item">
-        <div class="logo-container">
-          <img
-            src="assets/img/logo.png"
-            alt="Tonny Zhao"
-            class="logo"
-          />
-          <div class="brand-text">Portfolio</div>
+    <nav class="nav" id="sidebar" [class.open]="isMobileMenuOpen">
+      <ul class="nav-links">
+        <li
+          *ngFor="let link of links; let i = index"
+          [class.active]="currentSection === link.id"
+        >
+          <a
+            [href]="'#' + link.id"
+            [attr.aria-current]="currentSection === link.id ? 'true' : null"
+            (click)="scrollToSection(link.id, $event)"
+          >
+            <span class="nav-index" aria-hidden="true">0{{ i + 1 }}</span>
+            {{ link.label | translate }}
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-tools">
+        <div
+          class="segmented"
+          role="group"
+          [attr.aria-label]="'NAV.LANGUAGE' | translate"
+        >
+          <button
+            *ngFor="let lang of availableLanguages"
+            type="button"
+            [attr.lang]="lang.toLowerCase()"
+            [class.active]="currentLanguage === lang"
+            [attr.aria-pressed]="currentLanguage === lang"
+            [title]="languageNames[lang]"
+            (click)="toggleLanguage(lang)"
+          >
+            {{ lang }}
+          </button>
         </div>
-      </li>
-    </ul>
-  </section>
-  <section class="middle">
-    <hr class="sidebar-separator" />
-    <ul>
-      <li data-section="welcome">
-        <a href="#welcome" (click)="scrollToSection('welcome', $event)">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="#e8eaed"
-          >
-            <path
-              d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"
-            />
-          </svg>
-          <span>{{ "NAV.HOME" | translate }}</span>
-        </a>
-      </li>
-      <li data-section="about_me">
-        <a
-          href="#about_me"
-          (click)="scrollToSection('about_me', $event)"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="#e8eaed"
-          >
-            <path
-              d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
-            />
-          </svg>
-          <span>{{ "NAV.ABOUT" | translate }}</span>
-        </a>
-      </li>
-      <li data-section="project">
-        <a href="#project" (click)="scrollToSection('project', $event)">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="#e8eaed"
-          >
-            <path
-              d="M120-480v-320q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v320q0 17-11.5 28.5T400-440H160q-17 0-28.5-11.5T120-480Zm400 320v-320q0-17 11.5-28.5T560-520h240q17 0 28.5 11.5T840-480v320q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-360h160v-240H200v240Zm400 320h160v-240H600v240Z"
-            />
-          </svg>
-          <span>{{ "NAV.PROJECTS" | translate }}</span>
-        </a>
-      </li>
-      <li data-section="contact">
-        <a href="#contact" (click)="scrollToSection('contact', $event)">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="#e8eaed"
-          >
-            <path
-              d="M120-160q-33 0-56.5-23.5T40-240v-480q0-33 23.5-56.5T120-800h720q33 0 56.5 23.5T920-720v480q0 33-23.5 56.5T840-160H120Zm360-320L120-720v480h720v-480L480-480Zm0 80 360-240H120l360 240Z"
-            />
-          </svg>
-          <span>{{ "NAV.CONTACT" | translate }}</span>
-        </a>
-      </li>
-    </ul>
-  </section>
-  <section class="bottom">
-    <hr class="sidebar-separator" />
-    <ul>
-      <li>
-        <button
-          type="button"
-          class="theme-toggle"
-          data-theme-toggle
-          (click)="toggleThemeMenu()"
-          [title]="('NAV.THEME' | translate) + ': ' + (themeLabelKey | translate)"
-          [attr.aria-expanded]="isThemeMenuOpen"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 -960 960 960"
-            fill="#e3e3e3"
-          >
-            <path
-              d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm40-83q119-15 199.5-104.5T800-480q0-123-80.5-212.5T520-797v634Z"
-            />
-          </svg>
 
-          <span>{{ "NAV.THEME" | translate }}</span>
-        </button>
-      </li>
-
-      <li>
-        <button
-          type="button"
-          class="language-toggle"
-          data-language-toggle
-          (click)="toggleLanguageMenu()"
-          [title]="('NAV.LANGUAGE' | translate) + ': ' + languageNames[currentLanguage]"
-          [attr.aria-expanded]="isLanguageMenuOpen"
+        <div
+          class="segmented icons"
+          role="group"
+          [attr.aria-label]="'NAV.THEME' | translate"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="#e8eaed"
+          <button
+            type="button"
+            [class.active]="currentThemeMode === 'light'"
+            [attr.aria-pressed]="currentThemeMode === 'light'"
+            [attr.aria-label]="'NAV.LIGHT' | translate"
+            [title]="'NAV.LIGHT' | translate"
+            (click)="setTheme('light')"
           >
-            <path
-              d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-156t86-127Q252-817 325-848.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82-31.5 155T763-197.5q-54 54.5-127 86T480-80Zm0-82q26-36 45-75t31-83H404q12 44 31 83t45 75Zm-104-16q-18-33-31.5-68.5T322-320H204q29 50 72.5 87t99.5 55Zm208 0q56-18 99.5-55t72.5-87H638q-9 38-22.5 73.5T584-178ZM170-400h136q-3-20-4.5-39.5T300-480q0-21 1.5-40.5T306-560H170q-5 20-7.5 39.5T160-480q0 21 2.5 40.5T170-400Zm216 0h188q3-20 4.5-39.5T580-480q0-21-1.5-40.5T574-560H386q-3 20-4.5 39.5T380-480q0 21 1.5 40.5T386-400Zm268 0h136q5-20 7.5-39.5T800-480q0-21-2.5-40.5T790-560H654q3 20 4.5 39.5T660-480q0 21-1.5 40.5T654-400Zm-16-240h118q-29-50-72.5-87T584-782q18 33 31.5 68.5T638-640Zm-234 0h152q-12-44-31-83t-45-75q-26 36-45 75t-31 83Zm-200 0h118q9-38 22.5-73.5T376-782q-56 18-99.5 55T204-640Z"
-            />
-          </svg>
-
-          <span>{{ "NAV.LANGUAGE" | translate }}</span>
-        </button>
-      </li>
-    </ul>
-  </section>
-</nav>
-<div
-  id="theme-card"
-  class="card"
-  *ngIf="isThemeMenuOpen"
-  style="
-    left: calc(100% + 10px);
-    bottom: calc(96px);
-  "
->
-  <ul class="list">
-    <li
-      class="element"
-      [class.selected]="currentThemeMode === 'dark'"
-      (click)="setTheme('dark')"
-    >
-      <svg
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-width="2"
-        stroke="#7e8590"
-        fill="none"
-        viewBox="0 0 24 24"
-        height="25"
-        width="25"
-        class="lucide lucide-moon"
-      >
-        <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
-      </svg>
-      <p class="label">{{ "NAV.DARK" | translate }}</p>
-    </li>
-    <li
-      class="element"
-      [class.selected]="currentThemeMode === 'light'"
-      (click)="setTheme('light')"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="25"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#7e8590"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-sun"
-      >
-        <circle cx="12" cy="12" r="5"></circle>
-        <path d="M12 1v2"></path>
-        <path d="M12 21v2"></path>
-        <path d="M4.22 4.22l1.42 1.42"></path>
-        <path d="M18.36 18.36l1.42 1.42"></path>
-        <path d="M1 12h2"></path>
-        <path d="M21 12h2"></path>
-        <path d="M4.22 19.78l1.42-1.42"></path>
-        <path d="M18.36 5.64l1.42-1.42"></path>
-      </svg>
-      <p class="label">{{ "NAV.LIGHT" | translate }}</p>
-    </li>
-    <li
-      class="element"
-      [class.selected]="currentThemeMode === 'auto'"
-      (click)="setTheme('auto')"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="25"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#7e8590"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-monitor"
-      >
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-        <line x1="8" y1="21" x2="16" y2="21"></line>
-        <line x1="12" y1="17" x2="12" y2="21"></line>
-      </svg>
-      <p class="label">{{ "NAV.AUTO" | translate }}</p>
-    </li>
-  </ul>
-</div>
-<div
-  id="language-card"
-  class="card"
-  *ngIf="isLanguageMenuOpen"
-  style="left: calc(100% + 10px); bottom: calc(48px)"
->
-  <ul class="list">
-    <li
-      class="element"
-      lang="fr"
-      [class.selected]="currentLanguage === 'FR'"
-      (click)="toggleLanguage('FR')"
-    >
-      <!-- French icon (flag) -->
-      <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="5" width="6" height="14" fill="#0055A4" />
-        <rect x="8" y="5" width="8" height="14" fill="#fff" />
-        <rect x="16" y="5" width="6" height="14" fill="#EF4135" />
-      </svg>
-      <p class="label">Français</p>
-    </li>
-    <li
-      class="element"
-      lang="en"
-      [class.selected]="currentLanguage === 'EN'"
-      (click)="toggleLanguage('EN')"
-    >
-      <!-- English icon (flag) -->
-      <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
-        <!-- Stripes -->
-        <rect x="2" y="5" width="20" height="2" fill="#B22234" />
-        <rect x="2" y="7" width="20" height="2" fill="#fff" />
-        <rect x="2" y="9" width="20" height="2" fill="#B22234" />
-        <rect x="2" y="11" width="20" height="2" fill="#fff" />
-        <rect x="2" y="13" width="20" height="2" fill="#B22234" />
-        <rect x="2" y="15" width="20" height="2" fill="#fff" />
-        <rect x="2" y="17" width="20" height="2" fill="#B22234" />
-        <!-- Blue canton -->
-        <rect x="2" y="5" width="8" height="8" fill="#3C3B6E" />
-        <!-- Simple stars (dots) -->
-        <circle cx="3.5" cy="6.5" r="0.5" fill="#fff" />
-        <circle cx="5" cy="7.5" r="0.5" fill="#fff" />
-        <circle cx="6.5" cy="6.5" r="0.5" fill="#fff" />
-        <circle cx="8" cy="7.5" r="0.5" fill="#fff" />
-        <circle cx="4.25" cy="8.5" r="0.5" fill="#fff" />
-        <circle cx="5.75" cy="8.5" r="0.5" fill="#fff" />
-        <circle cx="7.25" cy="8.5" r="0.5" fill="#fff" />
-      </svg>
-      <p class="label">English</p>
-    </li>
-  </ul>
-</div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+            </svg>
+          </button>
+          <button
+            type="button"
+            [class.active]="currentThemeMode === 'dark'"
+            [attr.aria-pressed]="currentThemeMode === 'dark'"
+            [attr.aria-label]="'NAV.DARK' | translate"
+            [title]="'NAV.DARK' | translate"
+            (click)="setTheme('dark')"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path>
+            </svg>
+          </button>
+          <button
+            type="button"
+            [class.active]="currentThemeMode === 'auto'"
+            [attr.aria-pressed]="currentThemeMode === 'auto'"
+            [attr.aria-label]="'NAV.AUTO' | translate"
+            [title]="'NAV.AUTO' | translate"
+            (click)="setTheme('auto')"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="12" rx="1.5"></rect>
+              <path d="M8 20h8M12 16v4"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

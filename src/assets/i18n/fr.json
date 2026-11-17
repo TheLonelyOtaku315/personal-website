@@ -5,7 +5,8 @@
   },
   "FOOTER": {
     "COPYRIGHT": "© 2023–{{year}} Tonny Zhao. Tous droits réservés.",
-    "PRIVACY": "Politique de confidentialité"
+    "PRIVACY": "Politique de confidentialité",
+    "TOP": "Haut de page"
   },
   "COMMON": {
     "CLOSE": "Fermer"
@@ -26,7 +27,10 @@
     "GREETING": "Bonjour, bienvenue sur le portfolio de Tonny.",
     "INTRO": "Je suis étudiant en quatrième année de génie informatique à l'Université Concordia, au programme coopératif (C.Edge). J'aime créer des applications réactives et conviviales, des applications web full-stack aux projets embarqués et IoT, et je continue d'améliorer mes compétences grâce à de vrais projets et à de nouvelles technologies.",
     "RESUME_FILE": "Tonny-Zhao-CV-FR.pdf",
-    "RESUME_BUTTON": "CV"
+    "RESUME_BUTTON": "CV",
+    "ROLE": "Génie informatique · Université Concordia · Montréal",
+    "TAGLINE": "Web full-stack, systèmes embarqués et IoT.",
+    "CONTACT_BUTTON": "Me contacter"
   },
   "ABOUT": {
     "TITLE": "À propos de moi",

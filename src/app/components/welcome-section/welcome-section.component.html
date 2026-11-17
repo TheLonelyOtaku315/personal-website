@@ -1,18 +1,39 @@
-<div class="container">
-  <div class="glass">
-    <div class="title">
-      <h1 class="welcome-text">{{ "WELCOME.GREETING" | translate }}</h1>
-    </div>
-    <p class="intro">
-      {{ "WELCOME.INTRO" | translate }}
-    </p>
+<div class="wrap hero">
+  <p class="label hero-eyebrow">{{ "WELCOME.ROLE" | translate }}</p>
+
+  <h1 class="hero-name">Tonny Zhao</h1>
+  <p class="hero-tagline">{{ "WELCOME.TAGLINE" | translate }}</p>
+
+  <p class="hero-intro">{{ "WELCOME.INTRO" | translate }}</p>
+
+  <div class="hero-actions">
     <a
-      class="btn"
+      class="btn btn-primary"
       [href]="'assets/doc/' + ('WELCOME.RESUME_FILE' | translate)"
       [attr.download]="'WELCOME.RESUME_FILE' | translate"
       target="_blank"
       rel="noopener"
-      >{{ "WELCOME.RESUME_BUTTON" | translate }}</a
     >
+      {{ "WELCOME.RESUME_BUTTON" | translate }}
+      <span class="btn-meta">PDF</span>
+    </a>
+    <a class="btn" href="#contact">{{ "WELCOME.CONTACT_BUTTON" | translate }}</a>
+
+    <span class="hero-socials">
+      <a
+        class="text-link"
+        href="https://github.com/TheLonelyOtaku315"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub ↗</a
+      >
+      <a
+        class="text-link"
+        href="https://www.linkedin.com/in/tonny-zhao/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >LinkedIn ↗</a
+      >
+    </span>
   </div>
 </div>

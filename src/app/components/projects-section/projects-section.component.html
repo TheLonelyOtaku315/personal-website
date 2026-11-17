@@ -1,75 +1,61 @@
-<div class="container">
-  <div class="glass">
-    <div class="title">
-      <h1 class="welcome-text">{{ "PROJECTS.TITLE" | translate }}</h1>
-    </div>
-    <p class="intro">
-      {{ "PROJECTS.INTRO" | translate }}
-    </p>
-    <section class="projects-section">
-      <div class="projects-grid">
-        <div
-          class="project-card"
-          *ngFor="let project of visibleProjects"
-          (click)="openProjectDialog(project)"
-          (keydown.enter)="openProjectDialog(project)"
-          tabindex="0"
-          role="button"
-        >
-          <img
-            [src]="getProjectImage(project)"
-            [alt]="'PROJECTS.IMAGE_ALT' | translate: { title: project.title }"
-            class="project-image"
-            loading="lazy"
-          />
-          <div class="project-content">
-            <h3 class="project-title">{{ project.title }}</h3>
-            <div
-              class="project-links"
-              *ngIf="project.demoUrl || project.sourceUrl"
+<div class="wrap section-grid">
+  <header class="section-head">
+    <span class="section-index">02</span>
+    <h2 class="section-title">{{ "PROJECTS.TITLE" | translate }}</h2>
+  </header>
+
+  <div class="projects">
+    <p class="section-lede">{{ "PROJECTS.INTRO" | translate }}</p>
+
+    <ol class="project-list">
+      <li class="project" *ngFor="let project of visibleProjects">
+        <span class="project-year">{{ project.startDate | date: "yyyy" }}</span>
+
+        <div class="project-main">
+          <h3 class="project-title">
+            <button
+              type="button"
+              class="project-open"
+              (click)="openProjectDialog(project)"
             >
-              <a
-                *ngIf="project.demoUrl"
-                [href]="project.demoUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-                (click)="$event.stopPropagation()"
-                (keydown.enter)="$event.stopPropagation()"
-                >{{ "PROJECTS.DEMO_LINK" | translate }}</a
-              >
-              <a
-                *ngIf="project.sourceUrl"
-                [href]="project.sourceUrl"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-                (click)="$event.stopPropagation()"
-                (keydown.enter)="$event.stopPropagation()"
-                >{{ "PROJECTS.SOURCE_LINK" | translate }}</a
-              >
-            </div>
-          </div>
+              {{ project.title }}
+            </button>
+          </h3>
+          <p class="project-desc">{{ project.description }}</p>
+          <ul class="project-tech" *ngIf="project.technologies.length">
+            <li *ngFor="let tech of project.technologies">{{ tech }}</li>
+          </ul>
         </div>
-      </div>
-      <div class="projects-more" *ngIf="hasMore || canShowLess">
-        <button
-          *ngIf="hasMore"
-          type="button"
-          class="project-link more-button"
-          (click)="loadMore()"
-        >
-          {{ "PROJECTS.SHOW_MORE" | translate }}
-        </button>
-        <button
-          *ngIf="canShowLess"
-          type="button"
-          class="project-link more-button"
-          (click)="showLess()"
-        >
-          {{ "PROJECTS.SHOW_LESS" | translate }}
-        </button>
-      </div>
-    </section>
+
+        <div class="project-links">
+          <a
+            *ngIf="project.demoUrl"
+            class="text-link"
+            [href]="project.demoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ "PROJECTS.DEMO_LINK" | translate }} ↗</a
+          >
+          <a
+            *ngIf="project.sourceUrl"
+            class="text-link"
+            [href]="project.sourceUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ "PROJECTS.SOURCE_LINK" | translate }} ↗</a
+          >
+        </div>
+      </li>
+    </ol>
+
+    <div class="projects-more" *ngIf="hasMore || canShowLess">
+      <button *ngIf="hasMore" type="button" class="btn" (click)="loadMore()">
+        {{ "PROJECTS.SHOW_MORE" | translate }}
+        <span class="count">+{{ projects.length - visibleCount }}</span>
+      </button>
+      <button *ngIf="canShowLess" type="button" class="btn" (click)="showLess()">
+        {{ "PROJECTS.SHOW_LESS" | translate }}
+      </button>
+    </div>
   </div>
 </div>

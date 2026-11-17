@@ -8,8 +8,9 @@
     ×
   </button>
 
+  <!-- Skip the generated "no image" placeholder; real previews only -->
   <img
-    *ngIf="data.image"
+    *ngIf="data.image && !data.image.startsWith('data:')"
     class="banner"
     [src]="data.image"
     [alt]="'PROJECTS.IMAGE_ALT' | translate: { title: data.title }"
