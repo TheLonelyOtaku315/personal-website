@@ -37,7 +37,7 @@
   font-family: var(--font-serif);
   font-size: clamp(1.4rem, 2.4vw, 1.75rem);
   line-height: 1.2;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   transition: color 0.15s ease;
 }
 
@@ -240,4 +240,40 @@
   .contact-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Copy email ---------- */
+/* Copy button sits on the label line so the address keeps the full width */
+.channel-row {
+  position: relative;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  position: absolute;
+  top: 12px;
+  right: 0;
+  min-width: 64px;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.72rem/1 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.copy-btn:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.copy-btn.copied {
+  color: var(--success);
+  border-color: var(--success);
 }

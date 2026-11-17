@@ -144,4 +144,56 @@ describe('ProjectsSectionComponent', () => {
     });
   });
 
+
+  describe('technology filter', () => {
+    const make = (title: string, technologies: string[]): Project => ({
+      title,
+      description: '',
+      technologies,
+      startDate: null,
+    });
+
+    beforeEach(() => {
+      component.projects = [
+        make('A', ['Angular', 'CSS']),
+        make('B', ['Java']),
+        ...Array.from({ length: 8 }, (_, i) => make('P' + i, ['C++'])),
+      ];
+    });
+
+    it('shows every matching project and hides paging', () => {
+      component.techFilter = 'CSS3';
+      expect(component.visibleProjects.map((p) => p.title)).toEqual(['A']);
+      expect(component.hasMore).toBe(false);
+      expect(component.canShowLess).toBe(false);
+    });
+
+    it('pages normally without a filter', () => {
+      expect(component.visibleProjects.length).toBe(6);
+      expect(component.hasMore).toBe(true);
+    });
+
+    it('emits the clicked tech, or null to clear the active one', () => {
+      const emitted: Array<string | null> = [];
+      component.techFilterChange.subscribe((t) => emitted.push(t));
+      component.toggleTech('Java');
+      component.techFilter = 'Java';
+      component.toggleTech('java');
+      component.clearFilter();
+      expect(emitted).toEqual(['Java', null, null]);
+    });
+
+    it('marks the active tech case-insensitively', () => {
+      component.techFilter = 'angular';
+      expect(component.isActiveTech('Angular')).toBe(true);
+      expect(component.isActiveTech('Java')).toBe(false);
+    });
+
+    it('skips the placeholder image for hover previews', () => {
+      expect(component.previewImage(make('X', []))).toBeNull();
+      expect(
+        component.previewImage({ ...make('Y', []), image: 'a.jpg' }),
+      ).toBe('a.jpg');
+    });
+  });
 });

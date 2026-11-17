@@ -1,35 +1,77 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ProjectDialogComponent } from './project-dialog/project-dialog.component';
+import { RevealDirective } from '../../directives/reveal.directive';
+import { CursorPreviewDirective } from '../../directives/cursor-preview.directive';
+import { sameTech, usesTech } from '@utils/tech';
 
 @Component({
   selector: 'app-projects-section',
   standalone: true,
-  imports: [CommonModule, TranslateModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    MatDialogModule,
+    RevealDirective,
+    CursorPreviewDirective,
+  ],
   templateUrl: './projects-section.component.html',
   styleUrl: './projects-section.component.css',
 })
 export class ProjectsSectionComponent {
   constructor(public dialog: MatDialog) {}
   @Input() projects: Project[] = [];
+  // Technology the list is filtered by (set from a skill or a tech tag)
+  @Input() techFilter: string | null = null;
+  @Output() techFilterChange = new EventEmitter<string | null>();
   hoveredIndex: number | null = null;
 
   readonly pageSize = 6;
   visibleCount = this.pageSize;
 
+  get filteredProjects(): Project[] {
+    const tech = this.techFilter;
+    return tech ? this.projects.filter((p) => usesTech(p, tech)) : this.projects;
+  }
+
   get visibleProjects() {
+    // A filtered list is short, so show every match
+    if (this.techFilter) return this.filteredProjects;
     return this.projects.slice(0, this.visibleCount);
   }
 
   get hasMore(): boolean {
-    return this.visibleCount < this.projects.length;
+    return !this.techFilter && this.visibleCount < this.projects.length;
+  }
+
+  isActiveTech(tech: string): boolean {
+    return !!this.techFilter && sameTech(tech, this.techFilter);
+  }
+
+  // Clicking the active tag again clears the filter
+  toggleTech(tech: string): void {
+    this.techFilterChange.emit(this.isActiveTech(tech) ? null : tech);
+  }
+
+  clearFilter(): void {
+    this.techFilterChange.emit(null);
+  }
+
+  // Image for the hover preview; skips the generated "no image" placeholder
+  previewImage(project: Project): string | null {
+    const src = this.getProjectImage(project);
+    return src.startsWith('data:') ? null : src;
   }
 
   get canShowLess(): boolean {
-    return !this.hasMore && this.projects.length > this.pageSize;
+    return (
+      !this.techFilter &&
+      !this.hasMore &&
+      this.projects.length > this.pageSize
+    );
   }
 
   loadMore() {

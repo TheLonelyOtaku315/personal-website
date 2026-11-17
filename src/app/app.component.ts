@@ -37,6 +37,9 @@ export class AppComponent implements OnInit {
   timeline: TimelineEvent[] = [];
   projects: Project[] = [];
 
+  // Technology the project list is filtered by, null for all projects
+  techFilter: string | null = null;
+
   isDarkmode = false;
   showContent = true;
   currentYear = new Date().getFullYear();
@@ -76,6 +79,8 @@ export class AppComponent implements OnInit {
 
     // Reload projects and timeline when the language changes
     this.translate.onLangChange.subscribe((event) => {
+      // Tech names are translated, so an old filter may no longer match
+      this.techFilter = null;
       if (event.lang !== this.dataLang) {
         this.loadData(event.lang);
       }
@@ -150,6 +155,22 @@ export class AppComponent implements OnInit {
         }
       },
     });
+  }
+
+  // Filters the projects by a technology and brings the list into view
+  filterProjects(tech: string | null) {
+    this.techFilter = tech;
+    if (typeof document === 'undefined') return;
+    const section = document.getElementById('project');
+    if (!section) return;
+    const reduceMotion = window.matchMedia?.(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    // Only scroll when the top of the list is out of view
+    const top = section.getBoundingClientRect().top;
+    if (tech && (top < 0 || top > window.innerHeight * 0.5)) {
+      section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
   }
 
   toggleDarkMode(value: boolean) {

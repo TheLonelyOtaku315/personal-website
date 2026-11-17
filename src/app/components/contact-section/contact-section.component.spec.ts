@@ -233,4 +233,22 @@ describe('ContactSectionComponent', () => {
       expect(component.visibleNotifications[0].message).toBe('Visible');
     });
   });
+
+  describe('copyEmail', () => {
+    it('copies the address and shows a confirmation briefly', async () => {
+      vi.useFakeTimers();
+      const writeText = vi.fn().mockResolvedValue(undefined);
+      vi.stubGlobal('navigator', { clipboard: { writeText } });
+
+      await component.copyEmail();
+      expect(writeText).toHaveBeenCalledWith('zhaotonny315@gmail.com');
+      expect(component.emailCopied).toBe(true);
+
+      vi.advanceTimersByTime(2000);
+      expect(component.emailCopied).toBe(false);
+
+      vi.unstubAllGlobals();
+      vi.useRealTimers();
+    });
+  });
 });

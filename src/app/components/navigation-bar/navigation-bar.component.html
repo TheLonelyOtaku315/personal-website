@@ -38,6 +38,10 @@
       </ul>
 
       <div class="nav-tools">
+        <button type="button" class="cv-btn" (click)="openCv()">
+          {{ "NAV.CV" | translate }}
+        </button>
+
         <div
           class="segmented"
           role="group"
@@ -67,7 +71,7 @@
             [attr.aria-pressed]="currentThemeMode === 'light'"
             [attr.aria-label]="'NAV.LIGHT' | translate"
             [title]="'NAV.LIGHT' | translate"
-            (click)="setTheme('light')"
+            (click)="setTheme('light', $event)"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="4"></circle>
@@ -80,7 +84,7 @@
             [attr.aria-pressed]="currentThemeMode === 'dark'"
             [attr.aria-label]="'NAV.DARK' | translate"
             [title]="'NAV.DARK' | translate"
-            (click)="setTheme('dark')"
+            (click)="setTheme('dark', $event)"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path>
@@ -92,7 +96,7 @@
             [attr.aria-pressed]="currentThemeMode === 'auto'"
             [attr.aria-label]="'NAV.AUTO' | translate"
             [title]="'NAV.AUTO' | translate"
-            (click)="setTheme('auto')"
+            (click)="setTheme('auto', $event)"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="4" width="18" height="12" rx="1.5"></rect>
@@ -103,4 +107,5 @@
       </div>
     </nav>
   </div>
+  <div class="progress" aria-hidden="true"><span #progress></span></div>
 </header>

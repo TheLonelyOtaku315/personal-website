@@ -1,20 +1,76 @@
 .hero {
-  padding-top: clamp(56px, 12vh, 140px);
+  padding-top: clamp(48px, 11vh, 128px);
   padding-bottom: clamp(64px, 10vw, 120px);
 }
 
-.hero-eyebrow {
-  margin: 0 0 20px;
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-bottom: 20px;
 }
 
+.hero-meta .label {
+  margin: 0;
+}
+
+.hero-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clock-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.clock-time {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Name: letters rise in, then react to the cursor ---------- */
 .hero-name {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.22em;
+  margin: 0;
   font-family: var(--font-serif);
   font-weight: 400;
   font-size: clamp(3.75rem, 13vw, 9.5rem);
   line-height: 0.92;
   letter-spacing: -0.025em;
   color: var(--ink);
-  margin: 0;
+}
+
+.word {
+  display: inline-flex;
+}
+
+.ch {
+  display: inline-block;
+  animation: letter-in 0.9s cubic-bezier(0.2, 0.75, 0.15, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms + 80ms);
+  transition: color 0.25s ease, transform 0.35s cubic-bezier(0.2, 0.75, 0.15, 1);
+}
+
+@keyframes letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.3em);
+  }
+}
+
+@media (hover: hover) {
+  .ch:hover {
+    font-style: italic;
+    color: var(--accent);
+    transform: translateY(-0.06em);
+  }
 }
 
 .hero-tagline {

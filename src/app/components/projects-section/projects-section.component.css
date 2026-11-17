@@ -77,16 +77,41 @@
   overflow: hidden;
 }
 
+/* Tech tags sit above the row's click area so they filter instead */
 .project-tech {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 14px;
+  gap: 4px;
   list-style: none;
-  margin: 12px 0 0;
+  margin: 12px 0 0 -6px;
   padding: 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+.tech {
+  pointer-events: auto;
+  padding: 2px 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
   color: var(--muted);
+  font: 400 0.75rem/1.5 var(--font-mono);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.tech:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.tech.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .project-links {
@@ -99,6 +124,66 @@
   padding-top: 6px;
   font-size: 0.9rem;
   white-space: nowrap;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hint {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: -16px;
+  padding: 12px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-size: 0.95rem;
+  animation: bar-in 0.25s ease-out;
+}
+
+.filter-name {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.filter-bar .count {
+  margin-left: 6px;
+}
+
+.filter-clear {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 500 0.875rem/1.4 var(--font-sans);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.filter-clear:hover {
+  color: var(--accent);
+}
+
+@keyframes bar-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
 }
 
 .projects-more {

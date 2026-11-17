@@ -9,10 +9,15 @@
       <app-about-me-section
         [timeline]="timeline"
         [projects]="projects"
+        (skillSelect)="filterProjects($event)"
       ></app-about-me-section>
     </section>
     <section id="project">
-      <app-projects-section [projects]="projects"></app-projects-section>
+      <app-projects-section
+        [projects]="projects"
+        [techFilter]="techFilter"
+        (techFilterChange)="filterProjects($event)"
+      ></app-projects-section>
     </section>
     <section id="contact">
       <app-contact-section></app-contact-section>

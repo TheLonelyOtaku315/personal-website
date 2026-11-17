@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
 import { TranslateModule } from '@ngx-translate/core';
 import { PrivacyPolicyLinkComponent } from '../privacy-policy/privacy-policy-link.component';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-contact-section',
@@ -13,11 +14,16 @@ import { PrivacyPolicyLinkComponent } from '../privacy-policy/privacy-policy-lin
     CommonModule,
     TranslateModule,
     PrivacyPolicyLinkComponent,
+    RevealDirective,
   ],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css',
 })
 export class ContactSectionComponent {
+  readonly email = 'zhaotonny315@gmail.com';
+  emailCopied = false;
+  private copiedTimer?: ReturnType<typeof setTimeout>;
+
   formData = {
     name: '',
     email: '',
@@ -51,6 +57,36 @@ export class ContactSectionComponent {
   // EmailJS service and template IDs (not sensitive, can be hardcoded)
   private readonly EMAILJS_SERVICE_ID = 'service_95ocjv8';
   private readonly EMAILJS_TEMPLATE_ID = 'template_um9kxih';
+
+  async copyEmail(): Promise<void> {
+    try {
+      await navigator.clipboard.writeText(this.email);
+    } catch {
+      // Clipboard API blocked: fall back to the older copy command
+      if (!this.copyWithSelection()) return;
+    }
+    this.emailCopied = true;
+    clearTimeout(this.copiedTimer);
+    this.copiedTimer = setTimeout(() => (this.emailCopied = false), 2000);
+  }
+
+  private copyWithSelection(): boolean {
+    const field = document.createElement('textarea');
+    field.value = this.email;
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed';
+    field.style.opacity = '0';
+    document.body.appendChild(field);
+    field.select();
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch {
+      ok = false;
+    }
+    field.remove();
+    return ok;
+  }
 
   validateForm(): boolean {
     this.validationErrors = [];

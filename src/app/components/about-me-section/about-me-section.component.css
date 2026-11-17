@@ -184,14 +184,47 @@
   padding: 0;
 }
 
-.skill-list li {
+.skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 2px 10px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--bg-raised);
   color: var(--ink);
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font: 400 0.9rem/1.6 var(--font-sans);
+}
+
+.skill-link {
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.skill-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.skill-link:active {
+  transform: translateY(1px);
+}
+
+.skill-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.skill-link:hover .skill-count {
+  color: inherit;
+}
+
+.block-head .hint {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 
 /* ---------- Small screens ---------- */

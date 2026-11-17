@@ -1,19 +1,29 @@
 <div class="wrap section-grid">
-  <header class="section-head">
+  <header class="section-head" appReveal>
     <span class="section-index">03</span>
     <h2 class="section-title">{{ "CONTACT.TITLE" | translate }}</h2>
   </header>
 
   <div class="contact">
-    <p class="section-lede">{{ "CONTACT.DESCRIPTION" | translate }}</p>
+    <p class="section-lede" appReveal>{{ "CONTACT.DESCRIPTION" | translate }}</p>
 
     <div class="contact-grid">
-      <ul class="channels">
-        <li>
-          <a class="channel" href="mailto:zhaotonny315&#64;gmail.com">
+      <ul class="channels" appReveal>
+        <li class="channel-row">
+          <a class="channel" [href]="'mailto:' + email">
             <span class="label">{{ "CONTACT.FORM.EMAIL" | translate }}</span>
-            <span class="channel-value">zhaotonny315&#64;gmail.com</span>
+            <span class="channel-value">{{ email }}</span>
           </a>
+          <button
+            type="button"
+            class="copy-btn"
+            [class.copied]="emailCopied"
+            (click)="copyEmail()"
+          >
+            <span aria-live="polite">{{
+              (emailCopied ? "CONTACT.COPIED" : "CONTACT.COPY") | translate
+            }}</span>
+          </button>
         </li>
         <li>
           <a
@@ -40,6 +50,8 @@
       </ul>
 
       <form
+        appReveal
+        [revealDelay]="120"
         class="form"
         (ngSubmit)="onSubmit($event)"
         #contactForm="ngForm"

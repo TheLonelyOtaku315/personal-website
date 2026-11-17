@@ -1,14 +1,18 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   HostListener,
   Inject,
   NgZone,
   OnDestroy,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ThemeService, type ThemeMode } from '@services/theme.service';
+import { openCvDialog } from '../cv-dialog/cv-dialog.component';
 
 // Width (px) below which the links collapse into the menu button
 const MOBILE_BREAKPOINT = 760;
@@ -16,7 +20,7 @@ const MOBILE_BREAKPOINT = 760;
 @Component({
   selector: 'app-navigation-bar',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, MatDialogModule],
   templateUrl: './navigation-bar.component.html',
   styleUrl: './navigation-bar.component.css',
 })
@@ -39,6 +43,8 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     FR: 'Français',
   };
 
+  @ViewChild('progress') progressRef?: ElementRef<HTMLElement>;
+
   private readonly sections = ['welcome', 'about_me', 'project', 'contact'];
   private scrollListener?: () => void;
 
@@ -47,6 +53,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     private themeService: ThemeService,
     private translate: TranslateService,
     private zone: NgZone,
+    private dialog: MatDialog,
   ) {
     this.themeService.currentThemeMode$.subscribe((mode) => {
       this.currentThemeMode = mode;
@@ -65,6 +72,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     // header state actually changes.
     this.zone.runOutsideAngular(() => {
       this.scrollListener = () => {
+        this.updateProgress();
         const scrolled = window.scrollY > 4;
         const section = this.findActiveSection();
         if (scrolled !== this.isScrolled || section !== this.currentSection) {
@@ -83,6 +91,16 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     if (typeof window !== 'undefined' && this.scrollListener) {
       window.removeEventListener('scroll', this.scrollListener);
     }
+  }
+
+  // Thin bar under the header showing how far down the page you are
+  private updateProgress(): void {
+    const bar = this.progressRef?.nativeElement;
+    if (!bar) return;
+    const max =
+      this.document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+    bar.style.transform = `scaleX(${ratio})`;
   }
 
   private findActiveSection(): string {
@@ -124,8 +142,50 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     this.currentLanguage = lang;
   }
 
-  setTheme(mode: ThemeMode) {
-    this.themeService.setThemeMode(mode);
+  setTheme(mode: ThemeMode, event?: MouseEvent) {
+    const apply = () => this.themeService.setThemeMode(mode);
+    const doc = this.document as Document & {
+      startViewTransition?: (cb: () => void) => { ready: Promise<void> };
+    };
+    const reduceMotion = window.matchMedia?.(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    if (!doc.startViewTransition || reduceMotion || !event) {
+      apply();
+      return;
+    }
+
+    // Grow the new theme out of the clicked button as a circle
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const radius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+    const transition = doc.startViewTransition(apply);
+    transition.ready
+      .then(() => {
+        this.document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${radius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 550,
+            easing: 'cubic-bezier(0.2, 0.75, 0.15, 1)',
+            pseudoElement: '::view-transition-new(root)',
+          },
+        );
+      })
+      .catch(() => {});
+  }
+
+  openCv() {
+    this.isMobileMenuOpen = false;
+    openCvDialog(this.dialog, this.translate.currentLang || 'en');
   }
 
   toggleTheme() {

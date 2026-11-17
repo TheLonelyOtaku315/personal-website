@@ -1,15 +1,15 @@
 <div class="wrap section-grid">
-  <header class="section-head">
+  <header class="section-head" appReveal>
     <span class="section-index">01</span>
     <h2 class="section-title">{{ "ABOUT.TITLE" | translate }}</h2>
   </header>
 
   <div class="about">
-    <p class="section-lede">{{ "ABOUT.INTRO" | translate }}</p>
+    <p class="section-lede" appReveal>{{ "ABOUT.INTRO" | translate }}</p>
 
     <!-- Experience / education timeline -->
     <section class="block" aria-labelledby="journey-title">
-      <div class="block-head">
+      <div class="block-head" appReveal>
         <h3 class="label" id="journey-title">
           {{ "ABOUT.JOURNEY_TITLE" | translate }}
         </h3>
@@ -33,7 +33,9 @@
 
       <ol class="entries">
         <li
-          *ngFor="let item of filteredTimeline"
+          *ngFor="let item of filteredTimeline; let i = index"
+          appReveal
+          [revealDelay]="(i % 5) * 50"
           class="entry"
           [class.award]="item.type === 'award'"
         >
@@ -85,18 +87,44 @@
 
     <!-- Skills -->
     <section class="block" aria-labelledby="skills-title">
-      <div class="block-head">
+      <div class="block-head" appReveal>
         <h3 class="label" id="skills-title">
           {{ "ABOUT.SKILLS_TITLE" | translate }}
         </h3>
+        <p class="hint">{{ "ABOUT.SKILLS_HINT" | translate }}</p>
       </div>
 
       <dl class="skills">
-        <div class="skill-row" *ngFor="let section of skillSections">
+        <div
+          class="skill-row"
+          *ngFor="let section of skillSections; let i = index"
+          appReveal
+          [revealDelay]="i * 50"
+        >
           <dt>{{ section.title | translate }}</dt>
           <dd>
             <ul class="skill-list">
-              <li *ngFor="let skill of section.skills">{{ skill.name }}</li>
+              <li *ngFor="let skill of section.skills">
+                <ng-container
+                  *ngIf="projectCount(skill.name) as count; else plain"
+                >
+                  <button
+                    type="button"
+                    class="skill skill-link"
+                    [title]="(count === 1 ? 'ABOUT.SKILL_PROJECT_ONE' : 'ABOUT.SKILL_PROJECTS') | translate: { count: count }"
+                    (click)="selectSkill(skill.name)"
+                  >
+                    {{ skill.name }}
+                    <span class="skill-count">{{ count }}</span>
+                    <span class="sr-only">
+                      — {{ (count === 1 ? 'ABOUT.SKILL_PROJECT_ONE' : 'ABOUT.SKILL_PROJECTS') | translate: { count: count } }}</span
+                    >
+                  </button>
+                </ng-container>
+                <ng-template #plain>
+                  <span class="skill">{{ skill.name }}</span>
+                </ng-template>
+              </li>
             </ul>
           </dd>
         </div>
