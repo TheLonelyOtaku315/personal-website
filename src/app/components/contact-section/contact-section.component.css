@@ -107,6 +107,18 @@
   opacity: 0.6;
 }
 
+/* Inline validation message under a field */
+.field-error {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--danger);
+}
+
+.consent + .field-error {
+  padding-left: 26px;
+}
+
 .consent {
   display: flex;
   align-items: flex-start;

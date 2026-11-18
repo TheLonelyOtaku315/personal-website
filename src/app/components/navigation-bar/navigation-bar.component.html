@@ -10,6 +10,7 @@
     </a>
 
     <button
+      #menuButton
       type="button"
       class="menu-btn"
       [attr.aria-label]="'NAV.MENU' | translate"
@@ -20,7 +21,13 @@
       <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
 
-    <nav class="nav" id="sidebar" [class.open]="isMobileMenuOpen">
+    <nav
+      #navPanel
+      class="nav"
+      id="sidebar"
+      [class.open]="isMobileMenuOpen"
+      (focusout)="onMenuFocusOut($event)"
+    >
       <ul class="nav-links">
         <li
           *ngFor="let link of links; let i = index"

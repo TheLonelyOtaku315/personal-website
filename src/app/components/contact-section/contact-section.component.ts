@@ -7,6 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PrivacyPolicyLinkComponent } from '../privacy-policy/privacy-policy-link.component';
 import { RevealDirective } from '../../directives/reveal.directive';
 
+type ContactField = 'name' | 'email' | 'message' | 'consent';
+
 @Component({
   selector: 'app-contact-section',
   imports: [
@@ -125,13 +127,35 @@ export class ContactSectionComponent {
       this.showValidationErrors = false;
       this.sendNotification();
     } else {
-      // Show validation errors as notification
+      // Errors show under each field (and update as the user types);
+      // move focus to the first one so it's announced and easy to fix
       this.showValidationErrors = true;
-      this.addNotification(
-        'CONTACT.VALIDATION.TITLE',
-        'validation',
-        this.validationErrors
-      );
+      setTimeout(() => this.focusFirstInvalidField());
+    }
+  }
+
+  /** Translation key of the error to show under a field, or null. */
+  fieldError(field: ContactField): string | null {
+    if (!this.showValidationErrors) return null;
+    const { name, email, message, consent } = this.formData;
+    switch (field) {
+      case 'name':
+        return name.trim() ? null : 'CONTACT.VALIDATION.NAME_REQUIRED';
+      case 'email':
+        if (!email.trim()) return 'CONTACT.VALIDATION.EMAIL_REQUIRED';
+        return this.isValidEmail(email) ? null : 'CONTACT.VALIDATION.EMAIL_INVALID';
+      case 'message':
+        return message.trim() ? null : 'CONTACT.VALIDATION.MESSAGE_REQUIRED';
+      case 'consent':
+        return consent ? null : 'CONTACT.VALIDATION.CONSENT_REQUIRED';
+    }
+  }
+
+  private focusFirstInvalidField(): void {
+    const fields: ContactField[] = ['name', 'email', 'message', 'consent'];
+    const first = fields.find((field) => this.fieldError(field));
+    if (first && typeof document !== 'undefined') {
+      document.getElementById(first)?.focus();
     }
   }
 

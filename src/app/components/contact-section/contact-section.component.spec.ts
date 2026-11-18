@@ -118,17 +118,31 @@ describe('ContactSectionComponent', () => {
       expect(sendNotificationSpy).toHaveBeenCalled();
     });
 
-    it('should add validation notification if form is invalid', () => {
+    it('should show inline errors instead of a pop-up if form is invalid', () => {
       const event = { preventDefault: vi.fn() } as any;
       component.formData = { name: '', email: '', message: '', consent: false };
       const addNotificationSpy = vi.spyOn(component, 'addNotification');
       component.onSubmit(event);
       expect(event.preventDefault).toHaveBeenCalled();
-      expect(addNotificationSpy).toHaveBeenCalledWith(
-        'CONTACT.VALIDATION.TITLE',
-        'validation',
-        expect.any(Array)
-      );
+      expect(component.showValidationErrors).toBe(true);
+      expect(addNotificationSpy).not.toHaveBeenCalled();
+      expect(component.fieldError('name')).toBe('CONTACT.VALIDATION.NAME_REQUIRED');
+      expect(component.fieldError('consent')).toBe('CONTACT.VALIDATION.CONSENT_REQUIRED');
+    });
+  });
+
+  describe('fieldError', () => {
+    it('shows nothing until the form has been submitted', () => {
+      component.formData = { name: '', email: '', message: '', consent: false };
+      expect(component.fieldError('name')).toBeNull();
+    });
+
+    it('flags a badly formed email and clears once it is fixed', () => {
+      component.showValidationErrors = true;
+      component.formData = { name: 'A', email: 'nope', message: 'Hi', consent: true };
+      expect(component.fieldError('email')).toBe('CONTACT.VALIDATION.EMAIL_INVALID');
+      component.formData.email = 'a@b.co';
+      expect(component.fieldError('email')).toBeNull();
     });
   });
 

@@ -65,10 +65,15 @@
             type="text"
             autocomplete="name"
             [(ngModel)]="formData.name"
-            [class.error]="showValidationErrors && !formData.name.trim()"
+            [class.error]="fieldError('name')"
+            [attr.aria-invalid]="fieldError('name') ? 'true' : null"
+            [attr.aria-describedby]="fieldError('name') ? 'name-error' : null"
             [disabled]="isSubmitting"
             required
           />
+          <p class="field-error" id="name-error" *ngIf="fieldError('name') as error">
+            {{ error | translate }}
+          </p>
         </div>
 
         <div class="field">
@@ -79,10 +84,15 @@
             type="email"
             autocomplete="email"
             [(ngModel)]="formData.email"
-            [class.error]="showValidationErrors && !formData.email.trim()"
+            [class.error]="fieldError('email')"
+            [attr.aria-invalid]="fieldError('email') ? 'true' : null"
+            [attr.aria-describedby]="fieldError('email') ? 'email-error' : null"
             [disabled]="isSubmitting"
             required
           />
+          <p class="field-error" id="email-error" *ngIf="fieldError('email') as error">
+            {{ error | translate }}
+          </p>
         </div>
 
         <div class="field">
@@ -92,31 +102,40 @@
             name="message"
             rows="5"
             [(ngModel)]="formData.message"
-            [class.error]="showValidationErrors && !formData.message.trim()"
+            [class.error]="fieldError('message')"
+            [attr.aria-invalid]="fieldError('message') ? 'true' : null"
+            [attr.aria-describedby]="fieldError('message') ? 'message-error' : null"
             [disabled]="isSubmitting"
             required
           ></textarea>
+          <p class="field-error" id="message-error" *ngIf="fieldError('message') as error">
+            {{ error | translate }}
+          </p>
         </div>
 
-        <div
-          class="consent"
-          [class.error]="showValidationErrors && !formData.consent"
-        >
-          <input
-            id="consent"
-            name="consent"
-            type="checkbox"
-            [(ngModel)]="formData.consent"
-            [disabled]="isSubmitting"
-            required
-          />
-          <label for="consent">
-            {{ "CONTACT.FORM.CONSENT" | translate }}
-            <app-privacy-policy-link
-              [label]="'FOOTER.PRIVACY' | translate | lowercase"
-            ></app-privacy-policy-link
-            >.
-          </label>
+        <div class="field">
+          <div class="consent" [class.error]="fieldError('consent')">
+            <input
+              id="consent"
+              name="consent"
+              type="checkbox"
+              [(ngModel)]="formData.consent"
+              [attr.aria-invalid]="fieldError('consent') ? 'true' : null"
+              [attr.aria-describedby]="fieldError('consent') ? 'consent-error' : null"
+              [disabled]="isSubmitting"
+              required
+            />
+            <label for="consent">
+              {{ "CONTACT.FORM.CONSENT" | translate }}
+              <app-privacy-policy-link
+                [label]="'FOOTER.PRIVACY' | translate | lowercase"
+              ></app-privacy-policy-link
+              >.
+            </label>
+          </div>
+          <p class="field-error" id="consent-error" *ngIf="fieldError('consent') as error">
+            {{ error | translate }}
+          </p>
         </div>
 
         <button type="submit" [disabled]="isSubmitting" class="btn btn-primary submit">

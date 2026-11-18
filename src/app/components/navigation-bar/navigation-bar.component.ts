@@ -1,9 +1,11 @@
 import {
   AfterViewInit,
+  afterNextRender,
   Component,
   ElementRef,
   HostListener,
   Inject,
+  Injector,
   NgZone,
   OnDestroy,
   ViewChild,
@@ -44,6 +46,8 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   };
 
   @ViewChild('progress') progressRef?: ElementRef<HTMLElement>;
+  @ViewChild('menuButton') menuButtonRef?: ElementRef<HTMLButtonElement>;
+  @ViewChild('navPanel') navPanelRef?: ElementRef<HTMLElement>;
 
   private readonly sections = ['welcome', 'about_me', 'project', 'contact'];
   private scrollListener?: () => void;
@@ -54,6 +58,7 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     private translate: TranslateService,
     private zone: NgZone,
     private dialog: MatDialog,
+    private injector: Injector,
   ) {
     this.themeService.currentThemeMode$.subscribe((mode) => {
       this.currentThemeMode = mode;
@@ -195,16 +200,37 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
   toggleMobileMenu(event?: MouseEvent) {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     // Mouse and touch clicks report detail >= 1, keyboard activation reports 0.
-    // After a pointer click, drop focus so a keyboard ring left over from an
-    // earlier key press doesn't stay stuck on the button.
     if (event && event.detail > 0) {
+      // After a pointer click, drop focus so a keyboard ring left over from
+      // an earlier key press doesn't stay stuck on the button.
       (event.currentTarget as HTMLElement | null)?.blur();
+    } else if (this.isMobileMenuOpen) {
+      // Opened from the keyboard: move focus to the first link once the panel
+      // is rendered (change detection is coalesced, so wait for the render)
+      afterNextRender(
+        () => this.navPanelRef?.nativeElement.querySelector<HTMLElement>('a, button')?.focus(),
+        { injector: this.injector },
+      );
     }
   }
 
   @HostListener('document:keydown.escape')
   onEscape() {
+    if (!this.isMobileMenuOpen) return;
+    const panel = this.navPanelRef?.nativeElement;
+    const focusWasInMenu = !!panel?.contains(this.document.activeElement);
     this.isMobileMenuOpen = false;
+    // Hand focus back to the button that opened the menu
+    if (focusWasInMenu) this.menuButtonRef?.nativeElement.focus();
+  }
+
+  // Tabbing past the last item in the open menu closes it
+  onMenuFocusOut(event: FocusEvent) {
+    if (!this.isMobileMenuOpen) return;
+    const next = event.relatedTarget;
+    if (next instanceof Element && !next.closest('app-navigation-bar')) {
+      this.isMobileMenuOpen = false;
+    }
   }
 
   @HostListener('window:resize')
