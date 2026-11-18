@@ -21,11 +21,36 @@
   border-bottom: 1px solid var(--line);
 }
 
-.project-year {
+.project-when {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   font-family: var(--font-mono);
   font-size: 0.8rem;
+}
+
+.project-year {
   line-height: 2.2;
   color: var(--muted);
+}
+
+/* Projects without an end date are still being worked on */
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.project-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
 }
 
 .project-title {
@@ -201,6 +226,12 @@
   .project {
     grid-template-columns: minmax(0, 1fr);
     padding: 22px 0;
+  }
+
+  .project-when {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
   }
 
   .project-year {

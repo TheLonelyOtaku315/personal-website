@@ -29,7 +29,12 @@
         [revealDelay]="(i % pageSize) * 50"
         [appCursorPreview]="previewImage(project)"
       >
-        <span class="project-year">{{ project.startDate | date: "yyyy" }}</span>
+        <div class="project-when">
+          <span class="project-year">{{ project.startDate | date: "yyyy" }}</span>
+          <span class="project-status" *ngIf="!project.endDate">
+            {{ "PROJECTS.ONGOING" | translate }}
+          </span>
+        </div>
 
         <div class="project-main">
           <h3 class="project-title">
