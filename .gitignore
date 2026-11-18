@@ -53,3 +53,9 @@ Thumbs.db
 
 # CV build output (PDFs are copied to src/assets/doc)
 /cv/out
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
