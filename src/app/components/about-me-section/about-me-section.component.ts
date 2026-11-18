@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '@services/theme.service';
@@ -13,17 +19,27 @@ import { LocalizedDatePipe } from '../../pipes/localized-date.pipe';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TimelineDialogComponent } from './timeline-dialog/timeline-dialog.component';
 import { hasDay, isSingleDate } from '@utils/date';
+import { usesTech } from '@utils/tech';
+import { RevealDirective } from '../../directives/reveal.directive';
 
 @Component({
   selector: 'app-about-me-section',
   templateUrl: './about-me-section.component.html',
   styleUrls: ['./about-me-section.component.css'],
   standalone: true,
-  imports: [CommonModule, TranslateModule, LocalizedDatePipe, MatDialogModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    LocalizedDatePipe,
+    MatDialogModule,
+    RevealDirective,
+  ],
 })
 export class AboutMeSectionComponent implements OnInit, OnDestroy {
   @Input() timeline: TimelineEvent[] = [];
   @Input() projects: Project[] = [];
+  // Emits a skill name when it's clicked, to filter the project list
+  @Output() skillSelect = new EventEmitter<string>();
   isDarkMode: boolean = false;
   timelineFilter: 'all' | TimelineEventType = 'all';
   readonly timelineFilters = ['all', 'education', 'work', 'award'] as const;
@@ -37,6 +53,15 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
   get filteredTimeline(): TimelineEvent[] {
     if (this.timelineFilter === 'all') return this.timeline;
     return this.timeline.filter((item) => item.type === this.timelineFilter);
+  }
+
+  // How many projects list this skill among their technologies
+  projectCount(skill: string): number {
+    return this.projects.filter((p) => usesTech(p, skill)).length;
+  }
+
+  selectSkill(skill: string): void {
+    if (this.projectCount(skill) > 0) this.skillSelect.emit(skill);
   }
 
   isSingleDate(item: TimelineEvent): boolean {

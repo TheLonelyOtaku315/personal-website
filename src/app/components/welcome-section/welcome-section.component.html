@@ -1,18 +1,56 @@
-<div class="container">
-  <div class="glass">
-    <div class="title">
-      <h1 class="welcome-text">{{ "WELCOME.GREETING" | translate }}</h1>
-    </div>
-    <p class="intro">
-      {{ "WELCOME.INTRO" | translate }}
+<div class="wrap hero">
+  <div class="hero-meta" appReveal>
+    <p class="label">{{ "WELCOME.ROLE" | translate }}</p>
+    <p class="label hero-clock" [title]="'WELCOME.LOCAL_TIME' | translate">
+      <span class="clock-dot" aria-hidden="true"></span>
+      Montréal <span class="clock-time">{{ localTime }}</span>
     </p>
-    <a
-      class="btn"
-      [href]="'assets/doc/' + ('WELCOME.RESUME_FILE' | translate)"
-      [attr.download]="'WELCOME.RESUME_FILE' | translate"
-      target="_blank"
-      rel="noopener"
-      >{{ "WELCOME.RESUME_BUTTON" | translate }}</a
+  </div>
+
+  <h1 class="hero-name" aria-label="Tonny Zhao">
+    <span
+      class="word"
+      *ngFor="let word of nameWords; let w = index"
+      aria-hidden="true"
     >
+      <span
+        class="ch"
+        *ngFor="let ch of word; let i = index"
+        [style.--i]="w * 5 + i"
+        >{{ ch }}</span
+      >
+    </span>
+  </h1>
+  <p class="hero-tagline" appReveal [revealDelay]="250">
+    {{ "WELCOME.TAGLINE" | translate }}
+  </p>
+
+  <p class="hero-intro" appReveal [revealDelay]="350">
+    {{ "WELCOME.INTRO" | translate }}
+  </p>
+
+  <div class="hero-actions" appReveal [revealDelay]="450">
+    <button type="button" class="btn btn-primary" (click)="openCv()">
+      {{ "WELCOME.RESUME_BUTTON" | translate }}
+      <span class="btn-meta">EN / FR</span>
+    </button>
+    <a class="btn" href="#contact">{{ "WELCOME.CONTACT_BUTTON" | translate }}</a>
+
+    <span class="hero-socials">
+      <a
+        class="text-link"
+        href="https://github.com/TheLonelyOtaku315"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub ↗</a
+      >
+      <a
+        class="text-link"
+        href="https://www.linkedin.com/in/tonny-zhao/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >LinkedIn ↗</a
+      >
+    </span>
   </div>
 </div>

@@ -27,3 +27,22 @@ export function parseLocalDate(value: unknown): Date | null {
 
   return null;
 }
+
+type Dated = { startDate?: Date | string | null; endDate?: Date | string | null };
+
+const time = (value: Date | string | null | undefined): number =>
+  value instanceof Date ? value.getTime() : -Infinity;
+
+/**
+ * Sort order for work items, most recent work first: anything still in
+ * progress (no end date) comes first, newest start first, then finished
+ * items by when they ended, with the start date breaking ties.
+ */
+export function byMostRecentWork(a: Dated, b: Dated): number {
+  const aEnd = a.endDate ? time(a.endDate) : Infinity;
+  const bEnd = b.endDate ? time(b.endDate) : Infinity;
+  if (aEnd !== bEnd) return bEnd > aEnd ? 1 : -1;
+  const aStart = time(a.startDate);
+  const bStart = time(b.startDate);
+  return aStart === bStart ? 0 : bStart > aStart ? 1 : -1;
+}

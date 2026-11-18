@@ -1,0 +1,68 @@
+<div class="cv">
+  <button
+    type="button"
+    class="icon-close"
+    (click)="close()"
+    [attr.aria-label]="'COMMON.CLOSE' | translate"
+  >
+    ×
+  </button>
+
+  <aside class="cv-side">
+    <p class="cv-eyebrow">{{ "CV.EYEBROW" | translate }}</p>
+    <h2 class="cv-title" mat-dialog-title>{{ "CV.TITLE" | translate }}</h2>
+    <p class="cv-intro">{{ "CV.INTRO" | translate }}</p>
+
+    <div
+      class="cv-options"
+      role="group"
+      [attr.aria-label]="'CV.LANGUAGE' | translate"
+    >
+      <button
+        *ngFor="let option of options"
+        type="button"
+        class="cv-option"
+        [class.active]="option === selected"
+        [attr.aria-pressed]="option === selected"
+        [attr.lang]="option.lang"
+        (click)="select(option)"
+      >
+        <span class="cv-option-check" aria-hidden="true"></span>
+        <span class="cv-option-text">
+          <span class="cv-option-lang">{{ option.label }}</span>
+          <span class="cv-option-file">{{ option.file }}</span>
+        </span>
+      </button>
+    </div>
+
+    <p class="cv-meta" aria-live="polite">
+      <ng-container *ngIf="pageCount">
+        {{
+          (pageCount === 1 ? "CV.PAGE_ONE" : "CV.PAGES")
+            | translate: { count: pageCount }
+        }}
+        · {{ fileSize }} · PDF
+      </ng-container>
+    </p>
+
+    <div class="cv-actions">
+      <a class="btn btn-primary" [href]="fileUrl" [attr.download]="selected.file">
+        {{ "CV.DOWNLOAD" | translate }} <span aria-hidden="true">↓</span>
+      </a>
+      <a class="btn" [href]="fileUrl" target="_blank" rel="noopener">
+        {{ "CV.OPEN" | translate }} <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="cv-preview" [attr.aria-label]="'CV.PREVIEW' | translate" role="region">
+    <div class="cv-status" *ngIf="loading">
+      <span class="cv-spinner" aria-hidden="true"></span>
+      {{ "CV.LOADING" | translate }}
+    </div>
+    <div class="cv-status cv-error" *ngIf="failed">
+      {{ "CV.ERROR" | translate }}
+    </div>
+    <div class="cv-pages" #pages></div>
+  </div>
+</div>

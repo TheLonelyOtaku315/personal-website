@@ -1,15 +1,7 @@
-<div
-  [ngClass]="isDarkmode ? 'dark-theme' : 'light-theme'"
-  [style.display]="showContent ? 'flex' : 'none'"
-  class="container"
->
-  <!-- Matrix Background -->
-  <div class="matrix-container">
-    <div class="matrix-grid"></div>
-  </div>
+<div class="site" [style.display]="showContent ? 'block' : 'none'">
+  <app-navigation-bar></app-navigation-bar>
 
-  <div class="nav-bar"><app-navigation-bar></app-navigation-bar></div>
-  <div class="webpage">
+  <main>
     <section id="welcome">
       <app-welcome-section></app-welcome-section>
     </section>
@@ -17,22 +9,32 @@
       <app-about-me-section
         [timeline]="timeline"
         [projects]="projects"
+        (skillSelect)="filterProjects($event)"
       ></app-about-me-section>
     </section>
     <section id="project">
-      <app-projects-section [projects]="projects"></app-projects-section>
+      <app-projects-section
+        [projects]="projects"
+        [techFilter]="techFilter"
+        (techFilterChange)="filterProjects($event)"
+      ></app-projects-section>
     </section>
     <section id="contact">
       <app-contact-section></app-contact-section>
     </section>
-    <footer>
-      <p class="footer">
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="footer-copy">
         {{ "FOOTER.COPYRIGHT" | translate: { year: currentYear } }}
-        <span aria-hidden="true">·</span>
+      </p>
+      <p class="footer-links">
         <app-privacy-policy-link
           [label]="'FOOTER.PRIVACY' | translate"
         ></app-privacy-policy-link>
+        <a class="back-to-top" href="#welcome">{{ "FOOTER.TOP" | translate }} ↑</a>
       </p>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </div>

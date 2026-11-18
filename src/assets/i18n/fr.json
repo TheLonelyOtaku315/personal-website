@@ -5,7 +5,8 @@
   },
   "FOOTER": {
     "COPYRIGHT": "© 2023–{{year}} Tonny Zhao. Tous droits réservés.",
-    "PRIVACY": "Politique de confidentialité"
+    "PRIVACY": "Politique de confidentialité",
+    "TOP": "Haut de page"
   },
   "COMMON": {
     "CLOSE": "Fermer"
@@ -20,13 +21,18 @@
     "AUTO": "Navigateur",
     "THEME": "Thème",
     "LANGUAGE": "Langue",
-    "MENU": "Ouvrir ou fermer le menu"
+    "MENU": "Ouvrir ou fermer le menu",
+    "CV": "CV"
   },
   "WELCOME": {
     "GREETING": "Bonjour, bienvenue sur le portfolio de Tonny.",
     "INTRO": "Je suis étudiant en quatrième année de génie informatique à l'Université Concordia, au programme coopératif (C.Edge). J'aime créer des applications réactives et conviviales, des applications web full-stack aux projets embarqués et IoT, et je continue d'améliorer mes compétences grâce à de vrais projets et à de nouvelles technologies.",
     "RESUME_FILE": "Tonny-Zhao-CV-FR.pdf",
-    "RESUME_BUTTON": "CV"
+    "RESUME_BUTTON": "CV",
+    "ROLE": "Génie informatique · Université Concordia",
+    "TAGLINE": "Web full-stack, systèmes embarqués et IoT.",
+    "CONTACT_BUTTON": "Me contacter",
+    "LOCAL_TIME": "Heure locale à Montréal"
   },
   "ABOUT": {
     "TITLE": "À propos de moi",
@@ -51,7 +57,10 @@
       "HIGHLIGHTS": "Faits saillants",
       "VISIT": "Visiter le site",
       "CERTIFICATE": "Voir le certificat"
-    }
+    },
+    "SKILLS_HINT": "Cliquez sur une compétence pour voir où je l'ai utilisée",
+    "SKILL_PROJECTS": "Utilisée dans {{count}} projets",
+    "SKILL_PROJECT_ONE": "Utilisée dans 1 projet"
   },
   "PROJECTS": {
     "TITLE": "Projets",
@@ -62,10 +71,14 @@
     "TECHNOLOGIES": "Technologies",
     "DATE": "Date",
     "PRESENT": "Aujourd'hui",
+    "ONGOING": "En cours",
     "CLOSE": "Fermer",
     "SHOW_MORE": "Afficher plus de projets",
     "SHOW_LESS": "Afficher moins de projets",
-    "IMAGE_ALT": "Aperçu de {{title}}"
+    "IMAGE_ALT": "Aperçu de {{title}}",
+    "FILTER_HINT": "Astuce : cliquez sur une technologie pour filtrer la liste",
+    "FILTERED_BY": "Projets utilisant",
+    "CLEAR_FILTER": "Tout afficher"
   },
   "CONTACT": {
     "TITLE": "Contact",
@@ -94,7 +107,9 @@
     "NOTIFY": {
       "SUCCESS": "Merci! Votre message a bien été envoyé. Je vous répondrai bientôt.",
       "ERROR": "Désolé, une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer ou m'écrire directement à zhaotonny315@gmail.com."
-    }
+    },
+    "COPY": "Copier",
+    "COPIED": "Copié"
   },
   "PRIVACY": {
     "TITLE": "Politique de confidentialité",
@@ -129,5 +144,18 @@
         "BODY": "Vous pouvez demander en tout temps l'accès à vos renseignements personnels, leur rectification ou leur suppression, ou retirer votre consentement, en écrivant à zhaotonny315@gmail.com. Vous pouvez aussi déposer une plainte auprès de la Commission d'accès à l'information du Québec."
       }
     ]
+  },
+  "CV": {
+    "EYEBROW": "Curriculum vitæ",
+    "TITLE": "Choisissez une version",
+    "INTRO": "Prévisualisez-le ici, puis téléchargez le PDF ou ouvrez-le dans un nouvel onglet.",
+    "LANGUAGE": "Langue du CV",
+    "PAGE_ONE": "1 page",
+    "PAGES": "{{count}} pages",
+    "DOWNLOAD": "Télécharger le PDF",
+    "OPEN": "Ouvrir dans un nouvel onglet",
+    "PREVIEW": "Aperçu du CV",
+    "LOADING": "Chargement de l'aperçu…",
+    "ERROR": "L'aperçu n'a pas pu se charger. Vous pouvez quand même télécharger le PDF ou l'ouvrir dans un nouvel onglet."
   }
 }

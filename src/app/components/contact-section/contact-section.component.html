@@ -1,190 +1,183 @@
-<section class="contact-section">
-  <div class="text">
-    <h2>{{ "CONTACT.TITLE" | translate }}</h2>
-    <p class="section-description">
-      {{ "CONTACT.DESCRIPTION" | translate }}
-    </p>
-  </div>
-  <div class="contact-flex">
-    <div class="contact-info">
-      <div class="contact-detail">
-        <svg
-          class="contact-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-        >
-          <path
-            d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
-          />
-        </svg>
-        <span class="contact-label">{{
-          "CONTACT.NAME_LABEL" | translate
-        }}</span>
-        <span class="contact-value">Tonny Zhao</span>
-      </div>
-      <a class="contact-detail" href="mailto:zhaotonny315&#64;gmail.com">
-        <svg
-          class="contact-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-        >
-          <path
-            d="M120-160q-33 0-56.5-23.5T40-240v-480q0-33 23.5-56.5T120-800h720q33 0 56.5 23.5T920-720v480q0 33-23.5 56.5T840-160H120Zm360-320L120-720v480h720v-480L480-480Zm0 80 360-240H120l360 240Z"
-          />
-        </svg>
-        <span class="contact-label">{{
-          "CONTACT.EMAIL_LABEL" | translate
-        }}</span>
-        <span class="contact-value">zhaotonny315&#64;gmail.com</span>
-      </a>
+<div class="wrap section-grid">
+  <header class="section-head" appReveal>
+    <span class="section-index">03</span>
+    <h2 class="section-title">{{ "CONTACT.TITLE" | translate }}</h2>
+  </header>
 
-      <a
-        class="contact-detail"
-        href="https://www.linkedin.com/in/tonny-zhao/"
-        target="_blank"
-      >
-        <svg
-          class="contact-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 -2 44 44"
-          version="1.1"
-        >
-          <g stroke="none" stroke-width="1">
-            <g transform="translate(-702.000000, -265.000000)">
-              <path
-                d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z"
-              ></path>
-            </g>
-          </g>
-        </svg>
-        <span class="contact-label">{{
-          "CONTACT.LINKEDIN_LABEL" | translate
-        }}</span>
-        <span class="contact-value">linkedin.com/in/tonny-zhao</span>
-      </a>
-      <a
-        class="contact-detail"
-        href="https://github.com/TheLonelyOtaku315"
-        target="_blank"
-      >
-        <svg
-          class="contact-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 496 512"
-          height="1.6em"
-        >
-          <path
-            d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-          ></path>
-        </svg>
-        <span class="contact-label">{{
-          "CONTACT.GITHUB_LABEL" | translate
-        }}</span>
-        <span class="contact-value">github.com/TheLonelyOtaku315</span>
-      </a>
-    </div>
+  <div class="contact">
+    <p class="section-lede" appReveal>{{ "CONTACT.DESCRIPTION" | translate }}</p>
 
-    <div class="contact-form-wrapper">
+    <div class="contact-grid">
+      <ul class="channels" appReveal>
+        <li class="channel-row">
+          <a class="channel" [href]="'mailto:' + email">
+            <span class="label">{{ "CONTACT.FORM.EMAIL" | translate }}</span>
+            <span class="channel-value">{{ email }}</span>
+          </a>
+          <button
+            type="button"
+            class="copy-btn"
+            [class.copied]="emailCopied"
+            (click)="copyEmail()"
+          >
+            <span aria-live="polite">{{
+              (emailCopied ? "CONTACT.COPIED" : "CONTACT.COPY") | translate
+            }}</span>
+          </button>
+        </li>
+        <li>
+          <a
+            class="channel"
+            href="https://www.linkedin.com/in/tonny-zhao/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="label">LinkedIn</span>
+            <span class="channel-value">in/tonny-zhao <span aria-hidden="true">↗</span></span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="channel"
+            href="https://github.com/TheLonelyOtaku315"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="label">GitHub</span>
+            <span class="channel-value">TheLonelyOtaku315 <span aria-hidden="true">↗</span></span>
+          </a>
+        </li>
+      </ul>
+
       <form
-        class="contact-form"
+        appReveal
+        [revealDelay]="120"
+        class="form"
         (ngSubmit)="onSubmit($event)"
         #contactForm="ngForm"
+        novalidate
       >
-        <label for="name">{{ "CONTACT.FORM.NAME" | translate }}</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          [(ngModel)]="formData.name"
-          [class.error]="showValidationErrors && !formData.name.trim()"
-          [disabled]="isSubmitting"
-          required
-        />
-
-        <label for="email">{{ "CONTACT.FORM.EMAIL" | translate }}</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          [(ngModel)]="formData.email"
-          [class.error]="showValidationErrors && !formData.email.trim()"
-          [disabled]="isSubmitting"
-          required
-        />
-
-        <label for="message">{{ "CONTACT.FORM.MESSAGE" | translate }}</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="4"
-          [(ngModel)]="formData.message"
-          [class.error]="showValidationErrors && !formData.message.trim()"
-          [disabled]="isSubmitting"
-          required
-        ></textarea>
-
-        <div
-          class="consent"
-          [class.error]="showValidationErrors && !formData.consent"
-        >
+        <div class="field">
+          <label for="name">{{ "CONTACT.FORM.NAME" | translate }}</label>
           <input
-            id="consent"
-            name="consent"
-            type="checkbox"
-            [(ngModel)]="formData.consent"
+            id="name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            [(ngModel)]="formData.name"
+            [class.error]="fieldError('name')"
+            [attr.aria-invalid]="fieldError('name') ? 'true' : null"
+            [attr.aria-describedby]="fieldError('name') ? 'name-error' : null"
             [disabled]="isSubmitting"
             required
           />
-          <label for="consent">
-            {{ "CONTACT.FORM.CONSENT" | translate }}
-            <app-privacy-policy-link
-              [label]="'FOOTER.PRIVACY' | translate | lowercase"
-            ></app-privacy-policy-link
-            >.
-          </label>
+          <p class="field-error" id="name-error" *ngIf="fieldError('name') as error">
+            {{ error | translate }}
+          </p>
         </div>
 
-        <button type="submit" [disabled]="isSubmitting" class="submit-button">
-          <span *ngIf="!isSubmitting">{{
-            "CONTACT.FORM.SEND_BUTTON" | translate
-          }}</span>
-          <span *ngIf="isSubmitting" class="loading">
-            <span class="spinner"></span>
+        <div class="field">
+          <label for="email">{{ "CONTACT.FORM.EMAIL" | translate }}</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            [(ngModel)]="formData.email"
+            [class.error]="fieldError('email')"
+            [attr.aria-invalid]="fieldError('email') ? 'true' : null"
+            [attr.aria-describedby]="fieldError('email') ? 'email-error' : null"
+            [disabled]="isSubmitting"
+            required
+          />
+          <p class="field-error" id="email-error" *ngIf="fieldError('email') as error">
+            {{ error | translate }}
+          </p>
+        </div>
+
+        <div class="field">
+          <label for="message">{{ "CONTACT.FORM.MESSAGE" | translate }}</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            [(ngModel)]="formData.message"
+            [class.error]="fieldError('message')"
+            [attr.aria-invalid]="fieldError('message') ? 'true' : null"
+            [attr.aria-describedby]="fieldError('message') ? 'message-error' : null"
+            [disabled]="isSubmitting"
+            required
+          ></textarea>
+          <p class="field-error" id="message-error" *ngIf="fieldError('message') as error">
+            {{ error | translate }}
+          </p>
+        </div>
+
+        <div class="field">
+          <div class="consent" [class.error]="fieldError('consent')">
+            <input
+              id="consent"
+              name="consent"
+              type="checkbox"
+              [(ngModel)]="formData.consent"
+              [attr.aria-invalid]="fieldError('consent') ? 'true' : null"
+              [attr.aria-describedby]="fieldError('consent') ? 'consent-error' : null"
+              [disabled]="isSubmitting"
+              required
+            />
+            <label for="consent">
+              {{ "CONTACT.FORM.CONSENT" | translate }}
+              <app-privacy-policy-link
+                [label]="'FOOTER.PRIVACY' | translate | lowercase"
+              ></app-privacy-policy-link
+              >.
+            </label>
+          </div>
+          <p class="field-error" id="consent-error" *ngIf="fieldError('consent') as error">
+            {{ error | translate }}
+          </p>
+        </div>
+
+        <button type="submit" [disabled]="isSubmitting" class="btn btn-primary submit">
+          <ng-container *ngIf="!isSubmitting">
+            {{ "CONTACT.FORM.SEND_BUTTON" | translate }} <span aria-hidden="true">→</span>
+          </ng-container>
+          <ng-container *ngIf="isSubmitting">
+            <span class="spinner" aria-hidden="true"></span>
             {{ "CONTACT.FORM.SENDING" | translate }}
-          </span>
+          </ng-container>
         </button>
       </form>
     </div>
   </div>
-</section>
-<div class="toast-container">
+</div>
+
+<div class="toast-container" aria-live="polite">
   <div
     *ngFor="let notification of visibleNotifications"
-    class="toast-notification"
+    class="toast"
     [class.success]="notification.type === 'success'"
     [class.error]="notification.type === 'error'"
-    [class.validation-toast]="notification.type === 'validation'"
+    [class.validation]="notification.type === 'validation'"
     [class.fading]="notification.fading"
+    role="status"
   >
-    <div class="notification-content">
+    <div class="toast-body">
       <p *ngIf="notification.type !== 'validation'">
         {{ notification.message | translate }}
       </p>
-      <div *ngIf="notification.type === 'validation'">
-        <h4>{{ notification.message | translate }}</h4>
+      <ng-container *ngIf="notification.type === 'validation'">
+        <p class="toast-title">{{ notification.message | translate }}</p>
         <ul>
           <li *ngFor="let error of notification.validationErrors">
             {{ error | translate }}
           </li>
         </ul>
-      </div>
+      </ng-container>
     </div>
     <button
-      class="close-btn"
+      type="button"
+      class="toast-close"
       (click)="removeNotification(notification.id)"
       [attr.aria-label]="'COMMON.CLOSE' | translate"
     >

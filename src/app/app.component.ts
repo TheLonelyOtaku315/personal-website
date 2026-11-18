@@ -13,7 +13,7 @@ import { PrivacyPolicyLinkComponent } from './components/privacy-policy/privacy-
 import { ThemeService } from '@services/theme.service';
 import { MetaService } from '@services/meta.service';
 import { TimelineEvent, Project } from '@models/shared-interfaces';
-import { parseLocalDate } from '@utils/date';
+import { byMostRecentWork, parseLocalDate } from '@utils/date';
 
 const SUPPORTED_LANGUAGES = ['en', 'fr'];
 
@@ -36,6 +36,9 @@ const SUPPORTED_LANGUAGES = ['en', 'fr'];
 export class AppComponent implements OnInit {
   timeline: TimelineEvent[] = [];
   projects: Project[] = [];
+
+  // Technology the project list is filtered by, null for all projects
+  techFilter: string | null = null;
 
   isDarkmode = false;
   showContent = true;
@@ -76,6 +79,8 @@ export class AppComponent implements OnInit {
 
     // Reload projects and timeline when the language changes
     this.translate.onLangChange.subscribe((event) => {
+      // Tech names are translated, so an old filter may no longer match
+      this.techFilter = null;
       if (event.lang !== this.dataLang) {
         this.loadData(event.lang);
       }
@@ -103,12 +108,7 @@ export class AppComponent implements OnInit {
           technologies: p.technologies || [],
           image: p.image || '',
         }));
-        // Most recent first
-        this.projects.sort(
-          (a, b) =>
-            ((b.startDate as Date | null)?.getTime() ?? 0) -
-            ((a.startDate as Date | null)?.getTime() ?? 0),
-        );
+        this.projects.sort(byMostRecentWork);
       },
       error: (error) => {
         console.error(`Error loading projects for language ${fileLang}:`, error);
@@ -150,6 +150,22 @@ export class AppComponent implements OnInit {
         }
       },
     });
+  }
+
+  // Filters the projects by a technology and brings the list into view
+  filterProjects(tech: string | null) {
+    this.techFilter = tech;
+    if (typeof document === 'undefined') return;
+    const section = document.getElementById('project');
+    if (!section) return;
+    const reduceMotion = window.matchMedia?.(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    // Only scroll when the top of the list is out of view
+    const top = section.getBoundingClientRect().top;
+    if (tech && (top < 0 || top > window.innerHeight * 0.5)) {
+      section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
   }
 
   toggleDarkMode(value: boolean) {

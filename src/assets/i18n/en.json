@@ -5,7 +5,8 @@
   },
   "FOOTER": {
     "COPYRIGHT": "© 2023–{{year}} Tonny Zhao. All rights reserved.",
-    "PRIVACY": "Privacy policy"
+    "PRIVACY": "Privacy policy",
+    "TOP": "Back to top"
   },
   "COMMON": {
     "CLOSE": "Close"
@@ -20,13 +21,18 @@
     "AUTO": "Browser",
     "THEME": "Theme",
     "LANGUAGE": "Language",
-    "MENU": "Open or close the menu"
+    "MENU": "Open or close the menu",
+    "CV": "CV"
   },
   "WELCOME": {
     "GREETING": "Hi, welcome to Tonny's portfolio.",
     "INTRO": "I'm a fourth-year computer engineering student at Concordia University, in the co-op program (C.Edge). I enjoy building responsive, user-friendly applications, from full-stack web apps to embedded and IoT projects, and I keep improving my skills through real projects and new technologies.",
     "RESUME_FILE": "Tonny-Zhao-CV-EN.pdf",
-    "RESUME_BUTTON": "CV/Resume"
+    "RESUME_BUTTON": "CV/Resume",
+    "ROLE": "Computer engineering · Concordia University",
+    "TAGLINE": "Full-stack web, embedded systems & IoT.",
+    "CONTACT_BUTTON": "Get in touch",
+    "LOCAL_TIME": "Local time in Montréal"
   },
   "ABOUT": {
     "TITLE": "About Me",
@@ -51,7 +57,10 @@
       "HIGHLIGHTS": "Highlights",
       "VISIT": "Visit website",
       "CERTIFICATE": "View certificate"
-    }
+    },
+    "SKILLS_HINT": "Click a skill to see where I used it",
+    "SKILL_PROJECTS": "Used in {{count}} projects",
+    "SKILL_PROJECT_ONE": "Used in 1 project"
   },
   "PROJECTS": {
     "TITLE": "Projects",
@@ -62,10 +71,14 @@
     "TECHNOLOGIES": "Technologies",
     "DATE": "Date",
     "PRESENT": "Present",
+    "ONGOING": "Ongoing",
     "CLOSE": "Close",
     "SHOW_MORE": "Show more projects",
     "SHOW_LESS": "Show fewer projects",
-    "IMAGE_ALT": "Preview of {{title}}"
+    "IMAGE_ALT": "Preview of {{title}}",
+    "FILTER_HINT": "Tip: click a technology to filter the list",
+    "FILTERED_BY": "Projects using",
+    "CLEAR_FILTER": "Show all"
   },
   "CONTACT": {
     "TITLE": "Contact",
@@ -94,7 +107,9 @@
     "NOTIFY": {
       "SUCCESS": "Thank you! Your message has been sent successfully. I'll get back to you soon.",
       "ERROR": "Sorry, there was an error sending your message. Please try again or contact me directly via email at zhaotonny315@gmail.com."
-    }
+    },
+    "COPY": "Copy",
+    "COPIED": "Copied"
   },
   "PRIVACY": {
     "TITLE": "Privacy policy",
@@ -129,5 +144,18 @@
         "BODY": "You can ask to access, correct or delete your personal information, or withdraw your consent, at any time by writing to zhaotonny315@gmail.com. You may also file a complaint with the Commission d'accès à l'information du Québec."
       }
     ]
+  },
+  "CV": {
+    "EYEBROW": "Curriculum vitae",
+    "TITLE": "Choose a version",
+    "INTRO": "Preview it here, then download the PDF or open it in a new tab.",
+    "LANGUAGE": "CV language",
+    "PAGE_ONE": "1 page",
+    "PAGES": "{{count}} pages",
+    "DOWNLOAD": "Download PDF",
+    "OPEN": "Open in new tab",
+    "PREVIEW": "CV preview",
+    "LOADING": "Loading preview…",
+    "ERROR": "The preview couldn't load. You can still download the PDF or open it in a new tab."
   }
 }

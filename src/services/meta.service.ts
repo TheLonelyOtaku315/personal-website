@@ -28,6 +28,7 @@ export class MetaService {
   updateTitle() {
     this.translate.get('META.TITLE').subscribe(title => {
       this.title.setTitle(title);
+      this.meta.updateTag({ property: 'og:title', content: title });
     });
   }
 
@@ -35,12 +36,19 @@ export class MetaService {
     if (isPlatformBrowser(this.platformId)) {
       this.document.documentElement.lang = this.translate.currentLang;
     }
+    const isFrench = this.translate.currentLang === 'fr';
+    this.meta.updateTag({ property: 'og:locale', content: isFrench ? 'fr_CA' : 'en_CA' });
+    this.meta.updateTag({
+      property: 'og:locale:alternate',
+      content: isFrench ? 'en_CA' : 'fr_CA',
+    });
   }
 
   updateDescription() {
     this.translate.get('META.DESCRIPTION').subscribe(desc => {
       if (desc) {
         this.meta.updateTag({ name: 'description', content: desc });
+        this.meta.updateTag({ property: 'og:description', content: desc });
       }
     });
   }

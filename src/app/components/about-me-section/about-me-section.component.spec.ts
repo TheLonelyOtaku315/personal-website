@@ -247,4 +247,27 @@ describe('AboutMeSectionComponent', () => {
     expect(skill.currentIcon).toBe(skill.hoverIcon);
     expect(skill.showSvg).toBe(false); // Should not show SVG
   });
+
+  describe('skill to project links', () => {
+    beforeEach(() => {
+      component.projects = [
+        { title: 'A', description: '', technologies: ['Angular', 'HTML'], startDate: null },
+        { title: 'B', description: '', technologies: ['angular'], startDate: null },
+      ];
+    });
+
+    it('counts the projects that use a skill', () => {
+      expect(component.projectCount('Angular')).toBe(2);
+      expect(component.projectCount('HTML5')).toBe(1);
+      expect(component.projectCount('Python')).toBe(0);
+    });
+
+    it('only emits skills that have projects', () => {
+      const emitted: string[] = [];
+      component.skillSelect.subscribe((s) => emitted.push(s));
+      component.selectSkill('Python');
+      component.selectSkill('Angular');
+      expect(emitted).toEqual(['Angular']);
+    });
+  });
 });

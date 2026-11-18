@@ -26,28 +26,33 @@ import { TranslateModule } from '@ngx-translate/core';
   `,
   styles: `
     .updated {
-      color: var(--secondary-text-color);
-      font-size: 0.9em;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--muted);
     }
     h3 {
-      color: var(--accent-color);
-      font-size: 1.05em;
-      margin: 1.2em 0 0.3em;
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 1.4em 0 0.3em;
     }
     p {
-      color: var(--text-color);
-      line-height: 1.5;
+      color: var(--text);
+      line-height: 1.65;
       margin: 0;
     }
     .close-btn {
+      min-height: 40px;
+      padding: 0 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
       background: transparent;
-      padding: 5px 15px;
-      font-size: 1rem;
-      font-weight: 600;
+      color: var(--ink);
+      font: 500 0.9rem/1 var(--font-sans);
       cursor: pointer;
-      border: 1px solid var(--accent-color);
-      border-radius: 25px;
-      color: var(--accent-color);
+    }
+    .close-btn:hover {
+      border-color: var(--ink);
     }
   `,
 })

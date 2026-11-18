@@ -1,210 +1,173 @@
-/* Matches the glass cards used across the page (see .glass / .project-card) */
-:host {
-  display: block;
-  color: var(--text-color);
-}
-
+/* Shared by the project and timeline dialogs */
 .project-dialog {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+.icon-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg-raised);
+  color: var(--ink);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.icon-close:hover {
+  border-color: var(--ink);
 }
 
 .banner {
   width: 100%;
-  height: 220px;
-  object-fit: contain;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-sunken);
+}
+
+/* Hidden until loaded so a slow or broken image never shows the browser's icon */
+.banner img {
   display: block;
-  background: linear-gradient(
-    135deg,
-    rgba(var(--accent-color-rgb), 0.08),
-    rgba(var(--error-color-rgb), 0.05)
-  );
-  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.banner img.loaded {
+  opacity: 1;
 }
 
 .body {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.75rem 2rem 2rem;
+  gap: 26px;
+  padding: 32px clamp(20px, 4vw, 36px) 24px;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 8px;
+  padding-right: 40px;
 }
 
 .title {
   margin: 0;
-  padding-right: 2.5rem;
-  white-space: normal;
-  word-break: break-word;
-  font-size: clamp(1.5em, 4vw, 2.2em);
-  font-weight: 800;
-  line-height: 1.15;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    var(--error-color) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 
 .date-pill {
-  padding: 0.3rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
-  background: rgba(var(--accent-color-rgb), 0.08);
-  color: var(--secondary-text-color);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
 }
 
-/* Same treatment as the About section's category titles */
 .section-title {
-  margin: 0 0 0.75rem;
-  padding-bottom: 0.4rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent-color);
-  text-transform: uppercase;
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.08em;
-  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .content {
   margin: 0;
-  color: var(--text-color);
-  font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .tech-stack-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 6px;
 }
 
 .tech-stack {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.45em;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  background: rgba(var(--surface-color-rgb), 0.15);
-  color: var(--text-color);
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: border-color 200ms ease, transform 200ms ease;
-}
-
-.tech-stack:hover {
-  border-color: var(--accent-color);
-  transform: translateY(-2px);
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 0.875rem;
 }
 
 .tech-icon {
-  font-size: 1.1em;
+  width: 15px;
+  height: 15px;
+  font-size: 15px;
   line-height: 1;
-  color: var(--accent-color);
-}
-
-img.tech-icon {
-  width: 1.1em;
-  height: 1.1em;
-  object-fit: contain;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--border-color);
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
 }
 
-/* Same look as the project card links */
 .action {
-  padding: 0.55rem 1.2rem;
-  border-radius: 10px;
-  border: 1px solid rgba(var(--accent-color-rgb), 0.9);
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
   background: transparent;
-  color: var(--text-color);
-  font: inherit;
-  font-weight: 600;
-  font-size: 0.95rem;
+  color: var(--ink);
+  font: 500 0.9rem/1 var(--font-sans);
   text-decoration: none;
   cursor: pointer;
-  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .action:hover {
-  background: rgba(var(--accent-color-rgb), 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(var(--accent-color-rgb), 0.12);
+  border-color: var(--ink);
 }
 
 .action.primary {
-  border-color: transparent;
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-ink);
+}
+
+.action.primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
   color: #fff;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color) 0%,
-    var(--error-color) 100%
-  );
 }
 
 .action.ghost {
-  border-color: var(--border-color);
+  margin-left: auto;
+  border-color: transparent;
+  color: var(--muted);
 }
 
-.icon-close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 1;
-  width: 2.25rem;
-  height: 2.25rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 1px solid var(--border-color);
-  background: rgba(var(--surface-color-rgb), 0.85);
-  color: var(--primary-text-color);
-  font-size: 1.4rem;
-  line-height: 1;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  transition: border-color 160ms ease, color 160ms ease;
-}
-
-.icon-close:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-}
-
-@media (max-width: 600px) {
-  .banner {
-    height: 160px;
-  }
-
-  .body {
-    padding: 1.25rem;
-  }
-
-  .actions {
-    justify-content: stretch;
-  }
-
-  .action {
-    flex: 1;
-    text-align: center;
-  }
+.action.ghost:hover {
+  color: var(--ink);
 }
