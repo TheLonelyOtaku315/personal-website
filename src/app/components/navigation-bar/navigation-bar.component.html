@@ -15,7 +15,7 @@
       [attr.aria-label]="'NAV.MENU' | translate"
       [attr.aria-expanded]="isMobileMenuOpen"
       aria-controls="sidebar"
-      (click)="toggleMobileMenu()"
+      (click)="toggleMobileMenu($event)"
     >
       <span class="menu-icon" aria-hidden="true"><span></span><span></span></span>
     </button>

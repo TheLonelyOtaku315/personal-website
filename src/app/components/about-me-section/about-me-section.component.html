@@ -44,8 +44,9 @@
               {{ item.startDate | localizedDate: singleDateFormat(item) }}
             </ng-container>
             <ng-container *ngIf="!isSingleDate(item)">
-              {{ item.startDate | localizedDate: "MMM yyyy" }} –
-              <span class="entry-end">{{
+              <span class="entry-start"
+                >{{ item.startDate | localizedDate: "MMM yyyy" }} –</span
+              ><span class="entry-end">{{
                 item.endDate
                   ? (item.endDate | localizedDate: "MMM yyyy")
                   : ("PROJECTS.PRESENT" | translate)

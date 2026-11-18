@@ -15,7 +15,7 @@ import { ThemeService, type ThemeMode } from '@services/theme.service';
 import { openCvDialog } from '../cv-dialog/cv-dialog.component';
 
 // Width (px) below which the links collapse into the menu button
-const MOBILE_BREAKPOINT = 760;
+const MOBILE_BREAKPOINT = 899; // keep in sync with the CSS media queries
 
 @Component({
   selector: 'app-navigation-bar',
@@ -192,8 +192,14 @@ export class NavigationBarComponent implements AfterViewInit, OnDestroy {
     this.themeService.toggleTheme();
   }
 
-  toggleMobileMenu() {
+  toggleMobileMenu(event?: MouseEvent) {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    // Mouse and touch clicks report detail >= 1, keyboard activation reports 0.
+    // After a pointer click, drop focus so a keyboard ring left over from an
+    // earlier key press doesn't stay stuck on the button.
+    if (event && event.detail > 0) {
+      (event.currentTarget as HTMLElement | null)?.blur();
+    }
   }
 
   @HostListener('document:keydown.escape')

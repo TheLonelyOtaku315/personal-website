@@ -69,9 +69,15 @@
   font-size: 0.8rem;
   line-height: 1.9;
   color: var(--muted);
-  white-space: nowrap;
+  /* Long ranges (e.g. "févr. 2026 – Aujourd'hui") drop the end date to a
+     second line instead of spilling into the title column */
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  column-gap: 0.6ch;
 }
 
+.entry-start,
 .entry-end {
   white-space: nowrap;
 }

@@ -119,10 +119,11 @@ img {
   max-width: 100%;
 }
 
+/* The ring follows each element's own corners; forcing a radius here
+   reshaped buttons while focused */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 .sr-only {
