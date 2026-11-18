@@ -192,34 +192,37 @@
   position: relative;
   display: block;
   width: 22px;
-  height: 16px;
+  height: 18px;
 }
 
-/* Three bars; the outer two cross into an X and the middle one fades */
+/* Three bars; the outer two cross into an X and the middle one fades.
+   Whole-pixel sizes and an 8px step keep every bar the same thickness
+   (fractional positions get snapped to 1px or 2px unevenly), also at
+   125%, 150% and 200% display scaling. */
 .menu-icon span {
   position: absolute;
   left: 0;
   width: 100%;
-  height: 1.5px;
+  height: 2px;
   border-radius: 1px;
   background: currentColor;
   transition: transform 0.2s ease, top 0.2s ease, opacity 0.15s ease;
 }
 
 .menu-icon span:nth-child(1) {
-  top: 1px;
+  top: 0;
 }
 
 .menu-icon span:nth-child(2) {
-  top: 7.25px;
+  top: 8px;
 }
 
 .menu-icon span:nth-child(3) {
-  top: 13.5px;
+  top: 16px;
 }
 
 .menu-open .menu-icon span:nth-child(1) {
-  top: 7.25px;
+  top: 8px;
   transform: rotate(45deg);
 }
 
@@ -228,7 +231,7 @@
 }
 
 .menu-open .menu-icon span:nth-child(3) {
-  top: 7.25px;
+  top: 8px;
   transform: rotate(-45deg);
 }
 
