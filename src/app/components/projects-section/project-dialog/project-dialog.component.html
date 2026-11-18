@@ -8,13 +8,20 @@
     ×
   </button>
 
-  <!-- Skip the generated "no image" placeholder; real previews only -->
-  <img
-    *ngIf="data.image && !data.image.startsWith('data:')"
+  <!-- Real previews only: skip the generated placeholder, fade in once loaded,
+       and drop the banner entirely if the image fails -->
+  <div
+    *ngIf="data.image && !data.image.startsWith('data:') && !bannerFailed"
     class="banner"
-    [src]="data.image"
-    [alt]="'PROJECTS.IMAGE_ALT' | translate: { title: data.title }"
-  />
+  >
+    <img
+      [src]="data.image"
+      [class.loaded]="bannerLoaded"
+      [alt]="'PROJECTS.IMAGE_ALT' | translate: { title: data.title }"
+      (load)="bannerLoaded = true"
+      (error)="bannerFailed = true"
+    />
+  </div>
 
   <div class="body">
     <header class="header">

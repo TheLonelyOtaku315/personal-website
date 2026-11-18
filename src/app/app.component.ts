@@ -13,7 +13,7 @@ import { PrivacyPolicyLinkComponent } from './components/privacy-policy/privacy-
 import { ThemeService } from '@services/theme.service';
 import { MetaService } from '@services/meta.service';
 import { TimelineEvent, Project } from '@models/shared-interfaces';
-import { parseLocalDate } from '@utils/date';
+import { byMostRecentWork, parseLocalDate } from '@utils/date';
 
 const SUPPORTED_LANGUAGES = ['en', 'fr'];
 
@@ -108,12 +108,7 @@ export class AppComponent implements OnInit {
           technologies: p.technologies || [],
           image: p.image || '',
         }));
-        // Most recent first
-        this.projects.sort(
-          (a, b) =>
-            ((b.startDate as Date | null)?.getTime() ?? 0) -
-            ((a.startDate as Date | null)?.getTime() ?? 0),
-        );
+        this.projects.sort(byMostRecentWork);
       },
       error: (error) => {
         console.error(`Error loading projects for language ${fileLang}:`, error);

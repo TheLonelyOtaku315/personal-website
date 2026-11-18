@@ -29,12 +29,25 @@
 }
 
 .banner {
-  display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  object-fit: cover;
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
   background: var(--bg-sunken);
+}
+
+/* Hidden until loaded so a slow or broken image never shows the browser's icon */
+.banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.banner img.loaded {
+  opacity: 1;
 }
 
 .body {

@@ -167,13 +167,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* No ring after a tap or click; keyboard users get one that hugs the button */
-.menu-btn:focus:not(:focus-visible) {
+/* Never an outline ring on the menu button: keyboard focus shows as a soft
+   filled tile (like the active theme/language buttons) instead */
+.menu-btn:focus {
   outline: none;
 }
 
 .menu-btn:focus-visible {
-  outline-offset: -2px;
+  background: var(--line);
 }
 
 /* Controls sit close together here, so keep keyboard rings tight */
@@ -191,33 +192,43 @@
   position: relative;
   display: block;
   width: 22px;
-  height: 10px;
+  height: 16px;
 }
 
+/* Three bars; the outer two cross into an X and the middle one fades */
 .menu-icon span {
   position: absolute;
   left: 0;
   width: 100%;
   height: 1.5px;
+  border-radius: 1px;
   background: currentColor;
-  transition: transform 0.2s ease, top 0.2s ease;
+  transition: transform 0.2s ease, top 0.2s ease, opacity 0.15s ease;
 }
 
-.menu-icon span:first-child {
-  top: 0;
+.menu-icon span:nth-child(1) {
+  top: 1px;
 }
 
-.menu-icon span:last-child {
-  top: 8.5px;
+.menu-icon span:nth-child(2) {
+  top: 7.25px;
 }
 
-.menu-open .menu-icon span:first-child {
-  top: 4.25px;
+.menu-icon span:nth-child(3) {
+  top: 13.5px;
+}
+
+.menu-open .menu-icon span:nth-child(1) {
+  top: 7.25px;
   transform: rotate(45deg);
 }
 
-.menu-open .menu-icon span:last-child {
-  top: 4.25px;
+.menu-open .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .menu-icon span:nth-child(3) {
+  top: 7.25px;
   transform: rotate(-45deg);
 }
 

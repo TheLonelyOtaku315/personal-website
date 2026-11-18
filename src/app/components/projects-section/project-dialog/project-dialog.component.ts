@@ -24,6 +24,9 @@ import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
   styleUrl: './project-dialog.component.css',
 })
 export class ProjectDialogComponent implements OnInit {
+  bannerLoaded = false;
+  bannerFailed = false;
+
   skillsConfig: { [name: string]: { iconBase: string; variant?: string } } = {
     Java: { iconBase: 'java' },
     Python: { iconBase: 'python' },

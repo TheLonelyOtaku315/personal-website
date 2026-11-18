@@ -26,6 +26,8 @@ export class CursorPreviewDirective implements AfterViewInit, OnDestroy {
   private static targetY = 0;
   private static frame = 0;
   private static activeHost: HTMLElement | null = null;
+  // One load attempt per URL; resolves false when the image is broken
+  private static loads = new Map<string, Promise<boolean>>();
 
   private cleanup: Array<() => void> = [];
 
@@ -85,7 +87,8 @@ export class CursorPreviewDirective implements AfterViewInit, OnDestroy {
     this.ensureBox();
     const box = CursorPreviewDirective.box!;
     const img = CursorPreviewDirective.img!;
-    CursorPreviewDirective.activeHost = this.host.nativeElement;
+    const host = this.host.nativeElement;
+    CursorPreviewDirective.activeHost = host;
 
     // Start at the pointer so it doesn't fly in from the last position
     CursorPreviewDirective.x = CursorPreviewDirective.targetX = e.clientX;
@@ -93,19 +96,29 @@ export class CursorPreviewDirective implements AfterViewInit, OnDestroy {
     CursorPreviewDirective.tick();
 
     const src = this.src;
-    const reveal = () => {
-      if (CursorPreviewDirective.activeHost === this.host.nativeElement) {
-        box.classList.add('is-visible');
-      }
-    };
     if (img.getAttribute('src') !== src) {
       box.classList.remove('is-visible');
-      img.onload = reveal;
-      img.src = src;
-      if (img.complete) reveal();
-    } else {
-      reveal();
     }
+    // Only show the box once the image has really loaded, never for a broken one
+    CursorPreviewDirective.preload(src).then((ok) => {
+      if (!ok || CursorPreviewDirective.activeHost !== host) return;
+      if (img.getAttribute('src') !== src) img.src = src;
+      box.classList.add('is-visible');
+    });
+  }
+
+  private static preload(src: string): Promise<boolean> {
+    let load = CursorPreviewDirective.loads.get(src);
+    if (!load) {
+      load = new Promise<boolean>((resolve) => {
+        const probe = new Image();
+        probe.onload = () => resolve(probe.naturalWidth > 0);
+        probe.onerror = () => resolve(false);
+        probe.src = src;
+      });
+      CursorPreviewDirective.loads.set(src, load);
+    }
+    return load;
   }
 
   private hide(): void {
