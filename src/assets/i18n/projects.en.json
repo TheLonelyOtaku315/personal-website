@@ -1,5 +1,23 @@
 [
   {
+    "title": "Marswalk Budget",
+    "description": "Mars walking-route planner built with a team of four at the 2026 NASA Space Apps Challenge (“Interplanetary Survival Guide: Martian Map”). An astronaut picks science stops on real terrain at Gale or Jezero Crater, and the planner compares routes by walking time, suit oxygen, radiation dose and science value, then replans for dust storms, solar events or a heavy sample kit. Built the console UI and integrated the team's work into it (route options, turn-by-turn steps, Go/No-Go conditions, presenter tour), processed USGS elevation and THEMIS thermal-inertia data into a terrain grid with Node.js, ran QA, recorded the demo video and published the site on GitHub Pages.",
+    "demoUrl": "https://thelonelyotaku315.github.io/marswalk-budget/?data=gale&cond=real-gale",
+    "sourceUrl": "https://github.com/LouisLaziat/NasaChallenge2026",
+    "videoUrl": "https://youtu.be/Wj7d-oiHr20",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "technologies": [
+      "JavaScript",
+      "Node.js",
+      "HTML5",
+      "CSS3",
+      "Leaflet",
+      "NASA Open Data"
+    ],
+    "image": "assets/img/projects/marswalk-budget.jpg"
+  },
+  {
     "title": "CREII Website",
     "description": "Independently designed and developed the website of CREII (Centre de référence des élèves issus de l'immigration) using Angular, TypeScript, HTML, CSS and WordPress. Built it from the ground up with responsive, multilingual interfaces and reusable components, connected Angular to WordPress through custom REST APIs, developed a Google Drive-based photo gallery, and integrated WooCommerce, Stripe, Brevo and IONOS.",
     "demoUrl": "https://creii.net",

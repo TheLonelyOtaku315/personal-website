@@ -1,6 +1,21 @@
 [
   {
     "type": "award",
+    "title": "Galactic Problem Solver – NASA Space Apps Challenge 2026",
+    "organization": "NASA Space Apps Challenge",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "summary": "Built Marswalk Budget, a Mars walking-route planner, with a team of four at NASA's international hackathon.",
+    "details": [
+      "Took part in the 2026 NASA Space Apps Challenge, an international hackathon led by NASA, on November 14–15, 2026.",
+      "Built Marswalk Budget with a team of four for the “Interplanetary Survival Guide: Martian Map” challenge: a planner that weighs science stops on real Mars terrain against suit oxygen, radiation dose and the walk back.",
+      "Received the Galactic Problem Solver certificate for outstanding participation and efforts to address challenges we face on Earth and in space."
+    ],
+    "certificate": "assets/doc/Tonny-Zhao-Certificat-NASA-Space-Apps.pdf",
+    "project": "Marswalk Budget"
+  },
+  {
+    "type": "award",
     "title": "1st Place – GDG Polytechnique Hackathon",
     "organization": "Google Developer Group Polytechnique Montréal",
     "startDate": "2026-11-11",

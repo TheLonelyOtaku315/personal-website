@@ -1,5 +1,23 @@
 [
   {
+    "title": "Marswalk Budget",
+    "description": "Planificateur d'itinéraires de marche sur Mars réalisé en équipe de quatre au NASA Space Apps Challenge 2026 (« Interplanetary Survival Guide: Martian Map »). L'astronaute choisit des arrêts scientifiques sur le relief réel des cratères Gale ou Jezero, et l'outil compare les itinéraires selon le temps de marche, l'oxygène de la combinaison, la dose de rayonnement et la valeur scientifique, puis les recalcule en cas de tempête de poussière, d'événement solaire ou de lourd équipement d'échantillonnage. Développement de la console et intégration du travail de l'équipe (options d'itinéraire, instructions étape par étape, conditions Go/No-Go, visite guidée), traitement des données d'élévation de l'USGS et d'inertie thermique THEMIS en grille de terrain avec Node.js, assurance qualité, vidéo de démonstration et mise en ligne du site sur GitHub Pages.",
+    "demoUrl": "https://thelonelyotaku315.github.io/marswalk-budget/?data=gale&cond=real-gale",
+    "sourceUrl": "https://github.com/LouisLaziat/NasaChallenge2026",
+    "videoUrl": "https://youtu.be/Wj7d-oiHr20",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "technologies": [
+      "JavaScript",
+      "Node.js",
+      "HTML5",
+      "CSS3",
+      "Leaflet",
+      "Données ouvertes de la NASA"
+    ],
+    "image": "assets/img/projects/marswalk-budget.jpg"
+  },
+  {
     "title": "Site Web du CREII",
     "description": "Conception et développement autonomes du site Web du CREII (Centre de référence des élèves issus de l'immigration) avec Angular, TypeScript, HTML, CSS et WordPress. Création du site de A à Z avec des interfaces adaptatives et multilingues et des composants réutilisables, intégration d'Angular à WordPress au moyen d'API REST personnalisées, galerie photo basée sur Google Drive, et intégration de WooCommerce, Stripe, Brevo et IONOS.",
     "demoUrl": "https://creii.net",
