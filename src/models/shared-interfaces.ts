@@ -27,4 +27,6 @@ export interface Project {
   image?: string;
   demoUrl?: string;
   sourceUrl?: string;
+  // Demo video (e.g. YouTube), shown next to the demo and source links
+  videoUrl?: string;
 }

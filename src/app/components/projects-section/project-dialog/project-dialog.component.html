@@ -80,6 +80,16 @@
         {{ "PROJECTS.DEMO_LINK" | translate }}
       </a>
       <a
+        *ngIf="data.videoUrl"
+        class="action"
+        [class.primary]="!data.demoUrl"
+        [href]="data.videoUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ "PROJECTS.VIDEO_LINK" | translate }}
+      </a>
+      <a
         *ngIf="data.sourceUrl"
         class="action"
         [class.primary]="!data.demoUrl"

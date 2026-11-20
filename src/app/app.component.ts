@@ -103,6 +103,7 @@ export class AppComponent implements OnInit {
           description: p.description,
           demoUrl: p.demoUrl || '',
           sourceUrl: p.sourceUrl || '',
+          videoUrl: p.videoUrl || '',
           startDate: parseLocalDate(p.startDate),
           endDate: parseLocalDate(p.endDate),
           technologies: p.technologies || [],
