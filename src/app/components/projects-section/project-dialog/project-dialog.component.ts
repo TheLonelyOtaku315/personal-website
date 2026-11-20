@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Project } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
+import { isSameMonth } from '@utils/date';
 
 @Component({
   selector: 'app-project-dialog',
@@ -58,6 +59,11 @@ export class ProjectDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ProjectDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Project,
   ) {}
+
+  // Projects that start and end in the same month show that month once
+  get sameMonth(): boolean {
+    return isSameMonth(this.data.startDate, this.data.endDate);
+  }
 
   techSkills: any[] = [];
   ngOnInit() {

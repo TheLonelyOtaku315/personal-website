@@ -30,7 +30,10 @@
         <span class="date-pill" *ngIf="singleDate">
           {{ data.startDate | localizedDate: singleDateFormat }}
         </span>
-        <span class="date-pill" *ngIf="!singleDate">
+        <span class="date-pill" *ngIf="dayRange">
+          {{ data.startDate | localizedDateRange: data.endDate : "long" }}
+        </span>
+        <span class="date-pill" *ngIf="!singleDate && !dayRange">
           {{ data.startDate | localizedDate }}
           –
           {{

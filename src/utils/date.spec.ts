@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { byMostRecentWork, parseLocalDate } from './date';
+import {
+  byMostRecentWork,
+  formatDayRange,
+  isDayRange,
+  isSameMonth,
+  parseLocalDate,
+} from './date';
 
 describe('parseLocalDate', () => {
   it('parses YYYY-MM as the first day of that month in local time', () => {
@@ -61,5 +67,49 @@ describe('byMostRecentWork', () => {
       'ended 2022-12',
       'ended 2022-11',
     ]);
+  });
+});
+
+describe('isSameMonth', () => {
+  it('compares year and month of strings or dates', () => {
+    expect(isSameMonth('2026-11-14', '2026-11-15')).toBe(true);
+    expect(isSameMonth('2024-01', '2024-01')).toBe(true);
+    expect(isSameMonth(new Date(2026, 10, 14), new Date(2026, 10, 15))).toBe(
+      true,
+    );
+    expect(isSameMonth('2026-07', '2026-08')).toBe(false);
+    expect(isSameMonth('2025-11', '2026-11')).toBe(false);
+    expect(isSameMonth('2026-11', null)).toBe(false);
+  });
+});
+
+describe('isDayRange', () => {
+  it('is true for two different days only', () => {
+    expect(isDayRange('2026-11-14', '2026-11-15')).toBe(true);
+    expect(isDayRange('2026-11-11', '2026-11-11')).toBe(false);
+    expect(isDayRange('2026-07', '2026-08')).toBe(false);
+    expect(isDayRange('2026-11-14', '')).toBe(false);
+    expect(isDayRange('2026-11-14', null)).toBe(false);
+  });
+});
+
+describe('formatDayRange', () => {
+  // Intl puts thin or narrow no-break spaces around the dash
+  const plain = (s: string) => s.replace(/\s/g, ' ');
+
+  it('shares the month and year in English and French', () => {
+    expect(plain(formatDayRange('2026-11-14', '2026-11-15', 'en'))).toBe(
+      'Nov 14 – 15, 2026',
+    );
+    expect(plain(formatDayRange('2026-11-14', '2026-11-15', 'fr'))).toBe(
+      '14–15 nov. 2026',
+    );
+    expect(
+      plain(formatDayRange('2026-11-14', '2026-11-15', 'fr', 'long')),
+    ).toBe('14–15 novembre 2026');
+  });
+
+  it('returns an empty string for missing dates', () => {
+    expect(formatDayRange('2026-11-14', null, 'en')).toBe('');
   });
 });

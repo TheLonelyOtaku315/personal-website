@@ -16,9 +16,10 @@ import {
 } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizedDatePipe } from '../../pipes/localized-date.pipe';
+import { LocalizedDateRangePipe } from '../../pipes/localized-date-range.pipe';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TimelineDialogComponent } from './timeline-dialog/timeline-dialog.component';
-import { hasDay, isSingleDate } from '@utils/date';
+import { hasDay, isDayRange, isSingleDate } from '@utils/date';
 import { usesTech } from '@utils/tech';
 import { RevealDirective } from '../../directives/reveal.directive';
 
@@ -31,6 +32,7 @@ import { RevealDirective } from '../../directives/reveal.directive';
     CommonModule,
     TranslateModule,
     LocalizedDatePipe,
+    LocalizedDateRangePipe,
     MatDialogModule,
     RevealDirective,
   ],
@@ -71,6 +73,11 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
   // "Nov 11, 2026" for a specific day, "Nov 2026" for a month
   singleDateFormat(item: TimelineEvent): string {
     return hasDay(item.startDate) ? 'mediumDate' : 'MMM yyyy';
+  }
+
+  // Two specific days, shown as "Nov 14 – 15, 2026"
+  isDayRange(item: TimelineEvent): boolean {
+    return isDayRange(item.startDate, item.endDate);
   }
 
   openTimelineItem(item: TimelineEvent): void {
