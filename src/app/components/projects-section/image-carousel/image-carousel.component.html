@@ -1,0 +1,78 @@
+<div
+  class="carousel"
+  role="region"
+  aria-roledescription="carousel"
+  [attr.aria-label]="'PROJECTS.GALLERY_LABEL' | translate: { title: title }"
+  (mouseenter)="setHovered(true)"
+  (mouseleave)="setHovered(false)"
+  (focusin)="onFocusIn()"
+  (focusout)="onFocusOut($event)"
+  (keydown.arrowleft)="prev()"
+  (keydown.arrowright)="next()"
+  (pointerdown)="onPointerDown($event)"
+  (pointerup)="onPointerUp($event)"
+  (pointercancel)="onPointerUp($event)"
+>
+  <div
+    class="track"
+    [style.transform]="'translateX(' + -100 * index + '%)'"
+    [attr.aria-live]="playing ? 'off' : 'polite'"
+  >
+    <div
+      *ngFor="let src of slides; let i = index"
+      class="slide"
+      role="group"
+      aria-roledescription="slide"
+      [attr.aria-label]="
+        'PROJECTS.GALLERY_SLIDE' | translate: { n: i + 1, total: slides.length }
+      "
+      [attr.aria-hidden]="i === index ? null : 'true'"
+    >
+      <img
+        [src]="src"
+        [class.loaded]="loaded.has(src)"
+        [alt]="
+          hasMany
+            ? ('PROJECTS.GALLERY_ALT'
+              | translate: { title: title, n: i + 1, total: slides.length })
+            : ('PROJECTS.IMAGE_ALT' | translate: { title: title })
+        "
+        draggable="false"
+        (load)="onLoad(src)"
+        (error)="onError(src)"
+      />
+    </div>
+  </div>
+
+  <ng-container *ngIf="hasMany">
+    <button
+      type="button"
+      class="nav prev"
+      [attr.aria-label]="'PROJECTS.GALLERY_PREV' | translate"
+      (click)="prev()"
+    >
+      <span aria-hidden="true">‹</span>
+    </button>
+    <button
+      type="button"
+      class="nav next"
+      [attr.aria-label]="'PROJECTS.GALLERY_NEXT' | translate"
+      (click)="next()"
+    >
+      <span aria-hidden="true">›</span>
+    </button>
+    <div class="dots">
+      <button
+        *ngFor="let src of slides; let i = index"
+        type="button"
+        class="dot"
+        [class.active]="i === index"
+        [attr.aria-current]="i === index ? 'true' : null"
+        [attr.aria-label]="
+          'PROJECTS.GALLERY_GO' | translate: { n: i + 1, total: slides.length }
+        "
+        (click)="goTo(i)"
+      ></button>
+    </div>
+  </ng-container>
+</div>

@@ -17,6 +17,14 @@ import { byMostRecentWork, parseLocalDate } from '@utils/date';
 
 const SUPPORTED_LANGUAGES = ['en', 'fr'];
 
+// "images" from the JSON, or the older single "image" field
+function imageList(p: { images?: unknown; image?: unknown }): string[] {
+  const list = Array.isArray(p.images) ? p.images : [p.image];
+  return list.filter(
+    (src): src is string => typeof src === 'string' && !!src.trim(),
+  );
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -107,7 +115,7 @@ export class AppComponent implements OnInit {
           startDate: parseLocalDate(p.startDate),
           endDate: parseLocalDate(p.endDate),
           technologies: p.technologies || [],
-          image: p.image || '',
+          images: imageList(p),
         }));
         this.projects.sort(byMostRecentWork);
       },

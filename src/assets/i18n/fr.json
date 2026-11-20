@@ -78,6 +78,12 @@
     "SHOW_MORE": "Afficher plus de projets",
     "SHOW_LESS": "Afficher moins de projets",
     "IMAGE_ALT": "Aperçu de {{title}}",
+    "GALLERY_LABEL": "Images de {{title}}",
+    "GALLERY_SLIDE": "{{n}} sur {{total}}",
+    "GALLERY_ALT": "{{title}}, image {{n}} sur {{total}}",
+    "GALLERY_PREV": "Image précédente",
+    "GALLERY_NEXT": "Image suivante",
+    "GALLERY_GO": "Afficher l'image {{n}} sur {{total}}",
     "FILTER_HINT": "Astuce : cliquez sur une technologie pour filtrer la liste",
     "FILTERED_BY": "Projets utilisant",
     "CLEAR_FILTER": "Tout afficher"

@@ -8,19 +8,14 @@
     ×
   </button>
 
-  <!-- Real previews only: skip the generated placeholder, fade in once loaded,
-       and drop the banner entirely if the image fails -->
-  <div
-    *ngIf="data.image && !data.image.startsWith('data:') && !bannerFailed"
-    class="banner"
-  >
-    <img
-      [src]="data.image"
-      [class.loaded]="bannerLoaded"
-      [alt]="'PROJECTS.IMAGE_ALT' | translate: { title: data.title }"
-      (load)="bannerLoaded = true"
-      (error)="bannerFailed = true"
-    />
+  <!-- Real images only, never the generated placeholder. Several images
+       become an auto-advancing gallery; the banner goes away if all fail -->
+  <div *ngIf="galleryImages.length && !bannerFailed" class="banner">
+    <app-image-carousel
+      [images]="galleryImages"
+      [title]="data.title"
+      (empty)="bannerFailed = true"
+    ></app-image-carousel>
   </div>
 
   <div class="body">

@@ -10,6 +10,7 @@ import { Project } from '@models/shared-interfaces';
 import { TranslateModule } from '@ngx-translate/core';
 import { LocalizedDatePipe } from '../../../pipes/localized-date.pipe';
 import { isSameMonth } from '@utils/date';
+import { ImageCarouselComponent } from '../image-carousel/image-carousel.component';
 
 @Component({
   selector: 'app-project-dialog',
@@ -20,12 +21,12 @@ import { isSameMonth } from '@utils/date';
     MatButtonModule,
     TranslateModule,
     LocalizedDatePipe,
+    ImageCarouselComponent,
   ],
   templateUrl: './project-dialog.component.html',
   styleUrl: './project-dialog.component.css',
 })
 export class ProjectDialogComponent implements OnInit {
-  bannerLoaded = false;
   bannerFailed = false;
 
   skillsConfig: { [name: string]: { iconBase: string; variant?: string } } = {
@@ -58,7 +59,13 @@ export class ProjectDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ProjectDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Project,
-  ) {}
+  ) {
+    this.galleryImages = (data.images || []).filter(
+      (src) => !!src && !src.startsWith('data:'),
+    );
+  }
+
+  readonly galleryImages: string[];
 
   // Projects that start and end in the same month show that month once
   get sameMonth(): boolean {
