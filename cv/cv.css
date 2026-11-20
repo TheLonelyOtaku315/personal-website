@@ -22,7 +22,7 @@ body {
   color: #000;
   font-family: "Amiri", "Times New Roman", serif;
   font-size: 10pt;
-  line-height: 1.2;
+  line-height: 1.15;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
@@ -88,7 +88,7 @@ a {
 .entry {
   display: grid;
   grid-template-columns: 111pt 1fr;
-  margin-bottom: 6pt;
+  margin-bottom: 4pt;
   break-inside: avoid;
 }
 
