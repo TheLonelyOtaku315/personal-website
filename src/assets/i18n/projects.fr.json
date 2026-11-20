@@ -89,7 +89,7 @@
     "title": "Aéroglisseur autonome",
     "description": "Développement d'un aéroglisseur autonome capable de naviguer et de résoudre des labyrinthes grâce à la fusion de capteurs. Implémentation d'algorithmes de navigation utilisant des données d'IMU, de capteurs ultrasoniques et infrarouges. Programmation en C pour microcontrôleur Arduino avec détection d'obstacles en temps réel et planification de trajectoire.",
     "demoUrl": "https://youtube.com/shorts/oI3XUQ6Xa5w",
-    "sourceUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/ENGR290_project_hovercraft",
     "startDate": "2025-09",
     "endDate": "2025-11",
     "technologies": [

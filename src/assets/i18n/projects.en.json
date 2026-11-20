@@ -89,7 +89,7 @@
     "title": "Autonomous Hovercraft",
     "description": "Developed an autonomous hovercraft capable of navigating and solving mazes using sensor fusion. Implemented navigation algorithms using data from IMU (Inertial Measurement Unit), ultrasonic, and infrared sensors. Programmed in C for Arduino microcontroller with real-time obstacle detection and path planning.",
     "demoUrl": "https://youtube.com/shorts/oI3XUQ6Xa5w",
-    "sourceUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/ENGR290_project_hovercraft",
     "startDate": "2025-09",
     "endDate": "2025-11",
     "technologies": [
