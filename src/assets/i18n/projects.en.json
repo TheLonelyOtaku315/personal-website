@@ -15,7 +15,14 @@
       "Leaflet",
       "NASA Open Data"
     ],
-    "image": "assets/img/projects/marswalk-budget.jpg"
+    "images": [
+      "assets/img/projects/marswalk-budget.jpg",
+      "assets/img/projects/marswalk-budget-flyover.jpg",
+      "assets/img/projects/marswalk-budget-hud.jpg",
+      "assets/img/projects/marswalk-budget-jezero.jpg",
+      "assets/img/projects/marswalk-budget-tablet.jpg",
+      "assets/img/projects/marswalk-budget-checklist.jpg"
+    ]
   },
   {
     "title": "CREII Website",
@@ -34,7 +41,13 @@
       "WooCommerce",
       "Stripe"
     ],
-    "image": "assets/img/projects/creii.jpg"
+    "images": [
+      "assets/img/projects/creii.jpg",
+      "assets/img/projects/creii-services.jpg",
+      "assets/img/projects/creii-events.jpg",
+      "assets/img/projects/creii-gala.jpg",
+      "assets/img/projects/creii-summer-camp.jpg"
+    ]
   },
   {
     "title": "QuietZone",
@@ -51,7 +64,10 @@
       "Java",
       "Firebase"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/quietzone.jpg",
+      "assets/img/projects/quietzone-admin-dark.jpg"
+    ]
   },
   {
     "title": "Bluetooth Touch Screen Macropad",
@@ -67,8 +83,7 @@
       "LVGL",
       "AMOLED Display",
       "PlatformIO"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Personal Portfolio Redesign",
@@ -83,7 +98,14 @@
       "Accessibility",
       "Performance Optimization"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/portfolio-redesign.jpg",
+      "assets/img/projects/portfolio-redesign-dark.jpg",
+      "assets/img/projects/portfolio-redesign-mobile.jpg",
+      "assets/img/projects/portfolio-redesign-about.jpg",
+      "assets/img/projects/portfolio-redesign-projects.jpg",
+      "assets/img/projects/portfolio-redesign-contact.jpg"
+    ]
   },
   {
     "title": "Autonomous Hovercraft",
@@ -97,8 +119,7 @@
       "Arduino",
       "Autonomous Navigation",
       "Embedded Systems"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "COMP353 - Database Systems Project",
@@ -116,8 +137,7 @@
       "Normalization",
       "Team Collaboration",
       "Git"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "COMP 371 - 3D Graphics Programming Project",
@@ -136,8 +156,7 @@
       "3D Graphics",
       "Shadow Mapping",
       "CMake"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "ChatHaven",
@@ -156,7 +175,13 @@
       "LinkPreview API",
       "Gemini API"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/chathaven-home.jpg",
+      "assets/img/projects/chathaven.jpg",
+      "assets/img/projects/chathaven-channel.jpg",
+      "assets/img/projects/chathaven-dm.jpg",
+      "assets/img/projects/chathaven-create-team.jpg"
+    ]
   },
   {
     "title": "Temperature Converter",
@@ -171,7 +196,14 @@
       "CSS",
       "Temperature Conversion"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/temperature-converter.jpg",
+      "assets/img/projects/temperature-converter-converter.jpg",
+      "assets/img/projects/temperature-converter-steps.jpg",
+      "assets/img/projects/temperature-converter-history-size.jpg",
+      "assets/img/projects/temperature-converter-graph.jpg",
+      "assets/img/projects/temperature-converter-history.jpg"
+    ]
   },
   {
     "title": "Personal Portfolio Website",
@@ -186,7 +218,13 @@
       "CSS",
       "HTML"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/portfolio-2025.jpg",
+      "assets/img/projects/portfolio-2025-light.jpg",
+      "assets/img/projects/portfolio-2025-about.jpg",
+      "assets/img/projects/portfolio-2025-projects.jpg",
+      "assets/img/projects/portfolio-2025-projects-light.jpg"
+    ]
   },
   {
     "title": "LeetCode Solutions",
@@ -200,8 +238,7 @@
       "Algorithms",
       "Data Structures",
       "Problem Solving"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "k-NN Classifier – Final Project",
@@ -214,8 +251,7 @@
       "Java",
       "Machine Learning",
       "Algorithm Optimization"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "ESP32 LED Controller",
@@ -230,8 +266,7 @@
       "Bluetooth",
       "Serial Communication",
       "Arduino"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Electricity & Magnetism Simulation",
@@ -246,8 +281,7 @@
       "CSS",
       "Git",
       "GitHub"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "RetroPie Gaming Console on Raspberry Pi",
@@ -260,7 +294,6 @@
       "Raspberry Pi",
       "Linux",
       "RetroPie"
-    ],
-    "image": ""
+    ]
   }
 ]

@@ -15,7 +15,14 @@
       "Leaflet",
       "Données ouvertes de la NASA"
     ],
-    "image": "assets/img/projects/marswalk-budget.jpg"
+    "images": [
+      "assets/img/projects/marswalk-budget.jpg",
+      "assets/img/projects/marswalk-budget-flyover.jpg",
+      "assets/img/projects/marswalk-budget-hud.jpg",
+      "assets/img/projects/marswalk-budget-jezero.jpg",
+      "assets/img/projects/marswalk-budget-tablet.jpg",
+      "assets/img/projects/marswalk-budget-checklist.jpg"
+    ]
   },
   {
     "title": "Site Web du CREII",
@@ -34,7 +41,13 @@
       "WooCommerce",
       "Stripe"
     ],
-    "image": "assets/img/projects/creii.jpg"
+    "images": [
+      "assets/img/projects/creii.jpg",
+      "assets/img/projects/creii-services.jpg",
+      "assets/img/projects/creii-events.jpg",
+      "assets/img/projects/creii-gala.jpg",
+      "assets/img/projects/creii-summer-camp.jpg"
+    ]
   },
   {
     "title": "QuietZone",
@@ -51,7 +64,10 @@
       "Java",
       "Firebase"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/quietzone.jpg",
+      "assets/img/projects/quietzone-admin-dark.jpg"
+    ]
   },
   {
     "title": "Macropad Bluetooth à écran tactile",
@@ -67,8 +83,7 @@
       "LVGL",
       "Écran AMOLED",
       "PlatformIO"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Refonte du portfolio personnel",
@@ -83,7 +98,14 @@
       "Accessibilité",
       "Optimisation des performances"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/portfolio-redesign.jpg",
+      "assets/img/projects/portfolio-redesign-dark.jpg",
+      "assets/img/projects/portfolio-redesign-mobile.jpg",
+      "assets/img/projects/portfolio-redesign-about.jpg",
+      "assets/img/projects/portfolio-redesign-projects.jpg",
+      "assets/img/projects/portfolio-redesign-contact.jpg"
+    ]
   },
   {
     "title": "Aéroglisseur autonome",
@@ -97,8 +119,7 @@
       "Arduino",
       "Navigation autonome",
       "Systèmes embarqués"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "COMP353 - Projet de systèmes de bases de données",
@@ -116,8 +137,7 @@
       "Normalisation",
       "Travail d'équipe",
       "Git"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "COMP 371 - Projet de programmation graphique 3D",
@@ -136,8 +156,7 @@
       "Graphiques 3D",
       "Shadow Mapping",
       "CMake"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "ChatHaven",
@@ -156,7 +175,13 @@
       "API LinkPreview",
       "API Gemini"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/chathaven-home.jpg",
+      "assets/img/projects/chathaven.jpg",
+      "assets/img/projects/chathaven-channel.jpg",
+      "assets/img/projects/chathaven-dm.jpg",
+      "assets/img/projects/chathaven-create-team.jpg"
+    ]
   },
   {
     "title": "Convertisseur de température",
@@ -171,7 +196,14 @@
       "CSS",
       "Conversion de température"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/temperature-converter.jpg",
+      "assets/img/projects/temperature-converter-converter.jpg",
+      "assets/img/projects/temperature-converter-steps.jpg",
+      "assets/img/projects/temperature-converter-history-size.jpg",
+      "assets/img/projects/temperature-converter-graph.jpg",
+      "assets/img/projects/temperature-converter-history.jpg"
+    ]
   },
   {
     "title": "Site web portfolio personnel",
@@ -186,7 +218,13 @@
       "CSS",
       "HTML"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/portfolio-2025.jpg",
+      "assets/img/projects/portfolio-2025-light.jpg",
+      "assets/img/projects/portfolio-2025-about.jpg",
+      "assets/img/projects/portfolio-2025-projects.jpg",
+      "assets/img/projects/portfolio-2025-projects-light.jpg"
+    ]
   },
   {
     "title": "Solutions LeetCode",
@@ -200,8 +238,7 @@
       "Algorithmes",
       "Structures de données",
       "Résolution de problèmes"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Classificateur k-NN – Projet final",
@@ -214,8 +251,7 @@
       "Java",
       "Apprentissage automatique",
       "Optimisation d'algorithme"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Contrôleur LED ESP32",
@@ -230,8 +266,7 @@
       "Bluetooth",
       "Communication série",
       "Arduino"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Simulation d'électricité et de magnétisme",
@@ -246,8 +281,7 @@
       "CSS",
       "Git",
       "GitHub"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Console de jeux RetroPie sur Raspberry Pi",
@@ -260,7 +294,6 @@
       "Raspberry Pi",
       "Linux",
       "RetroPie"
-    ],
-    "image": ""
+    ]
   }
 ]
