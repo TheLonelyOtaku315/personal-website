@@ -15,6 +15,8 @@ export interface TimelineEvent {
   link?: string;
   // Path to a certificate PDF in assets/doc (e.g. for an award)
   certificate?: string;
+  // Title of a related project in the Projects section (e.g. a hackathon's)
+  project?: string;
 }
 
 export interface Project {

@@ -76,6 +76,19 @@ describe('ProjectsSectionComponent', () => {
     );
   });
 
+  it('should open a project by its title, and ignore unknown titles', () => {
+    component.projects = mockProjects;
+    component.openProjectByTitle('No such project');
+    expect(component.dialog.open).not.toHaveBeenCalled();
+    component.openProjectByTitle(mockProjects[1].title);
+    expect(component.dialog.open).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        data: expect.objectContaining({ title: mockProjects[1].title }),
+      })
+    );
+  });
+
   it('should load more projects when loadMore is called', () => {
     component.projects = Array.from({ length: 20 }, (_, i) => ({
       title: `Project ${i + 1}`,

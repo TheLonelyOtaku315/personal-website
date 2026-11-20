@@ -47,4 +47,9 @@ export class TimelineDialogComponent {
   close(): void {
     this.dialogRef.close();
   }
+
+  // Closes this dialog so the About section can open the related project
+  viewProject(): void {
+    this.dialogRef.close('project');
+  }
 }

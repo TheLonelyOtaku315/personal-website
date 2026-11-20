@@ -63,6 +63,14 @@
       >
         {{ "ABOUT.TIMELINE.CERTIFICATE" | translate }}
       </a>
+      <button
+        *ngIf="data.project"
+        type="button"
+        class="action primary"
+        (click)="viewProject()"
+      >
+        {{ "ABOUT.TIMELINE.PROJECT" | translate }}
+      </button>
       <a
         *ngIf="data.link"
         class="action primary"

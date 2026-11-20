@@ -42,6 +42,8 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
   @Input() projects: Project[] = [];
   // Emits a skill name when it's clicked, to filter the project list
   @Output() skillSelect = new EventEmitter<string>();
+  // Emits a project title when a timeline entry's "View project" is used
+  @Output() projectSelect = new EventEmitter<string>();
   isDarkMode: boolean = false;
   timelineFilter: 'all' | TimelineEventType = 'all';
   readonly timelineFilters = ['all', 'education', 'work', 'award'] as const;
@@ -80,14 +82,30 @@ export class AboutMeSectionComponent implements OnInit, OnDestroy {
     return isDayRange(item.startDate, item.endDate);
   }
 
+  // True when the item's related project is listed in the Projects section
+  hasProject(item: TimelineEvent): boolean {
+    return (
+      !!item.project && this.projects.some((p) => p.title === item.project)
+    );
+  }
+
   openTimelineItem(item: TimelineEvent): void {
-    this.dialog?.open(TimelineDialogComponent, {
-      data: item,
+    const ref = this.dialog?.open(TimelineDialogComponent, {
+      // Only offer "View project" when that project can be opened
+      data:
+        item.project && !this.hasProject(item)
+          ? { ...item, project: '' }
+          : item,
       panelClass: 'project-dialog-panel',
       width: '90%',
       maxWidth: '640px',
       maxHeight: '90vh',
       autoFocus: false,
+    });
+    ref?.afterClosed().subscribe((result) => {
+      if (result === 'project' && item.project) {
+        this.projectSelect.emit(item.project);
+      }
     });
   }
 

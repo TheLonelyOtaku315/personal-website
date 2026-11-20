@@ -138,6 +138,7 @@ export class AppComponent implements OnInit {
           details: e.details || [],
           link: e.link || '',
           certificate: e.certificate || '',
+          project: e.project || '',
         }));
       },
       error: (error) => {

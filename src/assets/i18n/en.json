@@ -56,7 +56,8 @@
       "DETAILS": "View details",
       "HIGHLIGHTS": "Highlights",
       "VISIT": "Visit website",
-      "CERTIFICATE": "View certificate"
+      "CERTIFICATE": "View certificate",
+      "PROJECT": "View project"
     },
     "SKILLS_HINT": "Click a skill to see where I used it",
     "SKILL_PROJECTS": "Used in {{count}} projects",

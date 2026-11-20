@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { of } from 'rxjs';
 import { AboutMeSectionComponent } from './about-me-section.component';
 import { ThemeService } from '@services/theme.service';
 import { TimelineEvent, Project } from '@models/shared-interfaces';
@@ -198,6 +199,62 @@ describe('AboutMeSectionComponent', () => {
       expect.anything(),
       expect.objectContaining({ data: item })
     );
+  });
+
+  describe('related project', () => {
+    const hackathon: TimelineEvent = {
+      type: 'award',
+      title: 'Hackathon',
+      organization: 'Org',
+      startDate: '2026-11-14',
+      endDate: '2026-11-15',
+      summary: '',
+      details: [],
+      project: 'Space App',
+    };
+    const project: Project = {
+      title: 'Space App',
+      description: '',
+      technologies: [],
+      startDate: '2026-11-14',
+    };
+    const open = (closeResult: unknown, projects: Project[]) => {
+      const dialog = {
+        open: vi.fn(() => ({ afterClosed: () => of(closeResult) })),
+      };
+      const section = new AboutMeSectionComponent(
+        mockThemeService,
+        dialog as any
+      );
+      section.projects = projects;
+      const emitted: string[] = [];
+      section.projectSelect.subscribe((title) => emitted.push(title));
+      section.openTimelineItem(hackathon);
+      return { dialog, emitted };
+    };
+
+    it('emits the project when "View project" closes the dialog', () => {
+      const { dialog, emitted } = open('project', [project]);
+      expect(dialog.open).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({ data: hackathon })
+      );
+      expect(emitted).toEqual(['Space App']);
+    });
+
+    it('emits nothing when the dialog is just closed', () => {
+      expect(open(undefined, [project]).emitted).toEqual([]);
+    });
+
+    it('hides the button when the project is not listed', () => {
+      const { dialog } = open(undefined, []);
+      expect(dialog.open).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          data: expect.objectContaining({ project: '' }),
+        })
+      );
+    });
   });
 
   it('should accept projects input', () => {

@@ -84,6 +84,12 @@ export class ProjectsSectionComponent {
     this.visibleCount = this.pageSize;
   }
 
+  // Opens a project by its title, e.g. from a related timeline entry
+  openProjectByTitle(title: string): void {
+    const project = this.projects.find((p) => p.title === title);
+    if (project) this.openProjectDialog(project);
+  }
+
   openProjectDialog(project: Project): void {
     this.dialog.open(ProjectDialogComponent, {
       // Pass the same preview image the card shows

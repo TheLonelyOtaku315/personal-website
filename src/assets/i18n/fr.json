@@ -56,7 +56,8 @@
       "DETAILS": "Voir les détails",
       "HIGHLIGHTS": "Faits saillants",
       "VISIT": "Visiter le site",
-      "CERTIFICATE": "Voir le certificat"
+      "CERTIFICATE": "Voir le certificat",
+      "PROJECT": "Voir le projet"
     },
     "SKILLS_HINT": "Cliquez sur une compétence pour voir où je l'ai utilisée",
     "SKILL_PROJECTS": "Utilisée dans {{count}} projets",
