@@ -80,6 +80,15 @@
       >
         {{ "ABOUT.TIMELINE.VISIT" | translate }}
       </a>
+      <a
+        *ngFor="let extra of data.links"
+        class="action"
+        [href]="extra.url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ extra.label }}
+      </a>
       <button type="button" class="action ghost close-btn" (click)="close()">
         {{ "PROJECTS.CLOSE" | translate }}
       </button>

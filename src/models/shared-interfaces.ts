@@ -17,6 +17,13 @@ export interface TimelineEvent {
   certificate?: string;
   // Title of a related project in the Projects section (e.g. a hackathon's)
   project?: string;
+  // Extra labelled links, e.g. posts about the event or a team's project
+  links?: EventLink[];
+}
+
+export interface EventLink {
+  label: string;
+  url: string;
 }
 
 export interface Project {

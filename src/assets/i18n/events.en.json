@@ -22,10 +22,16 @@
     "endDate": "2026-11-11",
     "summary": "Won first place with my team at the “Browser in the Age of AI” hackathon.",
     "details": [
-      "Won first place with my team at the hackathon “Le navigateur à l'ère de l'intelligence artificielle” (The Browser in the Age of Artificial Intelligence), hosted by Google Developer Group Polytechnique Montréal on November 11, 2026.",
+      "Won first place with my team at the hackathon “Le navigateur à l'ère de l'intelligence artificielle” (The Browser in the Age of Artificial Intelligence), hosted by Google Developer Group Polytechnique Montréal at Google's Montréal offices on November 11, 2026.",
+      "Our winning project, Silver Sun Scan, helps people spot online scams by checking links, QR codes, suspicious messages and passwords (team TroisPandasUnOursPolaire).",
       "Recognized for the excellence, innovation and creativity of our project."
     ],
-    "certificate": "assets/doc/Tonny-Zhao-Certificat-GDG-Polytechnique.pdf"
+    "certificate": "assets/doc/Tonny-Zhao-Certificat-GDG-Polytechnique.pdf",
+    "links": [
+      { "label": "Winning project", "url": "https://scan.silversuncorp.com/" },
+      { "label": "Organizers' post", "url": "https://www.linkedin.com/posts/gdgoncampus-google-hackathon-ugcPost-7526775072729141248-VQga/" },
+      { "label": "Our team's post", "url": "https://www.linkedin.com/posts/louis-ho-1b2ba3277_hackathon-google-cybersecurity-ugcPost-7528499522327535616-cs3e/" }
+    ]
   },
   {
     "type": "work",
