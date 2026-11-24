@@ -95,6 +95,49 @@ describe('AppComponent', () => {
     expect(project.endDate).toBeNull();
   });
 
+  it('should read the images list, or the older single image field', () => {
+    let next: (data: any[]) => void = () => {};
+    mockHttp.get.mockReturnValueOnce({
+      subscribe: (handlers: any) => (next = handlers.next),
+    } as any);
+    (component as any).loadData('en');
+    next([
+      { title: 'Many', images: ['a.jpg', '', '  ', 'b.jpg', 3] },
+      { title: 'One', image: 'c.jpg' },
+      { title: 'None', image: '' },
+    ]);
+    const byTitle = (t: string) => component.projects.find((p) => p.title === t)!;
+    expect(byTitle('Many').images).toEqual(['a.jpg', 'b.jpg']);
+    expect(byTitle('One').images).toEqual(['c.jpg']);
+    expect(byTitle('None').images).toEqual([]);
+  });
+
+  it('should keep only event links that have a label and a URL', () => {
+    const handlers: any[] = [];
+    mockHttp.get.mockImplementation(
+      () => ({ subscribe: (h: any) => handlers.push(h) }) as any
+    );
+    (component as any).loadData('en');
+    // Second request is the timeline
+    handlers[1].next([
+      {
+        title: 'Hackathon',
+        links: [
+          { label: 'Team post', url: 'https://example.com/post' },
+          { label: '', url: 'https://example.com/blank' },
+          { label: 'No link' },
+          'https://example.com/bare',
+        ],
+      },
+      { title: 'Plain' },
+    ]);
+    expect(component.timeline[0].links).toEqual([
+      { label: 'Team post', url: 'https://example.com/post' },
+    ]);
+    expect(component.timeline[1].links).toEqual([]);
+    mockHttp.get.mockImplementation(() => ({ subscribe: vi.fn() }) as any);
+  });
+
   it('should ignore responses for a language that is no longer selected', () => {
     const handlers: any[] = [];
     mockHttp.get.mockImplementation(

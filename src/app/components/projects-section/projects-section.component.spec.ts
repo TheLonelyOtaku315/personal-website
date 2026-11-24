@@ -16,7 +16,6 @@ describe('ProjectsSectionComponent', () => {
         sourceUrl: 'https://github.com/user/repo1',
         startDate: new Date(),
         technologies: ['Angular'],
-        image: '',
       },
       {
         title: 'Project 2',
@@ -25,7 +24,7 @@ describe('ProjectsSectionComponent', () => {
         sourceUrl: 'https://github.com/user/repo2',
         startDate: new Date(),
         technologies: ['React'],
-        image: 'custom-image.jpg',
+        images: ['custom-image.jpg', 'second.jpg'],
       },
       {
         title: 'Project 3',
@@ -34,7 +33,6 @@ describe('ProjectsSectionComponent', () => {
         sourceUrl: '',
         startDate: new Date(),
         technologies: ['Vue'],
-        image: '',
       },
     ];
   });
@@ -76,6 +74,19 @@ describe('ProjectsSectionComponent', () => {
     );
   });
 
+  it('should open a project by its title, and ignore unknown titles', () => {
+    component.projects = mockProjects;
+    component.openProjectByTitle('No such project');
+    expect(component.dialog.open).not.toHaveBeenCalled();
+    component.openProjectByTitle(mockProjects[1].title);
+    expect(component.dialog.open).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({
+        data: expect.objectContaining({ title: mockProjects[1].title }),
+      })
+    );
+  });
+
   it('should load more projects when loadMore is called', () => {
     component.projects = Array.from({ length: 20 }, (_, i) => ({
       title: `Project ${i + 1}`,
@@ -84,7 +95,6 @@ describe('ProjectsSectionComponent', () => {
       sourceUrl: '',
       startDate: new Date(),
       technologies: [],
-      image: '',
     }));
     component.visibleCount = 6;
     component.loadMore();
@@ -99,7 +109,7 @@ describe('ProjectsSectionComponent', () => {
   });
 
   describe('getProjectImage', () => {
-    it('should return explicit image if set', () => {
+    it('should return the first explicit image if set', () => {
       const project: Project = { ...mockProjects[1] };
       expect(component.getProjectImage(project)).toBe('custom-image.jpg');
     });
@@ -136,7 +146,6 @@ describe('ProjectsSectionComponent', () => {
         sourceUrl: '',
         startDate: new Date(),
         technologies: [],
-        image: '',
       };
       const result = component.getProjectImage(project);
       expect(result).toContain('data:image/svg+xml');
@@ -144,6 +153,35 @@ describe('ProjectsSectionComponent', () => {
     });
   });
 
+  describe('getProjectImages', () => {
+    it('returns all its own images, skipping blanks', () => {
+      const project: Project = {
+        ...mockProjects[0],
+        images: ['a.jpg', ' ', 'b.jpg'],
+      };
+      expect(component.getProjectImages(project)).toEqual(['a.jpg', 'b.jpg']);
+    });
+
+    it('falls back to one preview derived from the links', () => {
+      expect(component.getProjectImages(mockProjects[2])).toEqual([
+        'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+      ]);
+    });
+
+    it('gives the dialog real images only, never the placeholder', () => {
+      const bare: Project = {
+        title: 'Bare',
+        description: '',
+        technologies: [],
+        startDate: null,
+      };
+      component.openProjectDialog(bare);
+      component.openProjectDialog(mockProjects[1]);
+      const calls = (component.dialog.open as any).mock.calls;
+      expect(calls[0][1].data.images).toEqual([]);
+      expect(calls[1][1].data.images).toEqual(['custom-image.jpg', 'second.jpg']);
+    });
+  });
 
   describe('technology filter', () => {
     const make = (title: string, technologies: string[]): Project => ({
@@ -192,7 +230,7 @@ describe('ProjectsSectionComponent', () => {
     it('skips the placeholder image for hover previews', () => {
       expect(component.previewImage(make('X', []))).toBeNull();
       expect(
-        component.previewImage({ ...make('Y', []), image: 'a.jpg' }),
+        component.previewImage({ ...make('Y', []), images: ['a.jpg', 'b.jpg'] }),
       ).toBe('a.jpg');
     });
   });

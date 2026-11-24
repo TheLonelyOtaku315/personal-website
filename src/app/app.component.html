@@ -10,10 +10,12 @@
         [timeline]="timeline"
         [projects]="projects"
         (skillSelect)="filterProjects($event)"
+        (projectSelect)="projectsSection.openProjectByTitle($event)"
       ></app-about-me-section>
     </section>
     <section id="project">
       <app-projects-section
+        #projectsSection
         [projects]="projects"
         [techFilter]="techFilter"
         (techFilterChange)="filterProjects($event)"

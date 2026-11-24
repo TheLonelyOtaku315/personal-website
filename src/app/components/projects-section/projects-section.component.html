@@ -72,6 +72,14 @@
             >{{ "PROJECTS.DEMO_LINK" | translate }} ↗</a
           >
           <a
+            *ngIf="project.videoUrl"
+            class="text-link"
+            [href]="project.videoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ "PROJECTS.VIDEO_LINK" | translate }} ↗</a
+          >
+          <a
             *ngIf="project.sourceUrl"
             class="text-link"
             [href]="project.sourceUrl"

@@ -56,7 +56,8 @@
       "DETAILS": "View details",
       "HIGHLIGHTS": "Highlights",
       "VISIT": "Visit website",
-      "CERTIFICATE": "View certificate"
+      "CERTIFICATE": "View certificate",
+      "PROJECT": "View project"
     },
     "SKILLS_HINT": "Click a skill to see where I used it",
     "SKILL_PROJECTS": "Used in {{count}} projects",
@@ -67,6 +68,7 @@
     "INTRO": "This section highlights some of the projects I have worked on, showcasing my skills and experience in web development. Explore the projects below to learn more about my work and the technologies I use.",
     "DEMO_LINK": "Demo",
     "SOURCE_LINK": "Source Code",
+    "VIDEO_LINK": "Video",
     "DESCRIPTION": "Description",
     "TECHNOLOGIES": "Technologies",
     "DATE": "Date",
@@ -76,6 +78,12 @@
     "SHOW_MORE": "Show more projects",
     "SHOW_LESS": "Show fewer projects",
     "IMAGE_ALT": "Preview of {{title}}",
+    "GALLERY_LABEL": "{{title}} images",
+    "GALLERY_SLIDE": "{{n}} of {{total}}",
+    "GALLERY_ALT": "{{title}}, image {{n}} of {{total}}",
+    "GALLERY_PREV": "Previous image",
+    "GALLERY_NEXT": "Next image",
+    "GALLERY_GO": "Show image {{n}} of {{total}}",
     "FILTER_HINT": "Tip: click a technology to filter the list",
     "FILTERED_BY": "Projects using",
     "CLEAR_FILTER": "Show all"

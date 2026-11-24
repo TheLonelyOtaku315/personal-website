@@ -43,7 +43,10 @@
             <ng-container *ngIf="isSingleDate(item)">
               {{ item.startDate | localizedDate: singleDateFormat(item) }}
             </ng-container>
-            <ng-container *ngIf="!isSingleDate(item)">
+            <ng-container *ngIf="isDayRange(item)">
+              {{ item.startDate | localizedDateRange: item.endDate }}
+            </ng-container>
+            <ng-container *ngIf="!isSingleDate(item) && !isDayRange(item)">
               <span class="entry-start"
                 >{{ item.startDate | localizedDate: "MMM yyyy" }} –</span
               ><span class="entry-end">{{

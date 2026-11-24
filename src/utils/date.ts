@@ -10,6 +10,42 @@ export function isSingleDate(start: unknown, end: unknown): boolean {
   return !!end && end === start;
 }
 
+/** True when both dates fall in the same month, e.g. a weekend project. */
+export function isSameMonth(start: unknown, end: unknown): boolean {
+  const from = parseLocalDate(start);
+  const to = parseLocalDate(end);
+  return (
+    !!from &&
+    !!to &&
+    from.getFullYear() === to.getFullYear() &&
+    from.getMonth() === to.getMonth()
+  );
+}
+
+/** True for short events given as two different days (e.g. a weekend hackathon). */
+export function isDayRange(start: unknown, end: unknown): boolean {
+  return hasDay(start) && hasDay(end) && start !== end;
+}
+
+/**
+ * Formats two days as one range in the given language, sharing the month
+ * and year when they match: "Nov 14 – 15, 2026" / "14–15 nov. 2026".
+ */
+export function formatDayRange(
+  start: unknown,
+  end: unknown,
+  lang: string,
+  style: 'medium' | 'long' = 'medium',
+): string {
+  const from = parseLocalDate(start);
+  const to = parseLocalDate(end);
+  if (!from || !to) return '';
+  return new Intl.DateTimeFormat(lang, { dateStyle: style }).formatRange(
+    from,
+    to,
+  );
+}
+
 /**
  * Parses "YYYY-MM" or "YYYY-MM-DD" strings as a local date.
  * `new Date('2025-12')` is parsed as UTC midnight, which shows up as the

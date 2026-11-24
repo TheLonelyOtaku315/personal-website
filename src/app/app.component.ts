@@ -12,10 +12,32 @@ import { PrivacyPolicyLinkComponent } from './components/privacy-policy/privacy-
 
 import { ThemeService } from '@services/theme.service';
 import { MetaService } from '@services/meta.service';
-import { TimelineEvent, Project } from '@models/shared-interfaces';
+import { TimelineEvent, Project, EventLink } from '@models/shared-interfaces';
 import { byMostRecentWork, parseLocalDate } from '@utils/date';
 
 const SUPPORTED_LANGUAGES = ['en', 'fr'];
+
+// "images" from the JSON, or the older single "image" field
+function imageList(p: { images?: unknown; image?: unknown }): string[] {
+  const list = Array.isArray(p.images) ? p.images : [p.image];
+  return list.filter(
+    (src): src is string => typeof src === 'string' && !!src.trim(),
+  );
+}
+
+// Links with both a label and a URL; anything else in the JSON is skipped
+function linkList(links: unknown): EventLink[] {
+  if (!Array.isArray(links)) return [];
+  return links
+    .filter(
+      (p) =>
+        typeof p?.label === 'string' &&
+        !!p.label.trim() &&
+        typeof p?.url === 'string' &&
+        !!p.url.trim(),
+    )
+    .map((p) => ({ label: p.label, url: p.url }));
+}
 
 @Component({
   selector: 'app-root',
@@ -103,10 +125,11 @@ export class AppComponent implements OnInit {
           description: p.description,
           demoUrl: p.demoUrl || '',
           sourceUrl: p.sourceUrl || '',
+          videoUrl: p.videoUrl || '',
           startDate: parseLocalDate(p.startDate),
           endDate: parseLocalDate(p.endDate),
           technologies: p.technologies || [],
-          image: p.image || '',
+          images: imageList(p),
         }));
         this.projects.sort(byMostRecentWork);
       },
@@ -137,6 +160,8 @@ export class AppComponent implements OnInit {
           details: e.details || [],
           link: e.link || '',
           certificate: e.certificate || '',
+          project: e.project || '',
+          links: linkList(e.links),
         }));
       },
       error: (error) => {

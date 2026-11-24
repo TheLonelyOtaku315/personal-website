@@ -15,6 +15,15 @@ export interface TimelineEvent {
   link?: string;
   // Path to a certificate PDF in assets/doc (e.g. for an award)
   certificate?: string;
+  // Title of a related project in the Projects section (e.g. a hackathon's)
+  project?: string;
+  // Extra labelled links, e.g. posts about the event or a team's project
+  links?: EventLink[];
+}
+
+export interface EventLink {
+  label: string;
+  url: string;
 }
 
 export interface Project {
@@ -24,7 +33,11 @@ export interface Project {
   startDate: Date | string | null;
   // null or missing means the project is still ongoing
   endDate?: Date | string | null;
-  image?: string;
+  // Screenshots for the project dialog's gallery; the first one is also
+  // the hover preview. Without any, a preview is derived from the links.
+  images?: string[];
   demoUrl?: string;
   sourceUrl?: string;
+  // Demo video (e.g. YouTube), shown next to the demo and source links
+  videoUrl?: string;
 }

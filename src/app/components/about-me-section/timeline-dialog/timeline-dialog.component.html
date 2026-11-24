@@ -30,7 +30,10 @@
         <span class="date-pill" *ngIf="singleDate">
           {{ data.startDate | localizedDate: singleDateFormat }}
         </span>
-        <span class="date-pill" *ngIf="!singleDate">
+        <span class="date-pill" *ngIf="dayRange">
+          {{ data.startDate | localizedDateRange: data.endDate : "long" }}
+        </span>
+        <span class="date-pill" *ngIf="!singleDate && !dayRange">
           {{ data.startDate | localizedDate }}
           –
           {{
@@ -60,6 +63,14 @@
       >
         {{ "ABOUT.TIMELINE.CERTIFICATE" | translate }}
       </a>
+      <button
+        *ngIf="data.project"
+        type="button"
+        class="action primary"
+        (click)="viewProject()"
+      >
+        {{ "ABOUT.TIMELINE.PROJECT" | translate }}
+      </button>
       <a
         *ngIf="data.link"
         class="action primary"
@@ -68,6 +79,15 @@
         rel="noopener noreferrer"
       >
         {{ "ABOUT.TIMELINE.VISIT" | translate }}
+      </a>
+      <a
+        *ngFor="let extra of data.links"
+        class="action"
+        [href]="extra.url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ extra.label }}
       </a>
       <button type="button" class="action ghost close-btn" (click)="close()">
         {{ "PROJECTS.CLOSE" | translate }}

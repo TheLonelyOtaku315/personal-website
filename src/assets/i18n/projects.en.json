@@ -1,5 +1,30 @@
 [
   {
+    "title": "Marswalk Budget",
+    "description": "Mars walking-route planner built with a team of four at the 2026 NASA Space Apps Challenge (“Interplanetary Survival Guide: Martian Map”). An astronaut picks science stops on real terrain at Gale or Jezero Crater, and the planner compares routes by walking time, suit oxygen, radiation dose and science value, then replans for dust storms, solar events or a heavy sample kit. Built the console UI and integrated the team's work into it (route options, turn-by-turn steps, Go/No-Go conditions, presenter tour), processed USGS elevation and THEMIS thermal-inertia data into a terrain grid with Node.js, ran QA, recorded the demo video and published the site on GitHub Pages.",
+    "demoUrl": "https://thelonelyotaku315.github.io/marswalk-budget/?data=gale&cond=real-gale",
+    "sourceUrl": "https://github.com/LouisLaziat/NasaChallenge2026",
+    "videoUrl": "https://youtu.be/Wj7d-oiHr20",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "technologies": [
+      "JavaScript",
+      "Node.js",
+      "HTML5",
+      "CSS3",
+      "Leaflet",
+      "NASA Open Data"
+    ],
+    "images": [
+      "assets/img/projects/marswalk-budget.jpg",
+      "assets/img/projects/marswalk-budget-flyover.jpg",
+      "assets/img/projects/marswalk-budget-hud.jpg",
+      "assets/img/projects/marswalk-budget-jezero.jpg",
+      "assets/img/projects/marswalk-budget-tablet.jpg",
+      "assets/img/projects/marswalk-budget-checklist.jpg"
+    ]
+  },
+  {
     "title": "CREII Website",
     "description": "Independently designed and developed the website of CREII (Centre de référence des élèves issus de l'immigration) using Angular, TypeScript, HTML, CSS and WordPress. Built it from the ground up with responsive, multilingual interfaces and reusable components, connected Angular to WordPress through custom REST APIs, developed a Google Drive-based photo gallery, and integrated WooCommerce, Stripe, Brevo and IONOS.",
     "demoUrl": "https://creii.net",
@@ -16,7 +41,13 @@
       "WooCommerce",
       "Stripe"
     ],
-    "image": "assets/img/projects/creii.jpg"
+    "images": [
+      "assets/img/projects/creii.jpg",
+      "assets/img/projects/creii-services.jpg",
+      "assets/img/projects/creii-events.jpg",
+      "assets/img/projects/creii-gala.jpg",
+      "assets/img/projects/creii-summer-camp.jpg"
+    ]
   },
   {
     "title": "QuietZone",
@@ -33,7 +64,10 @@
       "Java",
       "Firebase"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/quietzone.jpg",
+      "assets/img/projects/quietzone-admin-dark.jpg"
+    ]
   },
   {
     "title": "Bluetooth Touch Screen Macropad",
@@ -49,8 +83,7 @@
       "LVGL",
       "AMOLED Display",
       "PlatformIO"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Personal Portfolio Redesign",
@@ -65,13 +98,20 @@
       "Accessibility",
       "Performance Optimization"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/portfolio-redesign.jpg",
+      "assets/img/projects/portfolio-redesign-dark.jpg",
+      "assets/img/projects/portfolio-redesign-mobile.jpg",
+      "assets/img/projects/portfolio-redesign-about.jpg",
+      "assets/img/projects/portfolio-redesign-projects.jpg",
+      "assets/img/projects/portfolio-redesign-contact.jpg"
+    ]
   },
   {
     "title": "Autonomous Hovercraft",
     "description": "Developed an autonomous hovercraft capable of navigating and solving mazes using sensor fusion. Implemented navigation algorithms using data from IMU (Inertial Measurement Unit), ultrasonic, and infrared sensors. Programmed in C for Arduino microcontroller with real-time obstacle detection and path planning.",
     "demoUrl": "https://youtube.com/shorts/oI3XUQ6Xa5w",
-    "sourceUrl": "",
+    "sourceUrl": "https://github.com/TheLonelyOtaku315/ENGR290_project_hovercraft",
     "startDate": "2025-09",
     "endDate": "2025-11",
     "technologies": [
@@ -79,8 +119,7 @@
       "Arduino",
       "Autonomous Navigation",
       "Embedded Systems"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "COMP353 - Database Systems Project",
@@ -98,8 +137,7 @@
       "Normalization",
       "Team Collaboration",
       "Git"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "COMP 371 - 3D Graphics Programming Project",
@@ -118,8 +156,7 @@
       "3D Graphics",
       "Shadow Mapping",
       "CMake"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "ChatHaven",
@@ -138,7 +175,13 @@
       "LinkPreview API",
       "Gemini API"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/chathaven-home.jpg",
+      "assets/img/projects/chathaven.jpg",
+      "assets/img/projects/chathaven-channel.jpg",
+      "assets/img/projects/chathaven-dm.jpg",
+      "assets/img/projects/chathaven-create-team.jpg"
+    ]
   },
   {
     "title": "Temperature Converter",
@@ -153,10 +196,17 @@
       "CSS",
       "Temperature Conversion"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/temperature-converter.jpg",
+      "assets/img/projects/temperature-converter-converter.jpg",
+      "assets/img/projects/temperature-converter-steps.jpg",
+      "assets/img/projects/temperature-converter-history-size.jpg",
+      "assets/img/projects/temperature-converter-graph.jpg",
+      "assets/img/projects/temperature-converter-history.jpg"
+    ]
   },
   {
-    "title": "Personal Portfolio Website",
+    "title": "Personal Portfolio Website – Version 1",
     "description": "Personal portfolio website built with Angular to showcase my projects, skills, and experience. Features responsive design, component-based architecture, and modern web development practices.",
     "demoUrl": "",
     "sourceUrl": "https://github.com/TheLonelyOtaku315/personal-website",
@@ -168,7 +218,13 @@
       "CSS",
       "HTML"
     ],
-    "image": ""
+    "images": [
+      "assets/img/projects/portfolio-2025.jpg",
+      "assets/img/projects/portfolio-2025-light.jpg",
+      "assets/img/projects/portfolio-2025-about.jpg",
+      "assets/img/projects/portfolio-2025-projects.jpg",
+      "assets/img/projects/portfolio-2025-projects-light.jpg"
+    ]
   },
   {
     "title": "LeetCode Solutions",
@@ -182,8 +238,7 @@
       "Algorithms",
       "Data Structures",
       "Problem Solving"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "k-NN Classifier – Final Project",
@@ -196,8 +251,7 @@
       "Java",
       "Machine Learning",
       "Algorithm Optimization"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "ESP32 LED Controller",
@@ -212,8 +266,7 @@
       "Bluetooth",
       "Serial Communication",
       "Arduino"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "Electricity & Magnetism Simulation",
@@ -228,8 +281,7 @@
       "CSS",
       "Git",
       "GitHub"
-    ],
-    "image": ""
+    ]
   },
   {
     "title": "RetroPie Gaming Console on Raspberry Pi",
@@ -242,7 +294,6 @@
       "Raspberry Pi",
       "Linux",
       "RetroPie"
-    ],
-    "image": ""
+    ]
   }
 ]

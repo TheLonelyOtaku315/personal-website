@@ -1,16 +1,37 @@
 [
   {
     "type": "award",
+    "title": "Galactic Problem Solver – NASA Space Apps Challenge 2026",
+    "organization": "NASA Space Apps Challenge",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "summary": "Création de Marswalk Budget, un planificateur de marche sur Mars, en équipe de quatre au hackathon international de la NASA.",
+    "details": [
+      "Participation au NASA Space Apps Challenge 2026, un hackathon international mené par la NASA, les 14 et 15 novembre 2026.",
+      "Création de Marswalk Budget en équipe de quatre pour le défi « Interplanetary Survival Guide: Martian Map » : un outil qui met en balance les arrêts scientifiques sur le relief réel de Mars et l'oxygène de la combinaison, la dose de rayonnement et le retour à la base.",
+      "Certificat « Galactic Problem Solver » reçu pour une participation remarquable et des efforts visant à relever des défis sur Terre et dans l'espace."
+    ],
+    "certificate": "assets/doc/Tonny-Zhao-Certificat-NASA-Space-Apps.pdf",
+    "project": "Marswalk Budget"
+  },
+  {
+    "type": "award",
     "title": "1re place – Hackathon GDG Polytechnique",
     "organization": "Google Developer Group Polytechnique Montréal",
     "startDate": "2026-11-11",
     "endDate": "2026-11-11",
     "summary": "Première place en équipe au hackathon « Le navigateur à l'ère de l'intelligence artificielle ».",
     "details": [
-      "Première place remportée en équipe au hackathon « Le navigateur à l'ère de l'intelligence artificielle », organisé par le Google Developer Group Polytechnique Montréal le 11 novembre 2026.",
+      "Première place remportée en équipe au hackathon « Le navigateur à l'ère de l'intelligence artificielle », organisé par le Google Developer Group Polytechnique Montréal dans les bureaux de Google à Montréal le 11 novembre 2026.",
+      "Notre projet gagnant, Silver Sun Scan, aide à repérer les arnaques en ligne en vérifiant liens, codes QR, messages suspects et mots de passe (équipe TroisPandasUnOursPolaire).",
       "Prix décerné en reconnaissance de l'excellence, de l'innovation et de la créativité du projet."
     ],
-    "certificate": "assets/doc/Tonny-Zhao-Certificat-GDG-Polytechnique.pdf"
+    "certificate": "assets/doc/Tonny-Zhao-Certificat-GDG-Polytechnique.pdf",
+    "links": [
+      { "label": "Projet gagnant", "url": "https://scan.silversuncorp.com/" },
+      { "label": "Publication des organisateurs", "url": "https://www.linkedin.com/posts/gdgoncampus-google-hackathon-ugcPost-7526775072729141248-VQga/" },
+      { "label": "Publication de notre équipe", "url": "https://www.linkedin.com/posts/louis-ho-1b2ba3277_hackathon-google-cybersecurity-ugcPost-7528499522327535616-cs3e/" }
+    ]
   },
   {
     "type": "work",

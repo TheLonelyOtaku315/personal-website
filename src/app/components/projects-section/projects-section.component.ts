@@ -84,10 +84,21 @@ export class ProjectsSectionComponent {
     this.visibleCount = this.pageSize;
   }
 
+  // Opens a project by its title, e.g. from a related timeline entry
+  openProjectByTitle(title: string): void {
+    const project = this.projects.find((p) => p.title === title);
+    if (project) this.openProjectDialog(project);
+  }
+
   openProjectDialog(project: Project): void {
     this.dialog.open(ProjectDialogComponent, {
-      // Pass the same preview image the card shows
-      data: { ...project, image: this.getProjectImage(project) },
+      // The gallery gets real images only, never the generated placeholder
+      data: {
+        ...project,
+        images: this.getProjectImages(project).filter(
+          (src) => !src.startsWith('data:'),
+        ),
+      },
       panelClass: 'project-dialog-panel',
       width: '90%',
       maxWidth: '760px',
@@ -96,11 +107,20 @@ export class ProjectsSectionComponent {
     });
   }
 
+  // First image: the one the hover preview shows
   getProjectImage(project: Project): string {
-    // 1) Explicit image set on the project
-    if (project.image && project.image.trim()) return project.image;
+    return this.getProjectImages(project)[0];
+  }
 
-    // 2) If a demo URL exists, prefer the most appropriate preview:
+  // Images for the gallery: the project's own screenshots, or else a
+  // single preview derived from its links
+  getProjectImages(project: Project): string[] {
+    const own = (project.images || []).filter((src) => !!src && !!src.trim());
+    return own.length ? own : [this.derivedImage(project)];
+  }
+
+  private derivedImage(project: Project): string {
+    // 1) If a demo URL exists, prefer the most appropriate preview:
     if (project.demoUrl && project.demoUrl.trim()) {
       const demo = project.demoUrl.trim();
 
